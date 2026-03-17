@@ -4,7 +4,7 @@
   "framework": "astro",
   "installCommand": "npm install",
   "functions": {
-    "api/**/*.ts": {
+    "api/**/*.js": {
       "runtime": "@vercel/node@3.2.0"
     }
   },
