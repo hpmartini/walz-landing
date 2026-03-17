@@ -1,7 +1,5 @@
-import type { VercelRequest, VercelResponse } from '@vercel/node';
-
 // Rate limiting store (in-memory, resets on cold start)
-const rateLimitStore = new Map<string, { count: number; resetTime: number }>();
+const rateLimitStore = new Map();
 
 // Configuration
 const CONFIG = {
@@ -12,9 +10,6 @@ const CONFIG = {
   // Token limits
   MAX_INPUT_CHARS: 500, // Max user message length
   MAX_OUTPUT_TOKENS: 512, // Max response tokens
-  
-  // Daily quota per IP (optional, not persistent across cold starts)
-  DAILY_QUOTA: 50,
   
   // Gemini API
   GEMINI_MODEL: 'gemini-2.0-flash',
@@ -47,7 +42,7 @@ WICHTIGE REGELN:
 Bei Terminanfragen verweise auf die Kontaktseite oder die Telefonnummer.`;
 
 // Get client IP
-function getClientIP(req: VercelRequest): string {
+function getClientIP(req) {
   const forwarded = req.headers['x-forwarded-for'];
   if (typeof forwarded === 'string') {
     return forwarded.split(',')[0].trim();
@@ -56,7 +51,7 @@ function getClientIP(req: VercelRequest): string {
 }
 
 // Rate limiting check
-function checkRateLimit(ip: string): { allowed: boolean; remaining: number; resetIn: number } {
+function checkRateLimit(ip) {
   const now = Date.now();
   const record = rateLimitStore.get(ip);
   
@@ -74,7 +69,7 @@ function checkRateLimit(ip: string): { allowed: boolean; remaining: number; rese
 }
 
 // Input validation
-function validateInput(message: string): { valid: boolean; error?: string } {
+function validateInput(message) {
   if (!message || typeof message !== 'string') {
     return { valid: false, error: 'Nachricht ist erforderlich' };
   }
@@ -108,7 +103,7 @@ function validateInput(message: string): { valid: boolean; error?: string } {
 }
 
 // Call Gemini API
-async function callGemini(message: string): Promise<string> {
+async function callGemini(message) {
   const apiKey = process.env.GEMINI_API_KEY;
   
   if (!apiKey) {
@@ -163,7 +158,7 @@ async function callGemini(message: string): Promise<string> {
   return candidate.content.parts[0].text;
 }
 
-module.exports = async function handler(req: VercelRequest, res: VercelResponse) {
+module.exports = async function handler(req, res) {
   // CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -214,4 +209,4 @@ module.exports = async function handler(req: VercelRequest, res: VercelResponse)
       error: 'Es ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.',
     });
   }
-}
+};
