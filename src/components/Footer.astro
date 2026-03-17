@@ -1,0 +1,80 @@
+---
+const currentYear = new Date().getFullYear();
+
+const leistungen = [
+  { href: '/leistungen/existenzgruendung', label: 'Existenzgründung' },
+  { href: '/leistungen/steuerberatung', label: 'Steuerberatung' },
+  { href: '/leistungen/buchhaltung', label: 'Buchhaltung' },
+  { href: '/leistungen/lohnabrechnung', label: 'Lohnabrechnung' },
+];
+---
+
+<footer class="bg-primary text-white pt-16 pb-8">
+  <div class="max-w-[1200px] mx-auto px-6">
+    <div class="grid md:grid-cols-4 gap-12 mb-12">
+      <!-- Logo & About -->
+      <div class="md:col-span-1">
+        <div class="mb-4">
+          <span class="text-xl font-bold tracking-tight">KANZLEI KARSTEN WALZ</span>
+          <div class="text-xs text-white/60 tracking-widest uppercase">Steuerberater</div>
+        </div>
+        <p class="text-white/70 text-sm">
+          Ihr verlässlicher Partner für alle steuerlichen Angelegenheiten seit 2000.
+        </p>
+      </div>
+
+      <!-- Leistungen -->
+      <div>
+        <h3 class="font-semibold mb-4">Leistungen</h3>
+        <ul class="space-y-2">
+          {leistungen.map(item => (
+            <li>
+              <a href={item.href} class="text-white/70 hover:text-white transition-colors text-sm">
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Kontakt -->
+      <div>
+        <h3 class="font-semibold mb-4">Kontakt</h3>
+        <ul class="space-y-2 text-white/70 text-sm">
+          <li>Ziegenhainer Str. 3</li>
+          <li>34613 Schwalmstadt</li>
+          <li class="pt-2">
+            <a href="tel:066914271" class="hover:text-white transition-colors">06691 4271</a>
+          </li>
+          <li>
+            <a href="mailto:info@kanzlei-karstenwalz.de" class="hover:text-white transition-colors">
+              info@kanzlei-karstenwalz.de
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Rechtliches -->
+      <div>
+        <h3 class="font-semibold mb-4">Rechtliches</h3>
+        <ul class="space-y-2">
+          <li>
+            <a href="/impressum" class="text-white/70 hover:text-white transition-colors text-sm">
+              Impressum
+            </a>
+          </li>
+          <li>
+            <a href="/datenschutz" class="text-white/70 hover:text-white transition-colors text-sm">
+              Datenschutz
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="border-t border-white/20 pt-8 text-center text-white/50 text-sm">
+      <p>© {currentYear} Kanzlei Karsten Walz. Alle Rechte vorbehalten.</p>
+    </div>
+  </div>
+</footer>

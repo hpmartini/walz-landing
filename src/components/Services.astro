@@ -1,0 +1,53 @@
+---
+const services = [
+  {
+    icon: `<svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>`,
+    title: 'Existenzgründung',
+    description: 'Von der Geschäftsidee zur erfolgreichen Gründung. Wir begleiten Sie auf jedem Schritt.',
+    href: '/leistungen/existenzgruendung'
+  },
+  {
+    icon: `<svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>`,
+    title: 'Steuerberatung',
+    description: 'Individuelle Beratung für Ihre steuerlichen Angelegenheiten. Kompetent und persönlich.',
+    href: '/leistungen/steuerberatung'
+  },
+  {
+    icon: `<svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>`,
+    title: 'Buchhaltung',
+    description: 'Finanzbuchhaltung und Jahresabschlüsse. Zuverlässig, termingerecht, übersichtlich.',
+    href: '/leistungen/buchhaltung'
+  },
+  {
+    icon: `<svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>`,
+    title: 'Lohnabrechnung',
+    description: 'Pünktliche und korrekte Lohnbuchhaltung. Entlastung für Ihr Unternehmen.',
+    href: '/leistungen/lohnabrechnung'
+  }
+];
+---
+
+<section class="py-20 md:py-24 bg-bg-alt">
+  <div class="max-w-[1200px] mx-auto px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Unsere Leistungen</h2>
+      <div class="w-16 h-1 bg-secondary mx-auto"></div>
+    </div>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {services.map(service => (
+        <a href={service.href} class="group bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+          <div class="text-secondary mb-4" set:html={service.icon} />
+          <h3 class="text-xl font-semibold text-primary mb-3">{service.title}</h3>
+          <p class="text-text-light mb-4">{service.description}</p>
+          <span class="text-primary font-medium group-hover:text-primary-light transition-colors inline-flex items-center gap-1">
+            Mehr erfahren 
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
