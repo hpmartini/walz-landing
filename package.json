@@ -15,5 +15,8 @@
     "@tailwindcss/vite": "^4.2.1",
     "astro": "^6.0.5",
     "tailwindcss": "^4.2.1"
+  },
+  "devDependencies": {
+    "@vercel/node": "^5.6.15"
   }
 }

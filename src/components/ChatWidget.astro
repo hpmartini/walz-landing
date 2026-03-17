@@ -1,5 +1,4 @@
 ---
-// Pure frontend widget; backend connection will be added later.
 const quickQuestions = [
   'Welche Unterlagen brauche ich für die Steuererklärung?',
   'Was kostet eine laufende Buchhaltung?',
@@ -30,18 +29,19 @@ const quickQuestions = [
     aria-modal="true"
     aria-label="Steuerberater Chat"
   >
-    <div class="fixed inset-0 bg-black/30 backdrop-blur-[2px]"></div>
+    <div class="fixed inset-0 bg-black/30 backdrop-blur-[2px]" id="chat-backdrop"></div>
 
     <div class="fixed bottom-24 right-6 w-[calc(100vw-3rem)] max-w-md">
-      <div class="rounded-2xl overflow-hidden shadow-2xl border border-secondary/25 bg-white">
-        <div class="bg-primary text-white px-5 py-4 flex items-center justify-between">
+      <div class="rounded-2xl overflow-hidden shadow-2xl border border-secondary/25 bg-white flex flex-col max-h-[70vh]">
+        <!-- Header -->
+        <div class="bg-primary text-white px-5 py-4 flex items-center justify-between shrink-0">
           <div>
             <div class="font-semibold">Virtueller Assistent</div>
             <div class="text-white/70 text-sm">Kanzlei Karsten Walz</div>
           </div>
           <button
             id="chat-close"
-            class="w-10 h-10 rounded-lg hover:bg-white/10 transition-colors duration-300"
+            class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-white/10 transition-colors duration-300"
             aria-label="Chat schließen"
           >
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -50,92 +50,245 @@ const quickQuestions = [
           </button>
         </div>
 
-        <div class="p-5 bg-bg">
-          <div class="bg-white rounded-xl border border-secondary/15 p-4">
-            <div class="text-sm text-text-light mb-2">System</div>
-            <div class="text-text">
-              Hallo! Ich bin Ihr virtueller Steuerberater-Assistent. Wie kann ich Ihnen bei steuerlichen Fragen helfen?
+        <!-- Messages Container -->
+        <div id="chat-messages" class="flex-1 overflow-y-auto p-4 space-y-4 bg-bg min-h-[200px]">
+          <!-- System Welcome Message -->
+          <div class="chat-message chat-system">
+            <div class="bg-white rounded-xl border border-secondary/15 p-4">
+              <div class="text-xs font-semibold text-secondary mb-1">Assistent</div>
+              <div class="text-text">
+                Hallo! Ich bin Ihr virtueller Steuerberater-Assistent. Wie kann ich Ihnen bei steuerlichen Fragen helfen?
+              </div>
             </div>
           </div>
-
-          <div class="mt-4">
-            <div class="text-xs font-semibold text-secondary tracking-widest uppercase mb-2">Schnellfragen</div>
-            <div class="flex flex-wrap gap-2">
-              {quickQuestions.map((q) => (
-                <button
-                  type="button"
-                  class="chat-chip text-sm px-3 py-2 rounded-full border border-secondary/25 bg-white hover:bg-secondary/10 transition-all duration-300 hover:scale-[1.02]"
-                  data-question={q}
-                >
-                  {q}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <form id="chat-form" class="mt-5">
-            <label class="block text-sm font-medium text-primary mb-2" for="chat-input">Ihre Frage</label>
-            <div class="flex gap-2">
-              <input
-                id="chat-input"
-                name="message"
-                type="text"
-                class="flex-1 rounded-lg border border-secondary/25 px-4 py-3 outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/20"
-                placeholder="z.B. Benötige ich Belege für …"
-                autocomplete="off"
-              />
-              <button
-                type="submit"
-                class="bg-secondary text-primary font-semibold px-4 py-3 rounded-lg transition-all duration-300 hover:brightness-105 hover:scale-105"
-              >
-                Senden
-              </button>
-            </div>
-            <div class="text-xs text-text-light mt-2">
-              Hinweis: Der Chat ist aktuell ein Frontend-Widget. Antworten/Verarbeitung werden später angebunden.
-            </div>
-          </form>
         </div>
+
+        <!-- Quick Questions -->
+        <div id="chat-quick" class="px-4 py-3 bg-bg-alt border-t border-secondary/10 shrink-0">
+          <div class="text-xs font-semibold text-secondary tracking-widest uppercase mb-2">Schnellfragen</div>
+          <div class="flex flex-wrap gap-2">
+            {quickQuestions.map((q) => (
+              <button
+                type="button"
+                class="chat-chip text-xs px-3 py-1.5 rounded-full border border-secondary/25 bg-white hover:bg-secondary/10 transition-all duration-300 hover:scale-[1.02]"
+                data-question={q}
+              >
+                {q}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <!-- Input Form -->
+        <form id="chat-form" class="px-4 py-3 bg-white border-t border-gray-100 shrink-0">
+          <div class="flex gap-2">
+            <input
+              id="chat-input"
+              name="message"
+              type="text"
+              class="flex-1 rounded-lg border border-secondary/25 px-4 py-2.5 text-sm outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/20 disabled:bg-gray-50 disabled:cursor-not-allowed"
+              placeholder="Ihre Frage eingeben..."
+              autocomplete="off"
+              maxlength="500"
+            />
+            <button
+              id="chat-submit"
+              type="submit"
+              class="bg-secondary text-primary font-semibold px-4 py-2.5 rounded-lg transition-all duration-300 hover:brightness-105 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+            >
+              <span id="chat-submit-text">Senden</span>
+              <svg id="chat-submit-spinner" class="hidden w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+            </button>
+          </div>
+          <div id="chat-status" class="text-xs text-text-light mt-2 hidden"></div>
+        </form>
       </div>
     </div>
   </div>
 </div>
 
 <script>
-  const openBtn = document.getElementById('chat-open');
-  const closeBtn = document.getElementById('chat-close');
-  const modal = document.getElementById('chat-modal');
-  const input = document.getElementById('chat-input');
-  const form = document.getElementById('chat-form');
+  const openBtn = document.getElementById('chat-open') as HTMLButtonElement;
+  const closeBtn = document.getElementById('chat-close') as HTMLButtonElement;
+  const backdrop = document.getElementById('chat-backdrop') as HTMLDivElement;
+  const modal = document.getElementById('chat-modal') as HTMLDivElement;
+  const input = document.getElementById('chat-input') as HTMLInputElement;
+  const form = document.getElementById('chat-form') as HTMLFormElement;
+  const messages = document.getElementById('chat-messages') as HTMLDivElement;
+  const submitBtn = document.getElementById('chat-submit') as HTMLButtonElement;
+  const submitText = document.getElementById('chat-submit-text') as HTMLSpanElement;
+  const submitSpinner = document.getElementById('chat-submit-spinner') as SVGElement;
+  const status = document.getElementById('chat-status') as HTMLDivElement;
+  const quickContainer = document.getElementById('chat-quick') as HTMLDivElement;
+
+  let isLoading = false;
 
   const open = () => {
     modal?.classList.remove('hidden');
-    setTimeout(() => input?.focus(), 0);
+    setTimeout(() => input?.focus(), 100);
   };
+  
   const close = () => modal?.classList.add('hidden');
 
   openBtn?.addEventListener('click', open);
   closeBtn?.addEventListener('click', close);
-
-  modal?.addEventListener('click', (e) => {
-    if (e.target === modal.firstElementChild) close();
-  });
+  backdrop?.addEventListener('click', close);
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) close();
   });
 
+  // Quick questions
   document.querySelectorAll('[data-question]').forEach((btn) => {
     btn.addEventListener('click', () => {
-      const q = btn.getAttribute('data-question') || '';
-      if (input) input.value = q;
-      input?.focus();
+      const q = (btn as HTMLElement).getAttribute('data-question') || '';
+      if (input && !isLoading) {
+        input.value = q;
+        input.focus();
+      }
     });
   });
 
+  // Add message to chat
+  function addMessage(content: string, type: 'user' | 'assistant' | 'error') {
+    const div = document.createElement('div');
+    div.className = `chat-message chat-${type}`;
+    
+    if (type === 'user') {
+      div.innerHTML = `
+        <div class="flex justify-end">
+          <div class="bg-primary text-white rounded-xl px-4 py-3 max-w-[85%]">
+            <div class="text-sm">${escapeHtml(content)}</div>
+          </div>
+        </div>
+      `;
+    } else if (type === 'assistant') {
+      div.innerHTML = `
+        <div class="bg-white rounded-xl border border-secondary/15 p-4">
+          <div class="text-xs font-semibold text-secondary mb-1">Assistent</div>
+          <div class="text-text text-sm whitespace-pre-wrap">${escapeHtml(content)}</div>
+        </div>
+      `;
+    } else {
+      div.innerHTML = `
+        <div class="bg-red-50 border border-red-200 rounded-xl p-4">
+          <div class="text-red-600 text-sm">${escapeHtml(content)}</div>
+        </div>
+      `;
+    }
+    
+    messages.appendChild(div);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  // Escape HTML
+  function escapeHtml(text: string): string {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+
+  // Set loading state
+  function setLoading(loading: boolean) {
+    isLoading = loading;
+    input.disabled = loading;
+    submitBtn.disabled = loading;
+    submitText.classList.toggle('hidden', loading);
+    submitSpinner.classList.toggle('hidden', !loading);
+  }
+
+  // Show status message
+  function showStatus(message: string, duration = 5000) {
+    status.textContent = message;
+    status.classList.remove('hidden');
+    setTimeout(() => status.classList.add('hidden'), duration);
+  }
+
+  // Hide quick questions after first message
+  function hideQuickQuestions() {
+    quickContainer.classList.add('hidden');
+  }
+
+  // Send message to API
+  async function sendMessage(message: string) {
+    if (!message.trim() || isLoading) return;
+    
+    // Hide quick questions
+    hideQuickQuestions();
+    
+    // Add user message
+    addMessage(message, 'user');
+    input.value = '';
+    
+    setLoading(true);
+    
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ message: message.trim() }),
+      });
+      
+      const data = await response.json();
+      
+      if (!response.ok) {
+        if (response.status === 429) {
+          addMessage(`Bitte warten Sie ${data.retryAfter || 60} Sekunden bevor Sie eine weitere Frage stellen.`, 'error');
+        } else {
+          addMessage(data.error || 'Ein Fehler ist aufgetreten.', 'error');
+        }
+        return;
+      }
+      
+      addMessage(data.response, 'assistant');
+      
+      // Show remaining requests if low
+      if (data.remaining !== undefined && data.remaining <= 3) {
+        showStatus(`Noch ${data.remaining} Anfragen in dieser Minute verfügbar.`);
+      }
+      
+    } catch (error) {
+      console.error('Chat error:', error);
+      addMessage('Verbindungsfehler. Bitte versuchen Sie es später erneut.', 'error');
+    } finally {
+      setLoading(false);
+      input.focus();
+    }
+  }
+
+  // Form submit
   form?.addEventListener('submit', (e) => {
     e.preventDefault();
-    // Frontend-only placeholder. Could show a toast later.
-    if (input) input.value = '';
+    sendMessage(input.value);
+  });
+
+  // Enter key (without shift)
+  input?.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage(input.value);
+    }
   });
 </script>
+
+<style>
+  .chat-message {
+    animation: fadeIn 0.3s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

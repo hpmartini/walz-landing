@@ -4,91 +4,98 @@
     "role": "Diplom-Betriebswirt (FH), Steuerberater",
     "description": "Selbstständiger Steuerberater seit 14.02.2000, alleiniger Kanzleiinhaber seit 01.02.2004",
     "email": "walz@kanzlei-karstenwalz.de",
-    "image": "/images/team/1-DSC02065.jpg",
+    "image": "/images/team/10-DSC07099.jpg",
     "quote": "Zusammenkunft ist ein Anfang, Zusammenhalt ist ein Fortschritt, Zusammenarbeit ist ein Erfolg."
   },
   {
-    "name": "Udo Bambey",
+    "name": "Reiner Bambey",
     "role": "Steuerfachangestellter",
     "description": "Angestellter seit 01.08.1981. Aufgabenbereich: Jahresabschlusserstellung, Steuererklärungen aller Art, externes Rechnungswesen, Beratung",
     "email": "bambey@kanzlei-karstenwalz.de",
-    "image": "/images/team/2-DSC02070.jpg"
+    "image": "/images/team/5-DSC06942.jpg"
   },
   {
-    "name": "Melanie Schwalm",
-    "role": "Steuerfachangestellte, Officemanagerin",
-    "description": "Angestellte seit 01.08.1996. Aufgabenbereich: Jahresabschlusserstellung, Steuererklärungen aller Art, internes und externes Rechnungswesen",
-    "email": "m.schwalm@kanzlei-karstenwalz.de",
-    "image": "/images/team/10-DSC07099.jpg"
-  },
-  {
-    "name": "Nicole Ende",
-    "role": "Steuerfachangestellte",
-    "description": "Angestellte seit 01.08.2006. Aufgabenbereich: Jahresabschlusserstellung, Steuererklärungen aller Art, externes Rechnungswesen, Lohn- und Gehaltsabrechnungen",
-    "email": "ende@kanzlei-karstenwalz.de",
+    "name": "Marika Walz",
+    "role": "Officemanagerin",
+    "description": "Aufgabenbereich: Büroorganisation, Mandantenbetreuung, interne Koordination",
+    "email": "mwalz@kanzlei-karstenwalz.de",
     "image": "/images/team/11-DSC07111.jpg"
   },
   {
-    "name": "Jennifer Borowka",
+    "name": "Melanie Schwalm",
+    "role": "Steuerfachangestellte",
+    "description": "Angestellte seit 01.08.1996. Aufgabenbereich: Jahresabschlusserstellung, Steuererklärungen aller Art, internes und externes Rechnungswesen",
+    "email": "m.schwalm@kanzlei-karstenwalz.de",
+    "image": "/images/team/9-DSC07017.jpg"
+  },
+  {
+    "name": "Anika Ende",
+    "role": "Steuerfachangestellte",
+    "description": "Angestellte seit 01.08.2006. Aufgabenbereich: Jahresabschlusserstellung, Steuererklärungen aller Art, externes Rechnungswesen, Lohn- und Gehaltsabrechnungen",
+    "email": "ende@kanzlei-karstenwalz.de",
+    "image": "/images/team/3-DSC06903.jpg"
+  },
+  {
+    "name": "Eva Bambey",
     "role": "Steuerfachangestellte",
     "description": "Angestellte seit 01.08.2003. Aufgabenbereich: Jahresabschlusserstellung, Steuererklärungen aller Art, externes Rechnungswesen, Lohn- und Gehaltsabrechnung",
     "email": "borowka@kanzlei-karstenwalz.de",
-    "image": "/images/team/12-DSC07130.jpg"
+    "image": "/images/team/8-DSC06998.jpg"
   },
   {
-    "name": "Lara Keil",
+    "name": "Lisa Keil",
     "role": "Steuerfachangestellte",
     "description": "Angestellt seit 13.07.2015. Aufgabenbereich: Externes Rechnungswesen, Lohn- und Gehaltsabrechnung, Steuererklärungen",
     "email": "keil@kanzlei-karstenwalz.de",
-    "image": "/images/team/13-DSC07150.jpg"
+    "image": "/images/team/12-DSC07130.jpg"
   },
   {
-    "name": "Rosemarie Grass",
+    "name": "Martina Grass",
     "role": "Steuerfachangestellte",
     "description": "Angestellte seit 01.10.2015. Aufgabenbereich: Einkommensteuererklärungen, Einnahmenüberschussrechnungen, Steuererklärungen für Landwirte",
     "email": "grass@kanzlei-karstenwalz.de",
-    "image": "/images/team/14-DSC07172.jpg"
+    "image": "/images/team/4-DSC06938.jpg"
   },
   {
-    "name": "Melanie Piel",
+    "name": "Angela Piel",
     "role": "Steuerfachangestellte",
     "description": "Angestellte seit 01.05.2017. Aufgabenbereich: Jahresabschlusserstellung, Steuererklärungen aller Art, externes Rechnungswesen, Lohn- und Gehaltsabrechnungen",
     "email": "piel@kanzlei-karstenwalz.de",
-    "image": null
+    "image": "/images/team/6-DSC06957.jpg"
   },
   {
-    "name": "Annika Nagel",
+    "name": "Kathrin Nagel",
     "role": "Diplom-Betriebswirtin (FH), M.Sc. BWL",
     "description": "Angestellte seit 01.01.2018. Aufgabenbereich: Jahresabschlusserstellung für alle Rechtsformen, Steuererklärungen aller Art, betriebswirtschaftliche Beratung",
     "email": "nagel@kanzlei-karstenwalz.de",
-    "image": null
+    "image": "/images/team/14-DSC07172.jpg"
   },
   {
-    "name": "Alina Diehl",
+    "name": "Vanessa Diehl",
     "role": "Auszubildende zur Steuerfachangestellten",
     "description": "Angestellte seit 01.08.2022. Aufgabenbereich: Externes Rechnungswesen, Steuererklärungen, Lohn- und Gehaltsabrechnung, Empfang",
     "email": "diehl@kanzlei-karstenwalz.de",
-    "image": null
+    "image": "/images/team/7-DSC06986-2.jpg"
   },
   {
-    "name": "Manuela Jäckel",
+    "name": "Andrea Jäckel",
     "role": "Steuerfachwirtin",
     "description": "Angestellte seit 01.10.2020. Aufgabenbereich: Jahresabschlusserstellung, Steuererklärungen aller Art, Erbschaftsteuererklärung, steuerliche Beratung",
     "email": "jaeckel@kanzlei-karstenwalz.de",
-    "image": null
+    "image": "/images/team/13-DSC07150.jpg"
   },
   {
-    "name": "Sarah Dörrbecker",
+    "name": "Alicia Dörrbecker",
     "role": "Auszubildende zur Steuerfachangestellten",
     "description": "Ausbildung seit 01.08.2023. Aufgabenbereich: Externes Rechnungswesen, private Steuererklärungen, allgemeine Büroarbeiten, Empfang und Telefon",
     "email": "doerrbecker@kanzlei-karstenwalz.de",
-    "image": null
+    "image": "/images/team/1-DSC02065.jpg"
   },
   {
-    "name": "Tim Morsch",
+    "name": "Hinrich Morsch",
     "role": "Steuerfachangestellter",
     "description": "Angestellter seit 01.08.2021. Aufgabenbereich: Externes Rechnungswesen, Lohn- und Gehaltsabrechnung, Steuererklärungen",
     "email": "morsch@kanzlei-karstenwalz.de",
-    "image": null
+    "image": "/images/team/2-DSC02070.jpg"
   }
 ]
