@@ -1,22 +1,20 @@
+import type { APIRoute } from 'astro';
+
+export const prerender = false;
+
 // Rate limiting store (in-memory, resets on cold start)
-const rateLimitStore = new Map();
+const rateLimitStore = new Map<string, { count: number; resetTime: number }>();
 
 // Configuration
 const CONFIG = {
-  // Rate limiting
-  RATE_LIMIT_WINDOW_MS: 60 * 1000, // 1 minute
-  RATE_LIMIT_MAX_REQUESTS: 10, // 10 requests per minute per IP
-  
-  // Token limits
-  MAX_INPUT_CHARS: 500, // Max user message length
-  MAX_OUTPUT_TOKENS: 512, // Max response tokens
-  
-  // Gemini API
+  RATE_LIMIT_WINDOW_MS: 60 * 1000,
+  RATE_LIMIT_MAX_REQUESTS: 10,
+  MAX_INPUT_CHARS: 500,
+  MAX_OUTPUT_TOKENS: 512,
   GEMINI_MODEL: 'gemini-2.0-flash',
   GEMINI_API_URL: 'https://generativelanguage.googleapis.com/v1beta/models',
 };
 
-// System prompt for tax consultant assistant
 const SYSTEM_PROMPT = `Du bist der freundliche virtuelle Assistent der Kanzlei Karsten Walz, einer Steuerberaterkanzlei in Schwalmstadt.
 
 DEINE ROLLE:
@@ -41,17 +39,15 @@ WICHTIGE REGELN:
 
 Bei Terminanfragen verweise auf die Kontaktseite oder die Telefonnummer.`;
 
-// Get client IP
-function getClientIP(req) {
-  const forwarded = req.headers['x-forwarded-for'];
-  if (typeof forwarded === 'string') {
+function getClientIP(request: Request): string {
+  const forwarded = request.headers.get('x-forwarded-for');
+  if (forwarded) {
     return forwarded.split(',')[0].trim();
   }
-  return req.socket?.remoteAddress || 'unknown';
+  return 'unknown';
 }
 
-// Rate limiting check
-function checkRateLimit(ip) {
+function checkRateLimit(ip: string): { allowed: boolean; remaining: number; resetIn: number } {
   const now = Date.now();
   const record = rateLimitStore.get(ip);
   
@@ -68,8 +64,7 @@ function checkRateLimit(ip) {
   return { allowed: true, remaining: CONFIG.RATE_LIMIT_MAX_REQUESTS - record.count, resetIn: record.resetTime - now };
 }
 
-// Input validation
-function validateInput(message) {
+function validateInput(message: string): { valid: boolean; error?: string } {
   if (!message || typeof message !== 'string') {
     return { valid: false, error: 'Nachricht ist erforderlich' };
   }
@@ -84,7 +79,6 @@ function validateInput(message) {
     return { valid: false, error: `Nachricht ist zu lang (max ${CONFIG.MAX_INPUT_CHARS} Zeichen)` };
   }
   
-  // Basic injection prevention
   const suspiciousPatterns = [
     /ignore.*previous.*instructions/i,
     /system.*prompt/i,
@@ -102,9 +96,8 @@ function validateInput(message) {
   return { valid: true };
 }
 
-// Call Gemini API
-async function callGemini(message) {
-  const apiKey = process.env.GEMINI_API_KEY;
+async function callGemini(message: string): Promise<string> {
+  const apiKey = import.meta.env.GEMINI_API_KEY;
   
   if (!apiKey) {
     throw new Error('GEMINI_API_KEY not configured');
@@ -114,19 +107,10 @@ async function callGemini(message) {
   
   const response = await fetch(url, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      contents: [
-        {
-          role: 'user',
-          parts: [{ text: message }],
-        },
-      ],
-      systemInstruction: {
-        parts: [{ text: SYSTEM_PROMPT }],
-      },
+      contents: [{ role: 'user', parts: [{ text: message }] }],
+      systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
       generationConfig: {
         maxOutputTokens: CONFIG.MAX_OUTPUT_TOKENS,
         temperature: 0.7,
@@ -148,9 +132,8 @@ async function callGemini(message) {
   }
   
   const data = await response.json();
-  
-  // Extract text from response
   const candidate = data.candidates?.[0];
+  
   if (!candidate?.content?.parts?.[0]?.text) {
     throw new Error('Invalid response from Gemini');
   }
@@ -158,55 +141,54 @@ async function callGemini(message) {
   return candidate.content.parts[0].text;
 }
 
-module.exports = async function handler(req, res) {
-  // CORS headers
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-  
-  if (req.method === 'OPTIONS') {
-    return res.status(200).end();
-  }
-  
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
-  }
-  
-  const ip = getClientIP(req);
-  
-  // Rate limit check
+export const POST: APIRoute = async ({ request }) => {
+  const ip = getClientIP(request);
   const rateLimit = checkRateLimit(ip);
-  res.setHeader('X-RateLimit-Remaining', rateLimit.remaining.toString());
-  res.setHeader('X-RateLimit-Reset', Math.ceil(rateLimit.resetIn / 1000).toString());
+  
+  const headers = {
+    'Content-Type': 'application/json',
+    'X-RateLimit-Remaining': rateLimit.remaining.toString(),
+    'X-RateLimit-Reset': Math.ceil(rateLimit.resetIn / 1000).toString(),
+  };
   
   if (!rateLimit.allowed) {
-    return res.status(429).json({
+    return new Response(JSON.stringify({
       error: 'Zu viele Anfragen. Bitte warten Sie einen Moment.',
       retryAfter: Math.ceil(rateLimit.resetIn / 1000),
-    });
+    }), { status: 429, headers });
   }
   
   try {
-    const { message } = req.body;
+    const body = await request.json();
+    const { message } = body;
     
-    // Validate input
     const validation = validateInput(message);
     if (!validation.valid) {
-      return res.status(400).json({ error: validation.error });
+      return new Response(JSON.stringify({ error: validation.error }), { status: 400, headers });
     }
     
-    // Call Gemini
     const response = await callGemini(message.trim());
     
-    return res.status(200).json({
+    return new Response(JSON.stringify({
       response,
       remaining: rateLimit.remaining,
-    });
+    }), { status: 200, headers });
+    
   } catch (error) {
     console.error('Chat API error:', error);
-    
-    return res.status(500).json({
+    return new Response(JSON.stringify({
       error: 'Es ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.',
-    });
+    }), { status: 500, headers });
   }
+};
+
+export const OPTIONS: APIRoute = async () => {
+  return new Response(null, {
+    status: 200,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type',
+    },
+  });
 };
