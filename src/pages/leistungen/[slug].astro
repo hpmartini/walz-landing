@@ -1,0 +1,90 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import PageHero from '../../components/PageHero.astro';
+import ChatWidget from '../../components/ChatWidget.astro';
+
+import services from '../../data/services.json';
+
+export function getStaticPaths() {
+  return services.map((service) => ({
+    params: { slug: service.slug },
+    props: { service },
+  }));
+}
+
+const { service } = Astro.props;
+---
+
+<Layout title={service.title} description={service.shortDesc}>
+  <Header />
+
+  <main>
+    <PageHero title={service.title} subtitle={service.shortDesc} />
+
+    <section class="py-16 md:py-20 bg-bg">
+      <div class="max-w-[1000px] mx-auto px-6">
+        <div class="grid lg:grid-cols-3 gap-10 items-start">
+          <article class="lg:col-span-2 reveal">
+            <h2 class="text-2xl md:text-3xl font-bold text-primary">Überblick</h2>
+            <div class="w-16 h-1 bg-secondary mt-5 mb-8"></div>
+            <p class="text-text-light text-lg">
+              {service.longDesc}
+            </p>
+
+            <div class="mt-10">
+              <h3 class="text-xl font-semibold text-primary">Das bekommen Sie bei uns</h3>
+              <div class="w-12 h-0.5 bg-secondary/80 mt-3 mb-6"></div>
+              <ul class="space-y-3">
+                {service.benefits.map((b) => (
+                  <li class="flex gap-3 items-start">
+                    <span class="mt-1.5 w-6 h-6 rounded-full bg-secondary/15 border border-secondary/25 flex items-center justify-center">
+                      <svg class="w-4 h-4 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </span>
+                    <span class="text-text">{b}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div class="mt-12 flex flex-col sm:flex-row gap-4">
+              <a href="/kontakt" class="bg-primary text-white px-7 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-primary-light hover:scale-105 text-center">
+                Termin / Anfrage
+              </a>
+              <a href="/leistungen" class="border-2 border-primary text-primary px-7 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-primary hover:text-white hover:scale-105 text-center">
+                Zur Übersicht
+              </a>
+            </div>
+          </article>
+
+          <aside class="reveal">
+            <div class="bg-white rounded-2xl border border-secondary/15 shadow-sm p-7">
+              <div class="text-xs font-semibold text-secondary tracking-widest uppercase">Kontakt</div>
+              <h3 class="text-xl font-bold text-primary mt-2">Sprechen wir darüber</h3>
+              <p class="text-text-light mt-3">
+                Ein kurzes Gespräch reicht oft, um die nächsten Schritte zu klären.
+              </p>
+
+              <div class="mt-6 space-y-3">
+                <a href="tel:066914271" class="flex items-center justify-between gap-4 rounded-xl border border-secondary/20 px-4 py-3 hover:bg-secondary/10 transition-all duration-300">
+                  <span class="font-semibold text-primary">06691 4271</span>
+                  <span class="text-secondary">Anrufen</span>
+                </a>
+                <a href="mailto:info@kanzlei-karstenwalz.de" class="flex items-center justify-between gap-4 rounded-xl border border-secondary/20 px-4 py-3 hover:bg-secondary/10 transition-all duration-300">
+                  <span class="font-semibold text-primary">E-Mail</span>
+                  <span class="text-secondary">Schreiben</span>
+                </a>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <ChatWidget />
+</Layout>

@@ -1,0 +1,141 @@
+---
+// Pure frontend widget; backend connection will be added later.
+const quickQuestions = [
+  'Welche Unterlagen brauche ich für die Steuererklärung?',
+  'Was kostet eine laufende Buchhaltung?',
+  'Unterstützen Sie bei Existenzgründung?',
+  'Wie vereinbare ich einen Termin?',
+];
+---
+
+<div class="fixed bottom-6 right-6 z-[60]">
+  <button
+    id="chat-open"
+    class="group inline-flex items-center gap-3 rounded-full bg-primary text-white px-5 py-3 shadow-lg border border-secondary/30 transition-all duration-300 hover:bg-primary-light hover:scale-105"
+    aria-haspopup="dialog"
+    aria-controls="chat-modal"
+  >
+    <span class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-secondary/20 border border-secondary/30">
+      <svg class="w-5 h-5 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h8M8 14h5M21 12c0 4.418-4.03 8-9 8a10.15 10.15 0 01-4.73-1.12L3 20l1.28-3.83A7.7 7.7 0 013 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+      </svg>
+    </span>
+    <span class="font-semibold">Chat</span>
+  </button>
+
+  <div
+    id="chat-modal"
+    class="hidden"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Steuerberater Chat"
+  >
+    <div class="fixed inset-0 bg-black/30 backdrop-blur-[2px]"></div>
+
+    <div class="fixed bottom-24 right-6 w-[calc(100vw-3rem)] max-w-md">
+      <div class="rounded-2xl overflow-hidden shadow-2xl border border-secondary/25 bg-white">
+        <div class="bg-primary text-white px-5 py-4 flex items-center justify-between">
+          <div>
+            <div class="font-semibold">Virtueller Assistent</div>
+            <div class="text-white/70 text-sm">Kanzlei Karsten Walz</div>
+          </div>
+          <button
+            id="chat-close"
+            class="w-10 h-10 rounded-lg hover:bg-white/10 transition-colors duration-300"
+            aria-label="Chat schließen"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+
+        <div class="p-5 bg-bg">
+          <div class="bg-white rounded-xl border border-secondary/15 p-4">
+            <div class="text-sm text-text-light mb-2">System</div>
+            <div class="text-text">
+              Hallo! Ich bin Ihr virtueller Steuerberater-Assistent. Wie kann ich Ihnen bei steuerlichen Fragen helfen?
+            </div>
+          </div>
+
+          <div class="mt-4">
+            <div class="text-xs font-semibold text-secondary tracking-widest uppercase mb-2">Schnellfragen</div>
+            <div class="flex flex-wrap gap-2">
+              {quickQuestions.map((q) => (
+                <button
+                  type="button"
+                  class="chat-chip text-sm px-3 py-2 rounded-full border border-secondary/25 bg-white hover:bg-secondary/10 transition-all duration-300 hover:scale-[1.02]"
+                  data-question={q}
+                >
+                  {q}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <form id="chat-form" class="mt-5">
+            <label class="block text-sm font-medium text-primary mb-2" for="chat-input">Ihre Frage</label>
+            <div class="flex gap-2">
+              <input
+                id="chat-input"
+                name="message"
+                type="text"
+                class="flex-1 rounded-lg border border-secondary/25 px-4 py-3 outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/20"
+                placeholder="z.B. Benötige ich Belege für …"
+                autocomplete="off"
+              />
+              <button
+                type="submit"
+                class="bg-secondary text-primary font-semibold px-4 py-3 rounded-lg transition-all duration-300 hover:brightness-105 hover:scale-105"
+              >
+                Senden
+              </button>
+            </div>
+            <div class="text-xs text-text-light mt-2">
+              Hinweis: Der Chat ist aktuell ein Frontend-Widget. Antworten/Verarbeitung werden später angebunden.
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const openBtn = document.getElementById('chat-open');
+  const closeBtn = document.getElementById('chat-close');
+  const modal = document.getElementById('chat-modal');
+  const input = document.getElementById('chat-input');
+  const form = document.getElementById('chat-form');
+
+  const open = () => {
+    modal?.classList.remove('hidden');
+    setTimeout(() => input?.focus(), 0);
+  };
+  const close = () => modal?.classList.add('hidden');
+
+  openBtn?.addEventListener('click', open);
+  closeBtn?.addEventListener('click', close);
+
+  modal?.addEventListener('click', (e) => {
+    if (e.target === modal.firstElementChild) close();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) close();
+  });
+
+  document.querySelectorAll('[data-question]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const q = btn.getAttribute('data-question') || '';
+      if (input) input.value = q;
+      input?.focus();
+    });
+  });
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    // Frontend-only placeholder. Could show a toast later.
+    if (input) input.value = '';
+  });
+</script>

@@ -1,0 +1,115 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import PageHero from '../components/PageHero.astro';
+import ChatWidget from '../components/ChatWidget.astro';
+---
+
+<Layout title="Kontakt" description="Kontakt zur Kanzlei Karsten Walz – Adresse, Öffnungszeiten, Telefon, E-Mail und Anfrageformular.">
+  <Header />
+
+  <main>
+    <PageHero title="Kontakt" subtitle="Schreiben Sie uns oder rufen Sie an – wir melden uns zeitnah zurück." />
+
+    <section class="py-16 md:py-20 bg-bg">
+      <div class="max-w-[1200px] mx-auto px-6">
+        <div class="grid lg:grid-cols-2 gap-10 items-start">
+          <div class="reveal">
+            <h2 class="text-2xl md:text-3xl font-bold text-primary">Anfrage senden</h2>
+            <div class="w-16 h-1 bg-secondary mt-5 mb-8"></div>
+
+            <form class="bg-white rounded-2xl border border-secondary/15 shadow-sm p-8" method="post" action="#">
+              <div class="grid sm:grid-cols-2 gap-5">
+                <div>
+                  <label class="block text-sm font-medium text-primary mb-2" for="name">Name</label>
+                  <input id="name" name="name" type="text" required class="w-full rounded-lg border border-secondary/25 px-4 py-3 outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/20" />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-primary mb-2" for="phone">Telefon (optional)</label>
+                  <input id="phone" name="phone" type="tel" class="w-full rounded-lg border border-secondary/25 px-4 py-3 outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/20" />
+                </div>
+                <div class="sm:col-span-2">
+                  <label class="block text-sm font-medium text-primary mb-2" for="email">E-Mail</label>
+                  <input id="email" name="email" type="email" required class="w-full rounded-lg border border-secondary/25 px-4 py-3 outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/20" />
+                </div>
+                <div class="sm:col-span-2">
+                  <label class="block text-sm font-medium text-primary mb-2" for="message">Nachricht</label>
+                  <textarea id="message" name="message" rows="5" required class="w-full rounded-lg border border-secondary/25 px-4 py-3 outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/20" placeholder="Worum geht es? (z.B. Steuererklärung, Gründung, Buchhaltung …)"></textarea>
+                </div>
+              </div>
+
+              <div class="mt-6 flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
+                <button type="submit" class="bg-primary text-white px-7 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-primary-light hover:scale-105">
+                  Nachricht senden
+                </button>
+                <div class="text-xs text-text-light">
+                  Hinweis: Formular ist derzeit ohne Backend. Bitte alternativ per <a class="text-primary font-semibold a-underline" href="mailto:info@kanzlei-karstenwalz.de">E-Mail</a> senden.
+                </div>
+              </div>
+            </form>
+
+            <div class="mt-8 bg-bg-alt rounded-2xl border border-secondary/15 p-8">
+              <h3 class="text-xl font-bold text-primary">Direktkontakt</h3>
+              <div class="w-12 h-0.5 bg-secondary/80 mt-3"></div>
+              <div class="mt-5 space-y-3 text-text-light">
+                <div class="flex items-center gap-3">
+                  <span class="w-9 h-9 rounded-xl bg-secondary/10 border border-secondary/20 flex items-center justify-center">
+                    <svg class="w-4 h-4 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                  </span>
+                  <a class="text-primary font-semibold a-underline" href="tel:066914271">06691 4271</a>
+                </div>
+                <div class="flex items-center gap-3">
+                  <span class="w-9 h-9 rounded-xl bg-secondary/10 border border-secondary/20 flex items-center justify-center">
+                    <svg class="w-4 h-4 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l9 6 9-6"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 8v10a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                  </span>
+                  <a class="text-primary font-semibold a-underline" href="mailto:info@kanzlei-karstenwalz.de">info@kanzlei-karstenwalz.de</a>
+                </div>
+              </div>
+
+              <div class="mt-8">
+                <div class="text-primary font-semibold">Öffnungszeiten</div>
+                <div class="text-text-light mt-3 text-sm space-y-1">
+                  <div class="flex items-center justify-between gap-6"><span>Mo – Do</span><span>08:00 – 12:30 · 13:30 – 17:00</span></div>
+                  <div class="flex items-center justify-between gap-6"><span>Fr</span><span>08:00 – 13:00</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="reveal">
+            <h2 class="text-2xl md:text-3xl font-bold text-primary">Anfahrt</h2>
+            <div class="w-16 h-1 bg-secondary mt-5 mb-8"></div>
+
+            <div class="bg-white rounded-2xl border border-secondary/15 shadow-sm overflow-hidden">
+              <iframe
+                title="Google Maps"
+                width="100%"
+                height="420"
+                style="border:0"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://www.google.com/maps?q=Ziegenhainer%20Str.%203%2C%2034613%20Schwalmstadt&output=embed"
+              ></iframe>
+            </div>
+
+            <div class="mt-6 bg-bg-alt rounded-2xl border border-secondary/15 p-8">
+              <div class="flex items-start gap-3">
+                <span class="w-10 h-10 rounded-xl bg-secondary/10 border border-secondary/20 flex items-center justify-center">
+                  <svg class="w-5 h-5 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 21s7-5.5 7-11a7 7 0 10-14 0c0 5.5 7 11 7 11z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10a2 2 0 100-4 2 2 0 000 4z"/></svg>
+                </span>
+                <div>
+                  <div class="text-primary font-semibold">Adresse</div>
+                  <div class="text-text-light mt-1">Ziegenhainer Str. 3, 34613 Schwalmstadt</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <ChatWidget />
+</Layout>

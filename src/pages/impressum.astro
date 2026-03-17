@@ -1,0 +1,50 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import PageHero from '../components/PageHero.astro';
+import ChatWidget from '../components/ChatWidget.astro';
+---
+
+<Layout title="Impressum" description="Impressum der Kanzlei Karsten Walz.">
+  <Header />
+
+  <main>
+    <PageHero title="Impressum" subtitle="Angaben gemäß § 5 TMG" />
+
+    <section class="py-16 md:py-20 bg-bg">
+      <div class="max-w-[900px] mx-auto px-6">
+        <div class="reveal bg-white rounded-2xl border border-secondary/15 shadow-sm p-8">
+          <h2 class="text-2xl font-bold text-primary">Kanzlei Karsten Walz</h2>
+          <div class="w-16 h-1 bg-secondary mt-5 mb-8"></div>
+
+          <div class="space-y-6 text-text-light">
+            <div>
+              <div class="font-semibold text-primary">Anschrift</div>
+              <div>Ziegenhainer Str. 3<br />34613 Schwalmstadt</div>
+            </div>
+
+            <div>
+              <div class="font-semibold text-primary">Kontakt</div>
+              <div>
+                Telefon: <a class="text-primary font-semibold a-underline" href="tel:066914271">06691 4271</a><br />
+                E-Mail: <a class="text-primary font-semibold a-underline" href="mailto:info@kanzlei-karstenwalz.de">info@kanzlei-karstenwalz.de</a>
+              </div>
+            </div>
+
+            <div>
+              <div class="font-semibold text-primary">Hinweis</div>
+              <p>
+                Dieses Impressum ist ein Platzhalter und muss ggf. um berufsrechtliche Angaben (Kammer, Berufsbezeichnung,
+                Aufsichtsbehörde, USt-IdNr. etc.) ergänzt werden.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <ChatWidget />
+</Layout>

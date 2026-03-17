@@ -1,0 +1,70 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import PageHero from '../components/PageHero.astro';
+import ChatWidget from '../components/ChatWidget.astro';
+---
+
+<Layout title="Karriere" description="Karriere in der Kanzlei Karsten Walz – Arbeiten im Team, moderne Prozesse, wertschätzende Zusammenarbeit.">
+  <Header />
+
+  <main>
+    <PageHero title="Karriere" subtitle="Werden Sie Teil unseres Teams – mit Entwicklungsperspektive und echter Zusammenarbeit." />
+
+    <section class="py-16 md:py-20 bg-bg">
+      <div class="max-w-[1000px] mx-auto px-6">
+        <div class="reveal">
+          <h2 class="text-2xl md:text-3xl font-bold text-primary">Arbeiten bei uns</h2>
+          <div class="w-16 h-1 bg-secondary mt-5 mb-8"></div>
+          <p class="text-text-light text-lg">
+            Wir suchen Menschen, die sauber arbeiten, gerne Verantwortung übernehmen und Mandanten wirklich helfen wollen.
+            Ob Berufseinsteiger oder Profi – sprechen Sie uns an.
+          </p>
+        </div>
+
+        <div class="mt-10 grid md:grid-cols-2 gap-6">
+          {[{
+            title: 'Wertschätzung & Team',
+            text: 'Gute Zusammenarbeit, klare Kommunikation und ein Miteinander, das langfristig trägt.',
+          },{
+            title: 'Struktur & Qualität',
+            text: 'Wir arbeiten organisiert, digital und zuverlässig – damit Arbeit Spaß macht und Ergebnisse stimmen.',
+          },{
+            title: 'Entwicklung',
+            text: 'Fortbildungen, neue Themen, Verantwortung – wir unterstützen Ihre Weiterentwicklung.',
+          },{
+            title: 'Standort Schwalmstadt',
+            text: 'Regional verwurzelt, gut erreichbar – mit Mandantenbezug und kurzen Wegen.',
+          }].map((c, idx) => (
+            <div class="reveal bg-white rounded-2xl border border-secondary/15 shadow-sm p-8 hover:-translate-y-1 hover:shadow-lg transition-all duration-300" style={`transition-delay:${Math.min(idx*70, 210)}ms`}>
+              <div class="text-xs font-semibold text-secondary tracking-widest uppercase">Vorteil</div>
+              <h3 class="text-xl font-bold text-primary mt-2">{c.title}</h3>
+              <div class="w-12 h-0.5 bg-secondary/80 mt-3"></div>
+              <p class="text-text-light mt-5">{c.text}</p>
+            </div>
+          ))}
+        </div>
+
+        <div class="mt-12 reveal bg-bg-alt rounded-2xl border border-secondary/15 p-8">
+          <h3 class="text-xl font-bold text-primary">Bewerbung</h3>
+          <div class="w-12 h-0.5 bg-secondary/80 mt-3"></div>
+          <p class="text-text-light mt-5">
+            Senden Sie uns Ihre Bewerbung per E-Mail – gerne mit kurzem Lebenslauf und dem frühestmöglichen Starttermin.
+          </p>
+          <div class="mt-6 flex flex-col sm:flex-row gap-4">
+            <a href="mailto:info@kanzlei-karstenwalz.de" class="bg-primary text-white px-7 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-primary-light hover:scale-105 text-center">
+              Bewerbung per E-Mail
+            </a>
+            <a href="/kontakt" class="border-2 border-primary text-primary px-7 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-primary hover:text-white hover:scale-105 text-center">
+              Rückfrage stellen
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <ChatWidget />
+</Layout>

@@ -8,7 +8,7 @@
   --color-text-light: #4A5568;
   --color-bg: #FAFAF8;
   --color-bg-alt: #F0EDE8;
-  
+
   --font-sans: 'Inter', sans-serif;
 }
 
@@ -21,4 +21,56 @@ body {
   color: var(--color-text);
   background-color: var(--color-bg);
   line-height: 1.7;
+}
+
+/* ---------- Micro-interactions & utilities ---------- */
+
+/* Link underline animation */
+.a-underline {
+  position: relative;
+  text-decoration: none;
+}
+.a-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.25rem;
+  height: 2px;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 300ms ease;
+  background: var(--color-secondary);
+  opacity: 0.9;
+}
+.a-underline:hover::after,
+.a-underline:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 600ms ease, transform 600ms ease;
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .a-underline::after,
+  .reveal {
+    transition: none !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
 }

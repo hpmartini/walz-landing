@@ -1,0 +1,50 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import PageHero from '../components/PageHero.astro';
+import ChatWidget from '../components/ChatWidget.astro';
+---
+
+<Layout title="Datenschutz" description="Datenschutzerklärung der Kanzlei Karsten Walz.">
+  <Header />
+
+  <main>
+    <PageHero title="Datenschutz" subtitle="Informationen zur Verarbeitung personenbezogener Daten" />
+
+    <section class="py-16 md:py-20 bg-bg">
+      <div class="max-w-[900px] mx-auto px-6">
+        <div class="reveal bg-white rounded-2xl border border-secondary/15 shadow-sm p-8">
+          <h2 class="text-2xl font-bold text-primary">Datenschutzerklärung</h2>
+          <div class="w-16 h-1 bg-secondary mt-5 mb-8"></div>
+
+          <div class="space-y-6 text-text-light">
+            <p>
+              Diese Seite dient als Platzhalter. Eine vollständige Datenschutzerklärung sollte u.a. Informationen zu
+              Verantwortlichem, Rechtsgrundlagen, Auftragsverarbeitern, Cookies, Tracking sowie Betroffenenrechten enthalten.
+            </p>
+
+            <div>
+              <h3 class="text-primary font-semibold text-lg">Kontaktaufnahme</h3>
+              <p class="mt-2">
+                Wenn Sie uns per E-Mail oder über das Kontaktformular kontaktieren, werden Ihre Angaben zur Bearbeitung der
+                Anfrage verarbeitet.
+              </p>
+            </div>
+
+            <div>
+              <h3 class="text-primary font-semibold text-lg">Google Maps</h3>
+              <p class="mt-2">
+                Auf der Kontaktseite ist ein Google-Maps-Embed eingebunden. Bitte prüfen Sie die datenschutzrechtlichen
+                Anforderungen (Einwilligung/2-Klick-Lösung) vor dem Livegang.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <ChatWidget />
+</Layout>

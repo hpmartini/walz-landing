@@ -1,49 +1,101 @@
 ---
+import services from '../data/services.json';
+
+const pathname = Astro.url.pathname;
+
 const navItems = [
   { href: '/', label: 'Startseite' },
-  { href: '/leistungen', label: 'Leistungen' },
+  { href: '/leistungen', label: 'Leistungen', dropdown: true },
   { href: '/kanzlei', label: 'Kanzlei' },
   { href: '/team', label: 'Team' },
   { href: '/karriere', label: 'Karriere' },
 ];
+
+const isActive = (href: string) => {
+  if (href === '/') return pathname === '/';
+  return pathname === href || pathname.startsWith(href + '/');
+};
 ---
 
 <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
   <div class="max-w-[1200px] mx-auto px-6 py-4">
     <nav class="flex items-center justify-between">
       <!-- Logo -->
-      <a href="/" class="flex flex-col">
+      <a href="/" class="flex flex-col transition-transform duration-300 hover:scale-[1.01]">
         <span class="text-xl font-bold text-primary tracking-tight">KANZLEI KARSTEN WALZ</span>
         <span class="text-xs text-text-light tracking-widest uppercase">Steuerberater</span>
       </a>
 
       <!-- Desktop Navigation -->
       <div class="hidden md:flex items-center gap-8">
-        {navItems.map(item => (
-          <a 
-            href={item.href}
-            class="text-text hover:text-primary transition-colors font-medium"
-          >
-            {item.label}
-          </a>
+        {navItems.map((item) => (
+          item.dropdown ? (
+            <div class="relative group">
+              <a
+                href={item.href}
+                class:list={[
+                  'font-medium transition-colors duration-300 a-underline',
+                  isActive(item.href) ? 'text-primary' : 'text-text hover:text-primary',
+                ]}
+                aria-current={isActive(item.href) ? 'page' : undefined}
+              >
+                {item.label}
+              </a>
+
+              <div class="absolute left-0 top-full pt-3 opacity-0 translate-y-1 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300">
+                <div class="min-w-72 rounded-xl border border-secondary/30 bg-white shadow-lg p-3">
+                  <div class="text-xs font-semibold text-secondary tracking-widest uppercase px-3 pb-2">Alle Leistungen</div>
+                  <div class="h-px bg-secondary/20 mb-2"></div>
+                  <ul class="py-1">
+                    {services.map((s) => (
+                      <li>
+                        <a
+                          href={`/leistungen/${s.slug}`}
+                          class:list={[
+                            'block px-3 py-2 rounded-lg text-sm transition-colors duration-300',
+                            pathname === `/leistungen/${s.slug}`
+                              ? 'bg-secondary/10 text-primary'
+                              : 'text-text hover:bg-secondary/10 hover:text-primary',
+                          ]}
+                        >
+                          {s.title}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <a
+              href={item.href}
+              class:list={[
+                'font-medium transition-colors duration-300 a-underline',
+                isActive(item.href) ? 'text-primary' : 'text-text hover:text-primary',
+              ]}
+              aria-current={isActive(item.href) ? 'page' : undefined}
+            >
+              {item.label}
+            </a>
+          )
         ))}
       </div>
 
       <!-- CTA & Phone -->
       <div class="hidden md:flex items-center gap-6">
-        <a href="tel:066914271" class="flex items-center gap-2 text-text-light hover:text-primary transition-colors">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <a href="tel:066914271" class="flex items-center gap-2 text-text-light hover:text-primary transition-colors duration-300">
+          <svg class="w-4 h-4 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
           </svg>
           <span class="font-medium">06691 4271</span>
         </a>
-        <a href="/kontakt" class="bg-primary text-white px-6 py-2.5 rounded-lg font-semibold hover:bg-primary-light transition-colors">
+        <a href="/kontakt" class="bg-primary text-white px-6 py-2.5 rounded-lg font-semibold transition-all duration-300 hover:bg-primary-light hover:scale-105">
           Kontakt
         </a>
       </div>
 
       <!-- Mobile Menu Button -->
-      <button id="mobile-menu-btn" class="md:hidden p-2 text-primary" aria-label="Menü öffnen">
+      <button id="mobile-menu-btn" class="md:hidden p-2 text-primary transition-transform duration-300 hover:scale-105" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-menu">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
         </svg>
@@ -51,25 +103,48 @@ const navItems = [
     </nav>
 
     <!-- Mobile Navigation -->
-    <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-t border-gray-100 pt-4">
-      <div class="flex flex-col gap-4">
-        {navItems.map(item => (
-          <a 
-            href={item.href}
-            class="text-text hover:text-primary transition-colors font-medium"
-          >
-            {item.label}
+    <div id="mobile-menu" class="md:hidden mt-4 border-t border-gray-100 pt-4 overflow-hidden max-h-0 opacity-0 transition-all duration-300">
+      <div class="flex flex-col gap-3 pb-4">
+        <a href="/" class:list={['font-medium transition-colors duration-300', pathname === '/' ? 'text-primary' : 'text-text hover:text-primary']}>Startseite</a>
+
+        <details class="group">
+          <summary class:list={['cursor-pointer list-none font-medium transition-colors duration-300 flex items-center justify-between', isActive('/leistungen') ? 'text-primary' : 'text-text hover:text-primary']}>
+            <span>Leistungen</span>
+            <svg class="w-4 h-4 text-secondary transition-transform duration-300 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </summary>
+          <div class="mt-2 pl-3 border-l border-secondary/30">
+            <a href="/leistungen" class="block py-2 text-sm text-text-light hover:text-primary transition-colors duration-300">Übersicht</a>
+            {services.map((s) => (
+              <a
+                href={`/leistungen/${s.slug}`}
+                class:list={[
+                  'block py-2 text-sm transition-colors duration-300',
+                  pathname === `/leistungen/${s.slug}` ? 'text-primary' : 'text-text-light hover:text-primary',
+                ]}
+              >
+                {s.title}
+              </a>
+            ))}
+          </div>
+        </details>
+
+        <a href="/kanzlei" class:list={['font-medium transition-colors duration-300', isActive('/kanzlei') ? 'text-primary' : 'text-text hover:text-primary']}>Kanzlei</a>
+        <a href="/team" class:list={['font-medium transition-colors duration-300', isActive('/team') ? 'text-primary' : 'text-text hover:text-primary']}>Team</a>
+        <a href="/karriere" class:list={['font-medium transition-colors duration-300', isActive('/karriere') ? 'text-primary' : 'text-text hover:text-primary']}>Karriere</a>
+
+        <div class="pt-3 flex flex-col gap-3">
+          <a href="tel:066914271" class="flex items-center gap-2 text-text-light hover:text-primary transition-colors duration-300">
+            <svg class="w-4 h-4 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+            </svg>
+            <span>06691 4271</span>
           </a>
-        ))}
-        <a href="tel:066914271" class="flex items-center gap-2 text-text-light">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-          </svg>
-          <span>06691 4271</span>
-        </a>
-        <a href="/kontakt" class="bg-primary text-white px-6 py-2.5 rounded-lg font-semibold text-center">
-          Kontakt
-        </a>
+          <a href="/kontakt" class="bg-primary text-white px-6 py-2.5 rounded-lg font-semibold text-center transition-all duration-300 hover:bg-primary-light hover:scale-105">
+            Kontakt
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -78,7 +153,37 @@ const navItems = [
 <script>
   const btn = document.getElementById('mobile-menu-btn');
   const menu = document.getElementById('mobile-menu');
+
+  const closeMenu = () => {
+    if (!menu || !btn) return;
+    menu.classList.remove('open');
+    menu.style.maxHeight = '0px';
+    menu.style.opacity = '0';
+    btn.setAttribute('aria-expanded', 'false');
+  };
+
+  const openMenu = () => {
+    if (!menu || !btn) return;
+    menu.classList.add('open');
+    menu.style.maxHeight = menu.scrollHeight + 'px';
+    menu.style.opacity = '1';
+    btn.setAttribute('aria-expanded', 'true');
+  };
+
   btn?.addEventListener('click', () => {
-    menu?.classList.toggle('hidden');
+    if (!menu) return;
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    expanded ? closeMenu() : openMenu();
+  });
+
+  window.addEventListener('resize', () => {
+    // Reset state on breakpoint changes
+    if (window.innerWidth >= 768) closeMenu();
+  });
+
+  document.addEventListener('click', (e) => {
+    // Close on navigation tap
+    const a = (e.target)?.closest?.('a');
+    if (a && menu && menu.classList.contains('open')) closeMenu();
   });
 </script>

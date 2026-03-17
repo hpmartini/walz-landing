@@ -2,27 +2,49 @@
 
 ---
 
-<section class="py-20 md:py-32 bg-bg">
-  <div class="max-w-[1200px] mx-auto px-6">
-    <div class="max-w-3xl">
-      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-tight">
+<section class="relative overflow-hidden py-20 md:py-28 bg-bg">
+  <!-- Background image -->
+  <div class="absolute inset-0">
+    <img
+      src="/images/team/header_Unterseite.jpg"
+      alt="Kanzlei Karsten Walz"
+      class="h-full w-full object-cover object-center"
+      loading="eager"
+      decoding="async"
+    />
+    <div class="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/75 to-primary/30"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(196,163,90,0.25),transparent_40%),radial-gradient(circle_at_70%_20%,rgba(196,163,90,0.18),transparent_45%)]"></div>
+  </div>
+
+  <!-- Decorative geometry -->
+  <div class="absolute -top-24 -left-24 w-72 h-72 rounded-full border border-secondary/40"></div>
+  <div class="absolute -bottom-28 -right-28 w-96 h-96 rounded-full border border-secondary/30"></div>
+
+  <div class="relative max-w-[1200px] mx-auto px-6">
+    <div class="max-w-3xl reveal">
+      <div class="inline-flex items-center gap-2 rounded-full border border-secondary/40 bg-white/10 px-4 py-2 text-white/90 text-sm mb-6">
+        <span class="w-2 h-2 rounded-full bg-secondary"></span>
+        Seit 2000 in Schwalmstadt
+      </div>
+
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
         Ihr Steuerberater in Schwalmstadt
       </h1>
-      <div class="w-24 h-1 bg-secondary mt-6 mb-8"></div>
-      <p class="text-xl text-text-light leading-relaxed mb-10">
-        Seit 2000 vertrauen uns Unternehmer, Selbstständige und Privatpersonen. 
+      <div class="w-28 h-1 bg-secondary mt-6 mb-8"></div>
+      <p class="text-xl text-white/85 leading-relaxed mb-10">
+        Seit 2000 vertrauen uns Unternehmer, Selbstständige und Privatpersonen.
         Persönlich, kompetent, regional verwurzelt.
       </p>
       <div class="flex flex-col sm:flex-row gap-4">
-        <a 
-          href="/kontakt" 
-          class="bg-primary text-white px-8 py-4 rounded-lg font-semibold hover:bg-primary-light transition-colors text-center"
+        <a
+          href="/kontakt"
+          class="bg-secondary text-primary px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:brightness-105 hover:scale-105 text-center"
         >
           Termin vereinbaren
         </a>
-        <a 
-          href="/leistungen" 
-          class="border-2 border-primary text-primary px-8 py-4 rounded-lg font-semibold hover:bg-primary hover:text-white transition-colors text-center"
+        <a
+          href="/leistungen"
+          class="border-2 border-white/70 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:bg-white hover:text-primary hover:scale-105 text-center"
         >
           Leistungen entdecken
         </a>

@@ -1,0 +1,39 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+}
+
+const { title, subtitle } = Astro.props;
+---
+
+<section class="relative overflow-hidden bg-bg">
+  <div class="absolute inset-0">
+    <img
+      src="/images/team/header_Unterseite.jpg"
+      alt="Kanzlei Karsten Walz"
+      class="h-full w-full object-cover object-center"
+      loading="eager"
+      decoding="async"
+    />
+    <div class="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/70 to-primary/35"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(196,163,90,0.22),transparent_40%),radial-gradient(circle_at_70%_25%,rgba(196,163,90,0.16),transparent_45%)]"></div>
+  </div>
+
+  <div class="absolute -top-24 -left-24 w-72 h-72 rounded-full border border-secondary/35"></div>
+  <div class="absolute -bottom-28 -right-28 w-96 h-96 rounded-full border border-secondary/25"></div>
+
+  <div class="relative max-w-[1200px] mx-auto px-6 py-16 md:py-20">
+    <div class="max-w-3xl reveal">
+      <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight">
+        {title}
+      </h1>
+      <div class="w-20 h-1 bg-secondary mt-6"></div>
+      {subtitle && (
+        <p class="text-lg md:text-xl text-white/85 mt-6">
+          {subtitle}
+        </p>
+      )}
+    </div>
+  </div>
+</section>

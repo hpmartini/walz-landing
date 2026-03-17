@@ -1,0 +1,108 @@
+[
+  {
+    "slug": "existenzgruendung",
+    "title": "Existenzgründungsberatung",
+    "shortDesc": "Von der Geschäftsidee zur erfolgreichen Gründung. Wir begleiten Sie auf jedem Schritt.",
+    "longDesc": "Einen Hauptschwerpunkt sehen wir in der Existenzgründungsberatung und dem Coaching. Wir begleiten Sie bedarfsgerecht und dauerhaft hin zum Erfolg. Von der ersten Idee über den Businessplan bis zur erfolgreichen Etablierung am Markt.",
+    "icon": "rocket",
+    "benefits": [
+      "Entwicklung eines tragfähigen Geschäftskonzepts",
+      "Erstellung von Businessplan und Finanzplanung",
+      "Beratung zu Fördermitteln und Finanzierung",
+      "Wahl der optimalen Rechtsform",
+      "Unterstützung bei Behördengängen und Anmeldungen"
+    ]
+  },
+  {
+    "slug": "coaching",
+    "title": "Coaching",
+    "shortDesc": "Persönliche Begleitung für Ihren unternehmerischen Erfolg.",
+    "longDesc": "Coaching ist mehr als Beratung. Wir begleiten Sie persönlich durch alle Phasen Ihrer unternehmerischen Entwicklung und helfen Ihnen, Ihre Ziele zu erreichen.",
+    "icon": "target",
+    "benefits": [
+      "Individuelle Zielentwicklung",
+      "Strategische Unternehmensplanung",
+      "Krisenmanagement und Problemlösung",
+      "Persönliche Weiterentwicklung als Unternehmer"
+    ]
+  },
+  {
+    "slug": "betriebswirtschaftliche-beratung",
+    "title": "Betriebswirtschaftliche Beratung",
+    "shortDesc": "Fundierte Analysen und Strategien für Ihren wirtschaftlichen Erfolg.",
+    "longDesc": "Für Unternehmen und Selbstständige bieten wir umfassende betriebswirtschaftliche Beratung. Wir analysieren Ihre Situation und entwickeln gemeinsam Strategien für nachhaltigen Erfolg.",
+    "icon": "chart",
+    "benefits": [
+      "Unternehmensanalyse und Kennzahlenauswertung",
+      "Liquiditätsplanung und Controlling",
+      "Investitions- und Finanzierungsberatung",
+      "Unternehmensbewertung"
+    ]
+  },
+  {
+    "slug": "finanzbuchhaltung",
+    "title": "Finanzbuchhaltung",
+    "shortDesc": "Zuverlässige Buchführung für den Überblick über Ihre Finanzen.",
+    "longDesc": "Wir übernehmen Ihre laufende Finanzbuchhaltung professionell und zuverlässig. So behalten Sie stets den Überblick über Ihre finanzielle Situation.",
+    "icon": "calculator",
+    "benefits": [
+      "Laufende Finanzbuchhaltung",
+      "Kontierung und Verbuchung aller Geschäftsvorfälle",
+      "Erstellung von BWA und Summen-Saldenlisten",
+      "Offene-Posten-Verwaltung"
+    ]
+  },
+  {
+    "slug": "jahresabschluesse",
+    "title": "Jahresabschlüsse",
+    "shortDesc": "Professionelle Jahresabschlüsse für alle Rechtsformen.",
+    "longDesc": "Wir erstellen Jahresabschlüsse für Unternehmen aller Rechtsformen – von der Einnahmenüberschussrechnung bis zur Bilanz mit Gewinn- und Verlustrechnung.",
+    "icon": "document",
+    "benefits": [
+      "Bilanzen und GuV-Rechnungen",
+      "Einnahmenüberschussrechnungen",
+      "E-Bilanz und elektronische Übermittlung",
+      "Gesellschaftsrechtliche Abschlüsse"
+    ]
+  },
+  {
+    "slug": "lohnbuchhaltung",
+    "title": "Lohnbuchhaltung",
+    "shortDesc": "Pünktliche und korrekte Lohn- und Gehaltsabrechnungen.",
+    "longDesc": "Wir erstellen zuverlässig Ihre Lohn- und Gehaltsabrechnungen und kümmern uns um alle damit verbundenen Meldepflichten.",
+    "icon": "users",
+    "benefits": [
+      "Monatliche Lohn- und Gehaltsabrechnungen",
+      "Meldungen an Sozialversicherungen und Finanzamt",
+      "Bescheinigungswesen",
+      "Beratung zu lohnsteuerlichen Fragen"
+    ]
+  },
+  {
+    "slug": "steuerberatung",
+    "title": "Steuerberatung",
+    "shortDesc": "Individuelle Beratung für Ihre steuerlichen Angelegenheiten.",
+    "longDesc": "Objektive Rechtsberatung, engagierte Vertretung Ihrer steuerlichen Interessen und Kreativität in der Problemlösung sind unser Anspruch.",
+    "icon": "shield",
+    "benefits": [
+      "Steuerliche Gestaltungsberatung",
+      "Vertretung gegenüber Finanzbehörden",
+      "Einspruchsverfahren und Rechtsbehelfe",
+      "Steuerliche Optimierung"
+    ]
+  },
+  {
+    "slug": "steuererklaerungen",
+    "title": "Steuererklärungen",
+    "shortDesc": "Alle Steuererklärungen für Privatpersonen und Unternehmen.",
+    "longDesc": "Für Privatpersonen und Unternehmen erstellen wir alle erforderlichen Steuererklärungen termingerecht und optimiert.",
+    "icon": "file",
+    "benefits": [
+      "Einkommensteuererklärungen",
+      "Umsatzsteuererklärungen",
+      "Gewerbesteuererklärungen",
+      "Körperschaftsteuererklärungen",
+      "Erbschaft- und Schenkungsteuererklärungen"
+    ]
+  }
+]
