@@ -103,7 +103,7 @@ const isActive = (href: string) => {
     </nav>
 
     <!-- Mobile Navigation -->
-    <div id="mobile-menu" class="md:hidden mt-4 border-t border-gray-100 pt-4 overflow-hidden max-h-0 opacity-0 transition-all duration-300">
+    <div id="mobile-menu" class="md:hidden hidden border-t border-gray-100 overflow-hidden transition-all duration-300">
       <div class="flex flex-col gap-3 pb-4">
         <a href="/" class:list={['font-medium transition-colors duration-300', pathname === '/' ? 'text-primary' : 'text-text hover:text-primary']}>Startseite</a>
 
@@ -156,17 +156,15 @@ const isActive = (href: string) => {
 
   const closeMenu = () => {
     if (!menu || !btn) return;
-    menu.classList.remove('open');
-    menu.style.maxHeight = '0px';
-    menu.style.opacity = '0';
+    menu.classList.add('hidden');
+    menu.classList.remove('mt-4', 'pt-4');
     btn.setAttribute('aria-expanded', 'false');
   };
 
   const openMenu = () => {
     if (!menu || !btn) return;
-    menu.classList.add('open');
-    menu.style.maxHeight = menu.scrollHeight + 'px';
-    menu.style.opacity = '1';
+    menu.classList.remove('hidden');
+    menu.classList.add('mt-4', 'pt-4');
     btn.setAttribute('aria-expanded', 'true');
   };
 
@@ -184,6 +182,6 @@ const isActive = (href: string) => {
   document.addEventListener('click', (e) => {
     // Close on navigation tap
     const a = (e.target)?.closest?.('a');
-    if (a && menu && menu.classList.contains('open')) closeMenu();
+    if (a && menu && !menu.classList.contains('hidden')) closeMenu();
   });
 </script>
