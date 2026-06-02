@@ -33,7 +33,7 @@ const icons: Record<string, string> = {
           style={`transition-delay:${Math.min(idx * 60, 240)}ms`}
         >
           <div class="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-secondary/10 text-secondary border border-secondary/20 mb-5 transition-all duration-300 group-hover:bg-secondary/15 group-hover:scale-105" set:html={icons[service.icon] ?? icons.file} />
-          <h3 class="text-xl font-semibold text-primary mb-3">
+          <h3 class="text-xl font-semibold text-primary mb-3 hyphens-auto break-words">
             {service.title}
           </h3>
           <p class="text-text-light mb-5">
