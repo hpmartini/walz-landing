@@ -25,6 +25,12 @@ body {
 
 /* ---------- Micro-interactions & utilities ---------- */
 
+/* Safari <17 needs the prefix for German hyphenation */
+.hyphens-auto {
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
 /* Link underline animation */
 .a-underline {
   position: relative;
