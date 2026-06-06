@@ -55,7 +55,7 @@ const quickQuestions = [
           <!-- System Welcome Message -->
           <div class="chat-message chat-system">
             <div class="bg-white rounded-xl border border-secondary/15 p-4">
-              <div class="text-xs font-semibold text-secondary mb-1">Assistent</div>
+              <div class="text-xs font-semibold text-text mb-1">Assistent</div>
               <div class="text-text">
                 Hallo! Ich bin Ihr virtueller Steuerberater-Assistent. Wie kann ich Ihnen bei steuerlichen Fragen helfen?
               </div>
@@ -65,7 +65,7 @@ const quickQuestions = [
 
         <!-- Quick Questions -->
         <div id="chat-quick" class="px-4 py-3 bg-bg-alt border-t border-secondary/10 shrink-0">
-          <div class="text-xs font-semibold text-secondary tracking-widest uppercase mb-2">Schnellfragen</div>
+          <div class="text-xs font-semibold text-text tracking-widest uppercase mb-2">Schnellfragen</div>
           <div class="flex flex-wrap gap-2">
             {quickQuestions.map((q) => (
               <button
@@ -94,7 +94,7 @@ const quickQuestions = [
             <button
               id="chat-submit"
               type="submit"
-              class="bg-secondary text-primary font-semibold px-4 py-2.5 rounded-lg transition-all duration-300 hover:brightness-105 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+              class="bg-primary text-white font-semibold px-4 py-2.5 rounded-lg transition-all duration-300 hover:bg-primary-light hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
             >
               <span id="chat-submit-text">Senden</span>
               <svg id="chat-submit-spinner" class="hidden w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
@@ -168,7 +168,7 @@ const quickQuestions = [
     } else if (type === 'assistant') {
       div.innerHTML = `
         <div class="bg-white rounded-xl border border-secondary/15 p-4">
-          <div class="text-xs font-semibold text-secondary mb-1">Assistent</div>
+          <div class="text-xs font-semibold text-text mb-1">Assistent</div>
           <div class="text-text text-sm whitespace-pre-wrap">${escapeHtml(content)}</div>
         </div>
       `;

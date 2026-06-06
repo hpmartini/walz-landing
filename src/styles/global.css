@@ -1,15 +1,17 @@
 @import "tailwindcss";
 
+/* Palette + typography mirror the legacy site at kanzlei-karstenwalz.de.
+   See docs/styleguide-legacy.md for the full extraction. */
 @theme {
-  --color-primary: #1B3A5F;
-  --color-primary-light: #2B6CB0;
-  --color-secondary: #C4A35A;
-  --color-text: #2D3748;
-  --color-text-light: #4A5568;
-  --color-bg: #FAFAF8;
-  --color-bg-alt: #F0EDE8;
+  --color-primary: #815f5d;
+  --color-primary-light: #9e7e7c;
+  --color-secondary: #b09796;
+  --color-text: #666666;
+  --color-text-light: #9f9f9f;
+  --color-bg: #ffffff;
+  --color-bg-alt: #f9f9f9;
 
-  --font-sans: 'Inter', sans-serif;
+  --font-sans: 'Open Sans', sans-serif;
 }
 
 html {
@@ -21,6 +23,16 @@ body {
   color: var(--color-text);
   background-color: var(--color-bg);
   line-height: 1.7;
+}
+
+/* Legacy heading treatment: UPPERCASE, normal weight, brand color.
+   Scoped to `main` so footer headings (inside <footer>, not <main>) keep
+   their white-on-mauve contrast. Hero h1s carry Tailwind utilities
+   (text-white, font-bold) that intentionally override these via specificity. */
+main :is(h1, h2, h3, h4, h5, h6) {
+  text-transform: uppercase;
+  font-weight: 400;
+  color: var(--color-primary);
 }
 
 /* ---------- Micro-interactions & utilities ---------- */
@@ -46,7 +58,7 @@ body {
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 300ms ease;
-  background: var(--color-secondary);
+  background: var(--color-primary);
   opacity: 0.9;
 }
 .a-underline:hover::after,
