@@ -55,7 +55,7 @@ const quickQuestions = [
           <!-- System Welcome Message -->
           <div class="chat-message chat-system">
             <div class="bg-white rounded-xl border border-secondary/15 p-4">
-              <div class="text-xs font-semibold text-secondary mb-1">Assistent</div>
+              <div class="text-xs font-semibold text-text mb-1">Assistent</div>
               <div class="text-text">
                 Hallo! Ich bin Ihr virtueller Steuerberater-Assistent. Wie kann ich Ihnen bei steuerlichen Fragen helfen?
               </div>
@@ -65,7 +65,7 @@ const quickQuestions = [
 
         <!-- Quick Questions -->
         <div id="chat-quick" class="px-4 py-3 bg-bg-alt border-t border-secondary/10 shrink-0">
-          <div class="text-xs font-semibold text-secondary tracking-widest uppercase mb-2">Schnellfragen</div>
+          <div class="text-xs font-semibold text-text tracking-widest uppercase mb-2">Schnellfragen</div>
           <div class="flex flex-wrap gap-2">
             {quickQuestions.map((q) => (
               <button
@@ -168,7 +168,7 @@ const quickQuestions = [
     } else if (type === 'assistant') {
       div.innerHTML = `
         <div class="bg-white rounded-xl border border-secondary/15 p-4">
-          <div class="text-xs font-semibold text-secondary mb-1">Assistent</div>
+          <div class="text-xs font-semibold text-text mb-1">Assistent</div>
           <div class="text-text text-sm whitespace-pre-wrap">${escapeHtml(content)}</div>
         </div>
       `;
