@@ -27,12 +27,16 @@ body {
 
 /* Legacy heading treatment: UPPERCASE, normal weight, brand color.
    Scoped to `main` so footer headings (inside <footer>, not <main>) keep
-   their white-on-mauve contrast. Hero h1s carry Tailwind utilities
-   (text-white, font-bold) that intentionally override these via specificity. */
-main :is(h1, h2, h3, h4, h5, h6) {
-  text-transform: uppercase;
-  font-weight: 400;
-  color: var(--color-primary);
+   their white-on-mauve contrast. Declared inside @layer base so Tailwind
+   utilities in @layer utilities (text-white, font-bold) override us — that
+   is how Hero/PageHero h1s and the Contact h2/phone keep white-bold over
+   their mauve photo overlays. */
+@layer base {
+  main :is(h1, h2, h3, h4, h5, h6) {
+    text-transform: uppercase;
+    font-weight: 400;
+    color: var(--color-primary);
+  }
 }
 
 /* ---------- Micro-interactions & utilities ---------- */
