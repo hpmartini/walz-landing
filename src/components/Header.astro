@@ -21,9 +21,16 @@ const isActive = (href: string) => {
   <div class="max-w-[1200px] mx-auto px-3 py-1.5 md:px-6 md:py-3">
     <nav class="flex items-center justify-between">
       <!-- Logo -->
-      <a href="/" class="flex flex-col transition-transform duration-300 hover:scale-[1.01]">
-        <span class="text-xl font-bold text-primary tracking-tight">KANZLEI KARSTEN WALZ</span>
-        <span class="text-xs text-text-light tracking-widest uppercase">Steuerberater</span>
+      <a href="/" class="block transition-transform duration-300 hover:scale-[1.01]" aria-label="Kanzlei Karsten Walz – Startseite">
+        <img
+          src="/images/brand/logo.png"
+          alt="Kanzlei Karsten Walz – Steuerberater"
+          width="500"
+          height="70"
+          class="h-9 md:h-11 w-auto"
+          loading="eager"
+          decoding="async"
+        />
       </a>
 
       <!-- Desktop Navigation -->
