@@ -96,7 +96,7 @@ function initChoreography() {
     if (skipEntrance(el)) return;
     gsap.from(el.querySelectorAll('[data-line]'), {
       yPercent: 112,
-      duration: 0.75,
+      duration: 0.6,
       delay: delayOf(el),
       stagger: MOTION.stagger,
       ease: MOTION.easeLong,
@@ -167,18 +167,10 @@ function initChoreography() {
 // an inline visibility:hidden that the opacity-only CSS failsafe could never
 // rescue. Never clearProps opacity — the stylesheet pre-hides [data-page] and
 // would re-blank the page.
+// No page-level fade: it reads as load delay. The page shows the instant the
+// script runs; the per-element reveals (all starting at t=0) carry the polish.
 function entrance() {
-  // Late boot: the failsafe revealed (or is about to reveal) the page —
-  // re-hiding it for a fade would blink visible content off. Show instantly.
-  if (LATE_BOOT) {
-    gsap.set('[data-page]', { opacity: 1 });
-    return;
-  }
-  gsap.fromTo(
-    '[data-page]',
-    { opacity: 0 },
-    { opacity: 1, duration: 0.35, ease: 'power2.out' }
-  );
+  gsap.set('[data-page]', { opacity: 1 });
 }
 
 /* ---------- Ambient particle canvas ---------- */
