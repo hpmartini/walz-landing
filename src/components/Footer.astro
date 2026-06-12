@@ -43,7 +43,7 @@ const IconFacebook = () => `
             decoding="async"
           />
         </div>
-        <p class="text-white/90 text-sm">
+        <p class="text-white/85 text-sm">
           Ihr verlässlicher Partner für alle steuerlichen Angelegenheiten seit 2000.
         </p>
 
@@ -52,7 +52,7 @@ const IconFacebook = () => `
             href="https://www.facebook.com/Kanzlei.Karsten.Walz.Steuerberater/"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center justify-center w-10 h-10 border border-white/25 bg-white/10 text-white/90 hover:bg-white/15 hover:text-white transition-colors duration-300"
+            class="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-secondary/35 bg-white/10 text-white/90 hover:bg-white/15 hover:text-white transition-all duration-300 hover:scale-105 motion-reduce:transition-none motion-reduce:hover:scale-100"
             aria-label="Facebook (öffnet in neuem Tab)"
           >
             <span set:html={IconFacebook()} />
@@ -62,14 +62,14 @@ const IconFacebook = () => `
 
       <!-- Leistungen -->
       <div>
-        <h3 class="fx-eyebrow mb-5">
+        <h3 class="font-semibold mb-4">
           Leistungen
-          <div class="w-10 h-px bg-secondary/80 mt-3"></div>
+          <div class="w-10 h-0.5 bg-secondary/80 mt-2"></div>
         </h3>
         <ul class="space-y-2">
           {leistungen.map((item) => (
             <li>
-              <a href={item.href} class="text-white/90 hover:text-white transition-colors duration-300 text-sm a-underline">
+              <a href={item.href} class="text-white/85 hover:text-white transition-colors duration-300 text-sm a-underline">
                 {item.label}
               </a>
             </li>
@@ -79,11 +79,11 @@ const IconFacebook = () => `
 
       <!-- Kontakt -->
       <div>
-        <h3 class="fx-eyebrow mb-5">
+        <h3 class="font-semibold mb-4">
           Kontakt
-          <div class="w-10 h-px bg-secondary/80 mt-3"></div>
+          <div class="w-10 h-0.5 bg-secondary/80 mt-2"></div>
         </h3>
-        <ul class="space-y-3 text-white/90 text-sm">
+        <ul class="space-y-3 text-white/85 text-sm">
           <li class="flex items-start gap-2">
             <span class="text-secondary mt-0.5" set:html={IconMap()} />
             <span>
@@ -105,7 +105,7 @@ const IconFacebook = () => `
 
         <div class="mt-6">
           <div class="text-white font-semibold mb-2">Öffnungszeiten</div>
-          <div class="text-white/90 text-sm space-y-1">
+          <div class="text-white/85 text-sm space-y-1">
             <div class="flex items-center justify-between gap-6"><span>Mo – Do</span><span>08:00 – 12:30 · 13:30 – 17:00</span></div>
             <div class="flex items-center justify-between gap-6"><span>Fr</span><span>08:00 – 13:00</span></div>
           </div>
@@ -114,23 +114,23 @@ const IconFacebook = () => `
 
       <!-- Rechtliches -->
       <div>
-        <h3 class="fx-eyebrow mb-5">
+        <h3 class="font-semibold mb-4">
           Rechtliches
-          <div class="w-10 h-px bg-secondary/80 mt-3"></div>
+          <div class="w-10 h-0.5 bg-secondary/80 mt-2"></div>
         </h3>
         <ul class="space-y-2">
           <li>
-            <a href="/impressum" class="text-white/90 hover:text-white transition-colors duration-300 text-sm a-underline">
+            <a href="/impressum" class="text-white/85 hover:text-white transition-colors duration-300 text-sm a-underline">
               Impressum
             </a>
           </li>
           <li>
-            <a href="/datenschutz" class="text-white/90 hover:text-white transition-colors duration-300 text-sm a-underline">
+            <a href="/datenschutz" class="text-white/85 hover:text-white transition-colors duration-300 text-sm a-underline">
               Datenschutz
             </a>
           </li>
           <li>
-            <a href="/kontakt" class="text-white/90 hover:text-white transition-colors duration-300 text-sm a-underline">
+            <a href="/kontakt" class="text-white/85 hover:text-white transition-colors duration-300 text-sm a-underline">
               Kontakt
             </a>
           </li>
@@ -139,7 +139,7 @@ const IconFacebook = () => `
     </div>
 
     <!-- Copyright -->
-    <div class="border-t border-white/15 pt-8 text-center text-white/85 text-sm">
+    <div class="border-t border-white/20 pt-8 text-center text-white/85 text-sm">
       <p>© {currentYear} Kanzlei Karsten Walz. Alle Rechte vorbehalten.</p>
     </div>
   </div>

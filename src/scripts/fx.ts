@@ -1,13 +1,16 @@
 /**
  * Site-wide motion layer. Markup opts into choreography via data attributes
- * (data-reveal, data-reveal-group, data-lines, data-split, data-clip,
- * data-parallax, data-count, data-flow-item, data-particles); this file is the
- * only place animations are defined. The inline head script adds `fx-motion`
- * to <html> pre-paint; the stylesheet hides entrance elements only under that
- * class and force-reveals them via failsafe keyframes if this module dies.
+ * (data-reveal, data-reveal-group, data-reveal-delay, data-lines, data-clip,
+ * data-parallax, data-count, data-particles); this file is the only place
+ * animations are defined. The inline head script adds `fx-motion` to <html>
+ * pre-paint; the stylesheet hides entrance elements only under that class and
+ * force-reveals them via failsafe keyframes if this module dies.
+ *
+ * The visual design (cards, rounded corners, type scale) is untouched by this
+ * layer — it only choreographs how the existing design enters the viewport.
  */
 import Lenis from 'lenis';
-import { gsap, ScrollTrigger, SplitText, MOTION, prefersReducedMotion } from './motion';
+import { gsap, ScrollTrigger, MOTION, prefersReducedMotion } from './motion';
 
 let lenis: Lenis | null = null;
 
@@ -75,32 +78,11 @@ function initChoreography() {
     gsap.set(el, { autoAlpha: 1 });
     gsap.from(el.querySelectorAll('[data-line]'), {
       yPercent: 112,
-      duration: 1.15,
+      duration: 0.75,
       delay: delayOf(el),
       stagger: MOTION.stagger,
       ease: MOTION.easeLong,
       ...(onLoad ? {} : triggerFor(el)),
-    });
-  });
-
-  // Auto-split masked lines — body/medium text only, never huge display type.
-  document.querySelectorAll('[data-split]').forEach((el) => {
-    const onLoad = el.getAttribute('data-split') === 'load';
-    SplitText.create(el, {
-      type: 'lines',
-      mask: 'lines',
-      autoSplit: true,
-      onSplit: (self) => {
-        gsap.set(el, { autoAlpha: 1 });
-        return gsap.from(self.lines, {
-          yPercent: 112,
-          duration: 1.15,
-          delay: delayOf(el),
-          stagger: MOTION.stagger,
-          ease: MOTION.easeLong,
-          ...(onLoad ? {} : triggerFor(el)),
-        });
-      },
     });
   });
 
@@ -111,10 +93,10 @@ function initChoreography() {
     tl.fromTo(
       el,
       { clipPath: 'inset(100% 0% 0% 0%)' },
-      { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.2, ease: MOTION.easeLong }
+      { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.8, ease: MOTION.easeLong }
     );
     if (img) {
-      tl.fromTo(img, { scale: 1.08 }, { scale: 1, duration: 1.6, ease: 'power2.out' }, '<');
+      tl.fromTo(img, { scale: 1.08 }, { scale: 1, duration: 1.0, ease: 'power2.out' }, '<');
     }
   });
 
@@ -134,7 +116,7 @@ function initChoreography() {
     );
   });
 
-  // Count numeric text up once visible, preserving prefix/suffix + zero-padding.
+  // Count numeric text up once visible, preserving prefix/suffix.
   document.querySelectorAll<HTMLElement>('[data-count]').forEach((el) => {
     const raw = el.textContent ?? '';
     const match = raw.match(/^(\D*?)(\d+)(\D*)$/);
@@ -147,7 +129,7 @@ function initChoreography() {
     const state = { value: 0 };
     gsap.to(state, {
       value: end,
-      duration: 1.6,
+      duration: 1.2,
       ease: 'power2.out',
       snap: { value: 1 },
       scrollTrigger: { trigger: el, start: 'top 90%', once: true },
@@ -169,62 +151,11 @@ function entrance() {
   gsap.fromTo(
     '[data-page]',
     { opacity: 0 },
-    { opacity: 1, duration: 0.5, ease: 'power2.out' }
+    { opacity: 1, duration: 0.35, ease: 'power2.out' }
   );
 }
 
-/* ---------- Signature interaction: flowing service rows ---------- */
-
-function initFlowMenu() {
-  if (!window.matchMedia('(hover: hover)').matches) return;
-
-  document.querySelectorAll<HTMLElement>('[data-flow-item]').forEach((item) => {
-    const band = item.querySelector<HTMLElement>('[data-flow-band]');
-    const marquee = item.querySelector<HTMLElement>('[data-flow-marquee]');
-    if (!band || !marquee) return;
-
-    // y: 0 clears the inline no-JS fallback transform, which GSAP would
-    // otherwise parse as a px offset and stack underneath yPercent.
-    gsap.set(band, { yPercent: 101, y: 0 });
-    const flow = gsap.to(marquee, {
-      xPercent: -50,
-      repeat: -1,
-      duration: 16,
-      ease: 'none',
-      paused: true,
-    });
-
-    // Edge detection: the band always chases the cursor.
-    const fromTop = (e: MouseEvent) => {
-      const rect = item.getBoundingClientRect();
-      return e.clientY < rect.top + rect.height / 2;
-    };
-
-    // killTweensOf before each new tween: enter/leave tweens otherwise coexist
-    // on rapid hover cycles (GSAP doesn't overwrite by default) and the band
-    // can end up stuck covering the row.
-    item.addEventListener('mouseenter', (e) => {
-      gsap.killTweensOf(band);
-      flow.play();
-      gsap
-        .timeline()
-        .set(band, { yPercent: fromTop(e) ? -101 : 101 })
-        .to(band, { yPercent: 0, duration: 0.5, ease: 'expo.out' });
-    });
-
-    item.addEventListener('mouseleave', (e) => {
-      gsap.killTweensOf(band);
-      gsap.to(band, {
-        yPercent: fromTop(e) ? -101 : 101,
-        duration: 0.45,
-        ease: 'expo.out',
-        onComplete: () => flow.pause(),
-      });
-    });
-  });
-}
-
-/* ---------- Ambient particle canvas (night sections) ---------- */
+/* ---------- Ambient particle canvas ---------- */
 
 type Mote = {
   x: number; y: number; r: number; vy: number;
@@ -278,10 +209,10 @@ function initParticles() {
         const alpha = 0.12 + 0.22 * (0.5 + 0.5 * Math.sin(t / 350 / m.flicker + m.phase));
         ctx.beginPath();
         ctx.arc(m.x, m.y, m.r, 0, Math.PI * 2);
-        // Brand atmosphere: secondary mauve + cream motes.
+        // Brand atmosphere on the mauve section: light secondary + white motes.
         ctx.fillStyle = m.warm
-          ? `rgba(176, 151, 150, ${alpha})`
-          : `rgba(236, 226, 225, ${alpha * 0.7})`;
+          ? `rgba(236, 226, 225, ${alpha})`
+          : `rgba(255, 255, 255, ${alpha * 0.7})`;
         ctx.fill();
       }
       raf = requestAnimationFrame(frame);
@@ -307,7 +238,7 @@ function initParticles() {
   });
 }
 
-/* ---------- Anchors, header state, scroll locking ---------- */
+/* ---------- Anchors and scroll locking ---------- */
 
 // Lenis fights native fragment jumps — handle in-page anchors ourselves.
 // lenis.scrollTo(el) already honors scroll-margin-top; never add an offset.
@@ -327,14 +258,6 @@ function initAnchors() {
   });
 }
 
-function initHeaderState() {
-  const header = document.querySelector('header');
-  if (!header) return;
-  const update = () => header.classList.toggle('is-scrolled', window.scrollY > 8);
-  window.addEventListener('scroll', update, { passive: true });
-  update();
-}
-
 // Overlays (chat widget) announce open/close; we park/resume the smooth scroller.
 function initScrollLock() {
   window.addEventListener('fx:lock-scroll', () => {
@@ -349,7 +272,6 @@ function initScrollLock() {
 
 /* ---------- Boot ---------- */
 
-initHeaderState();
 initScrollLock();
 initAnchors();
 
@@ -361,6 +283,5 @@ if (prefersReducedMotion()) {
   initLenis();
   initChoreography();
   entrance();
-  initFlowMenu();
   initParticles();
 }

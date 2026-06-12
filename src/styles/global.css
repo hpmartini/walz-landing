@@ -1,21 +1,15 @@
 @import "tailwindcss";
 
 /* Palette + typography mirror the legacy site at kanzlei-karstenwalz.de.
-   See docs/styleguide-legacy.md for the extraction and
-   docs/design-spec-awwwards.md for the editorial amplification on top. */
+   See docs/styleguide-legacy.md for the full extraction. */
 @theme {
   --color-primary: #815f5d;
   --color-primary-light: #9e7e7c;
   --color-secondary: #b09796;
   --color-text: #666666;
-  --color-text-strong: #3e3e3e;
   --color-text-light: #9f9f9f;
   --color-bg: #ffffff;
   --color-bg-alt: #f9f9f9;
-  /* Night sections: the brand mauve taken down to dusk. */
-  --color-night: #2c2120;
-  --color-night-soft: #3a2c2b;
-  --color-cream: #ece2e1;
 
   --font-sans: 'Open Sans', sans-serif;
 }
@@ -34,75 +28,14 @@ body {
 /* Legacy heading treatment: UPPERCASE, normal weight, brand color.
    Scoped to `main` so footer headings (inside <footer>, not <main>) keep
    their white-on-mauve contrast. Declared inside @layer base so Tailwind
-   utilities in @layer utilities (text-white, font-light) override us — that
-   is how Hero/PageHero h1s and the Contact h2/phone keep their styling over
-   the mauve photo overlays. */
+   utilities in @layer utilities (text-white, font-bold) override us — that
+   is how Hero/PageHero h1s and the Contact h2/phone keep white-bold over
+   their mauve photo overlays. */
 @layer base {
   main :is(h1, h2, h3, h4, h5, h6) {
     text-transform: uppercase;
     font-weight: 400;
     color: var(--color-primary);
-    letter-spacing: 0.015em;
-  }
-}
-
-/* ---------- Editorial type system ---------- */
-
-@layer utilities {
-  /* Fluid display sizes — one clamp per role, used site-wide. */
-  .fx-h-display {
-    font-size: clamp(2.125rem, 6.4vw, 5.75rem);
-    line-height: 1.02;
-    font-weight: 300;
-    letter-spacing: 0.015em;
-  }
-  .fx-h-page {
-    font-size: clamp(2.25rem, 5vw, 4.25rem);
-    line-height: 1.05;
-    font-weight: 300;
-    letter-spacing: 0.015em;
-  }
-  .fx-h-section {
-    font-size: clamp(1.875rem, 3.6vw, 3.125rem);
-    line-height: 1.1;
-    font-weight: 300;
-    letter-spacing: 0.02em;
-  }
-  .fx-h-row {
-    font-size: clamp(1.25rem, 2.4vw, 1.875rem);
-    line-height: 1.15;
-    font-weight: 300;
-    letter-spacing: 0.02em;
-  }
-  .fx-stat {
-    font-size: clamp(1.75rem, 3vw, 2.625rem);
-    line-height: 1.1;
-    font-weight: 300;
-    letter-spacing: 0.02em;
-  }
-  .fx-phone {
-    font-size: clamp(2.25rem, 5vw, 4rem);
-    line-height: 1.05;
-    font-weight: 300;
-    letter-spacing: 0.03em;
-  }
-
-  /* Small tracked-out label above every section heading. */
-  .fx-eyebrow {
-    font-size: 0.6875rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    font-weight: 700;
-  }
-
-  /* Ghost chapter numerals — ONE unified size on every numbered section. */
-  .fx-chapter {
-    font-size: clamp(3.25rem, 6vw, 5.5rem);
-    line-height: 1;
-    font-weight: 300;
-    letter-spacing: 0.02em;
-    user-select: none;
-    pointer-events: none;
   }
 }
 
@@ -130,7 +63,6 @@ html.fx-motion [data-page] {
   opacity: 0;
   animation: fx-failsafe-opacity 0.01s linear 1.4s forwards;
 }
-html.fx-motion [data-split],
 html.fx-motion [data-lines] {
   visibility: hidden;
   animation: fx-failsafe-visibility 0.01s linear 1.8s forwards;
@@ -140,13 +72,6 @@ html.fx-motion [data-lines] {
 }
 @keyframes fx-failsafe-visibility {
   to { visibility: visible; }
-}
-
-/* ---------- Header scroll state ---------- */
-
-header.is-scrolled {
-  background-color: var(--color-bg);
-  box-shadow: 0 1px 0 rgba(129, 95, 93, 0.14), 0 8px 24px -18px rgba(62, 62, 62, 0.35);
 }
 
 /* ---------- Micro-interactions & utilities ---------- */
@@ -167,7 +92,7 @@ header.is-scrolled {
   position: absolute;
   left: 0;
   bottom: -0.25rem;
-  height: 1px;
+  height: 2px;
   width: 100%;
   transform: scaleX(0);
   transform-origin: left;
@@ -180,27 +105,14 @@ header.is-scrolled {
   transform: scaleX(1);
 }
 
-/* Card hover lift */
-.fx-lift {
-  transition:
-    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.35s,
-    border-color 0.35s;
-}
-.fx-lift:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 14px 30px -18px rgba(62, 62, 62, 0.35);
-}
-
 /* Global keyboard focus */
 :focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
-.bg-night :focus-visible,
 .bg-primary :focus-visible,
 footer :focus-visible {
-  outline-color: var(--color-cream);
+  outline-color: #ffffff;
 }
 
 /* ---------- Reduced motion: CSS layer of the triple defense ---------- */
@@ -209,11 +121,7 @@ footer :focus-visible {
   html {
     scroll-behavior: auto;
   }
-  .a-underline::after,
-  .fx-lift {
+  .a-underline::after {
     transition: none !important;
-  }
-  .fx-lift:hover {
-    transform: none;
   }
 }

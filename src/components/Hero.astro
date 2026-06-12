@@ -2,7 +2,7 @@
 
 ---
 
-<section class="relative overflow-hidden bg-night">
+<section class="relative overflow-hidden py-20 md:py-28 bg-bg">
   <!-- Background image (parallax targets the img only; the overlay stays put) -->
   <div class="absolute inset-0" data-parallax="5">
     <img
@@ -12,37 +12,39 @@
       loading="eager"
       decoding="async"
     />
-    <div class="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/80 to-primary/40"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/75 to-primary/30"></div>
   </div>
 
-  <div class="relative max-w-[1200px] mx-auto px-6 py-24 md:py-36">
-    <div class="max-w-4xl">
-      <p class="fx-eyebrow text-white/90" data-reveal="fade">
-        Steuerberatung · Seit 2000 in Schwalmstadt
-      </p>
+  <!-- Decorative geometry -->
+  <div class="absolute -top-24 -left-24 w-72 h-72 rounded-full border border-secondary/40"></div>
+  <div class="absolute -bottom-28 -right-28 w-96 h-96 rounded-full border border-secondary/30"></div>
 
-      <h1 class="fx-h-display mt-6 text-white font-light uppercase" data-lines="load">
+  <div class="relative max-w-[1200px] mx-auto px-6">
+    <div class="max-w-3xl">
+      <div class="inline-flex items-center gap-2 rounded-full border border-secondary/40 bg-white/10 px-4 py-2 text-white/90 text-sm mb-6" data-reveal="fade">
+        <span class="w-2 h-2 rounded-full bg-secondary"></span>
+        Seit 2000 in Schwalmstadt
+      </div>
+
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight" data-lines="load">
         <span class="block overflow-hidden"><span class="block" data-line>Ihr Steuerberater</span></span>
-        <span class="block overflow-hidden"><span class="block" data-line>in Schwalmstadt.</span></span>
+        <span class="block overflow-hidden"><span class="block" data-line>in Schwalmstadt</span></span>
       </h1>
-
-      <div class="w-24 h-px bg-secondary mt-8" data-reveal="fade" data-reveal-delay="0.35"></div>
-
-      <p class="text-lg md:text-xl text-white/90 leading-relaxed mt-8 max-w-2xl" data-reveal data-reveal-delay="0.45">
+      <div class="w-28 h-1 bg-secondary mt-6 mb-8" data-reveal="fade" data-reveal-delay="0.2"></div>
+      <p class="text-xl text-white/85 leading-relaxed mb-10" data-reveal data-reveal-delay="0.3">
         Seit 2000 vertrauen uns Unternehmer, Selbstständige und Privatpersonen.
         Persönlich, kompetent, regional verwurzelt.
       </p>
-
-      <div class="flex flex-col sm:flex-row gap-4 mt-10" data-reveal-group data-reveal-delay="0.6">
+      <div class="flex flex-col sm:flex-row gap-4" data-reveal-group data-reveal-delay="0.4">
         <a
           href="/kontakt"
-          class="bg-white text-primary px-8 py-4 text-sm font-bold uppercase tracking-[0.16em] text-center transition-colors duration-300 hover:bg-cream"
+          class="bg-white text-primary px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:brightness-105 hover:scale-105 motion-reduce:transition-none motion-reduce:hover:scale-100 text-center"
         >
           Termin vereinbaren
         </a>
         <a
           href="/leistungen"
-          class="border border-white/60 text-white px-8 py-4 text-sm font-bold uppercase tracking-[0.16em] text-center transition-colors duration-300 hover:border-white hover:bg-white/10"
+          class="border-2 border-white/70 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:bg-white hover:text-primary hover:scale-105 motion-reduce:transition-none motion-reduce:hover:scale-100 text-center"
         >
           Leistungen entdecken
         </a>

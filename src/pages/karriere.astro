@@ -15,8 +15,8 @@ import ChatWidget from '../components/ChatWidget.astro';
     <section class="py-16 md:py-20 bg-bg">
       <div class="max-w-[1000px] mx-auto px-6">
         <div data-reveal>
-          <h2 class="fx-h-section text-primary">Arbeiten bei uns</h2>
-          <div class="w-16 h-px bg-secondary mt-5 mb-8"></div>
+          <h2 class="text-2xl md:text-3xl text-primary">Arbeiten bei uns</h2>
+          <div class="w-16 h-1 bg-secondary mt-5 mb-8"></div>
           <p class="text-text text-lg">
             Wir suchen Menschen, die sauber arbeiten, gerne Verantwortung übernehmen und Mandanten wirklich helfen wollen.
             Ob Berufseinsteiger oder Profi – sprechen Sie uns an.
@@ -36,27 +36,27 @@ import ChatWidget from '../components/ChatWidget.astro';
           },{
             title: 'Standort Schwalmstadt',
             text: 'Regional verwurzelt, gut erreichbar – mit Mandantenbezug und kurzen Wegen.',
-          }].map((c, idx) => (
-            <div class="bg-white border border-primary/15 p-8">
-              <div class="fx-eyebrow text-primary">Vorteil</div>
+          }].map((c) => (
+            <div class="bg-white rounded-2xl border border-secondary/15 shadow-sm p-8 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+              <div class="text-xs font-semibold text-text tracking-widest uppercase">Vorteil</div>
               <h3 class="text-xl text-primary mt-2">{c.title}</h3>
-              <div class="w-12 h-px bg-secondary/80 mt-3"></div>
+              <div class="w-12 h-0.5 bg-secondary/80 mt-3"></div>
               <p class="text-text mt-5">{c.text}</p>
             </div>
           ))}
         </div>
 
-        <div class="mt-12 bg-bg-alt border border-primary/15 p-8" data-reveal>
+        <div class="mt-12 bg-bg-alt rounded-2xl border border-secondary/15 p-8" data-reveal>
           <h3 class="text-xl text-primary">Bewerbung</h3>
-          <div class="w-12 h-px bg-secondary/80 mt-3"></div>
+          <div class="w-12 h-0.5 bg-secondary/80 mt-3"></div>
           <p class="text-text mt-5">
             Senden Sie uns Ihre Bewerbung per E-Mail – gerne mit kurzem Lebenslauf und dem frühestmöglichen Starttermin.
           </p>
           <div class="mt-6 flex flex-col sm:flex-row gap-4">
-            <a href="mailto:info@kanzlei-karstenwalz.de" class="bg-primary text-white px-7 py-3.5 text-sm font-bold uppercase tracking-[0.14em] transition-colors duration-300 hover:bg-primary-light text-center">
+            <a href="mailto:info@kanzlei-karstenwalz.de" class="bg-primary text-white px-7 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-primary-light hover:scale-105 text-center motion-reduce:transition-none motion-reduce:hover:scale-100">
               Bewerbung per E-Mail
             </a>
-            <a href="/kontakt" class="border border-primary text-primary px-7 py-3.5 text-sm font-bold uppercase tracking-[0.14em] transition-colors duration-300 hover:bg-primary hover:text-white text-center">
+            <a href="/kontakt" class="border-2 border-primary text-primary px-7 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-primary hover:text-white hover:scale-105 text-center motion-reduce:transition-none motion-reduce:hover:scale-100">
               Rückfrage stellen
             </a>
           </div>

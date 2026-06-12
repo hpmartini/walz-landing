@@ -1,54 +1,37 @@
-# Design-Spec — Awwwards-Upgrade walz-landing
+# Design-Spec — Motion-Upgrade walz-landing
 
-**Richtung in einem Satz:** „Stille Souveränität" — die geerbte Markenidentität
-(Mauve `#815f5d`, Open Sans, VERSALIEN-Überschriften in Schriftschnitt 400)
-wird durch editoriale Typo-Skalierung, Papier/Nacht-Sektionsrhythmus und eine
-zurückhaltende, kanzleigerechte Scroll-Choreographie auf Award-Niveau gehoben —
-ohne die Identität zu ersetzen.
+**Verbindliche Vorgabe des Kunden (2026-06-12):** Das bestehende UX-Konzept und
+Look-and-Feel bleiben UNVERÄNDERT — Karten-Layouts, abgerundete Ecken, Schatten,
+Original-Typografie und Buttons bleiben exakt wie gehabt. Keine Eyebrow-Labels
+("Leistungen", "Kanzlei", "Kontakt") und keine Kapitelnummern auf der
+Landingpage. Ein früherer editorialer Umbau (Radius 0, Versalien-Display-Typo,
+Flowing-Menu) wurde auf Kundenwunsch zurückgenommen.
 
-## Sakral (bleibt unangetastet)
+Das Upgrade beschränkt sich auf eine **unsichtbare Schicht**: Motion, Polish
+und Barrierefreiheit über dem unveränderten Design.
 
-- Palette: `#815f5d` als einzige Markenfarbe, `#b09796` Sekundär, Grautöne.
-- Open Sans als einzige Schriftfamilie (Versalien-Headings, weight 400-Regel).
-- Inhalte/Texte, Seitenstruktur, Logo, deutsche Tonalität.
-- Foto-Hero mit Mauve-Verlauf.
+## Was die Motion-Schicht liefert
 
-## Hebel (wird elevatiert)
-
-| Hebel | Entscheidung |
-|:------|:-------------|
-| Typo-Skala | Fluid `clamp()`-Display-Größen, **weight 300** für Display-Versalien, line-height ≈ 1 |
-| Eyebrows | 11px, `tracking 0.22em`, Versalien, über jeder Section-Headline |
-| Kapitelnummern | Ghost-Ziffern 01/02/03 (Leistungen/Kanzlei/Kontakt), eine einheitliche `clamp()`-Größe, ~8 % Deckkraft |
-| Radius | **0 site-weit** (näher an der eckigen Legacy-Divi-Optik als die aktuellen rounded-2xl-Karten) |
-| Struktur | Hairline-Borders (10–20 % Mauve) statt Schatten-Karten |
-| Sektionsrhythmus | Papier (weiß/`#f9f9f9`) ↔ Nacht (`#2c2120`, tiefes Mauve-Braun) für die Kontakt-Sektion |
-| Kontrast | Fließtext `#666` statt `#9f9f9f` (WCAG AA), Footer-Text auf `white/85` |
-
-## Motion-Vokabular (eine Datei: `src/scripts/motion.ts`)
-
-- ease `power3.out`, easeLong `power4.out`, duration `0.9s`, stagger `0.09s`, travel `28px`
-- GSAP + ScrollTrigger + SplitText, Lenis (`lerp 0.12`) auf dem GSAP-Ticker
+- GSAP + ScrollTrigger + Lenis (lerp 0.12) auf dem GSAP-Ticker
 - Deklarative API: `data-reveal`, `data-reveal-group`, `data-reveal-delay`,
-  `data-lines`, `data-split`, `data-clip`, `data-parallax`, `data-count`
-- Pre-Paint-Hide via Inline-Skript (`html.fx-motion`) + CSS-Failsafe (1.4s/1.8s)
-- Seiteneintritt: Opacity-Fade des `[data-page]`-Wrappers (0.5s, MPA-tauglich)
-- Reduced Motion: dreifache Absicherung (Opt-in-Skript, JS-Early-Return, CSS)
+  `data-lines` (Hero-Headline, autorisierte Zeilen), `data-clip` (Bild-Wipe),
+  `data-parallax` (Hintergrundbilder), `data-count` (Zähler), `data-particles`
+  (dezente Partikel in der Kontakt-Sektion auf Original-Mauve)
+- Pre-Paint-Hide (`html.fx-motion`) + CSS-Failsafe (1.4s/1.8s)
+- Seiteneintritt: reiner Opacity-Fade (0.35s)
 
-## Signature-Moment
+## Tempo-Vorgabe (Kunde: "Animationen zu langsam")
 
-**Leistungen als „Flowing Menu"**: 8 große editoriale Zeilen (Nummer + Titel +
-Pfeil, Hairlines). Hover lässt ein mauvefarbenes Band von der Cursor-Kante
-einlaufen, darin eine endlos fließende Marquee aus Titel + Kurzbeschreibung.
-Nur auf `(hover: hover)` ohne Reduced Motion; Touch erhält die voll gestylten
-statischen Zeilen.
+Reveals müssen als Polish lesen, nie als Ladezustand:
+duration **0.55s**, stagger **0.06s**, travel **20px**, Zeilen-Rise **0.75s**,
+Clip **0.8s**, Hero-Delays gestaucht (0.2/0.3/0.4). Die ganze Hero steht in
+< 1 Sekunde.
 
-## Atmosphäre
+## Beibehaltene unsichtbare Fixes
 
-Partikel-Canvas (2D, ≤26 Motes, DPR ≤2, offscreen pausiert) in der
-Nacht-Kontakt-Sektion, eingefärbt in Sekundär-Mauve + Creme.
-
-## Technik
-
-GSAP 3.13 (ScrollTrigger/SplitText frei) + Lenis, Vanilla-TS in Astro-Scripts.
-Kein React, kein WebGL. Statisches MPA bleibt statisch.
+- WCAG: Fließtext `#666` statt `#9f9f9f`, Footer-Kleintext `white/85`
+- Desktop-Navigation ab `lg` (Telefonnummer ab `xl`) gegen den 768/1024-Squeeze
+- Chat-Dialog: Fokus-Falle, Scroll-Lock via Lenis, Fokus-Rückgabe, Live-Region
+- `motion-reduce`-Guards auf allen Hover-Transforms; Reduced Motion =
+  dreifache Absicherung (Inline-Skript, JS-Early-Return, CSS)
+- Echte Facebook-URL im Footer, `min-w-0`/Hyphenation-Fix auf Leistungskarten
