@@ -28,6 +28,7 @@ import team from '../data/team.json';
           {team.map((m) => (
             <div
               class="bg-white rounded-2xl border border-secondary/15 shadow-sm overflow-hidden hover:-translate-y-1 hover:shadow-lg transition-all duration-300 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+              data-spotlight
             >
               <div class="aspect-[4/3] bg-bg-alt relative">
                 {m.image ? (

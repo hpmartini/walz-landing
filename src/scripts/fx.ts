@@ -39,6 +39,15 @@ function initLenis() {
 // Threshold sits safely below the 1.0s [data-page] failsafe delay.
 const LATE_BOOT = performance.now() > 800;
 
+// Internal navigations skip the entrance entirely (the inline head script only
+// adds fx-entrance on fresh visits/reloads): content is visible from the first
+// frame and the view transition carries the polish. Below-the-fold reveals
+// still choreograph on scroll either way.
+const ENTRANCE = document.documentElement.classList.contains('fx-entrance');
+
+// Spotlight/magnetic are pointer-chasing effects — hover-capable mice only.
+const FINE_POINTER = matchMedia('(hover: hover) and (pointer: fine)').matches;
+
 const delayOf = (el: Element) =>
   parseFloat(el.getAttribute('data-reveal-delay') ?? '0') || 0;
 
@@ -46,8 +55,9 @@ const inView = (el: Element) =>
   el.getBoundingClientRect().top < window.innerHeight * 0.88;
 
 // In-view elements animate immediately (page entrance); others on scroll.
-// On a late boot, in-view elements are already on screen — leave them alone.
-const skipEntrance = (el: Element) => LATE_BOOT && inView(el);
+// On a late boot or non-entrance navigation, in-view elements are already on
+// screen — leave them alone.
+const skipEntrance = (el: Element) => (LATE_BOOT || !ENTRANCE) && inView(el);
 
 const triggerFor = (el: Element) =>
   inView(el)
@@ -133,6 +143,44 @@ function initChoreography() {
         scrollTrigger: { trigger: el, scrub: true, start: 'top bottom', end: 'bottom top' },
       }
     );
+  });
+
+  // Section divider bars grow in alongside their heading's reveal.
+  document.querySelectorAll<HTMLElement>('[data-bar]').forEach((el) => {
+    if (skipEntrance(el)) return;
+    const origin = el.getAttribute('data-bar') === 'center' ? '50% 50%' : '0% 50%';
+    gsap.fromTo(
+      el,
+      { scaleX: 0, transformOrigin: origin },
+      {
+        scaleX: 1,
+        duration: 0.7,
+        delay: delayOf(el),
+        ease: MOTION.easeLong,
+        ...triggerFor(el),
+      }
+    );
+  });
+
+  // Decorative shapes drift against the scroll and breathe slowly — the hero
+  // keeps living after the entrance without touching any content.
+  document.querySelectorAll<HTMLElement>('[data-drift]').forEach((el) => {
+    const strength = parseFloat(el.getAttribute('data-drift') ?? '6') || 6;
+    gsap.fromTo(
+      el,
+      { yPercent: -strength },
+      {
+        yPercent: strength,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: el.closest('section') ?? el,
+          scrub: true,
+          start: 'top bottom',
+          end: 'bottom top',
+        },
+      }
+    );
+    gsap.to(el, { scale: 1.04, duration: 7, ease: 'sine.inOut', yoyo: true, repeat: -1 });
   });
 
   // Count numeric text up once visible, preserving prefix/suffix.
@@ -256,6 +304,63 @@ function initParticles() {
   });
 }
 
+/* ---------- Pointer micro-interactions (fine pointers only) ---------- */
+
+// Cards carry a soft brand glow that follows the cursor; the CSS owns the
+// gradient and hover fade, we only feed it coordinates.
+function initSpotlight() {
+  if (!FINE_POINTER) return;
+  document.querySelectorAll<HTMLElement>('[data-spotlight]').forEach((el) => {
+    el.addEventListener('pointermove', (e) => {
+      const r = el.getBoundingClientRect();
+      el.style.setProperty('--fx-mx', `${((e.clientX - r.left) / r.width) * 100}%`);
+      el.style.setProperty('--fx-my', `${((e.clientY - r.top) / r.height) * 100}%`);
+    });
+  });
+}
+
+// Primary CTAs lean a few pixels toward the cursor and spring back. GSAP owns
+// the whole transform (the markup deliberately has no hover:scale on these),
+// so transform is excluded from the CSS transition to avoid the two fighting.
+function initMagnetic() {
+  if (!FINE_POINTER) return;
+  const MAX = 7;
+  const PULL = 0.22;
+  document.querySelectorAll<HTMLElement>('[data-magnetic]').forEach((el) => {
+    el.style.transitionProperty =
+      'color, background-color, border-color, opacity, filter, box-shadow';
+    const xTo = gsap.quickTo(el, 'x', { duration: 0.4, ease: 'power3.out' });
+    const yTo = gsap.quickTo(el, 'y', { duration: 0.4, ease: 'power3.out' });
+    let rect: DOMRect | null = null;
+    el.addEventListener('pointerenter', () => {
+      rect = el.getBoundingClientRect(); // rest-state rect, before any pull
+      gsap.to(el, { scale: 1.04, duration: 0.35, ease: 'power3.out' });
+    });
+    el.addEventListener('pointermove', (e) => {
+      if (!rect) return;
+      const dx = e.clientX - (rect.left + rect.width / 2);
+      const dy = e.clientY - (rect.top + rect.height / 2);
+      xTo(gsap.utils.clamp(-MAX, MAX, dx * PULL));
+      yTo(gsap.utils.clamp(-MAX, MAX, dy * PULL));
+    });
+    el.addEventListener('pointerleave', () => {
+      rect = null;
+      xTo(0);
+      yTo(0);
+      gsap.to(el, { scale: 1, duration: 0.45, ease: 'power3.out' });
+    });
+  });
+}
+
+// Sticky header earns its shadow only once content actually slides under it.
+function initElevate() {
+  const el = document.querySelector<HTMLElement>('[data-elevate]');
+  if (!el) return;
+  const update = (y: number) => el.classList.toggle('fx-elevated', y > 8);
+  lenis?.on('scroll', (l) => update(l.scroll));
+  update(window.scrollY);
+}
+
 /* ---------- Anchors and scroll locking ---------- */
 
 // Lenis fights native fragment jumps — handle in-page anchors ourselves.
@@ -302,4 +407,7 @@ if (prefersReducedMotion()) {
   initChoreography();
   entrance();
   initParticles();
+  initSpotlight();
+  initMagnetic();
+  initElevate();
 }

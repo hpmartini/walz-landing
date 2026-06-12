@@ -17,7 +17,7 @@ const isActive = (href: string) => {
 };
 ---
 
-<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100" data-elevate>
   <div class="max-w-[1200px] mx-auto px-3 py-1.5 md:px-6 md:py-3">
     <nav class="flex items-center justify-between">
       <!-- Logo -->
@@ -96,7 +96,7 @@ const isActive = (href: string) => {
           </svg>
           <span class="font-medium">06691 4271</span>
         </a>
-        <a href="/kontakt" class="bg-primary text-white px-6 py-2.5 rounded-lg font-semibold transition-all duration-300 hover:bg-primary-light hover:scale-105 motion-reduce:transition-none motion-reduce:hover:scale-100">
+        <a href="/kontakt" class="bg-primary text-white px-6 py-2.5 rounded-lg font-semibold transition-all duration-300 hover:bg-primary-light motion-reduce:transition-none" data-magnetic>
           Kontakt
         </a>
       </div>
@@ -109,9 +109,10 @@ const isActive = (href: string) => {
       </button>
     </nav>
 
-    <!-- Mobile Navigation -->
-    <div id="mobile-menu" class="lg:hidden hidden border-t border-gray-100 overflow-hidden">
-      <div class="flex flex-col gap-3 pb-4">
+    <!-- Mobile Navigation (fx-collapse animates the grid-rows open/close) -->
+    <div id="mobile-menu" class="lg:hidden fx-collapse">
+      <div class="fx-collapse-inner">
+      <div class="flex flex-col gap-3 border-t border-gray-100 mt-4 pt-4 pb-4">
         <a href="/" class:list={['font-medium transition-colors duration-300', pathname === '/' ? 'text-primary' : 'text-text hover:text-primary']}>Startseite</a>
 
         <details class="group">
@@ -153,6 +154,7 @@ const isActive = (href: string) => {
           </a>
         </div>
       </div>
+      </div>
     </div>
   </div>
 </header>
@@ -163,15 +165,13 @@ const isActive = (href: string) => {
 
   const closeMenu = () => {
     if (!menu || !btn) return;
-    menu.classList.add('hidden');
-    menu.classList.remove('mt-4', 'pt-4');
+    menu.classList.remove('open');
     btn.setAttribute('aria-expanded', 'false');
   };
 
   const openMenu = () => {
     if (!menu || !btn) return;
-    menu.classList.remove('hidden');
-    menu.classList.add('mt-4', 'pt-4');
+    menu.classList.add('open');
     btn.setAttribute('aria-expanded', 'true');
   };
 
@@ -189,6 +189,6 @@ const isActive = (href: string) => {
   document.addEventListener('click', (e) => {
     // Close on navigation tap
     const a = (e.target as HTMLElement | null)?.closest?.('a');
-    if (a && menu && !menu.classList.contains('hidden')) closeMenu();
+    if (a && menu && menu.classList.contains('open')) closeMenu();
   });
 </script>

@@ -15,9 +15,9 @@
     <div class="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/75 to-primary/30"></div>
   </div>
 
-  <!-- Decorative geometry -->
-  <div class="absolute -top-24 -left-24 w-72 h-72 rounded-full border border-secondary/40"></div>
-  <div class="absolute -bottom-28 -right-28 w-96 h-96 rounded-full border border-secondary/30"></div>
+  <!-- Decorative geometry (drifts against the scroll + breathes slowly) -->
+  <div class="absolute -top-24 -left-24 w-72 h-72 rounded-full border border-secondary/40" data-drift="7"></div>
+  <div class="absolute -bottom-28 -right-28 w-96 h-96 rounded-full border border-secondary/30" data-drift="-5"></div>
 
   <div class="relative max-w-[1200px] mx-auto px-6">
     <div class="max-w-3xl">
@@ -30,7 +30,7 @@
         <span class="block overflow-hidden"><span class="block" data-line>Ihr Steuerberater</span></span>
         <span class="block overflow-hidden"><span class="block" data-line>in Schwalmstadt</span></span>
       </h1>
-      <div class="w-28 h-1 bg-secondary mt-6 mb-8" data-reveal="fade"></div>
+      <div class="w-28 h-1 bg-secondary mt-6 mb-8" data-bar></div>
       <p class="text-xl text-white/85 leading-relaxed mb-10" data-reveal>
         Seit 2000 vertrauen uns Unternehmer, Selbstständige und Privatpersonen.
         Persönlich, kompetent, regional verwurzelt.
@@ -38,13 +38,15 @@
       <div class="flex flex-col sm:flex-row gap-4" data-reveal-group>
         <a
           href="/kontakt"
-          class="bg-white text-primary px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:brightness-105 hover:scale-105 motion-reduce:transition-none motion-reduce:hover:scale-100 text-center"
+          class="bg-white text-primary px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:brightness-105 motion-reduce:transition-none text-center"
+          data-magnetic
         >
           Termin vereinbaren
         </a>
         <a
           href="/leistungen"
-          class="border-2 border-white/70 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:bg-white hover:text-primary hover:scale-105 motion-reduce:transition-none motion-reduce:hover:scale-100 text-center"
+          class="border-2 border-white/70 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:bg-white hover:text-primary motion-reduce:transition-none text-center"
+          data-magnetic
         >
           Leistungen entdecken
         </a>

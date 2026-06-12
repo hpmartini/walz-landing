@@ -56,14 +56,17 @@ html.lenis body {
 }
 
 /* ---------- Pre-paint hide + failsafe ----------
-   The inline script in the layout head adds .fx-motion only when JS runs AND
-   the user does not prefer reduced motion. The failsafe animations force the
-   content visible even if the JS animation layer never runs. */
-html.fx-motion [data-page] {
+   The inline script in the layout head adds .fx-motion when JS runs AND the
+   user does not prefer reduced motion — and .fx-entrance additionally only on
+   fresh visits (external referrer or reload). Internal navigations skip the
+   entrance hide entirely so the view transition cross-fades into a fully
+   rendered page. The failsafe animations force the content visible even if
+   the JS animation layer never runs. */
+html.fx-entrance [data-page] {
   opacity: 0;
   animation: fx-failsafe-opacity 0.01s linear 1s forwards;
 }
-html.fx-motion [data-lines] {
+html.fx-entrance [data-lines] {
   visibility: hidden;
   animation: fx-failsafe-visibility 0.01s linear 1.4s forwards;
 }
@@ -72,6 +75,27 @@ html.fx-motion [data-lines] {
 }
 @keyframes fx-failsafe-visibility {
   to { visibility: visible; }
+}
+
+/* ---------- Cross-document view transitions ----------
+   Same-origin navigations cross-fade (fast — a slow fade reads as load time).
+   Header and chat launcher are identical on every page; naming them keeps
+   the app shell rock-solid while only the content swaps. Browsers without
+   @view-transition simply navigate normally. */
+@view-transition {
+  navigation: auto;
+}
+::view-transition-old(root) {
+  animation-duration: 0.18s;
+}
+::view-transition-new(root) {
+  animation-duration: 0.24s;
+}
+header[data-elevate] {
+  view-transition-name: fx-header;
+}
+[data-vt="chat"] {
+  view-transition-name: fx-chat;
 }
 
 /* ---------- Micro-interactions & utilities ---------- */
@@ -105,6 +129,73 @@ html.fx-motion [data-lines] {
   transform: scaleX(1);
 }
 
+/* Cursor spotlight on cards: a soft brand-tinted glow that follows the
+   pointer (fx.ts updates --fx-mx/--fx-my). Resting look is untouched; the
+   overlay only appears on hover-capable fine-pointer devices. */
+@media (hover: hover) and (pointer: fine) {
+  [data-spotlight] {
+    position: relative;
+  }
+  [data-spotlight]::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 350ms ease;
+    background: radial-gradient(
+      240px circle at var(--fx-mx, 50%) var(--fx-my, 50%),
+      rgb(176 151 150 / 0.13),
+      transparent 65%
+    );
+  }
+  [data-spotlight]:hover::after {
+    opacity: 1;
+  }
+}
+
+/* Header gains depth once the page scrolls (fx.ts toggles the class). */
+[data-elevate] {
+  transition: box-shadow 400ms ease;
+}
+[data-elevate].fx-elevated {
+  box-shadow: 0 12px 32px -20px rgb(129 95 93 / 0.4);
+}
+
+/* Mobile menu: grid-rows collapse so open/close animates height smoothly.
+   Inside @layer components so utilities (lg:hidden) still win the cascade.
+   visibility:hidden keeps the closed menu out of the tab order. */
+@layer components {
+  .fx-collapse {
+    display: grid;
+    grid-template-rows: 0fr;
+    visibility: hidden;
+    transition:
+      grid-template-rows 350ms cubic-bezier(0.4, 0, 0.2, 1),
+      visibility 0s linear 350ms;
+  }
+  .fx-collapse.open {
+    grid-template-rows: 1fr;
+    visibility: visible;
+    transition: grid-template-rows 350ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .fx-collapse-inner {
+    overflow: hidden;
+    min-height: 0;
+  }
+  .fx-collapse-inner > * {
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: opacity 250ms ease, transform 250ms ease;
+  }
+  .fx-collapse.open .fx-collapse-inner > * {
+    opacity: 1;
+    transform: none;
+    transition-delay: 80ms;
+  }
+}
+
 /* Global keyboard focus */
 :focus-visible {
   outline: 2px solid var(--color-primary);
@@ -122,6 +213,20 @@ footer :focus-visible {
     scroll-behavior: auto;
   }
   .a-underline::after {
+    transition: none !important;
+  }
+  @view-transition {
+    navigation: none;
+  }
+  [data-spotlight]::after {
+    transition: none !important;
+  }
+  [data-elevate] {
+    transition: none !important;
+  }
+  .fx-collapse,
+  .fx-collapse.open,
+  .fx-collapse-inner > * {
     transition: none !important;
   }
 }

@@ -15,11 +15,22 @@ const { title, description = "Kanzlei Karsten Walz - Ihr Steuerberater in Schwal
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <!-- Pre-paint motion opt-in: the stylesheet hides entrance elements only
-         under html.fx-motion, so users without JS or with reduced motion
-         never see hidden content. Must run before any content paints. -->
+    <!-- Pre-paint motion opt-in: must run before any content paints.
+         fx-motion = JS motion layer active (never under reduced motion).
+         fx-entrance = additionally gate the pre-paint hide + entrance
+         choreography to FRESH visits (external referrer or reload). Internal
+         navigations keep content visible from the first frame so the
+         cross-document view transition fades into a fully rendered page. -->
     <script is:inline>
-      try{if(!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("fx-motion")}catch(e){}
+      try{
+        if(!matchMedia("(prefers-reduced-motion: reduce)").matches){
+          var d=document.documentElement;
+          d.classList.add("fx-motion");
+          var n=performance.getEntriesByType("navigation")[0];
+          var internal=document.referrer.indexOf(location.origin)===0;
+          if(!internal||(n&&n.type==="reload"))d.classList.add("fx-entrance");
+        }
+      }catch(e){}
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
