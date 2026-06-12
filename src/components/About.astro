@@ -2,36 +2,37 @@
 
 ---
 
-<section class="py-20 md:py-24 bg-bg">
+<section class="py-24 md:py-32 bg-bg">
   <div class="max-w-[1200px] mx-auto px-6">
-    <div class="grid md:grid-cols-2 gap-12 items-center">
-      <div class="reveal">
-        <h2 class="text-3xl md:text-4xl text-primary mb-4">
-          Ihre Kanzlei in Schwalmstadt
-        </h2>
-        <div class="w-16 h-1 bg-secondary mb-8"></div>
-        <p class="text-text-light text-lg mb-6">
+    <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div class="relative" data-reveal>
+        <span class="fx-chapter absolute right-0 -top-3 text-primary/10 md:hidden" aria-hidden="true">02</span>
+        <p class="fx-eyebrow text-primary">Kanzlei</p>
+        <h2 class="fx-h-section mt-4">Ihre Kanzlei in Schwalmstadt</h2>
+        <div class="w-16 h-px bg-secondary mt-6 mb-8"></div>
+        <p class="text-text text-lg mb-6">
           Seit über 20 Jahren sind wir Ihr verlässlicher Partner in allen steuerlichen Angelegenheiten.
           Als regional verwurzelte Kanzlei kennen wir die Bedürfnisse unserer Mandanten und bieten
           individuelle Lösungen.
         </p>
-        <p class="text-text-light text-lg mb-8">
+        <p class="text-text text-lg mb-8">
           Unser Team aus erfahrenen Steuerberatern und engagierten Mitarbeitenden steht Ihnen
           mit Kompetenz und persönlichem Engagement zur Seite.
         </p>
         <a
           href="/team"
-          class="inline-flex items-center gap-2 text-primary font-semibold transition-all duration-300 hover:text-primary-light hover:translate-x-0.5 a-underline"
+          class="inline-flex items-center gap-2 text-primary font-semibold transition-colors duration-300 hover:text-primary-light a-underline"
         >
           Unser Team kennenlernen
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-5 h-5 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
           </svg>
         </a>
       </div>
 
-      <div class="reveal">
-        <div class="relative rounded-2xl overflow-hidden aspect-video border border-secondary/20 shadow-sm">
+      <div class="relative">
+        <span class="fx-chapter absolute right-0 -top-20 text-primary/10 hidden md:block" aria-hidden="true">02</span>
+        <figure class="relative overflow-hidden aspect-[4/3] border border-primary/15" data-clip>
           <img
             src="/images/team/header_Unterseite.jpg"
             alt="Einblick in die Kanzlei"
@@ -39,8 +40,8 @@
             loading="lazy"
             decoding="async"
           />
-          <div class="absolute inset-0 bg-gradient-to-tr from-primary/30 via-transparent to-secondary/10"></div>
-        </div>
+          <div class="absolute inset-0 bg-gradient-to-tr from-primary/25 via-transparent to-transparent"></div>
+        </figure>
       </div>
     </div>
   </div>

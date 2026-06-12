@@ -1,15 +1,21 @@
 @import "tailwindcss";
 
 /* Palette + typography mirror the legacy site at kanzlei-karstenwalz.de.
-   See docs/styleguide-legacy.md for the full extraction. */
+   See docs/styleguide-legacy.md for the extraction and
+   docs/design-spec-awwwards.md for the editorial amplification on top. */
 @theme {
   --color-primary: #815f5d;
   --color-primary-light: #9e7e7c;
   --color-secondary: #b09796;
   --color-text: #666666;
+  --color-text-strong: #3e3e3e;
   --color-text-light: #9f9f9f;
   --color-bg: #ffffff;
   --color-bg-alt: #f9f9f9;
+  /* Night sections: the brand mauve taken down to dusk. */
+  --color-night: #2c2120;
+  --color-night-soft: #3a2c2b;
+  --color-cream: #ece2e1;
 
   --font-sans: 'Open Sans', sans-serif;
 }
@@ -28,15 +34,119 @@ body {
 /* Legacy heading treatment: UPPERCASE, normal weight, brand color.
    Scoped to `main` so footer headings (inside <footer>, not <main>) keep
    their white-on-mauve contrast. Declared inside @layer base so Tailwind
-   utilities in @layer utilities (text-white, font-bold) override us — that
-   is how Hero/PageHero h1s and the Contact h2/phone keep white-bold over
-   their mauve photo overlays. */
+   utilities in @layer utilities (text-white, font-light) override us — that
+   is how Hero/PageHero h1s and the Contact h2/phone keep their styling over
+   the mauve photo overlays. */
 @layer base {
   main :is(h1, h2, h3, h4, h5, h6) {
     text-transform: uppercase;
     font-weight: 400;
     color: var(--color-primary);
+    letter-spacing: 0.015em;
   }
+}
+
+/* ---------- Editorial type system ---------- */
+
+@layer utilities {
+  /* Fluid display sizes — one clamp per role, used site-wide. */
+  .fx-h-display {
+    font-size: clamp(2.125rem, 6.4vw, 5.75rem);
+    line-height: 1.02;
+    font-weight: 300;
+    letter-spacing: 0.015em;
+  }
+  .fx-h-page {
+    font-size: clamp(2.25rem, 5vw, 4.25rem);
+    line-height: 1.05;
+    font-weight: 300;
+    letter-spacing: 0.015em;
+  }
+  .fx-h-section {
+    font-size: clamp(1.875rem, 3.6vw, 3.125rem);
+    line-height: 1.1;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+  }
+  .fx-h-row {
+    font-size: clamp(1.25rem, 2.4vw, 1.875rem);
+    line-height: 1.15;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+  }
+  .fx-stat {
+    font-size: clamp(1.75rem, 3vw, 2.625rem);
+    line-height: 1.1;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+  }
+  .fx-phone {
+    font-size: clamp(2.25rem, 5vw, 4rem);
+    line-height: 1.05;
+    font-weight: 300;
+    letter-spacing: 0.03em;
+  }
+
+  /* Small tracked-out label above every section heading. */
+  .fx-eyebrow {
+    font-size: 0.6875rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  /* Ghost chapter numerals — ONE unified size on every numbered section. */
+  .fx-chapter {
+    font-size: clamp(3.25rem, 6vw, 5.5rem);
+    line-height: 1;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    user-select: none;
+    pointer-events: none;
+  }
+}
+
+/* ---------- Lenis (recommended styles) ---------- */
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* ---------- Pre-paint hide + failsafe ----------
+   The inline script in the layout head adds .fx-motion only when JS runs AND
+   the user does not prefer reduced motion. The failsafe animations force the
+   content visible even if the JS animation layer never runs. */
+html.fx-motion [data-page] {
+  opacity: 0;
+  animation: fx-failsafe-opacity 0.01s linear 1.4s forwards;
+}
+html.fx-motion [data-split],
+html.fx-motion [data-lines] {
+  visibility: hidden;
+  animation: fx-failsafe-visibility 0.01s linear 1.8s forwards;
+}
+@keyframes fx-failsafe-opacity {
+  to { opacity: 1; }
+}
+@keyframes fx-failsafe-visibility {
+  to { visibility: visible; }
+}
+
+/* ---------- Header scroll state ---------- */
+
+header.is-scrolled {
+  background-color: var(--color-bg);
+  box-shadow: 0 1px 0 rgba(129, 95, 93, 0.14), 0 8px 24px -18px rgba(62, 62, 62, 0.35);
 }
 
 /* ---------- Micro-interactions & utilities ---------- */
@@ -57,12 +167,12 @@ body {
   position: absolute;
   left: 0;
   bottom: -0.25rem;
-  height: 2px;
+  height: 1px;
   width: 100%;
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 300ms ease;
-  background: var(--color-primary);
+  background: currentColor;
   opacity: 0.9;
 }
 .a-underline:hover::after,
@@ -70,29 +180,40 @@ body {
   transform: scaleX(1);
 }
 
-/* Scroll reveal */
-.reveal {
-  opacity: 0;
-  transform: translateY(12px);
-  transition: opacity 600ms ease, transform 600ms ease;
-  will-change: opacity, transform;
+/* Card hover lift */
+.fx-lift {
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s,
+    border-color 0.35s;
 }
-.reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0);
+.fx-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px -18px rgba(62, 62, 62, 0.35);
 }
 
-/* Respect reduced motion */
+/* Global keyboard focus */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+.bg-night :focus-visible,
+.bg-primary :focus-visible,
+footer :focus-visible {
+  outline-color: var(--color-cream);
+}
+
+/* ---------- Reduced motion: CSS layer of the triple defense ---------- */
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
   .a-underline::after,
-  .reveal {
+  .fx-lift {
     transition: none !important;
   }
-  .reveal {
-    opacity: 1;
+  .fx-lift:hover {
     transform: none;
   }
 }

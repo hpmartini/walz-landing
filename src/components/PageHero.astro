@@ -7,29 +7,27 @@ interface Props {
 const { title, subtitle } = Astro.props;
 ---
 
-<section class="relative overflow-hidden bg-bg">
-  <div class="absolute inset-0">
+<section class="relative overflow-hidden bg-night">
+  <div class="absolute inset-0" data-parallax="5">
     <img
       src="/images/team/header_Unterseite.jpg"
-      alt="Kanzlei Karsten Walz"
+      alt=""
       class="h-full w-full object-cover object-center"
       loading="eager"
       decoding="async"
     />
-    <div class="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/70 to-primary/35"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/75 to-primary/40"></div>
   </div>
 
-  <div class="absolute -top-24 -left-24 w-72 h-72 rounded-full border border-secondary/35"></div>
-  <div class="absolute -bottom-28 -right-28 w-96 h-96 rounded-full border border-secondary/25"></div>
-
-  <div class="relative max-w-[1200px] mx-auto px-6 py-16 md:py-20">
-    <div class="max-w-3xl reveal">
-      <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight">
-        {title}
+  <div class="relative max-w-[1200px] mx-auto px-6 py-16 md:py-24">
+    <div class="max-w-3xl">
+      <p class="fx-eyebrow text-white/90" data-reveal="fade">Kanzlei Karsten Walz</p>
+      <h1 class="fx-h-page mt-5 text-white font-light uppercase hyphens-auto break-words" data-lines="load" lang="de">
+        <span class="block overflow-hidden"><span class="block" data-line>{title}</span></span>
       </h1>
-      <div class="w-20 h-1 bg-secondary mt-6"></div>
+      <div class="w-20 h-px bg-secondary mt-7" data-reveal="fade" data-reveal-delay="0.3"></div>
       {subtitle && (
-        <p class="text-lg md:text-xl text-white/85 mt-6">
+        <p class="text-lg md:text-xl text-white/90 mt-7" data-reveal data-reveal-delay="0.4">
           {subtitle}
         </p>
       )}

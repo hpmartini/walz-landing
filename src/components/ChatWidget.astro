@@ -10,16 +10,14 @@ const quickQuestions = [
 <div class="fixed bottom-6 right-6 z-[60]">
   <button
     id="chat-open"
-    class="group inline-flex items-center gap-3 rounded-full bg-primary text-white px-5 py-3 shadow-lg border border-secondary/30 transition-all duration-300 hover:bg-primary-light hover:scale-105"
+    class="group inline-flex items-center gap-3 bg-primary text-white px-5 py-3.5 shadow-lg border border-white/20 transition-colors duration-300 hover:bg-primary-light"
     aria-haspopup="dialog"
     aria-controls="chat-modal"
   >
-    <span class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-secondary/20 border border-secondary/30">
-      <svg class="w-5 h-5 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h8M8 14h5M21 12c0 4.418-4.03 8-9 8a10.15 10.15 0 01-4.73-1.12L3 20l1.28-3.83A7.7 7.7 0 013 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
-      </svg>
-    </span>
-    <span class="font-semibold">Chat</span>
+    <svg class="w-5 h-5 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h8M8 14h5M21 12c0 4.418-4.03 8-9 8a10.15 10.15 0 01-4.73-1.12L3 20l1.28-3.83A7.7 7.7 0 013 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+    </svg>
+    <span class="text-sm font-bold uppercase tracking-[0.14em]">Chat</span>
   </button>
 
   <div
@@ -32,7 +30,7 @@ const quickQuestions = [
     <div class="fixed inset-0 bg-black/30 backdrop-blur-[2px]" id="chat-backdrop"></div>
 
     <div class="fixed bottom-24 right-6 w-[calc(100vw-3rem)] max-w-md">
-      <div class="rounded-2xl overflow-hidden shadow-2xl border border-secondary/25 bg-white flex flex-col max-h-[70vh]">
+      <div class="overflow-hidden shadow-2xl border border-primary/15 bg-white flex flex-col max-h-[70vh]">
         <!-- Header -->
         <div class="bg-primary text-white px-5 py-4 flex items-center justify-between shrink-0">
           <div>
@@ -41,7 +39,7 @@ const quickQuestions = [
           </div>
           <button
             id="chat-close"
-            class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-white/10 transition-colors duration-300"
+            class="w-10 h-10 flex items-center justify-center hover:bg-white/10 transition-colors duration-300"
             aria-label="Chat schließen"
           >
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -51,10 +49,10 @@ const quickQuestions = [
         </div>
 
         <!-- Messages Container -->
-        <div id="chat-messages" class="flex-1 overflow-y-auto p-4 space-y-4 bg-bg min-h-[200px]">
+        <div id="chat-messages" class="flex-1 overflow-y-auto p-4 space-y-4 bg-bg min-h-[200px]" data-lenis-prevent>
           <!-- System Welcome Message -->
           <div class="chat-message chat-system">
-            <div class="bg-white rounded-xl border border-secondary/15 p-4">
+            <div class="bg-white border border-primary/15 p-4">
               <div class="text-xs font-semibold text-text mb-1">Assistent</div>
               <div class="text-text">
                 Hallo! Ich bin Ihr virtueller Steuerberater-Assistent. Wie kann ich Ihnen bei steuerlichen Fragen helfen?
@@ -70,7 +68,7 @@ const quickQuestions = [
             {quickQuestions.map((q) => (
               <button
                 type="button"
-                class="chat-chip text-xs px-3 py-1.5 rounded-full border border-secondary/25 bg-white hover:bg-secondary/10 transition-all duration-300 hover:scale-[1.02]"
+                class="chat-chip text-xs px-3 py-1.5 border border-primary/20 bg-white hover:bg-secondary/10 transition-colors duration-300"
                 data-question={q}
               >
                 {q}
@@ -80,13 +78,13 @@ const quickQuestions = [
         </div>
 
         <!-- Input Form -->
-        <form id="chat-form" class="px-4 py-3 bg-white border-t border-gray-100 shrink-0">
+        <form id="chat-form" class="px-4 py-3 bg-white border-t border-primary/10 shrink-0">
           <div class="flex gap-2">
             <input
               id="chat-input"
               name="message"
               type="text"
-              class="flex-1 rounded-lg border border-secondary/25 px-4 py-2.5 text-sm outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/20 disabled:bg-gray-50 disabled:cursor-not-allowed"
+              class="flex-1 border border-primary/20 px-4 py-2.5 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-secondary/20 disabled:bg-gray-50 disabled:cursor-not-allowed"
               placeholder="Ihre Frage eingeben..."
               autocomplete="off"
               maxlength="500"
@@ -94,16 +92,16 @@ const quickQuestions = [
             <button
               id="chat-submit"
               type="submit"
-              class="bg-primary text-white font-semibold px-4 py-2.5 rounded-lg transition-all duration-300 hover:bg-primary-light hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+              class="bg-primary text-white font-semibold px-4 py-2.5 transition-colors duration-300 hover:bg-primary-light disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <span id="chat-submit-text">Senden</span>
-              <svg id="chat-submit-spinner" class="hidden w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
+              <svg id="chat-submit-spinner" class="hidden w-5 h-5 animate-spin motion-reduce:animate-none" fill="none" viewBox="0 0 24 24">
                 <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                 <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
               </svg>
             </button>
           </div>
-          <div id="chat-status" class="text-xs text-text-light mt-2 hidden"></div>
+          <div id="chat-status" class="text-xs text-text mt-2 hidden" role="status" aria-live="polite"></div>
         </form>
       </div>
     </div>
@@ -128,17 +126,46 @@ const quickQuestions = [
 
   const open = () => {
     modal?.classList.remove('hidden');
+    // The motion layer pauses Lenis + locks the page scroll behind the dialog.
+    window.dispatchEvent(new CustomEvent('fx:lock-scroll'));
     setTimeout(() => input?.focus(), 100);
   };
-  
-  const close = () => modal?.classList.add('hidden');
+
+  const close = () => {
+    modal?.classList.add('hidden');
+    window.dispatchEvent(new CustomEvent('fx:unlock-scroll'));
+    openBtn?.focus();
+  };
 
   openBtn?.addEventListener('click', open);
   closeBtn?.addEventListener('click', close);
   backdrop?.addEventListener('click', close);
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) close();
+    if (!modal || modal.classList.contains('hidden')) return;
+    if (e.key === 'Escape') {
+      close();
+      return;
+    }
+    // Keep keyboard focus inside the open dialog.
+    if (e.key === 'Tab') {
+      const focusables = Array.from(
+        modal.querySelectorAll<HTMLElement>(
+          'button:not([disabled]), input:not([disabled]), a[href]'
+        )
+      ).filter((el) => !el.closest('.hidden'));
+      if (!focusables.length) return;
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      const active = document.activeElement;
+      if (e.shiftKey && (active === first || !modal.contains(active))) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && (active === last || !modal.contains(active))) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
   });
 
   // Quick questions
@@ -160,21 +187,21 @@ const quickQuestions = [
     if (type === 'user') {
       div.innerHTML = `
         <div class="flex justify-end">
-          <div class="bg-primary text-white rounded-xl px-4 py-3 max-w-[85%]">
+          <div class="bg-primary text-white px-4 py-3 max-w-[85%]">
             <div class="text-sm">${escapeHtml(content)}</div>
           </div>
         </div>
       `;
     } else if (type === 'assistant') {
       div.innerHTML = `
-        <div class="bg-white rounded-xl border border-secondary/15 p-4">
+        <div class="bg-white border border-primary/15 p-4">
           <div class="text-xs font-semibold text-text mb-1">Assistent</div>
           <div class="text-text text-sm whitespace-pre-wrap">${escapeHtml(content)}</div>
         </div>
       `;
     } else {
       div.innerHTML = `
-        <div class="bg-red-50 border border-red-200 rounded-xl p-4">
+        <div class="bg-red-50 border border-red-200 p-4">
           <div class="text-red-600 text-sm">${escapeHtml(content)}</div>
         </div>
       `;
@@ -280,7 +307,13 @@ const quickQuestions = [
   .chat-message {
     animation: fadeIn 0.3s ease-out;
   }
-  
+
+  @media (prefers-reduced-motion: reduce) {
+    .chat-message {
+      animation: none;
+    }
+  }
+
   @keyframes fadeIn {
     from {
       opacity: 0;

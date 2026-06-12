@@ -16,27 +16,26 @@ import team from '../data/team.json';
 
     <section class="py-16 md:py-20 bg-bg">
       <div class="max-w-[1200px] mx-auto px-6">
-        <div class="reveal max-w-3xl">
-          <h2 class="text-2xl md:text-3xl text-primary">Ihre Ansprechpartner</h2>
-          <div class="w-16 h-1 bg-secondary mt-5"></div>
-          <p class="text-text-light mt-6 text-lg">
+        <div class="max-w-3xl" data-reveal>
+          <h2 class="fx-h-section text-primary">Ihre Ansprechpartner</h2>
+          <div class="w-16 h-px bg-secondary mt-5"></div>
+          <p class="text-text mt-6 text-lg">
             Lernen Sie das Team kennen, das Sie im Alltag unterstützt – strukturiert, verbindlich und mit Blick für Details.
           </p>
         </div>
 
-        <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {team.map((m, idx) => (
+        <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6" data-reveal-group>
+          {team.map((m) => (
             <div
-              class="reveal bg-white rounded-2xl border border-secondary/15 shadow-sm overflow-hidden hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
-              style={`transition-delay:${Math.min(idx * 60, 300)}ms`}
+              class="group bg-white border border-primary/15 overflow-hidden fx-lift"
             >
-              <div class="aspect-[4/3] bg-bg-alt relative">
+              <div class="aspect-[4/3] bg-bg-alt relative overflow-hidden">
                 {m.image ? (
-                  <img src={m.image} alt={m.name} class="w-full h-full object-cover object-top" loading="lazy" decoding="async" />
+                  <img src={m.image} alt={m.name} class="w-full h-full object-cover object-top transition-transform duration-700 motion-reduce:transition-none group-hover:scale-[1.03] motion-reduce:group-hover:scale-100" loading="lazy" decoding="async" />
                 ) : (
-                  <div class="w-full h-full flex items-center justify-center text-text-light">
+                  <div class="w-full h-full flex items-center justify-center text-text">
                     <div class="text-center">
-                      <div class="w-16 h-16 rounded-full bg-secondary/10 border border-secondary/20 mx-auto flex items-center justify-center">
+                      <div class="w-16 h-16 bg-secondary/10 border border-secondary/20 mx-auto flex items-center justify-center">
                         <svg class="w-8 h-8 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 14a4 4 0 10-8 0m8 0a6 6 0 01-8 0m8 0v1a3 3 0 01-3 3h-2a3 3 0 01-3-3v-1" />
                         </svg>
@@ -49,11 +48,11 @@ import team from '../data/team.json';
               </div>
 
               <div class="p-6">
-                <div class="text-xs font-semibold text-text tracking-widest uppercase">Team</div>
+                <div class="fx-eyebrow text-primary">Team</div>
                 <h3 class="text-xl text-primary mt-2">{m.name}</h3>
-                <div class="w-12 h-0.5 bg-secondary/80 mt-3"></div>
-                <div class="text-text-light mt-4 font-medium">{m.role}</div>
-                <p class="text-text-light mt-3 text-sm">{m.description}</p>
+                <div class="w-12 h-px bg-secondary/80 mt-3"></div>
+                <div class="text-text mt-4 font-medium">{m.role}</div>
+                <p class="text-text mt-3 text-sm">{m.description}</p>
 
                 <div class="mt-5">
                   <a href={`mailto:${m.email}`} class="inline-flex items-center gap-2 text-primary font-semibold transition-all duration-300 hover:text-primary-light a-underline">
@@ -66,7 +65,7 @@ import team from '../data/team.json';
                 </div>
 
                 {m.quote && (
-                  <blockquote class="mt-6 text-sm text-text-light border-l-2 border-secondary/40 pl-4">
+                  <blockquote class="mt-6 text-sm text-text border-l-2 border-secondary/40 pl-4">
                     “{m.quote}”
                   </blockquote>
                 )}
