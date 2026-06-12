@@ -61,11 +61,11 @@ html.lenis body {
    content visible even if the JS animation layer never runs. */
 html.fx-motion [data-page] {
   opacity: 0;
-  animation: fx-failsafe-opacity 0.01s linear 1.4s forwards;
+  animation: fx-failsafe-opacity 0.01s linear 1s forwards;
 }
 html.fx-motion [data-lines] {
   visibility: hidden;
-  animation: fx-failsafe-visibility 0.01s linear 1.8s forwards;
+  animation: fx-failsafe-visibility 0.01s linear 1.4s forwards;
 }
 @keyframes fx-failsafe-opacity {
   to { opacity: 1; }

@@ -17,8 +17,13 @@ und Barrierefreiheit über dem unveränderten Design.
   `data-lines` (Hero-Headline, autorisierte Zeilen), `data-clip` (Bild-Wipe),
   `data-parallax` (Hintergrundbilder), `data-count` (Zähler), `data-particles`
   (dezente Partikel in der Kontakt-Sektion auf Original-Mauve)
-- Pre-Paint-Hide (`html.fx-motion`) + CSS-Failsafe (1.4s/1.8s)
+- Pre-Paint-Hide (`html.fx-motion`) + CSS-Failsafe (1.0s/1.4s)
 - Seiteneintritt: reiner Opacity-Fade (0.35s)
+- **Late-Boot-Guard:** Lädt das Motion-Skript langsamer als der Failsafe
+  (Dev-Server, kalter Cache, langsames Netz), werden sichtbare Inhalte NIE
+  erneut versteckt/animiert — Inhalt erscheint sofort statisch, nur
+  Below-the-fold-Reveals animieren noch beim Scrollen. Verhindert das
+  "erscheint → blinkt weg → animiert nochmal"-Muster.
 
 ## Tempo-Vorgabe (Kunde: "Animationen zu langsam")
 

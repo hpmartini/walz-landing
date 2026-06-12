@@ -7,6 +7,9 @@ import vercel from '@astrojs/vercel';
 export default defineConfig({
   output: 'static',
   adapter: vercel(),
+  // The dev toolbar hydrates right in the page-entrance window and causes
+  // dev-only animation jank that gets mistaken for a site bug.
+  devToolbar: { enabled: false },
   vite: {
     plugins: [tailwindcss()]
   }

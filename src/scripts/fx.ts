@@ -25,22 +25,38 @@ function initLenis() {
   gsap.ticker.lagSmoothing(0);
 
   // Late-loading images shift layout; re-measure triggers once settled.
-  window.addEventListener('load', () => ScrollTrigger.refresh());
+  // rAF-wrapped so the forced reflow lands between frames, not mid-tween.
+  window.addEventListener('load', () =>
+    requestAnimationFrame(() => ScrollTrigger.refresh())
+  );
 }
 
 /* ---------- Scroll choreography (declarative data-attribute API) ---------- */
 
+// If this module loads slowly (dev server, cold cache, slow network), the CSS
+// failsafe has already revealed the page. Entrance animations must then NEVER
+// re-hide visible content — that reads as "appears, blinks off, replays".
+// Threshold sits safely below the 1.0s [data-page] failsafe delay.
+const LATE_BOOT = performance.now() > 800;
+
 const delayOf = (el: Element) =>
   parseFloat(el.getAttribute('data-reveal-delay') ?? '0') || 0;
 
+const inView = (el: Element) =>
+  el.getBoundingClientRect().top < window.innerHeight * 0.88;
+
 // In-view elements animate immediately (page entrance); others on scroll.
+// On a late boot, in-view elements are already on screen — leave them alone.
+const skipEntrance = (el: Element) => LATE_BOOT && inView(el);
+
 const triggerFor = (el: Element) =>
-  el.getBoundingClientRect().top < window.innerHeight * 0.88
+  inView(el)
     ? {}
     : { scrollTrigger: { trigger: el, start: 'top 88%', once: true } };
 
 function initChoreography() {
   document.querySelectorAll('[data-reveal]').forEach((el) => {
+    if (skipEntrance(el)) return;
     const fadeOnly = el.getAttribute('data-reveal') === 'fade';
     gsap.fromTo(
       el,
@@ -57,6 +73,7 @@ function initChoreography() {
   });
 
   document.querySelectorAll('[data-reveal-group]').forEach((group) => {
+    if (skipEntrance(group)) return;
     gsap.fromTo(
       group.children,
       { autoAlpha: 0, y: MOTION.revealY },
@@ -76,6 +93,7 @@ function initChoreography() {
   document.querySelectorAll('[data-lines]').forEach((el) => {
     const onLoad = el.getAttribute('data-lines') === 'load';
     gsap.set(el, { autoAlpha: 1 });
+    if (skipEntrance(el)) return;
     gsap.from(el.querySelectorAll('[data-line]'), {
       yPercent: 112,
       duration: 0.75,
@@ -88,6 +106,7 @@ function initChoreography() {
 
   // Image wipe from bottom + scale-settle.
   document.querySelectorAll('[data-clip]').forEach((el) => {
+    if (skipEntrance(el)) return;
     const img = el.querySelector('img');
     const tl = gsap.timeline({ delay: delayOf(el), ...triggerFor(el) });
     tl.fromTo(
@@ -118,6 +137,7 @@ function initChoreography() {
 
   // Count numeric text up once visible, preserving prefix/suffix.
   document.querySelectorAll<HTMLElement>('[data-count]').forEach((el) => {
+    if (skipEntrance(el)) return;
     const raw = el.textContent ?? '';
     const match = raw.match(/^(\D*?)(\d+)(\D*)$/);
     if (!match) return;
@@ -148,6 +168,12 @@ function initChoreography() {
 // rescue. Never clearProps opacity — the stylesheet pre-hides [data-page] and
 // would re-blank the page.
 function entrance() {
+  // Late boot: the failsafe revealed (or is about to reveal) the page —
+  // re-hiding it for a fade would blink visible content off. Show instantly.
+  if (LATE_BOOT) {
+    gsap.set('[data-page]', { opacity: 1 });
+    return;
+  }
   gsap.fromTo(
     '[data-page]',
     { opacity: 0 },
