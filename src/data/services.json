@@ -2,6 +2,20 @@
   {
     "slug": "existenzgruendung",
     "title": "Existenzgründungsberatung",
+    "shortDesc": "Von der Geschäftsidee zur erfolgreichen Gründung. >Wir begleiten Sie auf jedem Schritt.",
+    "longDesc": "Einen Hauptschwerpunkt sehen wir in der Existenzgründungsberatung und dem Coaching. Wir begleiten Sie bedarfsgerecht und dauerhaft hin zum Erfolg. Von der ersten Idee über den Businessplan bis zur erfolgreichen Etablierung am Markt.",
+    "icon": "rocket",
+    "benefits": [
+      "Entwicklung eines tragfähigen Geschäftskonzepts",
+      "Erstellung von Businessplan und Finanzplanung",
+      "Beratung zu Fördermitteln und Finanzierung",
+      "Wahl der optimalen Rechtsform",
+      "Unterstützung bei Behördengängen und Anmeldungen"
+    ]
+  },
+  {
+    "slug": "nachfolgeberatung",
+    "title": "Nachfolgeberatung",
     "shortDesc": "Von der Geschäftsidee zur erfolgreichen Gründung. Wir begleiten Sie auf jedem Schritt.",
     "longDesc": "Einen Hauptschwerpunkt sehen wir in der Existenzgründungsberatung und dem Coaching. Wir begleiten Sie bedarfsgerecht und dauerhaft hin zum Erfolg. Von der ersten Idee über den Businessplan bis zur erfolgreichen Etablierung am Markt.",
     "icon": "rocket",
@@ -47,9 +61,10 @@
     "icon": "calculator",
     "benefits": [
       "Laufende Finanzbuchhaltung",
-      "Kontierung und Verbuchung aller Geschäftsvorfälle",
+      "Kontierung und Buchung aller Geschäftsvorfälle",
       "Erstellung von BWA und Summen-Saldenlisten",
-      "Offene-Posten-Verwaltung"
+      "Offene-Posten-Verwaltung",
+      "Kostenstellenrechnung im Rahmen des internen Rechnungswesens"
     ]
   },
   {
@@ -82,7 +97,7 @@
     "slug": "steuerberatung",
     "title": "Steuerberatung",
     "shortDesc": "Individuelle Beratung für Ihre steuerlichen Angelegenheiten.",
-    "longDesc": "Objektive Rechtsberatung, engagierte Vertretung Ihrer steuerlichen Interessen und Kreativität in der Problemlösung sind unser Anspruch.",
+    "longDesc": "Objektive Beratung, engagierte Vertretung Ihrer steuerlichen Interessen und Kreativität in der Problemlösung sind unser Anspruch.",
     "icon": "shield",
     "benefits": [
       "Steuerliche Gestaltungsberatung",
