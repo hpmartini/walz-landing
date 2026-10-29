@@ -3,7 +3,7 @@ name: Kanzlei Karsten Walz
 description: Persönliche Steuerberatung in Schwalmstadt — warm mauve, soft cards, the door is always open.
 colors:
   deep-mauve: "#815f5d"
-  dusty-mauve: "#9e7e7c"
+  dusty-mauve: "#8d6a68"
   rose-ash: "#b09796"
   text: "#666666"
   text-light: "#9f9f9f"
@@ -120,7 +120,7 @@ One warm, slightly dusty mauve family on white. No second accent exists, and non
 
 ### Primary
 - **Deep Mauve** (`deep-mauve`): The brand. Section and card headings, links, primary buttons, footer and contact-section backgrounds, hero overlay gradient (95% → 30% opacity), focus outlines.
-- **Dusty Mauve** (`dusty-mauve`): Hover state of anything Deep Mauve: primary buttons, chat launcher, "Mehr erfahren" links. Never used at rest.
+- **Dusty Mauve** (`dusty-mauve`): Hover state of anything Deep Mauve: primary buttons, chat launcher, "Mehr erfahren" links. Never used at rest. Tuned to 4.78:1 with white text (legacy #9e7e7c was 3.67:1, below AA).
 
 ### Secondary
 - **Rose Ash** (`rose-ash`): Supporting tone, almost always at reduced opacity. Heading bars (solid), icons (solid), icon tiles (10% fill, 20% border), card borders (15% → 40% on hover), input borders (25%), hero badge dot, decorative hero circles (25–40% border), spotlight glow (13%).

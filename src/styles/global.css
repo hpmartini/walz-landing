@@ -23,7 +23,7 @@
    See docs/styleguide-legacy.md for the full extraction. */
 @theme {
   --color-primary: #815f5d;
-  --color-primary-light: #9e7e7c;
+  --color-primary-light: #8d6a68; /* hover only; 4.78:1 on white with white text (legacy #9e7e7c was 3.67) */
   --color-secondary: #b09796;
   --color-text: #666666;
   --color-text-light: #9f9f9f;

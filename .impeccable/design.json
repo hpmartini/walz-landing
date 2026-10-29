@@ -22,7 +22,7 @@
       "dusty-mauve": {
         "role": "primary",
         "displayName": "Dusty Mauve",
-        "canonical": "#9e7e7c",
+        "canonical": "#8d6a68",
         "tonalRamp": [
           "#2c2121",
           "#493736",
@@ -251,7 +251,7 @@
       "refersTo": "button-primary",
       "description": "Deep Mauve CTA on white surfaces (header Kontakt, form submit).",
       "html": "<button class=\"ds-btn-primary\">Kontakt</button>",
-      "css": ".ds-btn-primary{background:#815f5d;color:#fff;padding:12px 28px;border:none;border-radius:8px;font-family:'Open Sans',sans-serif;font-weight:600;font-size:1rem;cursor:pointer;transition:background-color .3s}.ds-btn-primary:hover{background:#9e7e7c}.ds-btn-primary:focus-visible{outline:2px solid #815f5d;outline-offset:2px}"
+      "css": ".ds-btn-primary{background:#815f5d;color:#fff;padding:12px 28px;border:none;border-radius:8px;font-family:'Open Sans',sans-serif;font-weight:600;font-size:1rem;cursor:pointer;transition:background-color .3s}.ds-btn-primary:hover{background:#8d6a68}.ds-btn-primary:focus-visible{outline:2px solid #815f5d;outline-offset:2px}"
     },
     {
       "name": "Button on Mauve",
@@ -275,7 +275,7 @@
       "refersTo": "card-service",
       "description": "Leistungs-Karte with icon tile, uppercase title and Mehr-erfahren link; lifts on hover.",
       "html": "<a class=\"ds-card\" href=\"#\"><span class=\"ds-card-icon\"><svg width=\"40\" height=\"40\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\" d=\"M12 3l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V7l8-4z\"/><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\" d=\"M9 12l2 2 4-4\"/></svg></span><h3 class=\"ds-card-title\">Steuerberatung</h3><p class=\"ds-card-text\">Individuelle Beratung für Ihre steuerlichen Angelegenheiten.</p><span class=\"ds-card-link\">Mehr erfahren →</span></a>",
-      "css": ".ds-card{display:block;max-width:280px;background:#fff;padding:32px;border-radius:12px;border:1px solid rgba(176,151,150,.15);box-shadow:0 1px 3px rgba(0,0,0,.1);text-decoration:none;font-family:'Open Sans',sans-serif;transition:all .3s}.ds-card:hover{transform:translateY(-4px);box-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1);border-color:rgba(176,151,150,.4)}.ds-card:focus-visible{outline:2px solid #815f5d;outline-offset:2px}.ds-card-icon{display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:12px;background:rgba(176,151,150,.1);color:#b09796;border:1px solid rgba(176,151,150,.2);margin-bottom:20px}.ds-card-title{font-size:1.25rem;font-weight:600;text-transform:uppercase;color:#815f5d;margin:0 0 12px}.ds-card-text{color:#666;line-height:1.7;margin:0 0 20px}.ds-card-link{color:#815f5d;font-weight:500;transition:color .3s}.ds-card:hover .ds-card-link{color:#9e7e7c}"
+      "css": ".ds-card{display:block;max-width:280px;background:#fff;padding:32px;border-radius:12px;border:1px solid rgba(176,151,150,.15);box-shadow:0 1px 3px rgba(0,0,0,.1);text-decoration:none;font-family:'Open Sans',sans-serif;transition:all .3s}.ds-card:hover{transform:translateY(-4px);box-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1);border-color:rgba(176,151,150,.4)}.ds-card:focus-visible{outline:2px solid #815f5d;outline-offset:2px}.ds-card-icon{display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:12px;background:rgba(176,151,150,.1);color:#b09796;border:1px solid rgba(176,151,150,.2);margin-bottom:20px}.ds-card-title{font-size:1.25rem;font-weight:600;text-transform:uppercase;color:#815f5d;margin:0 0 12px}.ds-card-text{color:#666;line-height:1.7;margin:0 0 20px}.ds-card-link{color:#815f5d;font-weight:500;transition:color .3s}.ds-card:hover .ds-card-link{color:#8d6a68}"
     },
     {
       "name": "Stat Card",
@@ -306,7 +306,7 @@
       "kind": "nav",
       "description": "Sticky white header: links with grow-in underline, active in Deep Mauve, Kontakt CTA.",
       "html": "<nav class=\"ds-nav\"><span class=\"ds-nav-logo\">Kanzlei Karsten Walz</span><a class=\"ds-nav-link is-active\" href=\"#\">Startseite</a><a class=\"ds-nav-link\" href=\"#\">Leistungen</a><a class=\"ds-nav-link\" href=\"#\">Team</a><a class=\"ds-nav-cta\" href=\"#\">Kontakt</a></nav>",
-      "css": ".ds-nav{display:flex;align-items:center;gap:24px;padding:12px 24px;background:rgba(255,255,255,.95);border-bottom:1px solid #f3f4f6;font-family:'Open Sans',sans-serif}.ds-nav-logo{color:#815f5d;font-weight:600;margin-right:auto}.ds-nav-link{position:relative;color:#666;font-weight:500;text-decoration:none;transition:color .3s}.ds-nav-link:hover,.ds-nav-link.is-active{color:#815f5d}.ds-nav-link::after{content:'';position:absolute;left:0;bottom:-4px;height:2px;width:100%;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .3s}.ds-nav-link:hover::after,.ds-nav-link:focus-visible::after{transform:scaleX(1)}.ds-nav-cta{background:#815f5d;color:#fff;padding:10px 24px;border-radius:8px;font-weight:600;text-decoration:none;transition:background .3s}.ds-nav-cta:hover{background:#9e7e7c}"
+      "css": ".ds-nav{display:flex;align-items:center;gap:24px;padding:12px 24px;background:rgba(255,255,255,.95);border-bottom:1px solid #f3f4f6;font-family:'Open Sans',sans-serif}.ds-nav-logo{color:#815f5d;font-weight:600;margin-right:auto}.ds-nav-link{position:relative;color:#666;font-weight:500;text-decoration:none;transition:color .3s}.ds-nav-link:hover,.ds-nav-link.is-active{color:#815f5d}.ds-nav-link::after{content:'';position:absolute;left:0;bottom:-4px;height:2px;width:100%;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .3s}.ds-nav-link:hover::after,.ds-nav-link:focus-visible::after{transform:scaleX(1)}.ds-nav-cta{background:#815f5d;color:#fff;padding:10px 24px;border-radius:8px;font-weight:600;text-decoration:none;transition:background .3s}.ds-nav-cta:hover{background:#8d6a68}"
     },
     {
       "name": "Heading with Bar",
