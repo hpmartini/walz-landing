@@ -139,7 +139,7 @@ One warm, slightly dusty mauve family on white. No second accent exists, and non
 
 ## Typography
 
-**Display Font:** Open Sans (sans-serif fallback), weights 400/600/700 via Google Fonts.
+**Display Font:** Open Sans (sans-serif fallback), weights 400/600/700, self-hosted variable woff2 (`public/fonts/`, latin + latin-ext).
 **Body Font:** Open Sans.
 
 **Character:** One friendly, plain humanist sans. Hierarchy comes from case, weight and colour, not from a second typeface.

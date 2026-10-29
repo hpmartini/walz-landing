@@ -29,7 +29,7 @@ brand work alone.
 ## Typography
 
 - **Font family:** `'Open Sans', Helvetica, Arial, sans-serif`
-  (legacy uses self-hosted `OpenSans_eigenerServer`; we'll load via Google Fonts).
+  (legacy uses self-hosted `OpenSans_eigenerServer`; the new site self-hosts it too, see `public/fonts/`).
 - **Body size:** 16 px, line-height ~1.7.
 - **Heading sizes (legacy default):** h1 30 px / h2 26 / h3 22 / h4 18.
   On the new modern layout we keep our larger fluid heading sizes — but apply
@@ -75,5 +75,5 @@ but adopts the legacy *palette and type* to preserve brand recognition.
 
 - All-white minimal layouts (no hero imagery).
 - 30 px h1 sizes (too small for modern landing pages).
-- Self-hosted Open Sans (we use Google Fonts).
+- Self-hosted Open Sans (the new site self-hosts too).
 - Divi-specific class soup.

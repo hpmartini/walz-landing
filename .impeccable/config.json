@@ -1,0 +1,14 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "open sans",
+        "createdAt": "2026-10-29T16:17:52.034Z",
+        "reason": "client brand font from legacy site (docs/styleguide-legacy.md, DESIGN.md typography); look-and-feel must stay unchanged"
+      }
+    ]
+  }
+}
