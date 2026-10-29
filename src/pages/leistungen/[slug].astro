@@ -17,7 +17,7 @@ export function getStaticPaths() {
 const { service } = Astro.props;
 ---
 
-<Layout title={service.title} description={service.shortDesc}>
+<Layout title={service.title} description={service.shortDesc.replace("\n", " ")}>
   <Header />
 
   <main id="main" tabindex="-1">
