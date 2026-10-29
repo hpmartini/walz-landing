@@ -11,13 +11,13 @@
     "name": "Reiner Bambey",
     "role": "Steuerfachangestellter",
     "description": "Angestellt seit 01.08.1981. Aufgabenbereich: Jahresabschlusserstellung, Steuererklärungen aller Art, externes Rechnungswesen, Beratung",
-    "email": "info@kanzlei-karstenwalz.de",
+    "email": "bambey@kanzlei-karstenwalz.de",
     "image": "/images/team/5-DSC06942.jpg"
   },
   {
     "name": "Marika Walz",
     "role": "Officemanagerin",
-    "description": "Aufgabenbereich: Büroorganisation, Mandantenbetreuung, interne Koordination",
+    "description": "Aufgabenbereich: Sekretariat, Büroorganisation",
     "email": "mwalz@kanzlei-karstenwalz.de",
     "image": "/images/team/11-DSC07111.jpg"
   },
@@ -45,14 +45,14 @@
   {
     "name": "Lisa Keil",
     "role": "Steuerfachangestellte",
-    "description": "Angestellt seit 13.07.2015. Aufgabenbereich: Externes Rechnungswesen, Lohn- und Gehaltsabrechnung, Steuererklärungen",
+    "description": "Angestellt seit 13.07.2015. Aufgabenbereich: externes Rechnungswesen, Lohn- und Gehaltsabrechnung, Steuererklärungen",
     "email": "keil@kanzlei-karstenwalz.de",
     "image": "/images/team/12-DSC07130.jpg"
   },
   {
     "name": "Martina Grass",
     "role": "Steuerfachangestellte",
-    "description": "Angestellt seit 01.10.2015. Aufgabenbereich: Einkommensteuererklärungen, Einnahmenüberschussrechnungen, Steuererklärungen für Landwirte",
+    "description": "Angestellt seit 01.10.2015. Aufgabenbereich: Einkommensteuererklärungen, Einnahmenüberschussrechnungen für Gewerbetreibende und Freiberufler sowie Ermittlung der Einkünfte aus Vermietung und Verpachtung, steuerliche Beratungen, Erstellung von Steuererklärungen für Landwirte auch 13a Ermittlungen",
     "email": "grass@kanzlei-karstenwalz.de",
     "image": "/images/team/4-DSC06938.jpg"
   },
@@ -64,38 +64,50 @@
     "image": "/images/team/6-DSC06957.jpg"
   },
   {
-    "name": "Kathrin Nagel",
-    "role": "Diplom-Betriebswirtin (FH), M.Sc. BWL",
-    "description": "Angestellt seit 01.01.2018. Aufgabenbereich: Jahresabschlusserstellung für alle Rechtsformen, Steuererklärungen aller Art, betriebswirtschaftliche Beratung",
-    "email": "nagel@kanzlei-karstenwalz.de",
+    "name": "Kathrin Merz",
+    "role": "Diplom-Betriebswirtin (FH), M.Sc. Betriebswirtschaftslehre (Accounting & Finance)",
+    "description": "Angestellt seit 01.01.2018. Aufgabenbereich: Jahresabschlusserstellung für alle Rechtsformen, Steuererklärungen aller Art, externes Rechnungswesen, betriebswirtschaftliche und gestaltende Beratung",
+    "email": "merz@kanzlei-karstenwalz.de",
     "image": "/images/team/14-DSC07172.jpg"
   },
   {
     "name": "Vanessa Diehl",
-    "role": "Auszubildende zur Steuerfachangestellten",
-    "description": "Angestellt seit 01.08.2022. Aufgabenbereich: Externes Rechnungswesen, Steuererklärungen, Lohn- und Gehaltsabrechnung, Empfang",
+    "role": "Steuerfachangestellte",
+    "description": "Angestellt seit 01.08.2022. Aufgabenbereich: externes Rechnungswesen, Steuererklärungen, Lohn- und Gehaltsabrechnung, allgemeine Büroarbeiten, Empfang",
     "email": "diehl@kanzlei-karstenwalz.de",
     "image": "/images/team/7-DSC06986-2.jpg"
   },
   {
     "name": "Andrea Jäckel",
     "role": "Steuerfachwirtin",
-    "description": "Angestellt seit 01.10.2020. Aufgabenbereich: Jahresabschlusserstellung, Steuererklärungen aller Art, Erbschaftsteuererklärung, steuerliche Beratung",
+    "description": "Angestellt seit 01.10.2020. Aufgabenbereich: Jahresabschlusserstellung, Steuererklärungen aller Art, Erbschaftsteuererklärung, externes Rechnungswesen, Lohn- und Gehaltsabrechnungen, steuerliche Beratung",
     "email": "jaeckel@kanzlei-karstenwalz.de",
     "image": "/images/team/13-DSC07150.jpg"
   },
   {
     "name": "Alicia Dörrbecker",
-    "role": "Auszubildende zur Steuerfachangestellten",
-    "description": "Ausbildung seit 01.08.2023. Aufgabenbereich: Externes Rechnungswesen, private Steuererklärungen, allgemeine Büroarbeiten, Empfang und Telefon",
+    "role": "Steuerfachangestellte",
+    "description": "Angestellt seit 21.06.2026. Aufgabenbereich: Lohn- und Gehaltsabrechnungen, externes Rechnungswesen, private Steuererklärungen, allgemeine Büroarbeiten, Empfang und Telefon",
     "email": "doerrbecker@kanzlei-karstenwalz.de",
     "image": "/images/team/1-DSC02065.jpg"
   },
   {
     "name": "Hinrich Morsch",
     "role": "Steuerfachangestellter",
-    "description": "Angestellt seit 01.08.2021. Aufgabenbereich: Externes Rechnungswesen, Lohn- und Gehaltsabrechnung, Steuererklärungen",
+    "description": "Angestellt seit 01.08.2021. Aufgabenbereich: externes Rechnungswesen, Lohn- und Gehaltsabrechnung, Steuererklärungen, allgemeine Büroarbeiten",
     "email": "morsch@kanzlei-karstenwalz.de",
     "image": "/images/team/2-DSC02070.jpg"
+  },
+  {
+    "name": "Marvin Jung",
+    "role": "Steuerfachangestellter",
+    "description": "Angestellt seit 01.04.2026. Aufgabenbereich: externes Rechnungswesen, private Steuererklärungen",
+    "email": "jung@kanzlei-karstenwalz.de"
+  },
+  {
+    "name": "Christoph Mietle",
+    "role": "Auszubildender zum Steuerfachangestellten",
+    "description": "Ausbildung seit 01.08.2026. Aufgabenbereich: externes Rechnungswesen, Steuererklärungen, allgemeine Büroarbeiten, Telefon, Empfang",
+    "email": "mietle@kanzlei-karstenwalz.de"
   }
 ]
