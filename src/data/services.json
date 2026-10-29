@@ -2,7 +2,7 @@
   {
     "slug": "existenzgruendung",
     "title": "Existenzgründungsberatung",
-    "shortDesc": "Von der Geschäftsidee zur erfolgreichen Gründung. >Wir begleiten Sie auf jedem Schritt.",
+    "shortDesc": "Von der Geschäftsidee zur erfolgreichen Gründung. <LINEBREAK> Wir begleiten Sie auf Ihrem Weg - persönlich und vertrauensvoll.",
     "longDesc": "Einen Hauptschwerpunkt sehen wir in der Existenzgründungsberatung und dem Coaching. Wir begleiten Sie bedarfsgerecht und dauerhaft hin zum Erfolg. Von der ersten Idee über den Businessplan bis zur erfolgreichen Etablierung am Markt.",
     "icon": "rocket",
     "benefits": [
@@ -16,15 +16,15 @@
   {
     "slug": "nachfolgeberatung",
     "title": "Nachfolgeberatung",
-    "shortDesc": "Von der Geschäftsidee zur erfolgreichen Gründung. Wir begleiten Sie auf jedem Schritt.",
-    "longDesc": "Einen Hauptschwerpunkt sehen wir in der Existenzgründungsberatung und dem Coaching. Wir begleiten Sie bedarfsgerecht und dauerhaft hin zum Erfolg. Von der ersten Idee über den Businessplan bis zur erfolgreichen Etablierung am Markt.",
+    "shortDesc": "Verantwortung weitergeben. Werte erhalten. Zukunft gestalten.",
+    "longDesc": "Die Nachfolge gehört zu den bedeutendsten Entscheidungen im Leben eines Unternehmers. Dabei geht es nicht allein um steuerliche Fragen, sondern auch um wirtschaftliche Interessen, persönliche Vorstellungen und die Zukunft eines oft über Jahrzehnte aufgebauten Unternehmens. Wir begleiten Sie bei der frühzeitigen Planung und steuerlichen Gestaltung Ihrer Unternehmensnachfolge – mit Erfahrung, Augenmaß und dem Verständnis für die besonderen Herausforderungen dieses Schrittes.",
     "icon": "rocket",
     "benefits": [
-      "Entwicklung eines tragfähigen Geschäftskonzepts",
-      "Erstellung von Businessplan und Finanzplanung",
-      "Beratung zu Fördermitteln und Finanzierung",
-      "Wahl der optimalen Rechtsform",
-      "Unterstützung bei Behördengängen und Anmeldungen"
+      "Entwicklung individueller Nachfolgekonzepte",
+      "Steuerliche Gestaltung von Unternehmensübertragungen",
+      "Begleitung familieninterner und externer Nachfolgelösungen",
+      "Erbschaft- und schenkungsteuerliche Beratung",
+      "Betriebswirtschaftliche Begleitung und Koordination mit weiteren Beratern"
     ]
   },
   {
