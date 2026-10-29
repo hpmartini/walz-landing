@@ -1,0 +1,378 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-29T13:44:21.634547+00:00",
+  "title": "Design System: Kanzlei Karsten Walz",
+  "extensions": {
+    "colorMeta": {
+      "deep-mauve": {
+        "role": "primary",
+        "displayName": "Deep Mauve",
+        "canonical": "#815f5d",
+        "tonalRamp": [
+          "#2c2120",
+          "#4a3735",
+          "#684c4b",
+          "#856260",
+          "#a58483",
+          "#bfa7a6",
+          "#dbcdcd",
+          "#f4f0f0"
+        ]
+      },
+      "dusty-mauve": {
+        "role": "primary",
+        "displayName": "Dusty Mauve",
+        "canonical": "#9e7e7c",
+        "tonalRamp": [
+          "#2c2121",
+          "#493736",
+          "#674e4c",
+          "#846462",
+          "#a48684",
+          "#bea8a7",
+          "#dacecd",
+          "#f4f1f0"
+        ]
+      },
+      "rose-ash": {
+        "role": "secondary",
+        "displayName": "Rose Ash",
+        "canonical": "#b09796",
+        "tonalRamp": [
+          "#2c2121",
+          "#493737",
+          "#664e4d",
+          "#836463",
+          "#a38685",
+          "#bda9a8",
+          "#dacece",
+          "#f4f1f0"
+        ]
+      },
+      "text": {
+        "role": "neutral",
+        "displayName": "Text Grey",
+        "canonical": "#666666",
+        "tonalRamp": [
+          "#262626",
+          "#404040",
+          "#595959",
+          "#737373",
+          "#949494",
+          "#b2b2b2",
+          "#d4d4d4",
+          "#f2f2f2"
+        ]
+      },
+      "text-light": {
+        "role": "neutral",
+        "displayName": "Light Grey",
+        "canonical": "#9f9f9f",
+        "tonalRamp": [
+          "#262626",
+          "#404040",
+          "#595959",
+          "#737373",
+          "#949494",
+          "#b2b2b2",
+          "#d4d4d4",
+          "#f2f2f2"
+        ]
+      },
+      "bg": {
+        "role": "neutral",
+        "displayName": "White",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "#262626",
+          "#404040",
+          "#595959",
+          "#737373",
+          "#949494",
+          "#b2b2b2",
+          "#d4d4d4",
+          "#f2f2f2"
+        ]
+      },
+      "bg-alt": {
+        "role": "neutral",
+        "displayName": "Off-White",
+        "canonical": "#f9f9f9",
+        "tonalRamp": [
+          "#262626",
+          "#404040",
+          "#595959",
+          "#737373",
+          "#949494",
+          "#b2b2b2",
+          "#d4d4d4",
+          "#f2f2f2"
+        ]
+      },
+      "hairline": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "#f3f4f6",
+        "tonalRamp": [
+          "#21242c",
+          "#373d49",
+          "#4c5566",
+          "#626d83",
+          "#858fa3",
+          "#a8afbd",
+          "#cdd2da",
+          "#f0f2f4"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero/PageHero h1, white bold on mauve photo overlay."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section h2, uppercase, normal weight, Deep Mauve (legacy rule)."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Card and panel h3, uppercase semibold."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "Hero and section intros."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Paragraphs and card descriptions."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Small uppercase group labels (nav dropdown)."
+      }
+    },
+    "shadows": [
+      {
+        "name": "rest",
+        "value": "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
+        "purpose": "Cards and panels at rest (shadow-sm)."
+      },
+      {
+        "name": "lift",
+        "value": "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
+        "purpose": "Service card hover (shadow-lg) with translateY(-4px)."
+      },
+      {
+        "name": "header-elevated",
+        "value": "0 12px 32px -20px rgb(129 95 93 / 0.4)",
+        "purpose": "Sticky header after scroll."
+      },
+      {
+        "name": "overlay",
+        "value": "0 25px 50px -12px rgb(0 0 0 / 0.25)",
+        "purpose": "Chat panel (shadow-2xl)."
+      },
+      {
+        "name": "spotlight",
+        "value": "radial-gradient(240px circle at var(--fx-mx) var(--fx-my), rgb(176 151 150 / 0.13), transparent 65%)",
+        "purpose": "Cursor-following glow on cards, fine pointers only."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease",
+        "value": "power2.out",
+        "purpose": "GSAP default for reveals."
+      },
+      {
+        "name": "ease-long",
+        "value": "power3.out",
+        "purpose": "Longer moves (line rise, clip)."
+      },
+      {
+        "name": "duration",
+        "value": "0.5s",
+        "purpose": "Reveal duration."
+      },
+      {
+        "name": "stagger",
+        "value": "0.06s",
+        "purpose": "Group reveal stagger."
+      },
+      {
+        "name": "reveal-y",
+        "value": "20px",
+        "purpose": "Reveal travel."
+      },
+      {
+        "name": "ui-transition",
+        "value": "300ms ease",
+        "purpose": "Hover/colour transitions on links, buttons, cards."
+      },
+      {
+        "name": "collapse",
+        "value": "350ms cubic-bezier(0.4, 0, 0.2, 1)",
+        "purpose": "Mobile menu grid-rows open/close."
+      },
+      {
+        "name": "view-transition",
+        "value": "0.18s out / 0.24s in",
+        "purpose": "Cross-document page cross-fade; header and chat stay fixed."
+      },
+      {
+        "name": "magnetic",
+        "value": "max 7px",
+        "purpose": "Primary CTA pull toward cursor (GSAP quickTo)."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "xl",
+        "value": "1280px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Deep Mauve CTA on white surfaces (header Kontakt, form submit).",
+      "html": "<button class=\"ds-btn-primary\">Kontakt</button>",
+      "css": ".ds-btn-primary{background:#815f5d;color:#fff;padding:12px 28px;border:none;border-radius:8px;font-family:'Open Sans',sans-serif;font-weight:600;font-size:1rem;cursor:pointer;transition:background-color .3s}.ds-btn-primary:hover{background:#9e7e7c}.ds-btn-primary:focus-visible{outline:2px solid #815f5d;outline-offset:2px}"
+    },
+    {
+      "name": "Button on Mauve",
+      "kind": "button",
+      "refersTo": "button-on-mauve",
+      "description": "White CTA on mauve hero and contact sections.",
+      "html": "<div class=\"ds-mauve-bg\"><a class=\"ds-btn-on-mauve\" href=\"#\">Termin vereinbaren</a></div>",
+      "css": ".ds-mauve-bg{background:#815f5d;padding:24px;border-radius:8px}.ds-btn-on-mauve{display:inline-block;background:#fff;color:#815f5d;padding:16px 32px;border-radius:8px;font-family:'Open Sans',sans-serif;font-weight:600;text-decoration:none;transition:filter .3s}.ds-btn-on-mauve:hover{filter:brightness(1.05)}.ds-btn-on-mauve:focus-visible{outline:2px solid #fff;outline-offset:2px}"
+    },
+    {
+      "name": "Outline Button on Mauve",
+      "kind": "button",
+      "refersTo": "button-outline-on-mauve",
+      "description": "Secondary action on mauve; fills white on hover.",
+      "html": "<div class=\"ds-mauve-bg2\"><a class=\"ds-btn-outline\" href=\"#\">Leistungen entdecken</a></div>",
+      "css": ".ds-mauve-bg2{background:#815f5d;padding:24px;border-radius:8px}.ds-btn-outline{display:inline-block;border:2px solid rgba(255,255,255,.7);color:#fff;padding:16px 32px;border-radius:8px;font-family:'Open Sans',sans-serif;font-weight:600;text-decoration:none;transition:all .3s}.ds-btn-outline:hover{background:#fff;color:#815f5d}.ds-btn-outline:focus-visible{outline:2px solid #fff;outline-offset:2px}"
+    },
+    {
+      "name": "Service Card",
+      "kind": "card",
+      "refersTo": "card-service",
+      "description": "Leistungs-Karte with icon tile, uppercase title and Mehr-erfahren link; lifts on hover.",
+      "html": "<a class=\"ds-card\" href=\"#\"><span class=\"ds-card-icon\"><svg width=\"40\" height=\"40\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\" d=\"M12 3l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V7l8-4z\"/><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\" d=\"M9 12l2 2 4-4\"/></svg></span><h3 class=\"ds-card-title\">Steuerberatung</h3><p class=\"ds-card-text\">Individuelle Beratung für Ihre steuerlichen Angelegenheiten.</p><span class=\"ds-card-link\">Mehr erfahren →</span></a>",
+      "css": ".ds-card{display:block;max-width:280px;background:#fff;padding:32px;border-radius:12px;border:1px solid rgba(176,151,150,.15);box-shadow:0 1px 3px rgba(0,0,0,.1);text-decoration:none;font-family:'Open Sans',sans-serif;transition:all .3s}.ds-card:hover{transform:translateY(-4px);box-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1);border-color:rgba(176,151,150,.4)}.ds-card:focus-visible{outline:2px solid #815f5d;outline-offset:2px}.ds-card-icon{display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:12px;background:rgba(176,151,150,.1);color:#b09796;border:1px solid rgba(176,151,150,.2);margin-bottom:20px}.ds-card-title{font-size:1.25rem;font-weight:600;text-transform:uppercase;color:#815f5d;margin:0 0 12px}.ds-card-text{color:#666;line-height:1.7;margin:0 0 20px}.ds-card-link{color:#815f5d;font-weight:500;transition:color .3s}.ds-card:hover .ds-card-link{color:#9e7e7c}"
+    },
+    {
+      "name": "Stat Card",
+      "kind": "card",
+      "refersTo": "card-stat",
+      "description": "Trust figure: centred icon, bold value, label.",
+      "html": "<div class=\"ds-stat\"><div class=\"ds-stat-value\">Seit 2000</div><div class=\"ds-stat-label\">Ihre Kanzlei in der Region</div></div>",
+      "css": ".ds-stat{text-align:center;background:#fff;border-radius:16px;padding:40px;border:1px solid rgba(176,151,150,.15);box-shadow:0 1px 3px rgba(0,0,0,.1);font-family:'Open Sans',sans-serif;transition:all .3s}.ds-stat:hover{transform:translateY(-4px);box-shadow:0 4px 6px -1px rgba(0,0,0,.1)}.ds-stat-value{font-size:1.875rem;font-weight:700;color:#815f5d;margin-bottom:8px}.ds-stat-label{color:#666}"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Form field with label above and Rose Ash focus ring.",
+      "html": "<label class=\"ds-label\" for=\"ds-name\">Name</label><input id=\"ds-name\" class=\"ds-input\" type=\"text\">",
+      "css": ".ds-label{display:block;font-family:'Open Sans',sans-serif;font-size:.875rem;font-weight:500;color:#815f5d;margin-bottom:8px}.ds-input{width:100%;max-width:320px;font-family:'Open Sans',sans-serif;font-size:1rem;color:#666;background:#fff;border:1px solid rgba(176,151,150,.25);border-radius:8px;padding:12px 16px;outline:none;transition:border-color .2s,box-shadow .2s}.ds-input:focus{border-color:#b09796;box-shadow:0 0 0 2px rgba(176,151,150,.2)}"
+    },
+    {
+      "name": "Quick-Reply Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Chat quick-reply pill.",
+      "html": "<button class=\"ds-chip\">Öffnungszeiten?</button>",
+      "css": ".ds-chip{font-family:'Open Sans',sans-serif;font-size:.75rem;color:#666;background:#fff;border:1px solid rgba(176,151,150,.25);border-radius:9999px;padding:6px 12px;cursor:pointer;transition:all .3s}.ds-chip:hover{background:rgba(176,151,150,.1);transform:scale(1.02)}.ds-chip:focus-visible{outline:2px solid #815f5d;outline-offset:2px}"
+    },
+    {
+      "name": "Header Navigation",
+      "kind": "nav",
+      "description": "Sticky white header: links with grow-in underline, active in Deep Mauve, Kontakt CTA.",
+      "html": "<nav class=\"ds-nav\"><span class=\"ds-nav-logo\">Kanzlei Karsten Walz</span><a class=\"ds-nav-link is-active\" href=\"#\">Startseite</a><a class=\"ds-nav-link\" href=\"#\">Leistungen</a><a class=\"ds-nav-link\" href=\"#\">Team</a><a class=\"ds-nav-cta\" href=\"#\">Kontakt</a></nav>",
+      "css": ".ds-nav{display:flex;align-items:center;gap:24px;padding:12px 24px;background:rgba(255,255,255,.95);border-bottom:1px solid #f3f4f6;font-family:'Open Sans',sans-serif}.ds-nav-logo{color:#815f5d;font-weight:600;margin-right:auto}.ds-nav-link{position:relative;color:#666;font-weight:500;text-decoration:none;transition:color .3s}.ds-nav-link:hover,.ds-nav-link.is-active{color:#815f5d}.ds-nav-link::after{content:'';position:absolute;left:0;bottom:-4px;height:2px;width:100%;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .3s}.ds-nav-link:hover::after,.ds-nav-link:focus-visible::after{transform:scaleX(1)}.ds-nav-cta{background:#815f5d;color:#fff;padding:10px 24px;border-radius:8px;font-weight:600;text-decoration:none;transition:background .3s}.ds-nav-cta:hover{background:#9e7e7c}"
+    },
+    {
+      "name": "Heading with Bar",
+      "kind": "custom",
+      "description": "Legacy section heading (uppercase, 400, Deep Mauve) with the Rose Ash bar.",
+      "html": "<div class=\"ds-heading\"><h2>Unsere Leistungen</h2><div class=\"ds-bar\"></div></div>",
+      "css": ".ds-heading{text-align:center;font-family:'Open Sans',sans-serif}.ds-heading h2{text-transform:uppercase;font-weight:400;color:#815f5d;font-size:2.25rem;line-height:1.25;margin:0 0 16px}.ds-bar{width:64px;height:4px;background:#b09796;margin:0 auto}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Die offene Kanzleitür",
+    "overview": "The site should feel like walking into a small-town Kanzlei where people look up and say hello. One warm mauve carries the whole brand, inherited unchanged from the legacy site kanzlei-karstenwalz.de. White pages, soft cards with rounded corners and quiet shadows, real team photos under a mauve veil. Nothing is loud or showy, and nothing is cold. Phone number, address and a \"Kontakt\" button are always close.\n\nDensity is relaxed: generous section padding, short paragraphs, grids of four or three cards at most. Craft goes into an invisible layer instead of decoration: fast scroll reveals, a cursor spotlight on cards, buttons that drift slightly toward the cursor, page cross-fades that keep the header still. This layer is the only place the design may grow. The client approved the look on 2026-06-12 and rejected an editorial redesign (square corners, uppercase display type, chapter numbers, eyebrow labels). That rejection is binding.",
+    "keyCharacteristics": [
+      "One brand hue in three tones (Deep Mauve, Dusty Mauve, Rose Ash) on white and off-white.",
+      "Open Sans only; section headings in the legacy style (uppercase, normal weight, mauve).",
+      "Rounded cards (12–16px) with soft shadows that lift on hover.",
+      "Photo heroes under a left-to-right mauve gradient with thin drifting circles.",
+      "A short Rose Ash bar under every heading.",
+      "Motion is polish, never a loading state; reduced motion turns it off completely."
+    ],
+    "rules": [
+      {
+        "name": "The One Hue Rule",
+        "body": "Every brand moment is Deep Mauve or a tint of Rose Ash. If a new element seems to need blue, green or gold, it doesn't.",
+        "section": "colors"
+      },
+      {
+        "name": "The White-On-Mauve Rule",
+        "body": "On a mauve surface, text and buttons are white or white at reduced opacity (70–90%). Mauve text never sits on mauve.",
+        "section": "colors"
+      },
+      {
+        "name": "The Legacy Heading Rule",
+        "body": "Headings inside `main` are uppercase, weight 400, Deep Mauve. Exceptions: h1s on mauve heroes and the h2 in the mauve contact section are white and bold, set by utility classes that override the base rule. Footer headings stay outside the rule.",
+        "section": "typography"
+      },
+      {
+        "name": "The Phone-As-Headline Rule",
+        "body": "In the contact section the phone number is set as large as a headline (1.875 → 2.25rem, bold, white). Calling is the main action.",
+        "section": "typography"
+      },
+      {
+        "name": "The Earned Lift Rule",
+        "body": "A shadow grows only when the visitor's pointer is on the element. Resting cards never compete for attention.",
+        "section": "elevation"
+      },
+      {
+        "name": "The No-Square-Corners Rule",
+        "body": "Nothing interactive or framed has a 0 radius. The client explicitly rolled back a square-cornered editorial version.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "**Do** use Deep Mauve for every brand moment and Dusty Mauve only for hover.",
+      "**Do** put a Rose Ash bar under every section heading and animate it with `data-bar`.",
+      "**Do** keep cards at 12–16px radius with a Rose Ash 15% border and `shadow-sm`, lifting on hover.",
+      "**Do** use real team photos from `public/images/team/` for people and heroes.",
+      "**Do** keep reveals fast (0.5s, 0.06s stagger, 20px travel, `power2.out`) and fully disabled under `prefers-reduced-motion`.",
+      "**Do** keep the phone number and a Kontakt action visible on every page."
+    ],
+    "donts": [
+      "**Don't** introduce eyebrow labels or chapter numbers above sections (client decision 2026-06-12).",
+      "**Don't** use square corners, uppercase display type for h1s, or an editorial magazine layout. That version was rolled back.",
+      "**Don't** add a second accent colour or change the font.",
+      "**Don't** let an animation delay content: no entrance replay on internal navigation, no slow fades.",
+      "**Don't** present the AI-generated images in `public/images/generated/` as photos of the Kanzlei."
+    ]
+  }
+}
