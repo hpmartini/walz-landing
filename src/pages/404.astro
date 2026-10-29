@@ -1,0 +1,39 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import PageHero from '../components/PageHero.astro';
+import ChatWidget from '../components/ChatWidget.astro';
+---
+
+<Layout title="Seite nicht gefunden" description="Die angeforderte Seite gibt es nicht (mehr).">
+  <Header />
+
+  <main id="main" tabindex="-1">
+    <PageHero title="Seite nicht gefunden" subtitle="Diese Adresse gibt es nicht (mehr). Vielleicht hilft einer dieser Wege weiter." />
+
+    <section class="py-16 md:py-20 bg-bg">
+      <div class="max-w-[900px] mx-auto px-6">
+        <div class="bg-white rounded-2xl border border-secondary/15 shadow-sm p-8" data-reveal>
+          <h2 class="text-2xl text-primary">Weiter zu</h2>
+          <div class="w-16 h-1 bg-secondary mt-5 mb-8"></div>
+
+          <ul class="space-y-4 text-text">
+            <li><a class="text-primary font-semibold a-underline" href="/">Startseite</a></li>
+            <li><a class="text-primary font-semibold a-underline" href="/leistungen">Unsere Leistungen</a></li>
+            <li><a class="text-primary font-semibold a-underline" href="/team">Team</a></li>
+            <li><a class="text-primary font-semibold a-underline" href="/kontakt">Kontakt</a></li>
+          </ul>
+
+          <p class="mt-8 text-text">
+            Sie suchen etwas Bestimmtes? Rufen Sie uns an:
+            <a class="text-primary font-semibold a-underline whitespace-nowrap" href="tel:066914271">06691 4271</a>
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <ChatWidget />
+</Layout>
