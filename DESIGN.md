@@ -104,7 +104,7 @@ components:
 
 The site should feel like walking into a small-town Kanzlei where people look up and say hello. One warm mauve carries the whole brand, inherited unchanged from the legacy site kanzlei-karstenwalz.de. White pages, soft cards with rounded corners and quiet shadows, real team photos under a mauve veil. Nothing is loud or showy, and nothing is cold. Phone number, address and a "Kontakt" button are always close.
 
-Density is relaxed: generous section padding, short paragraphs, grids of four or three cards at most. Craft goes into an invisible layer instead of decoration: fast scroll reveals, a cursor spotlight on cards, buttons that drift slightly toward the cursor, page cross-fades that keep the header still. This layer is the only place the design may grow. The client approved the look on 2026-06-12 and rejected an editorial redesign (square corners, uppercase display type, chapter numbers, eyebrow labels). That rejection is binding.
+Density is relaxed: generous section padding, short paragraphs, grids of four or three cards at most. Craft goes into an invisible layer instead of decoration: fast scroll reveals, a cursor spotlight on cards, buttons that drift slightly toward the cursor, page cross-fades that keep the header still. This layer is the only place the design may grow. The client approved the look on 2026-06-12 and rejected an editorial redesign (square corners, editorial display type, chapter numbers, eyebrow labels). That rejection is binding.
 
 **Key Characteristics:**
 - One brand hue in three tones (Deep Mauve, Dusty Mauve, Rose Ash) on white and off-white.
@@ -145,7 +145,7 @@ One warm, slightly dusty mauve family on white. No second accent exists, and non
 **Character:** One friendly, plain humanist sans. Hierarchy comes from case, weight and colour, not from a second typeface.
 
 ### Hierarchy
-- **Display** (700, 2.25 → 3 → 3.75rem, line-height 1.25): Hero and page-hero h1 only, white on the mauve photo overlay, sentence case. Hero lines rise in on load.
+- **Display** (700, 2.25 → 3 → 3.75rem, line-height 1.25): Hero and page-hero h1 only, white and bold on the mauve photo overlay, uppercase via the legacy rule. Hero lines rise in on load.
 - **Headline** (400, 1.875 → 2.25rem, uppercase, Deep Mauve): Section h2s inside `main`, in the legacy style. Always followed by a Rose Ash bar.
 - **Title** (600, 1.25rem, uppercase via the base rule, Deep Mauve): Card and panel h3s. German compound words break with `hyphens-auto`.
 - **Lead** (400, 1.125–1.25rem): Hero intro and section intros; white at 80–85% on mauve, Text Grey on white.
@@ -153,7 +153,7 @@ One warm, slightly dusty mauve family on white. No second accent exists, and non
 - **Label** (600, 0.75rem, letter-spacing 0.1em, uppercase): Small group labels, e.g. "Alle Leistungen" in the nav dropdown.
 
 ### Named Rules
-**The Legacy Heading Rule.** Headings inside `main` are uppercase, weight 400, Deep Mauve. Exceptions: h1s on mauve heroes and the h2 in the mauve contact section are white and bold, set by utility classes that override the base rule. Footer headings stay outside the rule.
+**The Legacy Heading Rule.** Headings inside `main` are uppercase, weight 400, Deep Mauve. Exceptions: h1s on mauve heroes and the h2 in the mauve contact section stay uppercase but are white and bold, set by utility classes that override colour and weight. Footer headings stay outside the rule.
 
 **The Phone-As-Headline Rule.** In the contact section the phone number is set as large as a headline (1.875 → 2.25rem, bold, white). Calling is the main action.
 
@@ -227,7 +227,7 @@ Deep Mauve pill fixed bottom-right with a round Rose Ash icon well; it opens a 1
 
 ### Don't:
 - **Don't** introduce eyebrow labels or chapter numbers above sections (client decision 2026-06-12).
-- **Don't** use square corners, uppercase display type for h1s, or an editorial magazine layout. That version was rolled back.
+- **Don't** use square corners, a separate display typeface, or an editorial magazine layout. That version was rolled back.
 - **Don't** add a second accent colour or change the font.
 - **Don't** let an animation delay content: no entrance replay on internal navigation, no slow fades.
 - **Don't** present the AI-generated images in `public/images/generated/` as photos of the Kanzlei.
