@@ -20,7 +20,7 @@ const { service } = Astro.props;
 <Layout title={service.title} description={service.shortDesc}>
   <Header />
 
-  <main>
+  <main id="main" tabindex="-1">
     <PageHero title={service.title} subtitle={service.shortDesc} />
 
     <section class="py-16 md:py-20 bg-bg">

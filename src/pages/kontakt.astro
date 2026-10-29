@@ -9,7 +9,7 @@ import ChatWidget from '../components/ChatWidget.astro';
 <Layout title="Kontakt" description="Kontakt zur Kanzlei Karsten Walz – Adresse, Öffnungszeiten, Telefon, E-Mail und Anfrageformular.">
   <Header />
 
-  <main>
+  <main id="main" tabindex="-1">
     <PageHero title="Kontakt" subtitle="Schreiben Sie uns oder rufen Sie an – wir melden uns zeitnah zurück." />
 
     <section class="py-16 md:py-20 bg-bg">
@@ -19,34 +19,40 @@ import ChatWidget from '../components/ChatWidget.astro';
             <h2 class="text-2xl md:text-3xl text-primary">Anfrage senden</h2>
             <div class="w-16 h-1 bg-secondary mt-5 mb-8"></div>
 
-            <form class="bg-white rounded-2xl border border-secondary/15 shadow-sm p-8" method="post" action="#">
+            <form id="contact-form" class="bg-white rounded-2xl border border-secondary/15 shadow-sm p-8" method="post" action="/api/kontakt" novalidate>
+              <div class="hidden" aria-hidden="true">
+                <label for="website">Website</label>
+                <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
+              </div>
               <div class="grid sm:grid-cols-2 gap-5">
                 <div>
                   <label class="block text-sm font-medium text-primary mb-2" for="name">Name</label>
-                  <input id="name" name="name" type="text" required class="w-full rounded-lg border border-secondary/25 px-4 py-3 outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/20" />
+                  <input id="name" name="name" type="text" required maxlength="120" autocomplete="name" class="w-full rounded-lg border border-secondary/25 px-4 py-3 outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/20" />
                 </div>
                 <div>
                   <label class="block text-sm font-medium text-primary mb-2" for="phone">Telefon (optional)</label>
-                  <input id="phone" name="phone" type="tel" class="w-full rounded-lg border border-secondary/25 px-4 py-3 outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/20" />
+                  <input id="phone" name="phone" type="tel" maxlength="40" autocomplete="tel" class="w-full rounded-lg border border-secondary/25 px-4 py-3 outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/20" />
                 </div>
                 <div class="sm:col-span-2">
                   <label class="block text-sm font-medium text-primary mb-2" for="email">E-Mail</label>
-                  <input id="email" name="email" type="email" required class="w-full rounded-lg border border-secondary/25 px-4 py-3 outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/20" />
+                  <input id="email" name="email" type="email" required maxlength="200" autocomplete="email" class="w-full rounded-lg border border-secondary/25 px-4 py-3 outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/20" />
                 </div>
                 <div class="sm:col-span-2">
                   <label class="block text-sm font-medium text-primary mb-2" for="message">Nachricht</label>
-                  <textarea id="message" name="message" rows="5" required class="w-full rounded-lg border border-secondary/25 px-4 py-3 outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/20" placeholder="Worum geht es? (z.B. Steuererklärung, Gründung, Buchhaltung …)"></textarea>
+                  <textarea id="message" name="message" rows="5" required maxlength="5000" class="w-full rounded-lg border border-secondary/25 px-4 py-3 outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/20" placeholder="Worum geht es? (z.B. Steuererklärung, Gründung, Buchhaltung …)"></textarea>
                 </div>
               </div>
 
               <div class="mt-6 flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
-                <button type="submit" class="bg-primary text-white px-7 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-primary-light hover:scale-105 motion-reduce:transition-none motion-reduce:hover:scale-100">
+                <button type="submit" class="shrink-0 bg-primary text-white px-7 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-primary-light hover:scale-105 disabled:opacity-70 disabled:cursor-wait disabled:hover:bg-primary disabled:hover:scale-100 motion-reduce:transition-none motion-reduce:hover:scale-100">
                   Nachricht senden
                 </button>
                 <div class="text-xs text-text">
-                  Hinweis: Formular ist derzeit ohne Backend. Bitte alternativ per <a class="text-primary font-semibold a-underline" href="mailto:info@kanzlei-karstenwalz.de">E-Mail</a> senden.
+                  Ihre Angaben verwenden wir nur zur Bearbeitung Ihrer Anfrage. <a class="text-primary font-semibold a-underline" href="/datenschutz">Datenschutz</a>
                 </div>
               </div>
+
+              <div id="contact-status" role="status" aria-live="polite" class="mt-6 rounded-lg border border-secondary/25 bg-bg-alt p-4 text-sm text-text empty:hidden"></div>
             </form>
 
             <div class="mt-8 bg-bg-alt rounded-2xl border border-secondary/15 p-8">
@@ -82,15 +88,18 @@ import ChatWidget from '../components/ChatWidget.astro';
             <div class="w-16 h-1 bg-secondary mt-5 mb-8"></div>
 
             <div class="bg-white rounded-2xl border border-secondary/15 shadow-sm overflow-hidden">
-              <iframe
-                title="Google Maps"
-                width="100%"
-                height="420"
-                style="border:0"
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-                src="https://www.google.com/maps?q=Ziegenhainer%20Str.%203%2C%2034613%20Schwalmstadt&output=embed"
-              ></iframe>
+              <div id="map-consent" class="h-[420px] bg-bg-alt flex flex-col items-center justify-center gap-5 p-8 text-center">
+                <p class="text-text max-w-[34ch]">
+                  Die Karte wird von Google Maps geladen. Dabei werden Daten wie Ihre IP-Adresse an Google übertragen.
+                </p>
+                <button id="map-load" type="button" class="bg-primary text-white px-7 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-primary-light hover:scale-105 motion-reduce:transition-none motion-reduce:hover:scale-100">
+                  Karte laden
+                </button>
+                <p class="text-sm text-text">
+                  Mehr in der <a class="text-primary font-semibold a-underline" href="/datenschutz">Datenschutzerklärung</a>
+                  · <a class="text-primary font-semibold a-underline" href="https://www.google.com/maps/search/?api=1&query=Ziegenhainer%20Str.%203%2C%2034613%20Schwalmstadt" target="_blank" rel="noopener noreferrer">In Google Maps öffnen</a>
+                </p>
+              </div>
             </div>
 
             <div class="mt-6 bg-bg-alt rounded-2xl border border-secondary/15 p-8">
@@ -113,3 +122,74 @@ import ChatWidget from '../components/ChatWidget.astro';
   <Footer />
   <ChatWidget />
 </Layout>
+
+<script>
+  const MAIL = 'info@kanzlei-karstenwalz.de';
+  const MAP_SRC = 'https://www.google.com/maps?q=Ziegenhainer%20Str.%203%2C%2034613%20Schwalmstadt&output=embed';
+
+  function initMapConsent() {
+    const consent = document.getElementById('map-consent');
+    const button = document.getElementById('map-load');
+    if (!consent || !button) return;
+    button.addEventListener('click', () => {
+      const iframe = document.createElement('iframe');
+      Object.assign(iframe, { title: 'Google Maps: Ziegenhainer Str. 3, Schwalmstadt', src: MAP_SRC, referrerPolicy: 'no-referrer-when-downgrade' });
+      iframe.className = 'block w-full h-[420px] border-0';
+      consent.replaceWith(iframe);
+      iframe.focus();
+    });
+  }
+
+  function initContactForm() {
+    const form = document.getElementById('contact-form') as HTMLFormElement | null;
+    const status = document.getElementById('contact-status');
+    if (!form || !status) return;
+    const button = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    const label = button.textContent?.trim() ?? '';
+
+    const show = (html: string) => { status.innerHTML = html; };
+    const escape = (v: string) => v.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c] as string);
+
+    // Fallback keeps the typed message: opens the visitor's mail program with everything prefilled.
+    const mailtoFor = (data: FormData) => {
+      const body = `${data.get('message') ?? ''}\n\n${data.get('name') ?? ''}\n${data.get('phone') ?? ''}`;
+      return `mailto:${MAIL}?subject=${encodeURIComponent('Anfrage über die Website')}&body=${encodeURIComponent(body)}`;
+    };
+    const showError = (message: string, data: FormData) => show(
+      `<p class="text-primary font-semibold">${escape(message)}</p>
+       <p class="mt-1">Ihre Eingaben bleiben erhalten. Senden Sie die Nachricht <a class="text-primary font-semibold a-underline" href="${mailtoFor(data)}">per E-Mail</a> oder rufen Sie uns an: <a class="text-primary font-semibold a-underline" href="tel:066914271">06691 4271</a>.</p>`
+    );
+
+    const params = new URLSearchParams(location.search);
+    if (params.get('status') === 'gesendet') show('<p class="text-primary font-semibold">Vielen Dank! Ihre Nachricht ist bei uns angekommen. Wir melden uns zeitnah.</p>');
+    if (params.get('status') === 'fehler') showError('Die Nachricht konnte nicht gesendet werden.', new FormData(form));
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+      const data = new FormData(form);
+      button.disabled = true;
+      button.textContent = 'Wird gesendet …';
+      show('');
+      try {
+        const response = await fetch(form.action, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(result.error || 'Die Nachricht konnte nicht gesendet werden.');
+        form.reset();
+        show('<p class="text-primary font-semibold">Vielen Dank! Ihre Nachricht ist bei uns angekommen. Wir melden uns zeitnah.</p>');
+      } catch (error) {
+        const message = error instanceof TypeError ? 'Keine Verbindung. Bitte prüfen Sie Ihre Internetverbindung.' : (error as Error).message;
+        showError(message, data);
+      } finally {
+        button.disabled = false;
+        button.textContent = label;
+      }
+    });
+  }
+
+  initMapConsent();
+  initContactForm();
+</script>

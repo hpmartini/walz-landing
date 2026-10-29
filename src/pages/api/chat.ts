@@ -1,9 +1,7 @@
 import type { APIRoute } from 'astro';
+import { createRateLimiter, getClientIP, isCrossOrigin } from '../../lib/rate-limit';
 
 export const prerender = false;
-
-// Rate limiting store (in-memory, resets on cold start)
-const rateLimitStore = new Map<string, { count: number; resetTime: number }>();
 
 // Configuration
 const CONFIG = {
@@ -39,30 +37,7 @@ WICHTIGE REGELN:
 
 Bei Terminanfragen verweise auf die Kontaktseite oder die Telefonnummer.`;
 
-function getClientIP(request: Request): string {
-  const forwarded = request.headers.get('x-forwarded-for');
-  if (forwarded) {
-    return forwarded.split(',')[0].trim();
-  }
-  return 'unknown';
-}
-
-function checkRateLimit(ip: string): { allowed: boolean; remaining: number; resetIn: number } {
-  const now = Date.now();
-  const record = rateLimitStore.get(ip);
-  
-  if (!record || now > record.resetTime) {
-    rateLimitStore.set(ip, { count: 1, resetTime: now + CONFIG.RATE_LIMIT_WINDOW_MS });
-    return { allowed: true, remaining: CONFIG.RATE_LIMIT_MAX_REQUESTS - 1, resetIn: CONFIG.RATE_LIMIT_WINDOW_MS };
-  }
-  
-  if (record.count >= CONFIG.RATE_LIMIT_MAX_REQUESTS) {
-    return { allowed: false, remaining: 0, resetIn: record.resetTime - now };
-  }
-  
-  record.count++;
-  return { allowed: true, remaining: CONFIG.RATE_LIMIT_MAX_REQUESTS - record.count, resetIn: record.resetTime - now };
-}
+const checkRateLimit = createRateLimiter(CONFIG.RATE_LIMIT_WINDOW_MS, CONFIG.RATE_LIMIT_MAX_REQUESTS);
 
 function validateInput(message: string): { valid: boolean; error?: string } {
   if (!message || typeof message !== 'string') {
@@ -142,6 +117,10 @@ async function callGemini(message: string): Promise<string> {
 }
 
 export const POST: APIRoute = async ({ request }) => {
+  if (isCrossOrigin(request)) {
+    return new Response(JSON.stringify({ error: 'Nicht erlaubt' }), { status: 403, headers: { 'Content-Type': 'application/json' } });
+  }
+
   const ip = getClientIP(request);
   const rateLimit = checkRateLimit(ip);
   
@@ -180,15 +159,4 @@ export const POST: APIRoute = async ({ request }) => {
       error: 'Es ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.',
     }), { status: 500, headers });
   }
-};
-
-export const OPTIONS: APIRoute = async () => {
-  return new Response(null, {
-    status: 200,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'POST, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type',
-    },
-  });
 };

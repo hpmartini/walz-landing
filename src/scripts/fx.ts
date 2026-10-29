@@ -378,6 +378,8 @@ function initAnchors() {
     window.dispatchEvent(new HashChangeEvent('hashchange'));
     if (lenis) lenis.scrollTo(target);
     else target.scrollIntoView({ behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
+    // preventDefault also cancels the native focus move; keyboard users (skip link) need it.
+    target.focus({ preventScroll: true });
   });
 }
 

@@ -205,6 +205,10 @@ header[data-elevate] {
 footer :focus-visible {
   outline-color: #ffffff;
 }
+/* Skip-link target: focus moves here programmatically; a ring around the whole page is noise. */
+main[tabindex="-1"]:focus-visible {
+  outline: none;
+}
 
 /* ---------- Reduced motion: CSS layer of the triple defense ---------- */
 

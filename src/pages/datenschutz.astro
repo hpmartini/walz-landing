@@ -9,7 +9,7 @@ import ChatWidget from '../components/ChatWidget.astro';
 <Layout title="Datenschutz" description="Datenschutzerklärung der Kanzlei Karsten Walz.">
   <Header />
 
-  <main>
+  <main id="main" tabindex="-1">
     <PageHero title="Datenschutz" subtitle="Informationen zur Verarbeitung personenbezogener Daten" />
 
     <section class="py-16 md:py-20 bg-bg">
@@ -35,8 +35,10 @@ import ChatWidget from '../components/ChatWidget.astro';
             <div>
               <h3 class="text-primary font-semibold text-lg">Google Maps</h3>
               <p class="mt-2">
-                Auf der Kontaktseite ist ein Google-Maps-Embed eingebunden. Bitte prüfen Sie die datenschutzrechtlichen
-                Anforderungen (Einwilligung/2-Klick-Lösung) vor dem Livegang.
+                Auf der Kontaktseite können Sie eine Karte von Google Maps (Google Ireland Limited, Gordon House, Barrow Street,
+                Dublin 4, Irland) anzeigen. Die Karte wird erst geladen, wenn Sie auf „Karte laden“ klicken. Erst dann werden
+                Daten wie Ihre IP-Adresse an Google übertragen. Weitere Informationen finden Sie in der
+                <a class="text-primary font-semibold a-underline" href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Datenschutzerklärung von Google</a>.
               </p>
             </div>
           </div>
