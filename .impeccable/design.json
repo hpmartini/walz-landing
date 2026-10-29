@@ -372,7 +372,7 @@
       "**Don't** use square corners, a separate display typeface, or an editorial magazine layout. That version was rolled back.",
       "**Don't** add a second accent colour or change the font.",
       "**Don't** let an animation delay content: no entrance replay on internal navigation, no slow fades.",
-      "**Don't** present the AI-generated images in `public/images/generated/` as photos of the Kanzlei."
+      "**Don't** present AI-generated imagery as photos of the Kanzlei."
     ]
   }
 }

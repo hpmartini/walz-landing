@@ -49,7 +49,7 @@ Website of Kanzlei Karsten Walz, Steuerberater in Schwalmstadt. It replaces the 
 - Real team photos: `public/images/team/` (owner and staff portraits, office header).
 - Real team data with tenure dates: `src/data/team.json`.
 - Service descriptions: `src/data/services.json`.
-- AI-generated images in `public/images/generated/` (hero, office exterior, team collaboration): not real photos of the Kanzlei; do not present them as such.
+- No AI-generated imagery in use (unused set removed 2026-10-29). If any is added, never present it as real photos of the Kanzlei.
 - No testimonials, client logos, case studies, ratings or awards exist. Do not fabricate them. Staff count "13+" comes from the chat prompt; verify before using as a headline claim.
 
 ## Product Principles
