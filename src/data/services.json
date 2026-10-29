@@ -109,8 +109,8 @@
   {
     "slug": "steuererklaerungen",
     "title": "Steuererklärungen",
-    "shortDesc": "Alle Steuererklärungen für Privatpersonen und Unternehmen.",
-    "longDesc": "Für Privatpersonen und Unternehmen erstellen wir alle erforderlichen Steuererklärungen termingerecht und optimiert.",
+    "shortDesc": "Alle Steuererklärungen für Privatpersonen, Vereine und Unternehmen.",
+    "longDesc": "Für Privatpersonen, Vereine und Unternehmen erstellen wir die erforderlichen Steuererklärungen termingerecht und optimiert.",
     "icon": "file",
     "benefits": [
       "Einkommensteuererklärungen",
