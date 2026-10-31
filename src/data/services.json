@@ -2,6 +2,7 @@
   {
     "slug": "existenzgruendung",
     "title": "Existenzgründungsberatung",
+    "heading": "Existenz\u00ADgründungs\u00ADberatung",
     "shortDesc": "Von der Geschäftsidee zur erfolgreichen Gründung.\nWir begleiten Sie auf Ihrem Weg - persönlich und vertrauensvoll.",
     "longDesc": "Einen Hauptschwerpunkt sehen wir in der Existenzgründungsberatung und dem Coaching. Wir begleiten Sie bedarfsgerecht und dauerhaft hin zum Erfolg. Von der ersten Idee über den Businessplan bis zur erfolgreichen Etablierung am Markt.",
     "icon": "rocket",
@@ -16,6 +17,7 @@
   {
     "slug": "nachfolgeberatung",
     "title": "Nachfolgeberatung",
+    "heading": "Nachfolge\u00ADberatung",
     "shortDesc": "Verantwortung weitergeben. Werte erhalten. Zukunft gestalten.",
     "longDesc": "Die Nachfolge gehört zu den bedeutendsten Entscheidungen im Leben eines Unternehmers. Dabei geht es nicht allein um steuerliche Fragen, sondern auch um wirtschaftliche Interessen, persönliche Vorstellungen und die Zukunft eines oft über Jahrzehnte aufgebauten Unternehmens. Wir begleiten Sie bei der frühzeitigen Planung und steuerlichen Gestaltung Ihrer Unternehmensnachfolge – mit Erfahrung, Augenmaß und dem Verständnis für die besonderen Herausforderungen dieses Schrittes.",
     "icon": "landing",
@@ -43,6 +45,7 @@
   {
     "slug": "betriebswirtschaftliche-beratung",
     "title": "Betriebswirtschaftliche Beratung",
+    "heading": "Betriebs\u00ADwirtschaft\u00ADliche Beratung",
     "shortDesc": "Fundierte Analysen und Strategien für Ihren wirtschaftlichen Erfolg.",
     "longDesc": "Für Unternehmen und Selbstständige bieten wir umfassende betriebswirtschaftliche Beratung. Wir analysieren Ihre Situation und entwickeln gemeinsam Strategien für nachhaltigen Erfolg.",
     "icon": "chart",
@@ -56,6 +59,7 @@
   {
     "slug": "finanzbuchhaltung",
     "title": "Finanzbuchhaltung",
+    "heading": "Finanz\u00ADbuch\u00ADhaltung",
     "shortDesc": "Zuverlässige Buchführung für den Überblick über Ihre Finanzen.",
     "longDesc": "Wir übernehmen Ihre laufende Finanzbuchhaltung professionell und zuverlässig. So behalten Sie stets den Überblick über Ihre finanzielle Situation.",
     "icon": "calculator",
@@ -70,6 +74,7 @@
   {
     "slug": "jahresabschluesse",
     "title": "Jahresabschlüsse",
+    "heading": "Jahres\u00ADabschlüsse",
     "shortDesc": "Professionelle Jahresabschlüsse für alle Rechtsformen.",
     "longDesc": "Wir erstellen Jahresabschlüsse für Unternehmen aller Rechtsformen – von der Einnahmenüberschussrechnung bis zur Bilanz mit Gewinn- und Verlustrechnung.",
     "icon": "document",
@@ -83,6 +88,7 @@
   {
     "slug": "lohnbuchhaltung",
     "title": "Lohnbuchhaltung",
+    "heading": "Lohn\u00ADbuch\u00ADhaltung",
     "shortDesc": "Pünktliche und korrekte Lohn- und Gehaltsabrechnungen.",
     "longDesc": "Wir erstellen zuverlässig Ihre Lohn- und Gehaltsabrechnungen und kümmern uns um alle damit verbundenen Meldepflichten.",
     "icon": "users",
@@ -96,6 +102,7 @@
   {
     "slug": "steuerberatung",
     "title": "Steuerberatung",
+    "heading": "Steuer\u00ADberatung",
     "shortDesc": "Individuelle Beratung für Ihre steuerlichen Angelegenheiten.",
     "longDesc": "Objektive Beratung, engagierte Vertretung Ihrer steuerlichen Interessen und Kreativität in der Problemlösung sind unser Anspruch.",
     "icon": "shield",
@@ -109,6 +116,7 @@
   {
     "slug": "steuererklaerungen",
     "title": "Steuererklärungen",
+    "heading": "Steuer\u00ADerklä\u00ADrungen",
     "shortDesc": "Alle Steuererklärungen für Privatpersonen, Vereine und Unternehmen.",
     "longDesc": "Für Privatpersonen, Vereine und Unternehmen erstellen wir die erforderlichen Steuererklärungen termingerecht und optimiert.",
     "icon": "file",

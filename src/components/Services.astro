@@ -34,8 +34,8 @@ const icons: Record<string, string> = {
           data-spotlight
         >
           <div class="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-secondary/10 text-secondary border border-secondary/20 mb-5 transition-all duration-300 group-hover:bg-secondary/15 group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100" aria-hidden="true" set:html={icons[service.icon] ?? icons.file} />
-          <h3 class="text-xl font-semibold text-primary mb-3 hyphens-auto break-words">
-            {service.title}
+          <h3 class="text-xl font-semibold text-primary mb-3 break-words">
+            {service.heading ?? service.title}
           </h3>
           <p class="text-text mb-5 whitespace-pre-line">
             {service.shortDesc}
