@@ -1,4 +1,6 @@
 ---
+import { Picture } from 'astro:assets';
+import logo from '../assets/brand/logo.png';
 import services from '../data/services.json';
 
 const pathname = Astro.url.pathname;
@@ -22,14 +24,14 @@ const isActive = (href: string) => {
     <nav class="flex items-center justify-between">
       <!-- Logo -->
       <a href="/" class="block transition-transform duration-300 hover:scale-[1.01] motion-reduce:transition-none motion-reduce:hover:scale-100" aria-label="Kanzlei Karsten Walz – Startseite">
-        <img
-          src="/images/brand/logo.png"
+        <Picture
+          src={logo}
+          formats={['avif', 'webp']}
+          widths={[300, 500]}
+          sizes="(min-width: 768px) 315px, 257px"
           alt="Kanzlei Karsten Walz – Steuerberater"
-          width="500"
-          height="70"
           class="h-9 md:h-11 w-auto"
           loading="eager"
-          decoding="async"
         />
       </a>
 
