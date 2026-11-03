@@ -1,12 +1,53 @@
 ---
 import '../styles/global.css'
+import services from '../data/services.json';
+import { kanzlei, SITE } from '../data/kanzlei';
 
 interface Props {
   title: string;
   description?: string;
+  noindex?: boolean;
+  /** Extra JSON-LD nodes for this page (e.g. FAQPage, Service). */
+  schema?: Record<string, unknown>[];
 }
 
-const { title, description = "Kanzlei Karsten Walz - Ihr Steuerberater in Schwalmstadt seit 2000" } = Astro.props;
+const { title, description = "Kanzlei Karsten Walz - Ihr Steuerberater in Schwalmstadt seit 2000", noindex = false, schema = [] } = Astro.props;
+// Internal links have no trailing slash, so the canonical doesn't either.
+const canonical = new URL(Astro.url.pathname.replace(/(.)\/$/, '$1'), SITE).href;
+const fullTitle = `${title} | ${kanzlei.name}`;
+const ogImage = new URL('/og-image.jpg', SITE).href;
+const business = {
+  '@type': 'AccountingService',
+  '@id': `${SITE}/#kanzlei`,
+  name: kanzlei.name,
+  description: kanzlei.description,
+  url: `${SITE}/`,
+  logo: new URL('/images/brand/logo.png', SITE).href,
+  image: ogImage,
+  telephone: kanzlei.phoneIntl,
+  email: kanzlei.email,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: kanzlei.street,
+    postalCode: kanzlei.postalCode,
+    addressLocality: kanzlei.city,
+    addressRegion: kanzlei.region,
+    addressCountry: 'DE',
+  },
+  areaServed: [kanzlei.city, 'Schwalm-Eder-Kreis', kanzlei.region],
+  openingHoursSpecification: kanzlei.hours.flatMap((h) =>
+    h.slots.map(([opens, closes]) => ({ '@type': 'OpeningHoursSpecification', dayOfWeek: h.days, opens, closes }))
+  ),
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Leistungen',
+    itemListElement: services.map((s) => ({
+      '@type': 'Offer',
+      itemOffered: { '@type': 'Service', name: s.title, url: `${SITE}/leistungen/${s.slug}` },
+    })),
+  },
+};
+const jsonLd = { '@context': 'https://schema.org', '@graph': [business, ...schema] };
 ---
 
 <!doctype html>
@@ -15,6 +56,19 @@ const { title, description = "Kanzlei Karsten Walz - Ihr Steuerberater in Schwal
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:site_name" content={kanzlei.name} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="sitemap" href="/sitemap.xml" />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
     <!-- Pre-paint motion opt-in: must run before any content paints.
          fx-motion = JS motion layer active (never under reduced motion).
          fx-entrance = additionally gate the pre-paint hide + entrance
@@ -34,7 +88,7 @@ const { title, description = "Kanzlei Karsten Walz - Ihr Steuerberater in Schwal
     </script>
     <link rel="preload" href="/fonts/open-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>{title} | Kanzlei Karsten Walz</title>
+    <title>{fullTitle}</title>
   </head>
   <body class="bg-bg text-text">
     <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[70] bg-primary text-white px-5 py-3 rounded-lg font-semibold">Zum Inhalt springen</a>

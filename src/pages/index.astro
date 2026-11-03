@@ -6,17 +6,25 @@ import Services from '../components/Services.astro';
 import Trust from '../components/Trust.astro';
 import About from '../components/About.astro';
 import Contact from '../components/Contact.astro';
+import Faq from '../components/Faq.astro';
+import { faq } from '../data/kanzlei';
+
+const faqSchema = {
+  '@type': 'FAQPage',
+  mainEntity: faq.map(({ q, a }) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+};
 import Footer from '../components/Footer.astro';
 import ChatWidget from '../components/ChatWidget.astro';
 ---
 
-<Layout title="Startseite">
+<Layout title="Startseite" schema={[faqSchema]}>
   <Header />
   <main id="main" tabindex="-1">
     <Hero />
     <Services />
     <Trust />
     <About />
+    <Faq />
     <Contact />
   </main>
   <Footer />

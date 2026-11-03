@@ -6,6 +6,7 @@ import PageHero from '../../components/PageHero.astro';
 import ChatWidget from '../../components/ChatWidget.astro';
 
 import services from '../../data/services.json';
+import { SITE } from '../../data/kanzlei';
 
 export function getStaticPaths() {
   return services.map((service) => ({
@@ -15,9 +16,17 @@ export function getStaticPaths() {
 }
 
 const { service } = Astro.props;
+const serviceSchema = {
+  '@type': 'Service',
+  name: service.title,
+  description: service.longDesc,
+  url: `${SITE}/leistungen/${service.slug}`,
+  provider: { '@id': `${SITE}/#kanzlei` },
+  areaServed: 'Schwalmstadt',
+};
 ---
 
-<Layout title={service.title} description={service.shortDesc.replace("\n", " ")}>
+<Layout title={service.title} description={service.shortDesc.replace("\n", " ")} schema={[serviceSchema]}>
   <Header />
 
   <main id="main" tabindex="-1">

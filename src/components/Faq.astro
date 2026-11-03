@@ -1,0 +1,23 @@
+---
+import { faq } from '../data/kanzlei';
+---
+
+<section class="py-20 md:py-24 bg-bg-alt" aria-labelledby="faq-heading">
+  <div class="max-w-[900px] mx-auto px-6">
+    <div data-reveal>
+      <h2 id="faq-heading" class="text-3xl md:text-4xl text-primary mb-4">Häufige Fragen</h2>
+      <div class="w-16 h-1 bg-secondary mb-10" data-bar></div>
+    </div>
+    <div class="space-y-4" data-reveal-group>
+      {faq.map(({ q, a }) => (
+        <details class="group bg-white rounded-2xl border border-secondary/15 shadow-sm">
+          <summary class="flex items-center justify-between gap-4 cursor-pointer list-none p-6 text-lg font-semibold text-primary [&::-webkit-details-marker]:hidden">
+            {q}
+            <svg class="w-5 h-5 shrink-0 text-secondary transition-transform duration-300 group-open:rotate-45 motion-reduce:transition-none" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-width="2" d="M12 5v14M5 12h14"/></svg>
+          </summary>
+          <p class="px-6 pb-6 text-text">{a}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

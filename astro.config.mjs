@@ -5,6 +5,7 @@ import vercel from '@astrojs/vercel';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://www.kanzlei-karstenwalz.de',
   output: 'static',
   adapter: vercel(),
   // The dev toolbar hydrates right in the page-entrance window and causes
