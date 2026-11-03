@@ -215,6 +215,20 @@ header[data-elevate] {
   }
 }
 
+/* Touch: a 20px text link grows a 44px-high hit area (12px above and below).
+   Its list must space rows by the same 12px (pointer-coarse:*:py-3) so areas abut. */
+@media (pointer: coarse) {
+  .tap-link {
+    position: relative;
+    display: inline-block;
+  }
+  .tap-link::before {
+    content: "";
+    position: absolute;
+    inset: -0.75rem -0.5rem;
+  }
+}
+
 /* Global keyboard focus */
 :focus-visible {
   outline: 2px solid var(--color-primary);

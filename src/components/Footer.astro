@@ -64,7 +64,7 @@ const IconInstagram = () => `
             href="https://www.facebook.com/Kanzlei.Karsten.Walz.Steuerberater/"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-secondary/35 bg-white/10 text-white/90 hover:bg-white/15 hover:text-white transition-all duration-300 hover:scale-105 motion-reduce:transition-none motion-reduce:hover:scale-100"
+            class="relative before:absolute before:-inset-0.5 before:content-[''] inline-flex items-center justify-center w-10 h-10 rounded-lg border border-secondary/35 bg-white/10 text-white/90 hover:bg-white/15 hover:text-white transition-all duration-300 hover:scale-105 motion-reduce:transition-none motion-reduce:hover:scale-100"
             aria-label="Facebook (öffnet in neuem Tab)"
           >
             <span set:html={IconFacebook()} />
@@ -73,7 +73,7 @@ const IconInstagram = () => `
             href="https://www.linkedin.com/in/karsten-walz-b74a02111/"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-secondary/35 bg-white/10 text-white/90 hover:bg-white/15 hover:text-white transition-all duration-300 hover:scale-105 motion-reduce:transition-none motion-reduce:hover:scale-100"
+            class="relative before:absolute before:-inset-0.5 before:content-[''] inline-flex items-center justify-center w-10 h-10 rounded-lg border border-secondary/35 bg-white/10 text-white/90 hover:bg-white/15 hover:text-white transition-all duration-300 hover:scale-105 motion-reduce:transition-none motion-reduce:hover:scale-100"
             aria-label="LinkedIn (öffnet in neuem Tab)"
           >
             <span set:html={IconLinkedIn()} />
@@ -82,7 +82,7 @@ const IconInstagram = () => `
             href="https://www.instagram.com/kanzlei_karsten_walz"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-secondary/35 bg-white/10 text-white/90 hover:bg-white/15 hover:text-white transition-all duration-300 hover:scale-105 motion-reduce:transition-none motion-reduce:hover:scale-100"
+            class="relative before:absolute before:-inset-0.5 before:content-[''] inline-flex items-center justify-center w-10 h-10 rounded-lg border border-secondary/35 bg-white/10 text-white/90 hover:bg-white/15 hover:text-white transition-all duration-300 hover:scale-105 motion-reduce:transition-none motion-reduce:hover:scale-100"
             aria-label="Instagram (öffnet in neuem Tab)"
           >
             <span set:html={IconInstagram()} />
@@ -96,10 +96,10 @@ const IconInstagram = () => `
           Leistungen
           <div class="w-10 h-0.5 bg-secondary/80 mt-2"></div>
         </h3>
-        <ul class="space-y-2">
+        <ul class="space-y-2 pointer-coarse:space-y-0 pointer-coarse:*:py-3">
           {leistungen.map((item) => (
             <li>
-              <a href={item.href} class="text-white/85 hover:text-white transition-colors duration-300 text-sm a-underline">
+              <a href={item.href} class="text-white/85 hover:text-white transition-colors duration-300 text-sm a-underline tap-link">
                 {item.label}
               </a>
             </li>
@@ -113,7 +113,7 @@ const IconInstagram = () => `
           Kontakt
           <div class="w-10 h-0.5 bg-secondary/80 mt-2"></div>
         </h3>
-        <ul class="space-y-3 text-white/85 text-sm">
+        <ul class="space-y-3 pointer-coarse:space-y-0 pointer-coarse:*:py-3 text-white/85 text-sm">
           <li class="flex items-start gap-2">
             <span class="text-secondary mt-0.5" set:html={IconMap()} />
             <span>
@@ -123,11 +123,11 @@ const IconInstagram = () => `
           </li>
           <li class="flex items-center gap-2">
             <span class="text-secondary" set:html={IconPhone()} />
-            <a href="tel:066914271" class="hover:text-white transition-colors duration-300">06691 4271</a>
+            <a href="tel:066914271" class="hover:text-white transition-colors duration-300 tap-link">06691 4271</a>
           </li>
           <li class="flex items-center gap-2">
             <span class="text-secondary" set:html={IconMail()} />
-            <a href="mailto:info@kanzlei-karstenwalz.de" class="hover:text-white transition-colors duration-300">
+            <a href="mailto:info@kanzlei-karstenwalz.de" class="hover:text-white transition-colors duration-300 tap-link">
               info@kanzlei-karstenwalz.de
             </a>
           </li>
@@ -148,19 +148,19 @@ const IconInstagram = () => `
           Rechtliches
           <div class="w-10 h-0.5 bg-secondary/80 mt-2"></div>
         </h3>
-        <ul class="space-y-2">
+        <ul class="space-y-2 pointer-coarse:space-y-0 pointer-coarse:*:py-3">
           <li>
-            <a href="/impressum" class="text-white/85 hover:text-white transition-colors duration-300 text-sm a-underline">
+            <a href="/impressum" class="text-white/85 hover:text-white transition-colors duration-300 text-sm a-underline tap-link">
               Impressum
             </a>
           </li>
           <li>
-            <a href="/datenschutz" class="text-white/85 hover:text-white transition-colors duration-300 text-sm a-underline">
+            <a href="/datenschutz" class="text-white/85 hover:text-white transition-colors duration-300 text-sm a-underline tap-link">
               Datenschutz
             </a>
           </li>
           <li>
-            <a href="/kontakt" class="text-white/85 hover:text-white transition-colors duration-300 text-sm a-underline">
+            <a href="/kontakt" class="text-white/85 hover:text-white transition-colors duration-300 text-sm a-underline tap-link">
               Kontakt
             </a>
           </li>
