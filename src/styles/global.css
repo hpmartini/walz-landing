@@ -56,6 +56,12 @@ body {
     font-weight: 400;
     color: var(--color-primary);
   }
+
+  /* Tailwind's default (text color at 50%) gave 2.1:1; #767676 is the lightest gray with 4.5:1 on white. */
+  ::placeholder {
+    color: #767676;
+    opacity: 1;
+  }
 }
 
 /* ---------- Lenis (recommended styles) ---------- */
