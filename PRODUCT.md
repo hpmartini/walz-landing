@@ -46,7 +46,7 @@ Website of Kanzlei Karsten Walz, Steuerberater in Schwalmstadt. It replaces the 
 
 ## Evidence on Hand
 
-- Real team photos: `public/images/team/` (owner and staff portraits, office header).
+- Real team photos: `src/assets/team/` (optimized via Astro `<Picture>`) (owner and staff portraits, office header).
 - Real team data with tenure dates: `src/data/team.json`.
 - Service descriptions: `src/data/services.json`.
 - No AI-generated imagery in use (unused set removed 2026-10-29). If any is added, never present it as real photos of the Kanzlei.

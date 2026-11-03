@@ -1,4 +1,6 @@
 ---
+import { Picture } from 'astro:assets';
+import headerPhoto from '../assets/team/header_Unterseite.jpg';
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -44,7 +46,7 @@ import ChatWidget from '../components/ChatWidget.astro';
 
         <div class="mt-12" data-reveal>
           <div class="rounded-2xl overflow-hidden border border-secondary/20 shadow-sm" data-clip>
-            <img src="/images/team/header_Unterseite.jpg" alt="Kanzlei" class="w-full h-[320px] object-cover" loading="lazy" decoding="async" />
+            <Picture src={headerPhoto} formats={['avif', 'webp']} widths={[640, 960, 1280, 1920]} sizes="(min-width: 1200px) 1152px, 100vw" alt="Kanzlei" class="w-full h-[320px] object-cover" />
           </div>
         </div>
 

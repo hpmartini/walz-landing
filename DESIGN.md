@@ -221,7 +221,7 @@ Deep Mauve pill fixed bottom-right with a round Rose Ash icon well; it opens a 1
 - **Do** use Deep Mauve for every brand moment and Dusty Mauve only for hover.
 - **Do** put a Rose Ash bar under every section heading and animate it with `data-bar`.
 - **Do** keep cards at 12–16px radius with a Rose Ash 15% border and `shadow-sm`, lifting on hover.
-- **Do** use real team photos from `public/images/team/` for people and heroes.
+- **Do** use real team photos from `src/assets/team/` (optimized via Astro `<Picture>`) for people and heroes.
 - **Do** keep reveals fast (0.5s, 0.06s stagger, 20px travel, `power2.out`) and fully disabled under `prefers-reduced-motion`.
 - **Do** keep the phone number and a Kontakt action visible on every page.
 

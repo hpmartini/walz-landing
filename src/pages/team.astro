@@ -5,7 +5,16 @@ import Footer from '../components/Footer.astro';
 import PageHero from '../components/PageHero.astro';
 import ChatWidget from '../components/ChatWidget.astro';
 
+import { Picture } from 'astro:assets';
 import team from '../data/team.json';
+
+// team.json keeps its legacy /images/team/<file> paths; the files live in src/assets/team so Astro can optimize them.
+const photos = import.meta.glob<{ default: ImageMetadata }>('../assets/team/*.jpg', { eager: true });
+const photoFor = (path: string) => {
+  const photo = photos[`../assets/team/${path.split('/').pop()}`];
+  if (!photo) throw new Error(`Team photo missing in src/assets/team: ${path}`);
+  return photo.default;
+};
 ---
 
 <Layout title="Team" description="Team der Kanzlei Karsten Walz – erfahren, persönlich, zuverlässig.">
@@ -32,7 +41,7 @@ import team from '../data/team.json';
             >
               <div class="aspect-[4/3] bg-bg-alt relative">
                 {m.image ? (
-                  <img src={m.image} alt={m.name} class="w-full h-full object-cover object-top" loading="lazy" decoding="async" />
+                  <Picture src={photoFor(m.image)} formats={['avif', 'webp']} widths={[400, 640, 800, 1067]} sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw" alt={m.name} class="w-full h-full object-cover object-top" />
                 ) : (
                   <div class="w-full h-full flex items-center justify-center text-text">
                     <div class="text-center">

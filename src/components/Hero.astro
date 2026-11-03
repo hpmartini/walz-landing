@@ -1,16 +1,21 @@
 ---
+import { Picture } from 'astro:assets';
+import headerPhoto from '../assets/team/header_Unterseite.jpg';
 
 ---
 
 <section class="relative overflow-hidden py-20 md:py-28 bg-bg">
   <!-- Background image (parallax targets the img only; the overlay stays put) -->
   <div class="absolute inset-0" data-parallax="5">
-    <img
-      src="/images/team/header_Unterseite.jpg"
+    <Picture
+      src={headerPhoto}
+      formats={['avif', 'webp']}
+      widths={[640, 960, 1280, 1920, 2560]}
+      sizes="100vw"
       alt=""
       class="h-full w-full object-cover object-center"
       loading="eager"
-      decoding="async"
+      fetchpriority="high"
     />
     <div class="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/75 to-primary/30"></div>
   </div>
