@@ -154,13 +154,16 @@ const fillValid = async (page) => {
     await page.click('#mobile-menu-btn');
     check('AC-10', (await page.getAttribute('#mobile-menu-btn', 'aria-expanded')) === 'true', 'menu aria-expanded=true after click');
     await page.click('#mobile-menu-btn');
-    await page.click('#chat-open');
-    await page.waitForTimeout(400);
-    check('AC-10', await page.evaluate(() => document.getElementById('chat-modal')?.contains(document.activeElement)), 'chat dialog takes focus');
-    await page.keyboard.press('Escape');
-    await page.waitForTimeout(400);
-    check('AC-10', await page.evaluate(() => document.getElementById('chat-modal')?.classList.contains('hidden') && document.activeElement?.id === 'chat-open'), 'Escape closes chat, focus returns');
-    check('AC-10', await page.evaluate(() => { const m = document.getElementById('chat-modal'); return getComputedStyle(m).display === 'none' || getComputedStyle(m).visibility === 'hidden' || m.inert; }), 'closed chat not focusable');
+    // Chat sits behind FEATURES.chat (src/data/features.ts); off = no widget in the page.
+    if (await page.$('#chat-open')) {
+      await page.click('#chat-open');
+      await page.waitForTimeout(400);
+      check('AC-10', await page.evaluate(() => document.getElementById('chat-modal')?.contains(document.activeElement)), 'chat dialog takes focus');
+      await page.keyboard.press('Escape');
+      await page.waitForTimeout(400);
+      check('AC-10', await page.evaluate(() => document.getElementById('chat-modal')?.classList.contains('hidden') && document.activeElement?.id === 'chat-open'), 'Escape closes chat, focus returns');
+      check('AC-10', await page.evaluate(() => { const m = document.getElementById('chat-modal'); return getComputedStyle(m).display === 'none' || getComputedStyle(m).visibility === 'hidden' || m.inert; }), 'closed chat not focusable');
+    } else check('AC-10', !(await page.$('#chat-modal')), 'chat off: no chat dialog in the page');
     await page.goto(`${BASE}/kontakt`);
     check('AC-10', !(await page.isVisible('#website')), 'honeypot hidden');
     // Keyboard: Tab reaches the topic cards on the home page.

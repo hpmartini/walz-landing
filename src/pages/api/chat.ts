@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro';
 import { createRateLimiter, getClientIP, isCrossOrigin } from '../../lib/rate-limit';
 import { kanzlei, hoursText } from '../../data/kanzlei';
+import { FEATURES } from '../../data/features';
 
 export const prerender = false;
 
@@ -118,6 +119,7 @@ async function callGemini(message: string): Promise<string> {
 }
 
 export const POST: APIRoute = async ({ request }) => {
+  if (!FEATURES.chat) return new Response(null, { status: 404 });
   if (isCrossOrigin(request)) {
     return new Response(JSON.stringify({ error: 'Nicht erlaubt' }), { status: 403, headers: { 'Content-Type': 'application/json' } });
   }

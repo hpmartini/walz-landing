@@ -5,6 +5,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import PageHero from '../components/PageHero.astro';
 import ChatWidget from '../components/ChatWidget.astro';
+import { FEATURES } from '../data/features';
 ---
 
 <Layout title="Karriere" description="Karriere in der Kanzlei Karsten Walz – Arbeiten im Team, moderne Prozesse, wertschätzende Zusammenarbeit.">
@@ -66,5 +67,5 @@ import ChatWidget from '../components/ChatWidget.astro';
   </main>
 
   <Footer />
-  <ChatWidget />
+  {FEATURES.chat && <ChatWidget />}
 </Layout>

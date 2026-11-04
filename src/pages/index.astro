@@ -16,6 +16,7 @@ const faqSchema = {
 };
 import Footer from '../components/Footer.astro';
 import ChatWidget from '../components/ChatWidget.astro';
+import { FEATURES } from '../data/features';
 ---
 
 <Layout title="Startseite" schema={[faqSchema]}>
@@ -30,5 +31,5 @@ import ChatWidget from '../components/ChatWidget.astro';
     <Contact />
   </main>
   <Footer />
-  <ChatWidget />
+  {FEATURES.chat && <ChatWidget />}
 </Layout>

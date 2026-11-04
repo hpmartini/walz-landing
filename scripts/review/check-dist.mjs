@@ -71,7 +71,7 @@ check('AC-1', text(page('/')).includes('Ein eingespieltes Team'), 'home lacks "E
 
 // AC-4: home hero and anchor.
 const home = page('/');
-check('AC-4', text(home).includes('Steuerberatung in Schwalmstadt für Unternehmen und Privatpersonen'), 'hero H1');
+check('AC-4', text(home).includes('Ihr Steuerberater in Schwalmstadt Generationenübergreifend vertrauen uns Unternehmer, Selbstständige, Privatpersonen und Vereine.'), 'hero H1 + tag');
 check('AC-4', home.includes('href="/kontakt?anliegen=erstgespraech"') && /Erstgespräch anfragen/.test(home), 'hero CTA');
 check('AC-4', home.includes('href="#leistungen"') && home.includes('id="leistungen"'), '#leistungen anchor');
 for (const href of ['/leistungen/finanzbuchhaltung', '/leistungen/existenzgruendung', '/leistungen/nachfolgeberatung', '/leistungen/steuererklaerungen', '/team']) check('AC-4', home.includes(`href="${href}"`), `home link ${href}`);

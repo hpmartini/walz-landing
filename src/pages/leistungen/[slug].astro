@@ -5,6 +5,7 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import PageHero from '../../components/PageHero.astro';
 import ChatWidget from '../../components/ChatWidget.astro';
+import { FEATURES } from '../../data/features';
 import Faq from '../../components/Faq.astro';
 
 import services from '../../data/services.json';
@@ -129,5 +130,5 @@ const linkClass = 'text-primary font-semibold underline decoration-secondary und
   </main>
 
   <Footer />
-  <ChatWidget />
+  {FEATURES.chat && <ChatWidget />}
 </Layout>
