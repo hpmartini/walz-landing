@@ -6,7 +6,11 @@ DIST="${1:-dist/client}"
 fail=0
 for f in index.html leistungen/existenzgruendung/index.html leistungen/nachfolgeberatung/index.html \
   leistungen/finanzbuchhaltung/index.html leistungen/steuerberatung/index.html kontakt/index.html team/index.html; do
-  res="$(curl -s -X POST https://validator.schema.org/validate --data-urlencode "html@$DIST/$f" | tail -n +2)"
+  raw="$(curl -s -w '\n%{http_code}' -X POST https://validator.schema.org/validate --data-urlencode "html@$DIST/$f")"
+  code="${raw##*$'\n'}"
+  # External service: when it does not answer, say so instead of aborting the whole review run.
+  if [[ "$code" != 200 ]]; then echo "SKIP AC-9 schema $f: validator.schema.org answered HTTP $code"; continue; fi
+  res="$(printf '%s' "${raw%$'\n'*}" | tail -n +2)"
   summary="$(node -e '
     const r = JSON.parse(process.argv[1]);
     const types = []; let errors = 0;
