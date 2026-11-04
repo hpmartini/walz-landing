@@ -1,4 +1,5 @@
 ---
+import { kanzlei } from '../data/kanzlei';
 import { Picture } from 'astro:assets';
 import logo from '../assets/brand/logo.png';
 import services from '../data/services.json';
@@ -62,7 +63,7 @@ const IconInstagram = () => `
 
         <div class="mt-6 flex items-center gap-3">
           <a
-            href="https://www.facebook.com/Kanzlei.Karsten.Walz.Steuerberater/"
+            href={kanzlei.profiles.facebook}
             target="_blank"
             rel="noopener noreferrer"
             class="relative before:absolute before:-inset-0.5 before:content-[''] inline-flex items-center justify-center w-10 h-10 rounded-lg border border-secondary/35 bg-white/10 text-white/90 hover:bg-white/15 hover:text-white transition-all duration-300 hover:scale-105 motion-reduce:transition-none motion-reduce:hover:scale-100"
@@ -71,7 +72,7 @@ const IconInstagram = () => `
             <span set:html={IconFacebook()} />
           </a>
           <a
-            href="https://www.linkedin.com/in/karsten-walz-b74a02111/"
+            href={kanzlei.profiles.linkedin}
             target="_blank"
             rel="noopener noreferrer"
             class="relative before:absolute before:-inset-0.5 before:content-[''] inline-flex items-center justify-center w-10 h-10 rounded-lg border border-secondary/35 bg-white/10 text-white/90 hover:bg-white/15 hover:text-white transition-all duration-300 hover:scale-105 motion-reduce:transition-none motion-reduce:hover:scale-100"
@@ -80,7 +81,7 @@ const IconInstagram = () => `
             <span set:html={IconLinkedIn()} />
           </a>
           <a
-            href="https://www.instagram.com/kanzlei_karsten_walz"
+            href={kanzlei.profiles.instagram}
             target="_blank"
             rel="noopener noreferrer"
             class="relative before:absolute before:-inset-0.5 before:content-[''] inline-flex items-center justify-center w-10 h-10 rounded-lg border border-secondary/35 bg-white/10 text-white/90 hover:bg-white/15 hover:text-white transition-all duration-300 hover:scale-105 motion-reduce:transition-none motion-reduce:hover:scale-100"
@@ -118,18 +119,18 @@ const IconInstagram = () => `
           <li class="flex items-start gap-2">
             <span class="text-secondary mt-0.5" set:html={IconMap()} />
             <span>
-              Ziegenhainer Str. 3<br />
-              34613 Schwalmstadt
+              {kanzlei.street}<br />
+              {kanzlei.postalCode} {kanzlei.city}
             </span>
           </li>
           <li class="flex items-center gap-2">
             <span class="text-secondary" set:html={IconPhone()} />
-            <a href="tel:066914271" class="hover:text-white transition-colors duration-300 tap-link">06691 4271</a>
+            <a href={kanzlei.phoneHref} class="hover:text-white transition-colors duration-300 tap-link">{kanzlei.phone}</a>
           </li>
           <li class="flex items-center gap-2">
             <span class="text-secondary" set:html={IconMail()} />
-            <a href="mailto:info@kanzlei-karstenwalz.de" class="hover:text-white transition-colors duration-300 tap-link">
-              info@kanzlei-karstenwalz.de
+            <a href={`mailto:${kanzlei.email}`} class="hover:text-white transition-colors duration-300 tap-link">
+              {kanzlei.email}
             </a>
           </li>
         </ul>
@@ -137,8 +138,9 @@ const IconInstagram = () => `
         <div class="mt-6">
           <div class="text-white font-semibold mb-2">Öffnungszeiten</div>
           <div class="text-white/85 text-sm space-y-1">
-            <div class="flex items-center justify-between gap-6"><span>Mo – Do</span><span>08:00 – 12:30 Uhr <br /> 13:30 – 17:00 Uhr</span></div>
-            <div class="flex items-center justify-between gap-6"><span>Fr</span><span>08:00 – 13:00 Uhr</span></div>
+            {kanzlei.hours.map((h) => (
+              <div class="flex items-center justify-between gap-6"><span>{h.label}</span><span>{h.slots.map(([a, b], i) => <>{i > 0 && <br />}{a} – {b} Uhr</>)}</span></div>
+            ))}
           </div>
         </div>
       </div>

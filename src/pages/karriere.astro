@@ -1,4 +1,5 @@
 ---
+import { kanzlei } from '../data/kanzlei';
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -52,7 +53,7 @@ import ChatWidget from '../components/ChatWidget.astro';
             Senden Sie uns Ihre Bewerbung per E-Mail – gerne mit kurzem Lebenslauf.
           </p>
           <div class="mt-6 flex flex-col sm:flex-row gap-4">
-            <a href="mailto:info@kanzlei-karstenwalz.de" class="bg-primary text-white px-7 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-primary-light hover:scale-105 text-center motion-reduce:transition-none motion-reduce:hover:scale-100">
+            <a href={`mailto:${kanzlei.email}`} class="bg-primary text-white px-7 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-primary-light hover:scale-105 text-center motion-reduce:transition-none motion-reduce:hover:scale-100">
               Bewerbung per E-Mail
             </a>
             <a href="/kontakt" class="border-2 border-primary text-primary px-7 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-primary hover:text-white hover:scale-105 text-center motion-reduce:transition-none motion-reduce:hover:scale-100">

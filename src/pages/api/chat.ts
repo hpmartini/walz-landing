@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro';
 import { createRateLimiter, getClientIP, isCrossOrigin } from '../../lib/rate-limit';
+import { kanzlei, hoursText } from '../../data/kanzlei';
 
 export const prerender = false;
 
@@ -29,11 +30,11 @@ WICHTIGE REGELN:
 
 ÜBER DIE KANZLEI:
 - Kanzlei Karsten Walz, Steuerberater
-- Seit 2000 in Schwalmstadt, 13+ Mitarbeiter
+- Seit 2000 in Schwalmstadt, ein eingespieltes Team
 - Leistungen: Existenzgründungsberatung, Coaching, Betriebswirtschaftliche Beratung, Finanzbuchhaltung, Jahresabschlüsse, Lohnbuchhaltung, Steuerberatung, Steuererklärungen
-- Telefon: 06691 4271
-- Adresse: Ziegenhainer Str. 3, 34613 Schwalmstadt
-- Öffnungszeiten: Mo-Do 8-17 Uhr, Fr 8-13:30 Uhr
+- Telefon: ${kanzlei.phone}, E-Mail: ${kanzlei.email}
+- Adresse: ${kanzlei.street}, ${kanzlei.postalCode} ${kanzlei.city}
+- Öffnungszeiten: ${hoursText}
 
 Bei Terminanfragen verweise auf die Kontaktseite oder die Telefonnummer.`;
 

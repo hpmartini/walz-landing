@@ -2,8 +2,10 @@
 import '../styles/global.css'
 import services from '../data/services.json';
 import { kanzlei, SITE } from '../data/kanzlei';
+import { SEO } from '../data/seo';
 
 interface Props {
+  /** Fallback for pages without an entry in data/seo.ts (e.g. 404). */
   title: string;
   description?: string;
   noindex?: boolean;
@@ -11,10 +13,13 @@ interface Props {
   schema?: Record<string, unknown>[];
 }
 
-const { title, description = "Kanzlei Karsten Walz - Ihr Steuerberater in Schwalmstadt seit 2000", noindex = false, schema = [] } = Astro.props;
+const { title, noindex = false, schema = [] } = Astro.props;
 // Internal links have no trailing slash, so the canonical doesn't either.
-const canonical = new URL(Astro.url.pathname.replace(/(.)\/$/, '$1'), SITE).href;
-const fullTitle = `${title} | ${kanzlei.name}`;
+const path = Astro.url.pathname.replace(/(.)\/$/, '$1');
+const canonical = new URL(path, SITE).href;
+const seo = SEO[path];
+const fullTitle = seo?.title ?? `${title} | ${kanzlei.name}`;
+const description = seo?.description ?? Astro.props.description ?? kanzlei.description;
 const ogImage = new URL('/og-image.jpg', SITE).href;
 const business = {
   '@type': 'AccountingService',
@@ -26,6 +31,7 @@ const business = {
   image: ogImage,
   telephone: kanzlei.phoneIntl,
   email: kanzlei.email,
+  sameAs: Object.values(kanzlei.profiles),
   address: {
     '@type': 'PostalAddress',
     streetAddress: kanzlei.street,
@@ -47,7 +53,20 @@ const business = {
     })),
   },
 };
-const jsonLd = { '@context': 'https://schema.org', '@graph': [business, ...schema] };
+// Breadcrumb mirrors the visible navigation: Startseite > section > service.
+const LABELS: Record<string, string> = {
+  leistungen: 'Leistungen', kanzlei: 'Kanzlei', team: 'Team', karriere: 'Karriere',
+  kontakt: 'Kontakt', impressum: 'Impressum', datenschutz: 'Datenschutz',
+  ...Object.fromEntries(services.map((s) => [s.slug, s.title])),
+};
+const segments = path.split('/').filter(Boolean);
+const breadcrumb = !noindex && segments.length > 0 && segments.every((seg) => LABELS[seg]) && {
+  '@type': 'BreadcrumbList',
+  itemListElement: [{ name: 'Startseite', url: `${SITE}/` }, ...segments.map((seg, i) => ({
+    name: LABELS[seg], url: `${SITE}/${segments.slice(0, i + 1).join('/')}`,
+  }))].map((item, i) => ({ '@type': 'ListItem', position: i + 1, name: item.name, item: item.url })),
+};
+const jsonLd = { '@context': 'https://schema.org', '@graph': [business, ...(breadcrumb ? [breadcrumb] : []), ...schema] };
 ---
 
 <!doctype html>
