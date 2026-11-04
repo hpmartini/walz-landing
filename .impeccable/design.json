@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-29T13:44:21.634547+00:00",
+  "generatedAt": "2026-11-04T12:46:50.143842+00:00",
   "title": "Design System: Kanzlei Karsten Walz",
   "extensions": {
     "colorMeta": {
@@ -122,6 +122,21 @@
           "#a8afbd",
           "#cdd2da",
           "#f0f2f4"
+        ]
+      },
+      "error": {
+        "role": "error",
+        "displayName": "Error Red",
+        "canonical": "#dc2626",
+        "tonalRamp": [
+          "#470002",
+          "#730207",
+          "#a3010d",
+          "#d2161c",
+          "#f7453e",
+          "#fe8579",
+          "#ffbab1",
+          "#fee9e6"
         ]
       }
     },
