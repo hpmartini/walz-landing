@@ -160,6 +160,7 @@ const fillValid = async (page) => {
     await page.keyboard.press('Escape');
     await page.waitForTimeout(400);
     check('AC-10', await page.evaluate(() => document.getElementById('chat-modal')?.classList.contains('hidden') && document.activeElement?.id === 'chat-open'), 'Escape closes chat, focus returns');
+    check('AC-10', await page.evaluate(() => { const m = document.getElementById('chat-modal'); return getComputedStyle(m).display === 'none' || getComputedStyle(m).visibility === 'hidden' || m.inert; }), 'closed chat not focusable');
     await page.goto(`${BASE}/kontakt`);
     check('AC-10', !(await page.isVisible('#website')), 'honeypot hidden');
     // Keyboard: Tab reaches the topic cards on the home page.
