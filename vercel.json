@@ -8,7 +8,7 @@
     { "source": "/datenschutzerklaerung/", "destination": "/datenschutz", "permanent": true },
     { "source": "/cookie-richtlinie-eu", "destination": "/datenschutz", "permanent": true },
     { "source": "/cookie-richtlinie-eu/", "destination": "/datenschutz", "permanent": true },
-    { "source": "/:path(.+)/", "destination": "/:path", "permanent": true }
+    { "source": "/:path([^/\\\\].*)/", "destination": "/:path", "permanent": true }
   ],
   "headers": [
     {
