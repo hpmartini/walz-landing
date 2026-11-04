@@ -10,6 +10,7 @@ colors:
   bg: "#ffffff"
   bg-alt: "#f9f9f9"
   hairline: "#f3f4f6"
+  error: "#dc2626"
 typography:
   display:
     fontFamily: "Open Sans, sans-serif"
@@ -130,7 +131,10 @@ One warm, slightly dusty mauve family on white. No second accent exists, and non
 - **Light Grey** (`text-light`): Lowest emphasis, e.g. the header phone number at rest.
 - **White** (`bg`): Page and card background; text on mauve.
 - **Off-White** (`bg-alt`): Alternating section background (Leistungen), chat quick-reply bar, Direktkontakt panel.
-- **Hairline** (`hairline`): Header bottom border and mobile-menu divider.
+- **Hairline** (`hairline`): Header bottom border, mobile-menu divider, chat input bar divider.
+
+### Status
+- **Error Red** (`error`): Chat error messages only: text solid (4.8:1 on white), bubble fill at 6%, border at 25%.
 
 ### Named Rules
 **The One Hue Rule.** Every brand moment is Deep Mauve or a tint of Rose Ash. If a new element seems to need blue, green or gold, it doesn't.

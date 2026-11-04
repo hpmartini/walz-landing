@@ -29,6 +29,8 @@
   --color-text-light: #9f9f9f;
   --color-bg: #ffffff;
   --color-bg-alt: #f9f9f9;
+  --color-hairline: #f3f4f6;
+  --color-error: #dc2626; /* 4.8:1 on white; chat error text, tinted at /6 fill and /25 border */
 
   --font-sans: 'Open Sans', sans-serif;
 }
