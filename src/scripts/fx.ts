@@ -65,14 +65,16 @@ const triggerFor = (el: Element) =>
     : { scrollTrigger: { trigger: el, start: 'top 88%', once: true } };
 
 function initChoreography() {
+  // opacity, not autoAlpha: visibility:hidden drops links below the fold from the Tab order;
+  // focusing one scrolls it into view, which fires its reveal.
   document.querySelectorAll('[data-reveal]').forEach((el) => {
     if (skipEntrance(el)) return;
     const fadeOnly = el.getAttribute('data-reveal') === 'fade';
     gsap.fromTo(
       el,
-      { autoAlpha: 0, y: fadeOnly ? 0 : MOTION.revealY },
+      { opacity: 0, y: fadeOnly ? 0 : MOTION.revealY },
       {
-        autoAlpha: 1,
+        opacity: 1,
         y: 0,
         duration: MOTION.duration,
         delay: delayOf(el),
@@ -86,9 +88,9 @@ function initChoreography() {
     if (skipEntrance(group)) return;
     gsap.fromTo(
       group.children,
-      { autoAlpha: 0, y: MOTION.revealY },
+      { opacity: 0, y: MOTION.revealY },
       {
-        autoAlpha: 1,
+        opacity: 1,
         y: 0,
         duration: MOTION.duration,
         delay: delayOf(group),

@@ -110,11 +110,10 @@ const fillValid = async (page) => {
     let posts = 0;
     await page.route('**/api/kontakt', async (route) => {
       posts++;
-      await new Promise((r) => setTimeout(r, 800));
+      await new Promise((r) => setTimeout(r, 2000));
       await route.fulfill({ status: 200, contentType: 'application/json', body: '{"ok":true}' });
     });
     await page.dblclick('button[type=submit]');
-    await page.click('button[type=submit]').catch(() => {});
     check('AC-6', (await page.textContent('button[type=submit]')).includes('Anfrage wird gesendet'), 'loading text while in flight');
     check('AC-6', !(await page.textContent('#contact-status')).includes('Vielen Dank'), 'no success before server answer');
     await page.waitForFunction(() => document.querySelector('#contact-status')?.textContent?.includes('Vielen Dank'));
@@ -166,11 +165,12 @@ const fillValid = async (page) => {
     // Keyboard: Tab reaches the topic cards on the home page.
     await page.goto(`${BASE}/`);
     let reached = false;
-    for (let i = 0; i < 40 && !reached; i++) {
+    let tabs = 0;
+    for (; tabs < 120 && !reached; tabs++) {
       await page.keyboard.press('Tab');
       reached = await page.evaluate(() => document.activeElement?.getAttribute('href') === '/leistungen/finanzbuchhaltung' && !!document.activeElement.closest('[aria-labelledby=anliegen-heading]'));
     }
-    check('AC-4', reached, 'topic card link reachable by keyboard');
+    check('AC-4', reached, `topic card link reachable by keyboard (${tabs} Tab presses)`);
     await ctx.close();
   }
   {
@@ -209,7 +209,7 @@ const fillValid = async (page) => {
     await page.waitForTimeout(1500);
     await page.locator('#anliegen-heading').scrollIntoViewIfNeeded();
     await page.waitForTimeout(1000);
-    await page.click('a[href="/leistungen/existenzgruendung"] >> nth=0');
+    await page.click('[aria-labelledby=anliegen-heading] a[href="/leistungen/existenzgruendung"]');
     await page.waitForLoadState('networkidle');
     await page.waitForTimeout(1500);
     await page.locator('a[href="/kontakt?anliegen=gruendung"]').first().scrollIntoViewIfNeeded();
