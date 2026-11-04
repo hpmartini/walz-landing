@@ -93,6 +93,21 @@ for (const path of [...paths, '/404.html']) {
 // AC-3: robots allows crawling.
 const robots = src(join(DIST, 'robots.txt'));
 check('AC-3', /User-agent: \*\s*\nAllow: \//.test(robots), 'robots.txt does not allow crawling');
+// Production-host simulation: apply vercel.json header rules the way Vercel matches `missing` host conditions.
+const PROD = 'www.kanzlei-karstenwalz.de';
+const robotsHeaderFor = (host) => JSON.parse(src('vercel.json')).headers
+  .filter((r) => !(r.missing ?? []).some((m) => m.type === 'host' && m.value === host) && !(r.has ?? []).some((h) => h.type === 'host' && h.value !== host))
+  .flatMap((r) => r.headers).some((h) => h.key.toLowerCase() === 'x-robots-tag' && /noindex/.test(h.value));
+check('AC-3', !robotsHeaderFor(PROD), `production host ${PROD} would get X-Robots-Tag noindex`);
+check('AC-3', robotsHeaderFor('walz-landing-abc.vercel.app'), 'preview host would not get X-Robots-Tag noindex');
+for (const path of paths) check('AC-3', !/<meta name="robots" content="[^"]*noindex/.test(page(path)), `noindex meta on ${path}`);
+
+// AC-1: llms.txt carries the hours, phone and mail from kanzlei.ts.
+const llms = src(join(DIST, 'llms.txt'));
+check('AC-1', llms.includes('Fr 08:00–13:30 Uhr') && !llms.includes('13:00') && llms.includes('06691 4271') && llms.includes('info@kanzlei-karstenwalz.de'), 'llms.txt hours/contact differ from kanzlei.ts');
+
+// AC-10: honeypot hidden from assistive tech and the Tab order.
+check('AC-10', /<div class="hidden" aria-hidden="true">\s*<label for="website">[^<]*<\/label>\s*<input id="website"[^>]*tabindex="-1"/.test(page('/kontakt')), 'honeypot without aria-hidden / tabindex=-1');
 
 for (const [ac, list] of Object.entries(results)) console.log(`${list.every(Boolean) ? 'PASS' : 'FAIL'} ${ac} (${list.filter(Boolean).length}/${list.length} checks)`);
 process.exit(failures ? 1 : 0);

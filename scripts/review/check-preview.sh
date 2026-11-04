@@ -35,7 +35,7 @@ if hdr "$BASE/" | grep -qi '^x-robots-tag: noindex'; then echo "PASS AC-3 noinde
 # AC-11: hashed assets immutable; HTML, API, robots, sitemap not long-cached.
 asset="$(curl -s -b "$JAR" "$BASE/" | grep -oE '/_astro/[^"]+\.(css|js)' | head -1)"
 if hdr "$BASE$asset" | grep -qi '^cache-control: public, max-age=31536000, immutable'; then echo "PASS AC-11 $asset immutable"; else echo "FAIL AC-11 $asset"; fail=1; fi
-for p in / /kontakt /robots.txt /sitemap.xml /api/kontakt; do
+for p in / /kontakt /robots.txt /sitemap.xml /llms.txt /api/kontakt /fonts/open-sans-latin.woff2; do
   cc="$(hdr "$BASE$p" | grep -i '^cache-control:' || true)"
   if grep -qiE 'max-age=31536000|immutable' <<<"$cc"; then echo "FAIL AC-11 $p long-cached: $cc"; fail=1; else echo "PASS AC-11 $p ${cc:-no cache-control}"; fi
 done
