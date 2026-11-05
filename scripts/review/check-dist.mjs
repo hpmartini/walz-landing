@@ -109,5 +109,14 @@ check('AC-1', llms.includes('Fr 08:00–13:30 Uhr') && !llms.includes('13:00') &
 // AC-10: honeypot hidden from assistive tech and the Tab order.
 check('AC-10', /<div class="hidden" aria-hidden="true">\s*<label for="website">[^<]*<\/label>\s*<input id="website"[^>]*tabindex="-1"/.test(page('/kontakt')), 'honeypot without aria-hidden / tabindex=-1');
 
+// #12 AC-9: About shows a team photo via astro:assets (hashed /_astro/ file) with alt text and intrinsic size.
+const about = home.slice(home.indexOf('Lernen Sie Ihre Ansprechpartner kennen'));
+const aboutImg = about.match(/<img [^>]*>/)?.[0] ?? '';
+const teamFiles = new Set((await import('node:fs')).readdirSync('src/assets/team').map((f) => f.replace(/\.jpg$/, '')));
+const imgFile = aboutImg.match(/src="\/_astro\/([^".]+)\.[^"]+"/)?.[1];
+check('#12 AC-9', teamFiles.has(imgFile) && imgFile !== 'header_Unterseite', `about image ${imgFile} not a team photo`);
+check('#12 AC-9', /alt="[^"]{10,}"/.test(aboutImg), 'about image alt text missing or too short');
+check('#12 AC-9', /width="\d+"/.test(aboutImg) && /height="\d+"/.test(aboutImg), 'about image without width/height');
+
 for (const [ac, list] of Object.entries(results)) console.log(`${list.every(Boolean) ? 'PASS' : 'FAIL'} ${ac} (${list.filter(Boolean).length}/${list.length} checks)`);
 process.exit(failures ? 1 : 0);

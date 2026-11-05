@@ -39,6 +39,12 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Height of the closed sticky header below md (Header.astro); the mobile hero fills 100svh minus this.
+   scripts/review/hero.cjs fails if the header no longer matches. */
+:root {
+  --header-h: 53px;
+}
+
 body {
   font-family: var(--font-sans);
   color: var(--color-text);

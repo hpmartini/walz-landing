@@ -1,0 +1,302 @@
+{
+  "chromium-411x770": {
+    "engine": "chromium",
+    "w": 411,
+    "h": 770,
+    "mobile": true,
+    "home": {
+      "scrollY": 0,
+      "innerHeight": 770,
+      "innerWidth": 411,
+      "svh": 770,
+      "overflowX": 0,
+      "headerBottom": 53,
+      "heroTop": 53,
+      "heroBottom": 986.625,
+      "heroHeight": 933.625,
+      "titleTop": 133,
+      "h1Top": 133,
+      "cta1": {
+        "top": 696.25,
+        "bottom": 755.4375
+      },
+      "cta2": {
+        "top": 843.4375,
+        "bottom": 906.625
+      },
+      "hint": {
+        "top": 767.4375,
+        "bottom": 827.4375
+      },
+      "ctaBlockBottom": 906.625,
+      "describedby": "hero-cta-note",
+      "font": {
+        "title": 30,
+        "tag": 14,
+        "subtitle": 20,
+        "hint": 14,
+        "cta": 16
+      },
+      "texts": {
+        "title": "Ihr Steuerberater in Schwalmstadt",
+        "tag": "Generationenübergreifend vertrauen uns Unternehmer, Selbstständige, Privatpersonen und Vereine."
+      },
+      "clipped": [
+        "span \"Ihr Steuerberater in Schwalmst\": scrollH 77>75"
+      ]
+    },
+    "kontakt": {
+      "nameTop": 757,
+      "innerHeight": 770
+    }
+  },
+  "chromium-320x560": {
+    "engine": "chromium",
+    "w": 320,
+    "h": 560,
+    "mobile": true,
+    "home": {
+      "scrollY": 0,
+      "innerHeight": 560,
+      "innerWidth": 320,
+      "svh": 560,
+      "overflowX": 0,
+      "headerBottom": 53,
+      "heroTop": 53,
+      "heroBottom": 1145.875,
+      "heroHeight": 1092.875,
+      "titleTop": 133,
+      "h1Top": 133,
+      "cta1": {
+        "top": 855.5,
+        "bottom": 914.6875
+      },
+      "cta2": {
+        "top": 1002.6875,
+        "bottom": 1065.875
+      },
+      "hint": {
+        "top": 926.6875,
+        "bottom": 986.6875
+      },
+      "ctaBlockBottom": 1065.875,
+      "describedby": "hero-cta-note",
+      "font": {
+        "title": 30,
+        "tag": 14,
+        "subtitle": 20,
+        "hint": 14,
+        "cta": 16
+      },
+      "texts": {
+        "title": "Ihr Steuerberater in Schwalmstadt",
+        "tag": "Generationenübergreifend vertrauen uns Unternehmer, Selbstständige, Privatpersonen und Vereine."
+      },
+      "clipped": [
+        "span \"Ihr Steuerberater in Schwalmst\": scrollH 152>150"
+      ]
+    },
+    "kontakt": {
+      "nameTop": 830,
+      "innerHeight": 560
+    }
+  },
+  "chromium-360x640": {
+    "engine": "chromium",
+    "w": 360,
+    "h": 640,
+    "mobile": true,
+    "home": {
+      "scrollY": 0,
+      "innerHeight": 640,
+      "innerWidth": 360,
+      "svh": 640,
+      "overflowX": 0,
+      "headerBottom": 53,
+      "heroTop": 53,
+      "heroBottom": 1005.875,
+      "heroHeight": 952.875,
+      "titleTop": 133,
+      "h1Top": 133,
+      "cta1": {
+        "top": 715.5,
+        "bottom": 774.6875
+      },
+      "cta2": {
+        "top": 862.6875,
+        "bottom": 925.875
+      },
+      "hint": {
+        "top": 786.6875,
+        "bottom": 846.6875
+      },
+      "ctaBlockBottom": 925.875,
+      "describedby": "hero-cta-note",
+      "font": {
+        "title": 30,
+        "tag": 14,
+        "subtitle": 20,
+        "hint": 14,
+        "cta": 16
+      },
+      "texts": {
+        "title": "Ihr Steuerberater in Schwalmstadt",
+        "tag": "Generationenübergreifend vertrauen uns Unternehmer, Selbstständige, Privatpersonen und Vereine."
+      },
+      "clipped": [
+        "span \"Ihr Steuerberater in Schwalmst\": scrollH 77>75"
+      ]
+    },
+    "kontakt": {
+      "nameTop": 785,
+      "innerHeight": 640
+    }
+  },
+  "chromium-390x664": {
+    "engine": "chromium",
+    "w": 390,
+    "h": 664,
+    "mobile": true,
+    "home": {
+      "scrollY": 0,
+      "innerHeight": 664,
+      "innerWidth": 390,
+      "svh": 664,
+      "overflowX": 0,
+      "headerBottom": 53,
+      "heroTop": 53,
+      "heroBottom": 986.625,
+      "heroHeight": 933.625,
+      "titleTop": 133,
+      "h1Top": 133,
+      "cta1": {
+        "top": 696.25,
+        "bottom": 755.4375
+      },
+      "cta2": {
+        "top": 843.4375,
+        "bottom": 906.625
+      },
+      "hint": {
+        "top": 767.4375,
+        "bottom": 827.4375
+      },
+      "ctaBlockBottom": 906.625,
+      "describedby": "hero-cta-note",
+      "font": {
+        "title": 30,
+        "tag": 14,
+        "subtitle": 20,
+        "hint": 14,
+        "cta": 16
+      },
+      "texts": {
+        "title": "Ihr Steuerberater in Schwalmstadt",
+        "tag": "Generationenübergreifend vertrauen uns Unternehmer, Selbstständige, Privatpersonen und Vereine."
+      },
+      "clipped": [
+        "span \"Ihr Steuerberater in Schwalmst\": scrollH 77>75"
+      ]
+    },
+    "kontakt": {
+      "nameTop": 785,
+      "innerHeight": 664
+    }
+  },
+  "chromium-1440x900": {
+    "engine": "chromium",
+    "w": 1440,
+    "h": 900,
+    "mobile": false,
+    "home": {
+      "scrollY": 0,
+      "innerHeight": 900,
+      "innerWidth": 1440,
+      "svh": 900,
+      "overflowX": 0,
+      "headerBottom": 72.1875,
+      "heroTop": 72.1875,
+      "heroBottom": 890.375,
+      "heroHeight": 818.1875,
+      "titleTop": 184.1875,
+      "h1Top": 184.1875,
+      "cta1": {
+        "top": 647.1875,
+        "bottom": 706.375
+      },
+      "cta2": {
+        "top": 647.1875,
+        "bottom": 710.375
+      },
+      "hint": {
+        "top": 718.375,
+        "bottom": 778.375
+      },
+      "ctaBlockBottom": 778.375,
+      "describedby": "hero-cta-note",
+      "font": {
+        "title": 60,
+        "tag": 16,
+        "subtitle": 20,
+        "hint": 14,
+        "cta": 16
+      },
+      "texts": {
+        "title": "Ihr Steuerberater in Schwalmstadt",
+        "tag": "Generationenübergreifend vertrauen uns Unternehmer, Selbstständige, Privatpersonen und Vereine."
+      },
+      "clipped": [
+        "span \"Ihr Steuerberater in Schwalmst\": scrollH 153>150"
+      ]
+    },
+    "kontakt": null
+  },
+  "chromium-1280x720": {
+    "engine": "chromium",
+    "w": 1280,
+    "h": 720,
+    "mobile": false,
+    "home": {
+      "scrollY": 0,
+      "innerHeight": 720,
+      "innerWidth": 1280,
+      "svh": 720,
+      "overflowX": 0,
+      "headerBottom": 72.1875,
+      "heroTop": 72.1875,
+      "heroBottom": 890.375,
+      "heroHeight": 818.1875,
+      "titleTop": 184.1875,
+      "h1Top": 184.1875,
+      "cta1": {
+        "top": 647.1875,
+        "bottom": 706.375
+      },
+      "cta2": {
+        "top": 647.1875,
+        "bottom": 710.375
+      },
+      "hint": {
+        "top": 718.375,
+        "bottom": 778.375
+      },
+      "ctaBlockBottom": 778.375,
+      "describedby": "hero-cta-note",
+      "font": {
+        "title": 60,
+        "tag": 16,
+        "subtitle": 20,
+        "hint": 14,
+        "cta": 16
+      },
+      "texts": {
+        "title": "Ihr Steuerberater in Schwalmstadt",
+        "tag": "Generationenübergreifend vertrauen uns Unternehmer, Selbstständige, Privatpersonen und Vereine."
+      },
+      "clipped": [
+        "span \"Ihr Steuerberater in Schwalmst\": scrollH 153>150"
+      ]
+    },
+    "kontakt": null
+  }
+}

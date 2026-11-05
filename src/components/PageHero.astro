@@ -4,9 +4,11 @@ import headerPhoto from '../assets/team/header_Unterseite.jpg';
 interface Props {
   title: string;
   subtitle?: string;
+  /** Shorter band so the content below (e.g. the contact form) shows up sooner on phones. */
+  compact?: boolean;
 }
 
-const { title, subtitle } = Astro.props;
+const { title, subtitle, compact = false } = Astro.props;
 ---
 
 <section class="relative overflow-hidden bg-bg">
@@ -27,14 +29,14 @@ const { title, subtitle } = Astro.props;
   <div class="absolute -top-24 -left-24 w-72 h-72 rounded-full border border-secondary/35" data-drift="7"></div>
   <div class="absolute -bottom-28 -right-28 w-96 h-96 rounded-full border border-secondary/25" data-drift="-5"></div>
 
-  <div class="relative max-w-[1200px] mx-auto px-6 py-16 md:py-20">
+  <div class:list={['relative max-w-[1200px] mx-auto px-6', compact ? 'py-8 md:py-14' : 'py-16 md:py-20']}>
     <div class="max-w-3xl" data-reveal>
-      <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight">
+      <h1 class:list={[compact ? 'text-3xl' : 'text-4xl', 'md:text-5xl font-bold text-white leading-tight']}>
         {title}
       </h1>
-      <div class="w-20 h-1 bg-secondary mt-6" data-bar></div>
+      <div class:list={['w-20 h-1 bg-secondary', compact ? 'mt-4 md:mt-6' : 'mt-6']} data-bar></div>
       {subtitle && (
-        <p class="text-lg md:text-xl text-white mt-6 whitespace-pre-line">
+        <p class:list={['text-lg md:text-xl text-white whitespace-pre-line', compact ? 'mt-4 md:mt-6' : 'mt-6']}>
           {subtitle}
         </p>
       )}

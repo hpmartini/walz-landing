@@ -190,6 +190,33 @@ const fillValid = async (page) => {
     await ctx.close();
   }
 
+  // ---------- #12 AC-10: business card links every named route, each ends in a prefilled form ----------
+  {
+    const ctx = await newContext(browser, { viewport: { width: 390, height: 844 } });
+    const page = await ctx.newPage();
+    const want = { '/leistungen/finanzbuchhaltung': 'laufende Buchhaltung', '/leistungen/lohnbuchhaltung': 'Lohnabrechnung', '/leistungen/jahresabschluesse': 'Jahresabschluss' };
+    await page.goto(`${BASE}/`);
+    const card = page.locator('[aria-labelledby=anliegen-heading] li', { hasText: 'Unternehmen und Selbstständige' }).first();
+    const hrefs = await card.locator('a').evaluateAll((as) => as.map((a) => a.getAttribute('href')));
+    check('#12 AC-10', JSON.stringify(hrefs) === JSON.stringify(Object.keys(want)), `card links ${hrefs.join(', ')}`);
+    const seen = new Set();
+    for (let tabs = 0; tabs < 150 && seen.size < hrefs.length; tabs++) {
+      await page.keyboard.press('Tab');
+      const h = await page.evaluate(() => document.activeElement?.closest('[aria-labelledby=anliegen-heading] li')?.textContent.includes('Unternehmen und Selbstständige') ? document.activeElement.getAttribute('href') : null);
+      if (h) seen.add(h);
+    }
+    check('#12 AC-10', seen.size === hrefs.length, `Tab reaches ${seen.size}/${hrefs.length} card links`);
+    for (const href of hrefs) {
+      const res = await page.goto(`${BASE}${href}`);
+      check('#12 AC-10', res.status() === 200, `${href} -> ${res.status()}`);
+      const cta = await page.locator('main a[href^="/kontakt?anliegen="]').first().getAttribute('href');
+      await page.goto(`${BASE}${cta}`);
+      const got = await page.inputValue('#anliegen');
+      check('#12 AC-10', got === want[href], `${href} -> ${cta} prefills "${got}"`);
+    }
+    await ctx.close();
+  }
+
   // ---------- AC-13: screenshots and journey video ----------
   for (const width of [390, 1440]) {
     const ctx = await newContext(browser, { viewport: { width, height: width === 390 ? 844 : 900 }, reducedMotion: 'reduce' });

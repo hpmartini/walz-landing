@@ -17,14 +17,14 @@ const inputClass = 'w-full rounded-lg border border-secondary/25 bg-white px-4 p
   <Header />
 
   <main id="main" tabindex="-1">
-    <PageHero title="Erstgespräch oder Rückruf anfragen" subtitle="Beschreiben Sie kurz, wobei Sie Unterstützung suchen. Wir prüfen Ihr Anliegen und melden uns, um die nächsten Schritte mit Ihnen abzustimmen." />
+    <PageHero compact title="Erstgespräch oder Rückruf anfragen" subtitle="Beschreiben Sie kurz, wobei Sie Unterstützung suchen. Wir prüfen Ihr Anliegen und melden uns, um die nächsten Schritte mit Ihnen abzustimmen." />
 
-    <section class="py-16 md:py-20 bg-bg">
+    <section class="pt-8 pb-16 md:py-20 bg-bg">
       <div class="max-w-[1200px] mx-auto px-6">
         <div class="grid lg:grid-cols-2 gap-10 items-start">
           <div data-reveal>
             <h2 class="text-2xl md:text-3xl text-primary">Worum geht es bei Ihrer Anfrage</h2>
-            <div class="w-16 h-1 bg-secondary mt-5 mb-8"></div>
+            <div class="w-16 h-1 bg-secondary mt-4 mb-6 md:mt-5 md:mb-8"></div>
 
             <form id="contact-form" class="bg-white rounded-2xl border border-secondary/15 shadow-sm p-6 sm:p-8" method="post" action="/api/kontakt" novalidate data-mail={kanzlei.email} data-phone={kanzlei.phone} data-phone-href={kanzlei.phoneHref}>
               <div class="hidden" aria-hidden="true">

@@ -1,0 +1,1 @@
+PASS AC-12 / mobile perf=100 a11y=100 bp=100 seo-fails=[] lcp=1407ms cls=0.000 tbt=0ms
