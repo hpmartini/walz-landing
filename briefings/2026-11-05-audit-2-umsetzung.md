@@ -64,12 +64,12 @@ langlebig · unabhängig · Kundenwebsite im A/B-Test mit echten Besuchern; Änd
 Issue anlegen, Branch `feat/12-audit-2` von `feat/10-optimierungen` erstellen, Vorher-Screenshots und Vorher-Messwerte (AC-1 bis AC-6, AC-11) in den 4 Viewports plus Desktop aufnehmen, Lighthouse-Baseline von 93d6414 messen.
 
 ## Annahmen
-- `ui: on`: Screenshots und ein GIF des Hero-Ablaufs sind Pflicht im PR (vorgeschlagen)
-- Baseline 93d6414 über eine Vercel-Preview dieses Commits, sonst Redeploy als Preview (vorgeschlagen)
-- „Wenig Abstand“ = Navbar→Titel ≤ 32 px; „am unteren Rand“ = CTA-Block ≤ 48 px über Hero-Unterkante (vorgeschlagen)
-- „Bearbeitet“ = Speed Index < 3,8 s, ungenutztes JS < 24 KiB (vorgeschlagen)
-- About-Foto: Session wählt aus `src/assets/team`; Alt-Text nennt nur Namen, die im Projekt belegt sind (vorgeschlagen)
-- Anliegen-Links: bestehende Leistungsseiten, wo vorhanden, sonst `/kontakt?anliegen=buchhaltung|lohn|jahresabschluss` (vorgeschlagen)
-- Desktop-Prüfgrößen 1440×900 und 1280×720 (vorgeschlagen)
-- CTA-Hinweis klein unter den Buttons, per `aria-describedby` am Button (aus Briefing, vorgeschlagen)
-- Desktop-Hero höchstens eine Bildschirmhöhe, sonst gleich (aus Briefing, vorgeschlagen)
+- `ui: on`: Screenshots und ein GIF des Hero-Ablaufs sind Pflicht im PR (bestätigt 2026-11-05)
+- Baseline 93d6414 über eine Vercel-Preview dieses Commits, sonst Redeploy als Preview (bestätigt 2026-11-05)
+- „Wenig Abstand“ = Navbar→Titel ≤ 32 px; „am unteren Rand“ = CTA-Block ≤ 48 px über Hero-Unterkante (bestätigt 2026-11-05)
+- „Bearbeitet“ = Speed Index < 3,8 s, ungenutztes JS < 24 KiB (bestätigt 2026-11-05)
+- About-Foto: Session wählt aus `src/assets/team`; Alt-Text nennt nur Namen, die im Projekt belegt sind (bestätigt 2026-11-05)
+- Anliegen-Links: bestehende Leistungsseiten, wo vorhanden, sonst `/kontakt?anliegen=buchhaltung|lohn|jahresabschluss` (bestätigt 2026-11-05)
+- Desktop-Prüfgrößen 1440×900 und 1280×720 (bestätigt 2026-11-05)
+- CTA-Hinweis klein unter den Buttons, per `aria-describedby` am Button (aus Briefing, bestätigt 2026-11-05)
+- Desktop-Hero höchstens eine Bildschirmhöhe, sonst gleich (aus Briefing, bestätigt 2026-11-05)
