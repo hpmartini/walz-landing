@@ -1,9 +1,11 @@
 ---
+import { kanzlei } from '../data/kanzlei';
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import PageHero from '../components/PageHero.astro';
 import ChatWidget from '../components/ChatWidget.astro';
+import { FEATURES } from '../data/features';
 ---
 
 <Layout title="Seite nicht gefunden" description="Die angeforderte Seite gibt es nicht (mehr)." noindex>
@@ -27,7 +29,7 @@ import ChatWidget from '../components/ChatWidget.astro';
 
           <p class="mt-8 text-text">
             Sie suchen etwas Bestimmtes? Rufen Sie uns an:
-            <a class="text-primary font-semibold a-underline whitespace-nowrap" href="tel:066914271">06691 4271</a>
+            <a class="text-primary font-semibold a-underline whitespace-nowrap" href={kanzlei.phoneHref}>{kanzlei.phone}</a>
           </p>
         </div>
       </div>
@@ -35,5 +37,5 @@ import ChatWidget from '../components/ChatWidget.astro';
   </main>
 
   <Footer />
-  <ChatWidget />
+  {FEATURES.chat && <ChatWidget />}
 </Layout>

@@ -1,5 +1,7 @@
 import type { APIRoute } from 'astro';
 import { createRateLimiter, getClientIP, isCrossOrigin } from '../../lib/rate-limit';
+import { kanzlei } from '../../data/kanzlei';
+import { isAnliegen } from '../../data/anliegen';
 
 export const prerender = false;
 
@@ -8,22 +10,22 @@ const CONFIG = {
   RATE_LIMIT_MAX_REQUESTS: 5,
   MAX: { name: 120, phone: 40, email: 200, message: 5000 },
   RESEND_API_URL: 'https://api.resend.com/emails',
-  DEFAULT_TO: 'info@kanzlei-karstenwalz.de',
+  DEFAULT_TO: kanzlei.email,
 };
 
 const checkRateLimit = createRateLimiter(CONFIG.RATE_LIMIT_WINDOW_MS, CONFIG.RATE_LIMIT_MAX_REQUESTS);
 
-type Fields = { name: string; phone: string; email: string; message: string };
+type Fields = { name: string; phone: string; email: string; anliegen: string; message: string };
 
 function readFields(form: FormData): Fields {
   const get = (key: string) => String(form.get(key) ?? '').trim();
-  return { name: get('name'), phone: get('phone'), email: get('email'), message: get('message') };
+  return { name: get('name'), phone: get('phone'), email: get('email'), anliegen: get('anliegen'), message: get('message') };
 }
 
 function validate(f: Fields): string | null {
-  if (!f.name || !f.email || !f.message) return 'Bitte füllen Sie Name, E-Mail und Nachricht aus.';
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email)) return 'Bitte prüfen Sie Ihre E-Mail-Adresse.';
-  for (const key of Object.keys(CONFIG.MAX) as (keyof Fields)[]) {
+  const valid = f.name && f.message && isAnliegen(f.anliegen) && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email);
+  if (!valid) return 'Bitte geben Sie Ihren Namen, eine gültige E-Mail-Adresse und Ihr Anliegen ein.';
+  for (const key of Object.keys(CONFIG.MAX) as (keyof typeof CONFIG.MAX)[]) {
     if (f[key].length > CONFIG.MAX[key]) return 'Ihre Eingabe ist zu lang. Bitte kürzen Sie die Nachricht.';
   }
   return null;
@@ -38,6 +40,7 @@ async function sendMail(f: Fields): Promise<void> {
     `Name: ${f.name}`,
     `E-Mail: ${f.email}`,
     `Telefon: ${f.phone || '–'}`,
+    `Anliegen: ${f.anliegen}`,
     '',
     f.message,
   ].join('\n');
@@ -49,7 +52,8 @@ async function sendMail(f: Fields): Promise<void> {
       from,
       to: import.meta.env.CONTACT_TO || CONFIG.DEFAULT_TO,
       reply_to: f.email,
-      subject: `Anfrage über die Website: ${f.name}`,
+      // Collapse whitespace so a crafted name cannot break the subject header.
+      subject: `Anfrage über die Website: ${f.anliegen} – ${f.name.replace(/\s+/g, ' ')}`,
       text,
     }),
   });

@@ -1,9 +1,11 @@
 ---
+import { kanzlei } from '../data/kanzlei';
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import PageHero from '../components/PageHero.astro';
 import ChatWidget from '../components/ChatWidget.astro';
+import { FEATURES } from '../data/features';
 ---
 
 <Layout title="Impressum" description="Impressum der Kanzlei Karsten Walz.">
@@ -21,14 +23,14 @@ import ChatWidget from '../components/ChatWidget.astro';
           <div class="space-y-6 text-text">
             <div>
               <div class="font-semibold text-primary">Anschrift</div>
-              <div>Ziegenhainer Str. 3<br />34613 Schwalmstadt</div>
+              <div>{kanzlei.street}<br />{kanzlei.postalCode} {kanzlei.city}</div>
             </div>
 
             <div>
               <div class="font-semibold text-primary">Kontakt</div>
               <div>
-                Telefon: <a class="text-primary font-semibold a-underline" href="tel:066914271">06691 4271</a><br />
-                E-Mail: <a class="text-primary font-semibold a-underline" href="mailto:info@kanzlei-karstenwalz.de">info@kanzlei-karstenwalz.de</a>
+                Telefon: <a class="text-primary font-semibold a-underline" href={kanzlei.phoneHref}>{kanzlei.phone}</a><br />
+                E-Mail: <a class="text-primary font-semibold a-underline" href={`mailto:${kanzlei.email}`}>{kanzlei.email}</a>
               </div>
             </div>
 
@@ -46,5 +48,5 @@ import ChatWidget from '../components/ChatWidget.astro';
   </main>
 
   <Footer />
-  <ChatWidget />
+  {FEATURES.chat && <ChatWidget />}
 </Layout>

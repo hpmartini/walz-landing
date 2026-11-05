@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
+import Anliegen from '../components/Anliegen.astro';
 import Services from '../components/Services.astro';
 import Trust from '../components/Trust.astro';
 import About from '../components/About.astro';
@@ -15,12 +16,14 @@ const faqSchema = {
 };
 import Footer from '../components/Footer.astro';
 import ChatWidget from '../components/ChatWidget.astro';
+import { FEATURES } from '../data/features';
 ---
 
 <Layout title="Startseite" schema={[faqSchema]}>
   <Header />
   <main id="main" tabindex="-1">
     <Hero />
+    <Anliegen />
     <Services />
     <Trust />
     <About />
@@ -28,5 +31,5 @@ import ChatWidget from '../components/ChatWidget.astro';
     <Contact />
   </main>
   <Footer />
-  <ChatWidget />
+  {FEATURES.chat && <ChatWidget />}
 </Layout>
