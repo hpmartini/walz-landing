@@ -40,6 +40,7 @@ const business = {
     addressRegion: kanzlei.region,
     addressCountry: 'DE',
   },
+  geo: { '@type': 'GeoCoordinates', ...kanzlei.geo },
   areaServed: [kanzlei.city, 'Schwalm-Eder-Kreis', kanzlei.region],
   openingHoursSpecification: kanzlei.hours.flatMap((h) =>
     h.slots.map(([opens, closes]) => ({ '@type': 'OpeningHoursSpecification', dayOfWeek: h.days, opens, closes }))
@@ -66,7 +67,19 @@ const breadcrumb = !noindex && segments.length > 0 && segments.every((seg) => LA
     name: LABELS[seg], url: `${SITE}/${segments.slice(0, i + 1).join('/')}`,
   }))].map((item, i) => ({ '@type': 'ListItem', position: i + 1, name: item.name, item: item.url })),
 };
-const jsonLd = { '@context': 'https://schema.org', '@graph': [business, ...(breadcrumb ? [breadcrumb] : []), ...schema] };
+const webPage = !noindex && {
+  '@type': 'WebPage',
+  '@id': canonical,
+  url: canonical,
+  name: fullTitle,
+  inLanguage: 'de-DE',
+  about: { '@id': business['@id'] },
+  dateModified: kanzlei.updated,
+};
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [business, ...(webPage ? [webPage] : []), ...(breadcrumb ? [breadcrumb] : []), ...schema],
+};
 ---
 
 <!doctype html>

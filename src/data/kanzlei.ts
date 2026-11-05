@@ -10,6 +10,10 @@ export const kanzlei = {
   postalCode: '34613',
   city: 'Schwalmstadt',
   region: 'Hessen',
+  // OpenStreetMap building match for Ziegenhainer Str. 3 (checked 2026-11-05).
+  geo: { latitude: 50.91244, longitude: 9.25263 },
+  // Last content revision of the page texts; bump when texts change (schema dateModified).
+  updated: '2026-11-05',
   phone: '06691 4271',
   phoneIntl: '+49 6691 4271',
   phoneHref: 'tel:+4966914271',
