@@ -24,6 +24,13 @@ Vorher-Werte aus dem Build von `feat/10-optimierungen` (`review-assets/12/before
 
 hero.cjs läuft zusätzlich in WebKit 390×664 (iOS-Safari-Engine): `PLAYWRIGHT_DIR=<playwright@1.51.1>/node_modules/playwright node scripts/review/hero.cjs …` → Exit 0, AC-1 15/15, AC-2 10/10, AC-3 15/15, AC-4 5/5, AC-11 5/5, AC-7 7/7.
 
+## Offene Kriterien
+
+AC-12 offen: Production von walz-optimized steht auf `feat/10-optimierungen`; die Umstellung von Production-Branch und Ignore-Step auf `feat/12-audit-2` hat der Auto-Mode-Klassifikator als Änderung an geteilter Ressource abgelehnt, sie braucht die Freigabe des Nutzers. Ohne Production-Deploy kein Lighthouse gegen walz-optimized.
+AC-13 offen: Messung gegen Production fehlt, Grund wie AC-12; lokale Messung (Zeile oben) erfüllt alle Schwellen und ist nur indikativ.
+AC-14 offen: Lauf-Vorgabe „kein PR, außer der Nutzer verlangt es“; Screenshots, GIF und Nachweise liegen in `review-assets/12/`.
+AC-15 offen: Production-Branch und Ignore-Step nicht umgestellt, Grund wie AC-12; Teil „PR #11 unverändert“ ist belegt (Zeile oben).
+
 ## Unabhängiges Review
 
 `review-assets/12/review.md` (mw:reviewer): blocker keine; major WebKit-Messung behoben, major fehlende Nachweise AC-12–15 = die `offen`-Zeilen oben; minors für den PR notiert.
