@@ -1,0 +1,9 @@
+PASS AC-12 / mobile perf=100 a11y=100 bp=100 seo-fails=[] lcp=1448ms cls=0.000 tbt=18ms
+PASS AC-12 / desktop perf=100 a11y=100 bp=100 seo-fails=[] lcp=357ms cls=0.000 tbt=0ms
+PASS AC-12 /leistungen/existenzgruendung mobile perf=100 a11y=100 bp=100 seo-fails=[] lcp=1403ms cls=0.000 tbt=0ms
+PASS AC-12 /leistungen/existenzgruendung desktop perf=100 a11y=100 bp=100 seo-fails=[] lcp=352ms cls=0.000 tbt=0ms
+PASS AC-12 /kontakt mobile perf=100 a11y=100 bp=100 seo-fails=[] lcp=1429ms cls=0.000 tbt=3ms
+PASS AC-12 /kontakt desktop perf=100 a11y=100 bp=100 seo-fails=[] lcp=348ms cls=0.000 tbt=0ms
+PASS AC-12 /team mobile perf=100 a11y=100 bp=100 seo-fails=[] lcp=1509ms cls=0.000 tbt=0ms
+PASS AC-12 /team desktop perf=100 a11y=100 bp=100 seo-fails=[] lcp=382ms cls=0.000 tbt=0ms
+reports: review-assets/12/lh-baseline-2

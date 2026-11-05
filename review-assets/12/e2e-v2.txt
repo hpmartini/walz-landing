@@ -1,0 +1,88 @@
+ok   AC-5: H1
+ok   AC-5: form heading
+ok   AC-5: 7 options: Gründung, Nachfolge, laufende Buchhaltung, Lohnabrechnung, Jahresabschluss, Steuererklärung, andere Frage
+ok   AC-5: message label
+ok   AC-5: button label
+ok   AC-5: anliegen=erstgespraech -> ""
+ok   AC-5: anliegen=gruendung -> "Gründung"
+ok   AC-5: anliegen=nachfolge -> "Nachfolge"
+ok   AC-5: anliegen=buchhaltung -> "laufende Buchhaltung"
+ok   AC-5: anliegen=lohn -> "Lohnabrechnung"
+ok   AC-5: anliegen=jahresabschluss -> "Jahresabschluss"
+ok   AC-5: anliegen=steuererklaerung -> "Steuererklärung"
+ok   AC-5: anliegen=coaching -> "andere Frage"
+ok   AC-5: anliegen=bwl -> "andere Frage"
+ok   AC-5: anliegen=steuerberatung -> "andere Frage"
+ok   AC-5: anliegen=unbekannt -> ""
+ok   AC-5: anliegen=<script>alert(1)</script> -> ""
+ok   AC-5: anliegen=constructor -> ""
+ok   AC-5: hostile param never rendered or executed
+ok   AC-6: required-field message
+ok   AC-6: focus on first invalid field (#name)
+ok   AC-6: aria-invalid on email
+ok   AC-6: aria-describedby links field to error
+ok   AC-6: ARIA status region
+ok   AC-6: focus moves to next invalid field (#email)
+ok   AC-6: real API 503: error text
+ok   AC-6: inputs kept after error
+ok   AC-6: mailto link in error
+ok   AC-6: tel link in error
+ok   AC-6: loading text while in flight
+ok   AC-6: no success before server answer
+ok   AC-6: double click sent 1 request(s)
+ok   AC-6: success text after retry
+ok   AC-6: form reset after success
+ok   AC-10: no JS /: 0 content elements at opacity 0
+ok   AC-10: no JS /leistungen/existenzgruendung: 0 content elements at opacity 0
+ok   AC-10: no JS /kontakt: 0 content elements at opacity 0
+ok   AC-10: no JS /team: 0 content elements at opacity 0
+ok   AC-10: reduced motion /: 0 content elements at opacity 0
+ok   AC-10: reduced motion /leistungen/existenzgruendung: 0 content elements at opacity 0
+ok   AC-10: reduced motion /kontakt: 0 content elements at opacity 0
+ok   AC-10: reduced motion /team: 0 content elements at opacity 0
+ok   AC-10: 320px /: horizontal overflow 0px
+ok   AC-10: 320px /leistungen/existenzgruendung: horizontal overflow 0px
+ok   AC-10: 320px /kontakt: horizontal overflow 0px
+ok   AC-10: 320px /team: horizontal overflow 0px
+ok   AC-10: 390px /: horizontal overflow 0px
+ok   AC-10: 390px /leistungen/existenzgruendung: horizontal overflow 0px
+ok   AC-10: 390px /kontakt: horizontal overflow 0px
+ok   AC-10: 390px /team: horizontal overflow 0px
+ok   AC-10: 768px /: horizontal overflow 0px
+ok   AC-10: 768px /leistungen/existenzgruendung: horizontal overflow 0px
+ok   AC-10: 768px /kontakt: horizontal overflow 0px
+ok   AC-10: 768px /team: horizontal overflow 0px
+ok   AC-10: 1440px /: horizontal overflow 0px
+ok   AC-10: 1440px /leistungen/existenzgruendung: horizontal overflow 0px
+ok   AC-10: 1440px /kontakt: horizontal overflow 0px
+ok   AC-10: 1440px /team: horizontal overflow 0px
+ok   AC-10: 640px /: horizontal overflow 0px
+ok   AC-10: 640px /leistungen/existenzgruendung: horizontal overflow 0px
+ok   AC-10: 640px /kontakt: horizontal overflow 0px
+ok   AC-10: 640px /team: horizontal overflow 0px
+ok   AC-10: menu aria-expanded=false
+ok   AC-10: menu aria-expanded=true after click
+ok   AC-10: chat off: no chat dialog in the page
+ok   AC-10: honeypot hidden
+ok   AC-4: topic card link reachable by keyboard (6 Tab presses)
+ok   AC-10: axe /: clean
+ok   AC-10: axe /leistungen/existenzgruendung: clean
+ok   AC-10: axe /kontakt: clean
+ok   AC-10: axe /team: clean
+ok   AC-10: axe /kontakt?anliegen=gruendung: clean
+ok   #12 AC-10: card links /leistungen/finanzbuchhaltung, /leistungen/lohnbuchhaltung, /leistungen/jahresabschluesse
+ok   #12 AC-10: Tab reaches 3/3 card links
+ok   #12 AC-10: /leistungen/finanzbuchhaltung -> 200
+ok   #12 AC-10: /leistungen/finanzbuchhaltung -> /kontakt?anliegen=buchhaltung prefills "laufende Buchhaltung"
+ok   #12 AC-10: /leistungen/lohnbuchhaltung -> 200
+ok   #12 AC-10: /leistungen/lohnbuchhaltung -> /kontakt?anliegen=lohn prefills "Lohnabrechnung"
+ok   #12 AC-10: /leistungen/jahresabschluesse -> 200
+ok   #12 AC-10: /leistungen/jahresabschluesse -> /kontakt?anliegen=jahresabschluss prefills "Jahresabschluss"
+ok   AC-13: journey ends in prefilled form
+ok   AC-13: journey.gif written
+PASS AC-5 (19/19)
+PASS AC-6 (15/15)
+PASS AC-10 (37/37)
+PASS AC-4 (1/1)
+PASS #12 AC-10 (8/8)
+PASS AC-13 (2/2)

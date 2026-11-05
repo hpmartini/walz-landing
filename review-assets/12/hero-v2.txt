@@ -1,0 +1,72 @@
+ok   AC-7: chromium-411x770 title and tag verbatim
+ok   AC-1: chromium-411x770 CTA bottoms 689/689 <= 770
+ok   AC-1: chromium-411x770 hero 717px <= 100svh 770px
+ok   AC-1: chromium-411x770 header 53px + hero 717px = 100svh 770px
+ok   AC-2: chromium-411x770 clipped text: none
+ok   AC-2: chromium-411x770 horizontal overflow 0px
+ok   AC-3: chromium-411x770 CTAs side by side (top 617/617)
+ok   AC-3: chromium-411x770 CTA block (buttons + hint) 16px above hero bottom
+ok   AC-3: chromium-411x770 hint small below buttons, aria-describedby
+ok   AC-4: chromium-411x770 navbar -> title 16px (before 80)
+ok   AC-11: chromium-411x770 /kontakt first field top 573px (before 757, viewport 770, must fit incl. 48px field)
+ok   AC-7: chromium-320x560 title and tag verbatim
+ok   AC-1: chromium-320x560 CTA bottoms 487/487 <= 560
+ok   AC-1: chromium-320x560 hero 507px <= 100svh 560px
+ok   AC-1: chromium-320x560 header 53px + hero 507px = 100svh 560px
+ok   AC-2: chromium-320x560 clipped text: none
+ok   AC-2: chromium-320x560 horizontal overflow 0px
+ok   AC-3: chromium-320x560 CTAs side by side (top 401/401)
+ok   AC-3: chromium-320x560 CTA block (buttons + hint) 16px above hero bottom
+ok   AC-3: chromium-320x560 hint small below buttons, aria-describedby
+ok   AC-4: chromium-320x560 navbar -> title 16px (before 80)
+ok   AC-11: chromium-320x560 /kontakt first field top 639px (before 830, viewport 560)
+ok   AC-7: chromium-360x640 title and tag verbatim
+ok   AC-1: chromium-360x640 CTA bottoms 567/567 <= 640
+ok   AC-1: chromium-360x640 hero 587px <= 100svh 640px
+ok   AC-1: chromium-360x640 header 53px + hero 587px = 100svh 640px
+ok   AC-2: chromium-360x640 clipped text: none
+ok   AC-2: chromium-360x640 horizontal overflow 0px
+ok   AC-3: chromium-360x640 CTAs side by side (top 500/500)
+ok   AC-3: chromium-360x640 CTA block (buttons + hint) 16px above hero bottom
+ok   AC-3: chromium-360x640 hint small below buttons, aria-describedby
+ok   AC-4: chromium-360x640 navbar -> title 16px (before 80)
+ok   AC-11: chromium-360x640 /kontakt first field top 639px (before 785, viewport 640)
+ok   AC-7: chromium-390x664 title and tag verbatim
+ok   AC-1: chromium-390x664 CTA bottoms 607/607 <= 664
+ok   AC-1: chromium-390x664 hero 611px <= 100svh 664px
+ok   AC-1: chromium-390x664 header 53px + hero 611px = 100svh 664px
+ok   AC-2: chromium-390x664 clipped text: none
+ok   AC-2: chromium-390x664 horizontal overflow 0px
+ok   AC-3: chromium-390x664 CTAs side by side (top 541/541)
+ok   AC-3: chromium-390x664 CTA block (buttons + hint) 16px above hero bottom
+ok   AC-3: chromium-390x664 hint small below buttons, aria-describedby
+ok   AC-4: chromium-390x664 navbar -> title 16px (before 80)
+ok   AC-11: chromium-390x664 /kontakt first field top 601px (before 785, viewport 664, must fit incl. 48px field)
+ok   AC-7: webkit-390x664 title and tag verbatim
+ok   AC-1: webkit-390x664 CTA bottoms 608/608 <= 664
+ok   AC-1: webkit-390x664 hero 611px <= 100svh 664px
+ok   AC-1: webkit-390x664 header 53px + hero 611px = 100svh 664px
+ok   AC-2: webkit-390x664 clipped text: none
+ok   AC-2: webkit-390x664 horizontal overflow 0px
+ok   AC-3: webkit-390x664 CTAs side by side (top 542/542)
+ok   AC-3: webkit-390x664 CTA block (buttons + hint) 16px above hero bottom
+ok   AC-3: webkit-390x664 hint small below buttons, aria-describedby
+ok   AC-4: webkit-390x664 navbar -> title 16px (before n/a)
+ok   AC-11: webkit-390x664 /kontakt first field top 600px (before n/a, viewport 664, must fit incl. 48px field)
+ok   AC-7: chromium-1440x900 title and tag verbatim
+ok   AC-6: chromium-1440x900 hero 740px <= 100svh 900px
+ok   AC-7: chromium-1280x720 title and tag verbatim
+ok   AC-6: chromium-1280x720 hero 707px <= 100svh 720px
+ok   AC-5: subtitle 13.16px @320x560 < 18px @411x770
+info AC-5: title 24px @320x560 vs 32.34px @411x770
+info AC-5: tag 12px @320x560 vs 14px @411x770
+info AC-5: hint 12px @320x560 vs 13.86px @411x770
+info AC-5: cta 14px @320x560 vs 16px @411x770
+PASS AC-7 (7/7)
+PASS AC-1 (15/15)
+PASS AC-2 (10/10)
+PASS AC-3 (15/15)
+PASS AC-4 (5/5)
+PASS AC-11 (5/5)
+PASS AC-6 (2/2)
+PASS AC-5 (1/1)
