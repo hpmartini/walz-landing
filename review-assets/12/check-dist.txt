@@ -1,0 +1,8 @@
+PASS AC-8 (86/86 checks)
+PASS AC-1 (53/53 checks)
+PASS AC-9 (121/121 checks)
+PASS AC-4 (8/8 checks)
+PASS AC-7 (865/865 checks)
+PASS AC-3 (20/20 checks)
+PASS AC-10 (1/1 checks)
+PASS #12 AC-9 (3/3 checks)

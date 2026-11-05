@@ -8,6 +8,12 @@
         "value": "open sans",
         "createdAt": "2026-10-29T16:17:52.034Z",
         "reason": "client brand font from legacy site (docs/styleguide-legacy.md, DESIGN.md typography); look-and-feel must stay unchanged"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "open sans fallback",
+        "createdAt": "2026-11-05T22:18:47.279Z",
+        "reason": "Claude: metric-matched fallback alias for Open Sans (Arial scaled), not a new brand font; removes font-swap CLS (#12 AC-12)"
       }
     ]
   }
