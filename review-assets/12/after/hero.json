@@ -195,6 +195,55 @@
       "innerHeight": 664
     }
   },
+  "webkit-390x664": {
+    "engine": "webkit",
+    "w": 390,
+    "h": 664,
+    "mobile": true,
+    "home": {
+      "scrollY": 0,
+      "innerHeight": 664,
+      "innerWidth": 390,
+      "svh": 664,
+      "overflowX": 0,
+      "headerBottom": 53,
+      "heroTop": 53,
+      "heroBottom": 664,
+      "heroHeight": 611,
+      "titleTop": 69,
+      "h1Top": 69,
+      "cta1": {
+        "top": 542,
+        "bottom": 608
+      },
+      "cta2": {
+        "top": 542,
+        "bottom": 608
+      },
+      "hint": {
+        "top": 616,
+        "bottom": 648
+      },
+      "ctaBlockBottom": 648,
+      "describedby": "hero-cta-note",
+      "font": {
+        "title": 27.887999,
+        "tag": 12.616,
+        "subtitle": 15.604,
+        "hint": 12,
+        "cta": 14
+      },
+      "texts": {
+        "title": "Ihr Steuerberater in Schwalmstadt",
+        "tag": "Generationenübergreifend vertrauen uns Unternehmer, Selbstständige, Privatpersonen und Vereine."
+      },
+      "clipped": []
+    },
+    "kontakt": {
+      "nameTop": 600,
+      "innerHeight": 664
+    }
+  },
   "chromium-1440x900": {
     "engine": "chromium",
     "w": 1440,

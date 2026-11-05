@@ -22,8 +22,8 @@ Vorher-Werte aus dem Build von `feat/10-optimierungen` (`review-assets/12/before
 | AC-15 | offen: Production-Branch/Ignore-Step, Grund wie AC-12. PR #11 unverändert belegt: `gh pr view 11 --json headRefOid,body,commits` gegen `review-assets/12/pr11-before.json` → headRefOid gleich, Body gleich, 16/16 Commits. | teilweise |
 | AC-16 | hero.cjs AC-1/AC-2 PASS in allen Viewports ohne Textkürzung | nicht ausgelöst: kein Text gekürzt, keine Schwelle gelockert |
 
-WebKit (iOS-Safari-Engine, 390×664) ist im Skript vorgesehen, lokal aber nicht installiert; der Lauf meldet `FAIL setup` und wertet die Chromium-Viewports aus.
+hero.cjs läuft zusätzlich in WebKit 390×664 (iOS-Safari-Engine): `PLAYWRIGHT_DIR=<playwright@1.51.1>/node_modules/playwright node scripts/review/hero.cjs …` → Exit 0, AC-1 15/15, AC-2 10/10, AC-3 15/15, AC-4 5/5, AC-11 5/5, AC-7 7/7.
 
 ## Unabhängiges Review
 
-Siehe `review-assets/12/review.md`.
+`review-assets/12/review.md` (mw:reviewer): blocker keine; major WebKit-Messung behoben, major fehlende Nachweise AC-12–15 = die `offen`-Zeilen oben; minors für den PR notiert.

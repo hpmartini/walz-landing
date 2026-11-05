@@ -6,8 +6,9 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { execFileSync } = require('node:child_process');
-const globalRoot = execFileSync('npm', ['root', '-g'], { encoding: 'utf8' }).trim();
-const { chromium, webkit } = require(path.join(globalRoot, 'playwright'));
+// PLAYWRIGHT_DIR picks another install, e.g. one whose WebKit revision is already in the browser cache.
+const pwDir = process.env.PLAYWRIGHT_DIR || path.join(execFileSync('npm', ['root', '-g'], { encoding: 'utf8' }).trim(), 'playwright');
+const { chromium, webkit } = require(pwDir);
 
 const BASE = process.argv[2].replace(/\/$/, '');
 const OUT = process.argv[3] || 'review-assets/12/hero';
