@@ -9,13 +9,16 @@
  * The visual design (cards, rounded corners, type scale) is untouched by this
  * layer — it only choreographs how the existing design enters the viewport.
  */
-import Lenis from 'lenis';
+import type Lenis from 'lenis';
 import { gsap, ScrollTrigger, MOTION, prefersReducedMotion } from './motion';
 
 let lenis: Lenis | null = null;
 
-function initLenis() {
-  lenis = new Lenis({ lerp: 0.12 });
+// Lenis only smooths wheel scrolling; touch devices scroll natively, so they never download it.
+async function initLenis() {
+  if (!FINE_POINTER) return;
+  const { default: LenisCtor } = await import('lenis');
+  lenis = new LenisCtor({ lerp: 0.12 });
   lenis.on('scroll', ScrollTrigger.update);
   // Exposed for QA tooling (scroll scripting in browser automation).
   (window as unknown as { __lenis: Lenis }).__lenis = lenis;
@@ -359,7 +362,8 @@ function initElevate() {
   const el = document.querySelector<HTMLElement>('[data-elevate]');
   if (!el) return;
   const update = (y: number) => el.classList.toggle('fx-elevated', y > 8);
-  lenis?.on('scroll', (l) => update(l.scroll));
+  // Native scroll fires for Lenis too (it scrolls the window), so one listener covers both.
+  addEventListener('scroll', () => update(window.scrollY), { passive: true });
   update(window.scrollY);
 }
 
@@ -407,7 +411,7 @@ if (prefersReducedMotion()) {
   // motion, but remove it anyway in case the preference changed mid-session.
   document.documentElement.classList.remove('fx-motion');
 } else {
-  initLenis();
+  initLenis().catch(() => {}); // native scrolling stays if the chunk fails to load
   initChoreography();
   entrance();
   initParticles();

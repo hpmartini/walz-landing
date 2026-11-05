@@ -202,8 +202,8 @@ const fillValid = async (page) => {
     const seen = new Set();
     for (let tabs = 0; tabs < 150 && seen.size < hrefs.length; tabs++) {
       await page.keyboard.press('Tab');
-      const h = await page.evaluate(() => document.activeElement?.closest('[aria-labelledby=anliegen-heading] li')?.textContent.includes('Unternehmen und Selbstständige') ? document.activeElement.getAttribute('href') : null);
-      if (h) seen.add(h);
+      const h = await page.evaluate(() => document.activeElement?.closest('[aria-labelledby=anliegen-heading]') ? document.activeElement.getAttribute('href') : null);
+      if (hrefs.includes(h)) seen.add(h);
     }
     check('#12 AC-10', seen.size === hrefs.length, `Tab reaches ${seen.size}/${hrefs.length} card links`);
     for (const href of hrefs) {

@@ -254,8 +254,8 @@
       "overflowX": 0,
       "headerBottom": 72.1875,
       "heroTop": 72.1875,
-      "heroBottom": 776.375,
-      "heroHeight": 704.1875,
+      "heroBottom": 779.28125,
+      "heroHeight": 707.09375,
       "titleTop": 136.984375,
       "h1Top": 136.984375,
       "cta1": {
@@ -268,15 +268,15 @@
       },
       "hint": {
         "top": 675.984375,
-        "bottom": 711.578125
+        "bottom": 714.484375
       },
-      "ctaBlockBottom": 711.578125,
+      "ctaBlockBottom": 714.484375,
       "describedby": "hero-cta-note",
       "font": {
         "title": 60,
         "tag": 16,
         "subtitle": 20,
-        "hint": 12.96,
+        "hint": 14,
         "cta": 16
       },
       "texts": {

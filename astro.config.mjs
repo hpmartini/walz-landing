@@ -19,6 +19,8 @@ export default defineConfig({
   // The dev toolbar hydrates right in the page-entrance window and causes
   // dev-only animation jank that gets mistaken for a site bug.
   devToolbar: { enabled: false },
+  // The one site stylesheet (~9 KB gzip) was the only render-blocking request (Lighthouse, #12 AC-13).
+  build: { inlineStylesheets: 'always' },
   vite: {
     plugins: [tailwindcss()]
   }
