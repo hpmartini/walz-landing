@@ -44,7 +44,7 @@ const IconInstagram = () => `
 
 <footer class="bg-primary text-white pt-16 pb-8">
   <div class="max-w-[1200px] mx-auto px-6">
-    <div class="grid md:grid-cols-4 gap-12 mb-12" data-reveal-group>
+    <div class="grid md:grid-cols-4 gap-10 md:gap-12 mb-12" data-reveal-group>
       <!-- Logo & About -->
       <div class="md:col-span-1">
         <div class="mb-4">
@@ -98,7 +98,7 @@ const IconInstagram = () => `
           Leistungen
           <span class="block w-10 h-0.5 bg-secondary/80 mt-2" aria-hidden="true"></span>
         </h2>
-        <ul class="space-y-2 pointer-coarse:space-y-0 pointer-coarse:*:py-3">
+        <ul class="grid grid-cols-2 gap-x-4 md:block md:space-y-2 pointer-coarse:space-y-0 pointer-coarse:*:py-3">
           {leistungen.map((item) => (
             <li>
               <a href={item.href} class="text-white/85 hover:text-white transition-colors duration-300 text-sm a-underline tap-link">

@@ -3,6 +3,7 @@ import '../styles/global.css'
 import services from '../data/services.json';
 import { kanzlei, SITE } from '../data/kanzlei';
 import { SEO } from '../data/seo';
+import { crumbsFor } from '../data/breadcrumb';
 
 interface Props {
   /** Fallback for pages without an entry in data/seo.ts (e.g. 404). */
@@ -54,18 +55,10 @@ const business = {
     })),
   },
 };
-// Breadcrumb mirrors the visible navigation: Startseite > section > service.
-const LABELS: Record<string, string> = {
-  leistungen: 'Leistungen', kanzlei: 'Kanzlei', team: 'Team', karriere: 'Karriere',
-  kontakt: 'Kontakt', impressum: 'Impressum', datenschutz: 'Datenschutz',
-  ...Object.fromEntries(services.map((s) => [s.slug, s.title])),
-};
-const segments = path.split('/').filter(Boolean);
-const breadcrumb = !noindex && segments.length > 0 && segments.every((seg) => LABELS[seg]) && {
+const crumbs = crumbsFor(path);
+const breadcrumb = !noindex && crumbs && {
   '@type': 'BreadcrumbList',
-  itemListElement: [{ name: 'Startseite', url: `${SITE}/` }, ...segments.map((seg, i) => ({
-    name: LABELS[seg], url: `${SITE}/${segments.slice(0, i + 1).join('/')}`,
-  }))].map((item, i) => ({ '@type': 'ListItem', position: i + 1, name: item.name, item: item.url })),
+  itemListElement: crumbs.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.name, item: new URL(c.path, SITE).href })),
 };
 const webPage = !noindex && {
   '@type': 'WebPage',

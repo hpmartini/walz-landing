@@ -19,12 +19,12 @@ const facts = [
 ];
 ---
 
-<section aria-labelledby="fakten-heading" class="py-20 md:py-24 bg-bg-alt">
+<section aria-labelledby="fakten-heading" class="py-14 md:py-24 bg-bg-alt">
   <div class="max-w-[1200px] mx-auto px-6">
     <h2 id="fakten-heading" class="text-3xl md:text-4xl font-bold text-primary mb-8 md:mb-10" data-reveal>Die Kanzlei in Fakten</h2>
     <dl class="grid md:grid-cols-3 gap-6" data-reveal-group>
       {facts.map((fact) => (
-        <div class="flex flex-col-reverse text-center bg-white rounded-2xl p-8 border border-secondary/15 shadow-sm">
+        <div class="flex flex-col-reverse text-center bg-white rounded-2xl p-5 md:p-8 border border-secondary/15 shadow-sm">
           <dt class="text-text">{fact.label}</dt>
           <dd class="text-3xl md:text-4xl font-bold text-primary mb-2">{fact.value}</dd>
         </div>

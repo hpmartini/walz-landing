@@ -1,6 +1,7 @@
 ---
 import { Picture } from 'astro:assets';
 import headerPhoto from '../assets/team/header_Unterseite.jpg';
+import { crumbsFor } from '../data/breadcrumb';
 interface Props {
   title: string;
   subtitle?: string;
@@ -9,6 +10,8 @@ interface Props {
 }
 
 const { title, subtitle, compact = false } = Astro.props;
+// compact (contact) skips the trail so the form stays above the fold.
+const crumbs = !compact && crumbsFor(Astro.url.pathname.replace(/(.)\/$/, '$1'));
 ---
 
 <section class="on-dark relative overflow-hidden bg-bg">
@@ -31,6 +34,20 @@ const { title, subtitle, compact = false } = Astro.props;
 
   <div class:list={['relative max-w-[1200px] mx-auto px-6', compact ? 'py-8 md:py-14' : 'py-16 md:py-20']}>
     <div class="max-w-3xl" data-reveal>
+      {crumbs && (
+        <nav aria-label="Brotkrumen" class:list={['text-sm text-white/85', compact ? 'mb-3' : 'mb-5']}>
+          <ol class="flex flex-wrap items-center gap-x-2 gap-y-1">
+            {crumbs.map((c, i) => (
+              <li class="flex items-center gap-2">
+                {i > 0 && <span aria-hidden="true">/</span>}
+                {i < crumbs.length - 1
+                  ? <a href={c.path} class="underline underline-offset-2 hover:text-white">{c.name}</a>
+                  : <span aria-current="page">{c.name}</span>}
+              </li>
+            ))}
+          </ol>
+        </nav>
+      )}
       <h1 class:list={[compact ? 'text-3xl' : 'text-4xl', 'md:text-5xl font-bold text-white leading-tight']}>
         {title}
       </h1>

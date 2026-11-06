@@ -75,6 +75,10 @@ body {
     font-weight: 400;
     color: var(--color-primary);
   }
+  /* H1s are full sentences now; capitals made them 5 lines at 390px (audit V3 E2). */
+  main h1 {
+    text-transform: none;
+  }
 
   /* Body copy: no single word stranded on a paragraph's last line. */
   :is(p, li, blockquote) {
