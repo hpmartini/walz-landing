@@ -18,7 +18,7 @@ const { items = faq, heading = 'Häufige Fragen' } = Astro.props;
       {items.map(({ q, a }) => (
         <details class="group bg-white rounded-2xl border border-secondary/15 shadow-sm">
           <summary class="flex items-center justify-between gap-4 cursor-pointer list-none p-6 text-lg font-semibold text-primary [&::-webkit-details-marker]:hidden">
-            {q}
+            <span class="min-w-0 hyphens-auto [overflow-wrap:anywhere]">{q}</span>
             <svg class="w-5 h-5 shrink-0 text-secondary transition-transform duration-300 group-open:rotate-45 motion-reduce:transition-none" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-width="2" d="M12 5v14M5 12h14"/></svg>
           </summary>
           <p class="px-6 pb-6 text-text">{a}</p>

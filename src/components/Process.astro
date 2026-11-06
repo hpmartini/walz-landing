@@ -1,0 +1,24 @@
+---
+// "So läuft die Zusammenarbeit" (audit V2 9.4). Only steps the site already states; no durations, prices or deadlines.
+const steps = [
+  { title: 'Anfrage', text: 'Per Formular, Telefon oder E-Mail. Ein, zwei Sätze zu Ihrem Anliegen genügen.' },
+  { title: 'Erstgespräch', text: 'Wir besprechen Ihre Situation und klären, ob und wie wir Sie unterstützen können.' },
+  { title: 'Umfang und Vergütung', text: 'Vor der Beauftragung stimmen wir den Leistungsumfang und die Abrechnung mit Ihnen ab.' },
+  { title: 'Start', text: 'Wir besprechen mit Ihnen, welche Unterlagen wir benötigen, und beginnen mit der Betreuung.' },
+];
+---
+
+<section id="ablauf" aria-labelledby="ablauf-heading" class="py-20 md:py-24 bg-bg scroll-mt-24">
+  <div class="max-w-[1200px] mx-auto px-6">
+    <h2 id="ablauf-heading" class="text-3xl md:text-4xl font-bold text-primary mb-8 md:mb-10" data-reveal>So läuft die Zusammenarbeit</h2>
+    <ol class="grid md:grid-cols-2 xl:grid-cols-4 gap-6" data-reveal-group>
+      {steps.map((step, i) => (
+        <li class="bg-white rounded-xl p-8 border border-secondary/15 shadow-sm">
+          <span class="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-white font-bold mb-4" aria-hidden="true">{i + 1}</span>
+          <h3 class="text-xl font-semibold text-primary mb-2"><span class="sr-only">Schritt {i + 1}: </span>{step.title}</h3>
+          <p class="text-text">{step.text}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

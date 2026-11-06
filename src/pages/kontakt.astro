@@ -1,5 +1,5 @@
 ---
-import { kanzlei } from '../data/kanzlei';
+import { kanzlei, hoursText } from '../data/kanzlei';
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -17,7 +17,7 @@ const inputClass = 'w-full rounded-lg border border-secondary/25 bg-white px-4 p
   <Header />
 
   <main id="main" tabindex="-1">
-    <PageHero compact title="Erstgespräch oder Rückruf anfragen" subtitle="Beschreiben Sie kurz, wobei Sie Unterstützung suchen. Wir prüfen Ihr Anliegen und melden uns, um die nächsten Schritte mit Ihnen abzustimmen." />
+    <PageHero compact title="Erstgespräch oder Rückruf anfragen" subtitle="Im Erstgespräch klären wir, worum es geht und ob wir Sie unterstützen können. Nach Ihrer Anfrage melden wir uns per E-Mail oder Telefon, um einen Termin abzustimmen." />
 
     <section class="pt-8 pb-16 md:py-20 bg-bg">
       <div class="max-w-[1200px] mx-auto px-6">
@@ -26,7 +26,8 @@ const inputClass = 'w-full rounded-lg border border-secondary/25 bg-white px-4 p
             <h2 class="text-2xl md:text-3xl text-primary">Worum geht es bei Ihrer Anfrage</h2>
             <div class="w-16 h-1 bg-secondary mt-4 mb-6 md:mt-5 md:mb-8"></div>
 
-            <form id="contact-form" class="bg-white rounded-2xl border border-secondary/15 shadow-sm p-6 sm:p-8" method="post" action="/api/kontakt" novalidate data-mail={kanzlei.email} data-phone={kanzlei.phone} data-phone-href={kanzlei.phoneHref}>
+            <form id="contact-form" class="bg-white rounded-2xl border border-secondary/15 shadow-sm p-6 sm:p-8" method="post" action="/api/kontakt" novalidate data-mail={kanzlei.email} data-phone={kanzlei.phone} data-phone-href={kanzlei.phoneHref} data-hours={hoursText}>
+              <div id="form-errors" role="alert" class="mb-5 rounded-lg border border-error bg-white p-4 text-sm font-semibold text-error empty:hidden"></div>
               <div class="hidden" aria-hidden="true">
                 <label for="website">Website</label>
                 <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
@@ -36,6 +37,7 @@ const inputClass = 'w-full rounded-lg border border-secondary/25 bg-white px-4 p
                 <div>
                   <label class="block text-sm font-medium text-primary mb-2" for="name">Name *</label>
                   <input id="name" name="name" type="text" required maxlength="120" autocomplete="name" class={inputClass} />
+                  <p id="name-error" data-error="Bitte geben Sie Ihren Namen an." class="field-error mt-2 text-sm font-semibold text-error hidden"></p>
                 </div>
                 <div>
                   <label class="block text-sm font-medium text-primary mb-2" for="phone">Telefon (optional)</label>
@@ -44,6 +46,7 @@ const inputClass = 'w-full rounded-lg border border-secondary/25 bg-white px-4 p
                 <div class="sm:col-span-2">
                   <label class="block text-sm font-medium text-primary mb-2" for="email">E-Mail *</label>
                   <input id="email" name="email" type="email" required maxlength="200" autocomplete="email" inputmode="email" class={inputClass} />
+                  <p id="email-error" data-error="Bitte geben Sie eine E-Mail-Adresse im Format name@beispiel.de an." class="field-error mt-2 text-sm font-semibold text-error hidden"></p>
                 </div>
                 <div class="sm:col-span-2">
                   <label class="block text-sm font-medium text-primary mb-2" for="anliegen">Ihr Anliegen *</label>
@@ -51,10 +54,12 @@ const inputClass = 'w-full rounded-lg border border-secondary/25 bg-white px-4 p
                     <option value="">Bitte auswählen</option>
                     {ANLIEGEN.map((a) => <option value={a}>{a}</option>)}
                   </select>
+                  <p id="anliegen-error" data-error="Bitte wählen Sie aus, worum es geht. Wenn nichts passt, wählen Sie „andere Frage“." class="field-error mt-2 text-sm font-semibold text-error hidden"></p>
                 </div>
                 <div class="sm:col-span-2">
                   <label class="block text-sm font-medium text-primary mb-2" for="message">Ihr Anliegen in wenigen Sätzen *</label>
                   <textarea id="message" name="message" rows="5" required maxlength="5000" aria-describedby="message-hint" class={inputClass} placeholder="Zum Beispiel: Ich plane eine Gründung in Schwalmstadt und suche Unterstützung bei der Rechtsformwahl und Finanzplanung."></textarea>
+                  <p id="message-error" data-error="Bitte beschreiben Sie Ihr Anliegen in ein bis drei Sätzen." class="field-error mt-2 text-sm font-semibold text-error hidden"></p>
                   <p id="message-hint" class="mt-2 text-sm text-text">Für die erste Anfrage genügt eine kurze Beschreibung. Bescheide, Steuerunterlagen und andere vertrauliche Dokumente besprechen wir anschließend über einen geeigneten Übermittlungsweg.</p>
                 </div>
               </div>
@@ -145,9 +150,10 @@ const inputClass = 'w-full rounded-lg border border-secondary/25 bg-white px-4 p
 
   const TEXT = {
     sending: 'Anfrage wird gesendet …',
-    success: 'Vielen Dank. Ihre Anfrage wurde übermittelt. Wir melden uns, um Ihr Anliegen und die nächsten Schritte zu besprechen.',
-    invalid: 'Bitte geben Sie Ihren Namen, eine gültige E-Mail-Adresse und Ihr Anliegen ein.',
+    success: 'Vielen Dank, Ihre Anfrage ist bei uns eingegangen. Wir melden uns per E-Mail oder Telefon, um die nächsten Schritte abzustimmen.',
   };
+  // Short field names for the error summary (audit V2 9.8).
+  const FIELD_NAMES: Record<string, string> = { name: 'Name', email: 'E-Mail', anliegen: 'Anliegen', message: 'Beschreibung' };
 
   function initMapConsent() {
     const consent = document.getElementById('map-consent');
@@ -170,7 +176,8 @@ const inputClass = 'w-full rounded-lg border border-secondary/25 bg-white px-4 p
     const form = document.getElementById('contact-form') as HTMLFormElement | null;
     const status = document.getElementById('contact-status');
     if (!form || !status) return;
-    const { mail = '', phone = '', phoneHref = '' } = form.dataset;
+    const { mail = '', phone = '', phoneHref = '', hours = '' } = form.dataset;
+    const summary = document.getElementById('form-errors') as HTMLElement;
     const button = form.querySelector('button[type="submit"]') as HTMLButtonElement;
     const label = button.textContent?.trim() ?? '';
     const select = form.elements.namedItem('anliegen') as HTMLSelectElement;
@@ -193,20 +200,28 @@ const inputClass = 'w-full rounded-lg border border-secondary/25 bg-white px-4 p
       `<p>Ihre Anfrage konnte gerade nicht übermittelt werden. Ihre Eingaben bleiben erhalten. Versuchen Sie es erneut oder schreiben Sie an ${link(mailtoFor(data), mail)}.</p>
        <p class="mt-1">Telefon: ${link(phoneHref, phone)}</p>`
     );
-    const showSuccess = () => show(`<p class="text-primary font-semibold">${TEXT.success}</p>`);
+    const showSuccess = () => show(`<p class="text-primary font-semibold">${TEXT.success}</p><p class="mt-1">Dringend? ${link(phoneHref, phone)}, ${hours}.</p>`);
 
     const fieldValid = (el: HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement) => el.value.trim() !== '' && el.checkValidity();
+    // Field-level errors linked via aria-describedby; a summary only when two or more fields fail.
     const markFields = () => {
-      let firstInvalid: HTMLElement | null = null;
+      const invalid: HTMLElement[] = [];
       for (const el of required) {
         const ok = fieldValid(el);
+        const error = document.getElementById(`${el.id}-error`) as HTMLElement;
+        error.textContent = ok ? '' : `⚠ ${error.dataset.error}`;
+        error.classList.toggle('hidden', ok);
         el.setAttribute('aria-invalid', String(!ok));
         const hint = el.id === 'message' ? 'message-hint' : '';
-        el.setAttribute('aria-describedby', [ok ? '' : 'contact-status', hint].filter(Boolean).join(' '));
-        if (!el.getAttribute('aria-describedby')) el.removeAttribute('aria-describedby');
-        if (!ok && !firstInvalid) firstInvalid = el;
+        const describedby = [ok ? '' : error.id, hint].filter(Boolean).join(' ');
+        if (describedby) el.setAttribute('aria-describedby', describedby);
+        else el.removeAttribute('aria-describedby');
+        if (!ok) invalid.push(el);
       }
-      return firstInvalid;
+      summary.textContent = invalid.length >= 2
+        ? `Bitte prüfen Sie ${invalid.length} Angaben: ${invalid.map((el) => FIELD_NAMES[el.id]).join(', ')}.`
+        : '';
+      return invalid[0] ?? null;
     };
     required.forEach((el) => el.addEventListener('input', () => {
       if (el.getAttribute('aria-invalid') === 'true' && fieldValid(el)) markFields();
@@ -221,7 +236,7 @@ const inputClass = 'w-full rounded-lg border border-secondary/25 bg-white px-4 p
       if (inFlight) return;
       const firstInvalid = markFields();
       if (firstInvalid) {
-        show(`<p class="text-primary font-semibold">${TEXT.invalid}</p>`);
+        show('');
         firstInvalid.focus();
         return;
       }

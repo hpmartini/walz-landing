@@ -51,11 +51,11 @@ const fillValid = async (page) => {
     check('AC-5', (await page.textContent('h1')).includes('Erstgespräch oder Rückruf anfragen'), 'H1');
     check('AC-5', (await page.locator('h2', { hasText: 'Worum geht es bei Ihrer Anfrage' }).count()) === 1, 'form heading');
     const options = await page.$$eval('#anliegen option', (os) => os.map((o) => o.value).filter(Boolean));
-    check('AC-5', options.join('|') === 'Gründung|Nachfolge|laufende Buchhaltung|Lohnabrechnung|Jahresabschluss|Steuererklärung|andere Frage', `7 options: ${options.join(', ')}`);
+    check('AC-5', options.join('|') === 'Erstgespräch / allgemeine Anfrage|Gründung|Nachfolge|laufende Buchhaltung|Lohnabrechnung|Jahresabschluss|Steuererklärung|andere Frage', `8 options: ${options.join(', ')}`);
     check('AC-5', (await page.textContent('label[for=message]')).includes('Ihr Anliegen in wenigen Sätzen'), 'message label');
     check('AC-5', (await page.textContent('button[type=submit]')).trim() === 'Anfrage senden', 'button label');
     const prefill = {
-      erstgespraech: '', gruendung: 'Gründung', nachfolge: 'Nachfolge', buchhaltung: 'laufende Buchhaltung', lohn: 'Lohnabrechnung',
+      erstgespraech: 'Erstgespräch / allgemeine Anfrage', gruendung: 'Gründung', nachfolge: 'Nachfolge', buchhaltung: 'laufende Buchhaltung', lohn: 'Lohnabrechnung',
       jahresabschluss: 'Jahresabschluss', steuererklaerung: 'Steuererklärung', coaching: 'andere Frage', bwl: 'andere Frage', steuerberatung: 'andere Frage',
       unbekannt: '', '<script>alert(1)</script>': '', constructor: '', __proto__: '',
     };
@@ -77,16 +77,23 @@ const fillValid = async (page) => {
     const page = await ctx.newPage();
     await page.goto(`${BASE}/kontakt`);
 
-    // Empty submit: plan message, aria-invalid, focus on first invalid field.
+    // Empty submit: field messages + summary (audit V2 9.8), aria-invalid, focus on first invalid field.
     await page.click('button[type=submit]');
-    check('AC-6', (await page.textContent('#contact-status')).includes('Bitte geben Sie Ihren Namen, eine gültige E-Mail-Adresse und Ihr Anliegen ein.'), 'required-field message');
+    check('AC-6', (await page.textContent('#form-errors')).includes('Bitte prüfen Sie 4 Angaben: Name, E-Mail, Anliegen, Beschreibung.'), 'error summary');
+    check('AC-6', (await page.textContent('#name-error')).includes('Bitte geben Sie Ihren Namen an.'), 'name field message');
     check('AC-6', await page.evaluate(() => document.activeElement?.id === 'name'), 'focus on first invalid field (#name)');
     check('AC-6', (await page.getAttribute('#email', 'aria-invalid')) === 'true', 'aria-invalid on email');
-    check('AC-6', ((await page.getAttribute('#email', 'aria-describedby')) || '').includes('contact-status'), 'aria-describedby links field to error');
+    check('AC-6', ((await page.getAttribute('#email', 'aria-describedby')) || '').includes('email-error'), 'aria-describedby links field to error');
     check('AC-6', (await page.getAttribute('#contact-status', 'role')) === 'status' && (await page.getAttribute('#contact-status', 'aria-live')) === 'polite', 'ARIA status region');
     await page.fill('#name', 'Erika Test');
     await page.click('button[type=submit]');
     check('AC-6', await page.evaluate(() => document.activeElement?.id === 'email'), 'focus moves to next invalid field (#email)');
+    // Only the e-mail wrong: only the e-mail is reported, no summary.
+    await page.fill('#email', 'kein-format');
+    await page.selectOption('#anliegen', 'Gründung');
+    await page.fill('#message', 'Test');
+    await page.click('button[type=submit]');
+    check('AC-6', (await page.textContent('#form-errors')).trim() === '' && (await page.isVisible('#email-error')) && !(await page.isVisible('#name-error')), 'invalid e-mail: only e-mail reported');
 
     // Real path: preview API without mail key answers 5xx -> error state, inputs kept, links work.
     await page.goto(`${BASE}/kontakt`);
@@ -97,7 +104,7 @@ const fillValid = async (page) => {
     await page.waitForFunction(() => document.querySelector('#contact-status')?.textContent?.trim());
     const statusText = await page.textContent('#contact-status');
     if (realStatus >= 200 && realStatus < 300) {
-      check('AC-6', statusText.includes('Vielen Dank. Ihre Anfrage wurde übermittelt.'), `real API ${realStatus}: success text`);
+      check('AC-6', statusText.includes('Vielen Dank, Ihre Anfrage ist bei uns eingegangen.'), `real API ${realStatus}: success text`);
     } else {
       check('AC-6', statusText.includes('Ihre Anfrage konnte gerade nicht übermittelt werden. Ihre Eingaben bleiben erhalten.'), `real API ${realStatus}: error text`);
       check('AC-6', (await page.inputValue('#name')) === 'Erika Test' && (await page.inputValue('#anliegen')) === 'Gründung', 'inputs kept after error');
@@ -118,7 +125,7 @@ const fillValid = async (page) => {
     check('AC-6', !(await page.textContent('#contact-status')).includes('Vielen Dank'), 'no success before server answer');
     await page.waitForFunction(() => document.querySelector('#contact-status')?.textContent?.includes('Vielen Dank'));
     check('AC-6', posts === 1, `double click sent ${posts} request(s)`);
-    check('AC-6', (await page.textContent('#contact-status')).includes('Vielen Dank. Ihre Anfrage wurde übermittelt. Wir melden uns, um Ihr Anliegen und die nächsten Schritte zu besprechen.'), 'success text after retry');
+    check('AC-6', (await page.textContent('#contact-status')).includes('Vielen Dank, Ihre Anfrage ist bei uns eingegangen. Wir melden uns per E-Mail oder Telefon, um die nächsten Schritte abzustimmen.'), 'success text after retry');
     check('AC-6', (await page.inputValue('#name')) === '', 'form reset after success');
     await ctx.close();
   }

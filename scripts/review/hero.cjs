@@ -15,7 +15,7 @@ const OUT = process.argv[3] || 'review-assets/12/hero';
 const BEFORE = process.argv[4] ? JSON.parse(fs.readFileSync(process.argv[4], 'utf8')) : null;
 fs.mkdirSync(OUT, { recursive: true });
 
-const MOBILE = [[411, 770], [320, 560], [360, 640], [390, 664]];
+const MOBILE = [[411, 770], [320, 560], [360, 640], [390, 664], [390, 844], [360, 740]];
 const DESKTOP = [[1440, 900], [1280, 720]];
 const RUNS = [
   ...MOBILE.map(([w, h]) => ({ engine: 'chromium', w, h, mobile: true })),
@@ -42,9 +42,9 @@ function measureHome() {
   const header = document.querySelector('header');
   const hero = document.querySelector('main section');
   const byText = (sel, start) => [...hero.querySelectorAll(sel)].find((e) => e.textContent.trim().startsWith(start));
-  const titleLine = byText('span', 'Ihr Steuerberater in Schwalmstadt');
-  const tag = byText('span, p, div', 'Generationenübergreifend');
-  const subtitle = byText('p', 'Ob Sie ein Unternehmen');
+  const titleLine = byText('span', 'Steuerberater in Schwalmstadt für');
+  const tag = byText('p', 'Buchhaltung, Lohn');
+  const subtitle = tag; // audit V2 9.1: one lead line instead of tag + paragraph
   const hint = hero.querySelector('#hero-cta-note');
   const cta1 = hero.querySelector('a[href="/kontakt?anliegen=erstgespraech"]');
   const cta2 = hero.querySelector('a[href="#leistungen"]');
@@ -70,10 +70,11 @@ function measureHome() {
     scrollY: window.scrollY, innerHeight, innerWidth, svh,
     overflowX: document.documentElement.scrollWidth - innerWidth,
     headerBottom: r(header).bottom, heroTop: heroR.top, heroBottom: heroR.bottom, heroHeight: heroR.height,
-    titleTop: r(titleLine).top, h1Top: r(h1).top,
+    titleTop: r(hero.querySelector('p, h1')).top, h1Top: r(h1).top, // first text line (kicker above the H1)
     cta1: { top: c1.top, bottom: c1.bottom }, cta2: { top: c2.top, bottom: c2.bottom },
     hint: hn && { top: hn.top, bottom: hn.bottom },
     ctaBlockBottom: Math.max(c1.bottom, c2.bottom, hn ? hn.bottom : 0),
+    leadBottom: r(subtitle).bottom, h1Text: h1.textContent.replace(/\s+/g, ' ').trim(),
     describedby: cta1.getAttribute('aria-describedby') || '',
     font: { title: fs(titleLine), tag: fs(tag), subtitle: fs(subtitle), hint: hint ? fs(hint) : null, cta: fs(cta1) },
     texts: { title: titleLine.textContent.trim(), tag: tag.textContent.replace(/\s+/g, ' ').trim() },
@@ -114,20 +115,19 @@ function measureHome() {
   for (const [key, d] of Object.entries(data)) {
     const h = d.home;
     const gap = Math.round(h.titleTop - h.headerBottom);
-    check('AC-7', h.texts.title === 'Ihr Steuerberater in Schwalmstadt' && h.texts.tag === 'Generationenübergreifend vertrauen uns Unternehmer, Selbstständige, Privatpersonen und Vereine.', `${key} title and tag verbatim`);
+    // Audit V2 9.1: H1 holds only the heading; the lead is a separate <p>.
+    check('AC-7', h.h1Text === 'Steuerberater in Schwalmstadt für Betriebe, Selbstständige und Privatpersonen' && /^Buchhaltung, Lohn, Jahresabschluss und Steuererklärungen aus einer Hand\. Ein \d+-köpfiges Team um Steuerberater Karsten Walz, selbstständig seit 2000\.$/.test(h.texts.tag), `${key} H1 only heading, lead separate`);
     if (!d.mobile) {
       check('AC-6', h.heroHeight <= h.svh + 0.5, `${key} hero ${Math.round(h.heroHeight)}px <= 100svh ${Math.round(h.svh)}px`);
       continue;
     }
     check('AC-1', h.scrollY === 0 && h.cta1.bottom <= h.innerHeight && h.cta2.bottom <= h.innerHeight, `${key} CTA bottoms ${Math.round(h.cta1.bottom)}/${Math.round(h.cta2.bottom)} <= ${h.innerHeight}`);
-    check('AC-1', h.heroHeight <= h.svh + 0.5, `${key} hero ${Math.round(h.heroHeight)}px <= 100svh ${Math.round(h.svh)}px`);
-    // --header-h in global.css must match the real header, else the hero is cut off or leaves a gap.
-    // Only with before.json: the old layout never filled the screen.
-    if (BEFORE) check('AC-1', Math.abs(h.headerBottom + h.heroHeight - h.svh) <= 1, `${key} header ${h.headerBottom}px + hero ${Math.round(h.heroHeight)}px = 100svh ${Math.round(h.svh)}px`);
+    // Audit V2 9.1: the mobile hero is content-high; only the CTAs must sit in the first screen.
     check('AC-2', h.clipped.length === 0, `${key} clipped text: ${h.clipped.join('; ') || 'none'}`);
     check('AC-2', h.overflowX <= 0, `${key} horizontal overflow ${h.overflowX}px`);
     check('AC-3', Math.abs(h.cta1.top - h.cta2.top) <= 2, `${key} CTAs side by side (top ${Math.round(h.cta1.top)}/${Math.round(h.cta2.top)})`);
-    check('AC-3', h.heroBottom - h.ctaBlockBottom <= 48, `${key} CTA block (buttons + hint) ${Math.round(h.heroBottom - h.ctaBlockBottom)}px above hero bottom`);
+    // Audit V2 9.1 acceptance replaces the old "CTA block at hero bottom": buttons directly under the text.
+    check('AC-3', Math.min(h.cta1.top, h.cta2.top) - h.leadBottom <= 32, `${key} lead -> CTA ${Math.round(Math.min(h.cta1.top, h.cta2.top) - h.leadBottom)}px <= 32`);
     check('AC-3', !!h.hint && h.hint.top >= Math.max(h.cta1.bottom, h.cta2.bottom) && h.font.hint < h.font.subtitle && h.describedby.split(' ').includes('hero-cta-note'), `${key} hint small below buttons, aria-describedby`);
     const was = before(key, (b) => Math.round(b.home.titleTop - b.home.headerBottom));
     check('AC-4', gap <= 32 && (was === null || gap < was), `${key} navbar -> title ${gap}px (before ${was ?? 'n/a'})`);

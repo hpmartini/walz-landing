@@ -1,41 +1,38 @@
 ---
-const stats = [
-  {
-    icon: `<svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>`,
-    value: 'Seit Generationen',
-    count: false,
-    label: 'Ihre Kanzlei in der Region'
-  },
-  {
-    icon: `<svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>`,
-    value: 'Ein eingespieltes Team',
-    count: false,
-    label: 'Ein starkes Team für Sie'
-  },
-  {
-    icon: `<svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"/></svg>`,
-    value: 'Persönliche Beratung',
-    count: false,
-    label: 'Immer ein offenes Ohr'
-  }
+// Fact block instead of claim tiles (audit V2 9.5). Every number is derived from the published team page.
+import team from '../data/team.json';
+
+const count = (test: (role: string) => boolean) => team.filter((m) => test(m.role)).length;
+const qualifications = [
+  [count((r) => r.includes('Steuerberater')), 'Steuerberater (zugleich Diplom-Betriebswirt FH)'],
+  [count((r) => r.startsWith('Diplom-Betriebswirtin')), 'Diplom-Betriebswirtin (FH), M.Sc.'],
+  [count((r) => r === 'Steuerfachwirtin'), 'Steuerfachwirtin'],
+  [count((r) => r.startsWith('Steuerfachangestellte')), 'Steuerfachangestellte'],
+  [count((r) => r === 'Officemanagerin'), 'Officemanagerin'],
+  [count((r) => r.startsWith('Auszubildende')), 'Auszubildende'],
+] as const;
+
+const facts = [
+  { value: String(team.length), label: 'Personen im Team' },
+  { value: 'seit 2000', label: 'Karsten Walz selbstständiger Steuerberater' },
+  { value: 'seit 2004', label: 'alleiniger Kanzleiinhaber' },
 ];
 ---
 
-<section class="py-20 md:py-24 bg-bg">
+<section aria-labelledby="fakten-heading" class="py-20 md:py-24 bg-bg-alt">
   <div class="max-w-[1200px] mx-auto px-6">
-    <div class="grid md:grid-cols-3 gap-6" data-reveal-group>
-      {stats.map((stat) => (
-        <div
-          class="text-center bg-white rounded-2xl p-10 border border-secondary/15 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
-          data-spotlight
-        >
-          <div class="text-secondary mb-4 flex justify-center" aria-hidden="true" set:html={stat.icon} />
-          <div class="text-2xl md:text-3xl font-bold text-primary mb-2">
-            {stat.count ? <span data-count>{stat.value}</span> : stat.value}
-          </div>
-          <div class="text-text">{stat.label}</div>
+    <h2 id="fakten-heading" class="text-3xl md:text-4xl font-bold text-primary mb-8 md:mb-10" data-reveal>Die Kanzlei in Fakten</h2>
+    <dl class="grid md:grid-cols-3 gap-6" data-reveal-group>
+      {facts.map((fact) => (
+        <div class="flex flex-col-reverse text-center bg-white rounded-2xl p-8 border border-secondary/15 shadow-sm">
+          <dt class="text-text">{fact.label}</dt>
+          <dd class="text-3xl md:text-4xl font-bold text-primary mb-2">{fact.value}</dd>
         </div>
       ))}
-    </div>
+    </dl>
+    <p class="mt-8 text-text max-w-3xl" data-reveal>
+      Im Team: {qualifications.filter(([n]) => n > 0).map(([n, label]) => `${n} ${label}`).join(' · ')}.
+      <a href="/team" class="ml-1 text-primary font-semibold underline decoration-secondary underline-offset-4 hover:text-primary-light">Alle Ansprechpartner ansehen</a>
+    </p>
   </div>
 </section>

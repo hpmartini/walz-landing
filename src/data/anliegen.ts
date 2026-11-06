@@ -1,5 +1,6 @@
 // Contact form topics (plan ch. 3) and the ?anliegen= values that preselect one.
 export const ANLIEGEN = [
+  'Erstgespräch / allgemeine Anfrage',
   'Gründung',
   'Nachfolge',
   'laufende Buchhaltung',
@@ -9,9 +10,9 @@ export const ANLIEGEN = [
   'andere Frage',
 ] as const;
 
-// Known URL values. '' = known but no matching option (e.g. erstgespraech): select stays empty.
+// Known URL values; erstgespraech is the hero CTA (audit V2 9.7).
 export const ANLIEGEN_PARAM: Record<string, string> = {
-  erstgespraech: '',
+  erstgespraech: 'Erstgespräch / allgemeine Anfrage',
   gruendung: 'Gründung',
   nachfolge: 'Nachfolge',
   buchhaltung: 'laufende Buchhaltung',

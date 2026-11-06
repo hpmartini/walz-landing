@@ -13,7 +13,7 @@ export const kanzlei = {
   // OpenStreetMap building match for Ziegenhainer Str. 3 (checked 2026-11-05).
   geo: { latitude: 50.91244, longitude: 9.25263 },
   // Last content revision of the page texts; bump when texts change (schema dateModified).
-  updated: '2026-11-05',
+  updated: '2026-11-06',
   phone: '06691 4271',
   phoneIntl: '+49 6691 4271',
   phoneHref: 'tel:+4966914271',
@@ -57,6 +57,23 @@ export const faq = [
   },
   {
     q: 'Wie vereinbare ich einen Termin?',
-    a: `Rufen Sie uns an (${kanzlei.phone}), schreiben Sie an ${kanzlei.email} oder nutzen Sie das Anfrageformular auf der Kontaktseite – wir melden uns zeitnah zurück.`,
+    a: `Rufen Sie uns an (${kanzlei.phone}), schreiben Sie an ${kanzlei.email} oder nutzen Sie das Anfrageformular auf der Kontaktseite. Wir melden uns, sobald wir Ihre Anfrage geprüft haben, um einen Termin mit Ihnen abzustimmen.`,
+  },
+  // Decision FAQs (audit V2 9.6): only general rules and statements the service pages already make.
+  {
+    q: 'Was kostet die Zusammenarbeit?',
+    a: 'Steuerberater rechnen nach der Steuerberatervergütungsverordnung (StBVV) oder nach einer schriftlichen Vergütungsvereinbarung ab. Den Leistungsumfang und die Abrechnung legen wir vor der Beauftragung mit Ihnen fest.',
+  },
+  {
+    q: 'Wie läuft ein Wechsel von einer anderen Kanzlei?',
+    a: 'Sie erteilen uns eine Vollmacht. Wir klären mit Ihnen die Ausgangslage, stimmen den Zeitpunkt der Übernahme ab und besprechen, welche Unterlagen und Daten von der bisherigen Kanzlei benötigt werden.',
+  },
+  {
+    q: 'Welche Unterlagen brauche ich für die Einkommensteuererklärung?',
+    a: 'Typisch sind die Lohnsteuerbescheinigung, der letzte Steuerbescheid sowie Nachweise zu Werbungskosten, Versicherungen, Spenden und haushaltsnahen Dienstleistungen, bei Vermietung zusätzlich Mietverträge und Nebenkostenabrechnungen. Welche Unterlagen in Ihrem Fall nötig sind, besprechen wir mit Ihnen.',
+  },
+  {
+    q: 'Wie schnell erhalte ich eine Rückmeldung?',
+    a: `Wir melden uns, sobald wir Ihre Anfrage geprüft haben. Für dringende Fragen erreichen Sie uns telefonisch unter ${kanzlei.phone}.`,
   },
 ];

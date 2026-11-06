@@ -29,7 +29,7 @@ const service = Astro.props.service as Service;
 const serviceSchema = {
   '@type': 'Service',
   name: service.title,
-  description: service.longDesc,
+  description: service.intro, // same text as the visible lead (audit V2 P3)
   url: `${SITE}/leistungen/${service.slug}`,
   provider: { '@id': `${SITE}/#kanzlei` },
   areaServed: 'Schwalmstadt',

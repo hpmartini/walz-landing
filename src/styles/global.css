@@ -258,9 +258,13 @@ header[data-elevate] {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
+/* Dark surfaces (WCAG 2.4.7, audit V2 9.9): white ring plus a dark halo so it also reads next to white buttons. */
 .bg-primary :focus-visible,
+.on-dark :focus-visible,
 footer :focus-visible {
-  outline-color: #ffffff;
+  outline: 3px solid #ffffff;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 6px rgb(43 37 35 / 0.6);
 }
 /* Skip-link target: focus moves here programmatically; a ring around the whole page is noise. */
 main[tabindex="-1"]:focus-visible {

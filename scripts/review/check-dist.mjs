@@ -67,11 +67,11 @@ for (const path of paths) {
 }
 
 // AC-1: Trust stat text; no hard-coded contact data outside kanzlei.ts in the HTML sources.
-check('AC-1', text(page('/')).includes('Ein eingespieltes Team'), 'home lacks "Ein eingespieltes Team"');
+check('AC-1', /Die Kanzlei in Fakten.*Personen im Team\s*\d+/s.test(text(page('/'))) && !text(page('/')).includes('Seit Generationen'), 'home fact block derived from team.json (audit V2 9.5)');
 
 // AC-4: home hero and anchor.
 const home = page('/');
-check('AC-4', text(home).includes('Ihr Steuerberater in Schwalmstadt Generationenübergreifend vertrauen uns Unternehmer, Selbstständige, Privatpersonen und Vereine.'), 'hero H1 + tag');
+check('AC-4', /<h1[^>]*>(?:(?!<\/h1>)[\s\S])*Steuerberater in Schwalmstadt für Betriebe, Selbstständige und Privatpersonen(?:(?!<\/h1>)[\s\S])*<\/h1>/.test(home) && !/<h1[^>]*>(?:(?!<\/h1>)[\s\S])*Buchhaltung, Lohn/.test(home), 'hero H1 only heading (audit V2 9.1)');
 check('AC-4', home.includes('href="/kontakt?anliegen=erstgespraech"') && /Erstgespräch anfragen/.test(home), 'hero CTA');
 check('AC-4', home.includes('href="#leistungen"') && home.includes('id="leistungen"'), '#leistungen anchor');
 for (const href of ['/leistungen/finanzbuchhaltung', '/leistungen/existenzgruendung', '/leistungen/nachfolgeberatung', '/leistungen/steuererklaerungen', '/team']) check('AC-4', home.includes(`href="${href}"`), `home link ${href}`);

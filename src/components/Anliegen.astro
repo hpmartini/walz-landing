@@ -1,5 +1,5 @@
 ---
-// Three entry points right after the hero (plan ch. 2). Each card can carry several links.
+// Four entry points right after the hero (audit V2 9.2): every service is one click away. Each card can carry several links.
 const cards = [
   {
     title: 'Unternehmen und Selbstständige',
@@ -23,13 +23,22 @@ const cards = [
     text: 'Steuererklärungen und individuelle Fragen: Erfahren Sie, wobei wir Sie unterstützen.',
     links: [{ href: '/leistungen/steuererklaerungen', label: 'Steuererklärungen' }],
   },
+  {
+    title: 'Beratung und Planung',
+    text: 'Steuerliche Gestaltung, betriebswirtschaftliche Fragen oder Begleitung bei Entscheidungen: Sprechen Sie uns an.',
+    links: [
+      { href: '/leistungen/steuerberatung', label: 'Steuerberatung' },
+      { href: '/leistungen/betriebswirtschaftliche-beratung', label: 'Betriebswirtschaftliche Beratung' },
+      { href: '/leistungen/coaching', label: 'Coaching' },
+    ],
+  },
 ];
 ---
 
-<section aria-labelledby="anliegen-heading" class="py-16 md:py-20 bg-bg">
+<section id="anliegen" aria-labelledby="anliegen-heading" class="py-16 md:py-20 bg-bg scroll-mt-24">
   <div class="max-w-[1200px] mx-auto px-6">
     <h2 id="anliegen-heading" class="sr-only">Ihr Anliegen</h2>
-    <ul class="grid md:grid-cols-3 gap-6" data-reveal-group>
+    <ul class="grid md:grid-cols-2 xl:grid-cols-4 gap-6" data-reveal-group>
       {cards.map((card) => (
         <li class="flex flex-col bg-white p-8 rounded-xl shadow-sm border border-secondary/15">
           <h3 class="text-xl font-semibold text-primary mb-3">{card.title}</h3>
