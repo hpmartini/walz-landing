@@ -10,8 +10,8 @@ interface Props {
 }
 
 const { title, subtitle, compact = false } = Astro.props;
-// compact (contact) skips the trail so the form stays above the fold.
-const crumbs = !compact && crumbsFor(Astro.url.pathname.replace(/(.)\/$/, '$1'));
+
+const crumbs = crumbsFor(Astro.url.pathname.replace(/(.)\/$/, '$1'));
 ---
 
 <section class="on-dark relative overflow-hidden bg-bg">
@@ -32,10 +32,10 @@ const crumbs = !compact && crumbsFor(Astro.url.pathname.replace(/(.)\/$/, '$1'))
   <div class="absolute -top-24 -left-24 w-72 h-72 rounded-full border border-secondary/35" data-drift="7"></div>
   <div class="absolute -bottom-28 -right-28 w-96 h-96 rounded-full border border-secondary/25" data-drift="-5"></div>
 
-  <div class:list={['relative max-w-[1200px] mx-auto px-6', compact ? 'py-8 md:py-14' : 'py-16 md:py-20']}>
+  <div class:list={['relative max-w-[1200px] mx-auto px-6', compact ? 'py-5 md:py-14' : 'py-16 md:py-20']}>
     <div class="max-w-3xl" data-reveal>
       {crumbs && (
-        <nav aria-label="Brotkrumen" class:list={['text-sm text-white/85', compact ? 'mb-3' : 'mb-5']}>
+        <nav aria-label="Brotkrumen" class:list={['text-sm text-white/85', compact ? 'mb-2' : 'mb-5']}>
           <ol class="flex flex-wrap items-center gap-x-2 gap-y-1">
             {crumbs.map((c, i) => (
               <li class="flex items-center gap-2">

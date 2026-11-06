@@ -17,7 +17,7 @@ const { items = faq, heading = 'Häufige Fragen' } = Astro.props;
     <div class="space-y-3 md:space-y-4" data-reveal-group>
       {items.map(({ q, a }) => (
         <details class="group bg-white rounded-2xl border border-secondary/15 shadow-sm">
-          <summary class="flex items-center justify-between gap-4 cursor-pointer list-none p-5 md:p-6 text-lg font-semibold text-primary [&::-webkit-details-marker]:hidden">
+          <summary class="flex items-center justify-between gap-4 cursor-pointer list-none p-5 md:p-6 text-base md:text-lg font-semibold text-primary [&::-webkit-details-marker]:hidden">
             <span class="min-w-0 hyphens-auto [overflow-wrap:anywhere]">{q}</span>
             <svg class="w-5 h-5 shrink-0 text-secondary transition-transform duration-300 group-open:rotate-45 motion-reduce:transition-none" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-width="2" d="M12 5v14M5 12h14"/></svg>
           </summary>
