@@ -5,7 +5,7 @@ import logo from '../assets/brand/logo.png';
 import services from '../data/services.json';
 
 const currentYear = new Date().getFullYear();
-const leistungen = services.map((s) => ({ href: `/leistungen/${s.slug}`, label: s.title }));
+const leistungen = services.map((s) => ({ href: `/leistungen/${s.slug}`, label: s.heading ?? s.title }));
 
 const IconPhone = () => `
 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -44,7 +44,7 @@ const IconInstagram = () => `
 
 <footer class="bg-primary text-white pt-16 pb-8">
   <div class="max-w-[1200px] mx-auto px-6">
-    <div class="grid md:grid-cols-4 gap-10 md:gap-12 mb-12" data-reveal-group>
+    <div class="grid md:grid-cols-4 gap-8 md:gap-12 mb-12" data-reveal-group>
       <!-- Logo & About -->
       <div class="md:col-span-1">
         <div class="mb-4">
@@ -100,7 +100,7 @@ const IconInstagram = () => `
         </h2>
         <ul class="grid grid-cols-2 gap-x-4 md:block md:space-y-2 pointer-coarse:space-y-0 pointer-coarse:*:py-3">
           {leistungen.map((item) => (
-            <li>
+            <li class="min-w-0 break-words">
               <a href={item.href} class="text-white/85 hover:text-white transition-colors duration-300 text-sm a-underline tap-link">
                 {item.label}
               </a>
