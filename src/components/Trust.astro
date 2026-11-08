@@ -1,5 +1,6 @@
 ---
-// Fact block instead of claim tiles (audit V2 9.5). Every number is derived from the published team page.
+// Fact block (owner decision): "Seit Generationen" is back as the first tile, the team size is
+// derived from the published team page and Karsten Walz's own track record closes the row.
 import team from '../data/team.json';
 
 const count = (test: (role: string) => boolean) => team.filter((m) => test(m.role)).length;
@@ -13,9 +14,9 @@ const qualifications = [
 ] as const;
 
 const facts = [
-  { value: String(team.length), label: 'Personen im Team' },
-  { value: 'seit 2000', label: 'Karsten Walz selbstständiger Steuerberater' },
-  { value: 'seit 2004', label: 'alleiniger Kanzleiinhaber' },
+  { value: 'Seit Generationen', label: 'Ihre Kanzlei in der Region', phrase: true },
+  { value: String(team.length), label: 'Personen im Team', phrase: false },
+  { value: 'seit 2000', label: 'Karsten Walz selbstständiger Steuerberater, seit 2004 alleiniger Kanzleiinhaber', phrase: true },
 ];
 ---
 
@@ -24,9 +25,9 @@ const facts = [
     <h2 id="fakten-heading" class="text-3xl md:text-4xl font-bold text-primary mb-8 md:mb-10" data-reveal>Die Kanzlei in Fakten</h2>
     <dl class="grid md:grid-cols-3 gap-6" data-reveal-group>
       {facts.map((fact) => (
-        <div class="flex flex-col-reverse text-center bg-white rounded-2xl p-5 md:p-8 border border-secondary/15 shadow-sm">
-          <dt class="text-text">{fact.label}</dt>
-          <dd class="text-3xl md:text-4xl font-bold text-primary mb-2">{fact.value}</dd>
+        <div class="flex flex-col-reverse justify-end text-center bg-white rounded-2xl p-5 md:p-8 border border-secondary/15 shadow-sm">
+          <dt class="text-text leading-relaxed">{fact.label}</dt>
+          <dd class:list={['font-bold text-primary mb-2 leading-tight', fact.phrase ? 'text-2xl md:text-3xl' : 'text-3xl md:text-4xl']}>{fact.value}</dd>
         </div>
       ))}
     </dl>

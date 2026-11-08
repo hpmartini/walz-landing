@@ -36,6 +36,13 @@ AC-14 offen: Lauf-Vorgabe „kein PR, außer der Nutzer verlangt es“.
 - Env-Variablen nicht übernommen: `RESEND_API_KEY` ist bei `walz-optimized` als sensitive gespeichert und nicht auslesbar. Auf v2 antwortet `/api/kontakt` deshalb mit 503 und dem Fehlertext mit Telefon- und Mail-Link (e2e prüft genau diesen Pfad); Testanfragen erreichen die Kanzlei nicht.
 - Vercel-Schutz wie bei `walz-optimized`: nur Previews geschützt, Production öffentlich; `X-Robots-Tag: noindex` aus `vercel.json` aktiv.
 
+## Nachtrag: Hero-Entscheidung des Inhabers
+
+Der Nutzer hat die kompakte Hero-Fassung aus Audit 3 verworfen: freigegebener Titel mit Box-Span, alter Subtitel, Stempel-Foto der
+Altseite, Hero füllt den Viewport. CTA-Hinweis und Adresszeile sind entfallen. `hero.cjs` und `check-dist.mjs` prüfen deshalb diese
+Fassung; die Zeilen AC-1 bis AC-7 oben beschreiben den Stand `05b1f1e`. Neu: H1 und Box strukturell, Subtitel vollständig, Kontrast
+mit Abdeckung jedes Textlaufs, kurze Fenster 1024×640, 1024×600, 844×390 (Review Codex).
+
 ## Unabhängiges Review
 
 `review-assets/12/review.md` (mw:reviewer, Stand a84e134): blocker keine; major WebKit-Messung behoben; major „fehlende Nachweise AC-12–15“ jetzt mit v2 belegt (AC-12 Delta und AC-14 offen, siehe oben); minors für den PR notiert. Nach dem Review geändert: Font-Fallback (`src/styles/global.css`) und das neue Delta-Skript `scripts/review/lh-delta.cjs`.

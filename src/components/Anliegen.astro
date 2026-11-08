@@ -4,6 +4,7 @@ const cards = [
   {
     title: 'Unternehmen und Selbstständige',
     text: 'Buchhaltung, Lohn und Jahresabschluss: Finden Sie die passende Unterstützung für Ihren Betrieb.',
+    icon: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>`,
     links: [
       { href: '/leistungen/finanzbuchhaltung', label: 'Finanzbuchhaltung' },
       { href: '/leistungen/lohnbuchhaltung', label: 'Lohnbuchhaltung' },
@@ -13,6 +14,7 @@ const cards = [
   {
     title: 'Gründung und Nachfolge',
     text: 'Eine Gründung vorbereiten oder die Unternehmensübergabe planen: Klären Sie die nächsten Schritte.',
+    icon: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg>`,
     links: [
       { href: '/leistungen/existenzgruendung', label: 'Existenzgründung' },
       { href: '/leistungen/nachfolgeberatung', label: 'Nachfolgeberatung' },
@@ -21,11 +23,13 @@ const cards = [
   {
     title: 'Privatpersonen und Vereine',
     text: 'Steuererklärungen und individuelle Fragen: Erfahren Sie, wobei wir Sie unterstützen.',
+    icon: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>`,
     links: [{ href: '/leistungen/steuererklaerungen', label: 'Steuererklärungen' }],
   },
   {
     title: 'Beratung und Planung',
     text: 'Steuerliche Gestaltung, betriebswirtschaftliche Fragen oder Begleitung bei Entscheidungen: Sprechen Sie uns an.',
+    icon: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>`,
     links: [
       { href: '/leistungen/steuerberatung', label: 'Steuerberatung' },
       { href: '/leistungen/betriebswirtschaftliche-beratung', label: 'Betriebswirtschaftliche Beratung' },
@@ -41,6 +45,7 @@ const cards = [
     <ul class="grid md:grid-cols-2 xl:grid-cols-4 gap-4 md:gap-6" data-reveal-group>
       {cards.map((card) => (
         <li class="flex flex-col bg-white p-6 md:p-8 rounded-xl shadow-sm border border-secondary/15">
+          <span class="inline-flex shrink-0 items-center justify-center w-11 h-11 rounded-xl bg-secondary/10 text-secondary border border-secondary/20 mb-4" aria-hidden="true" set:html={card.icon} />
           <h3 class="text-xl font-semibold text-primary mb-3">{card.title}</h3>
           <p class="text-text mb-5">{card.text}</p>
           <ul class="mt-auto space-y-2">

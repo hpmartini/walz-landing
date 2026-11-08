@@ -214,7 +214,7 @@ Freundlich & solide: soft corners, a gentle lift on hover, never flashy.
 - **Mobile:** burger in Deep Mauve; the panel expands by animating grid rows; Leistungen nests in a native disclosure.
 
 ### Photo Hero (signature)
-Full-bleed team photo (`header_Unterseite.jpg`) under a left-to-right Deep Mauve gradient (95% → 75% → 30%), two thin Rose Ash circles drifting off the corners, an optional pill badge ("Seit 2000 in Schwalmstadt"), white bold h1, Rose Ash bar, lead text, two CTAs. Subpages use the compact PageHero variant (title, bar, subtitle).
+Full-bleed photo of the legacy stamp (`bg-web.jpg`), multiplied into Deep Mauve (`bg-primary mix-blend-multiply` over the photo): white paper becomes the brand colour, stamp and imprint stay visible as deeper tones, and white text can never fall below white-on-mauve. A soft Deep Mauve gradient (90% → 55% → transparent) calms the photo under the text and thins out to the right. Two thin Rose Ash circles drift off the corners. White bold h1 with a bordered box (Deep Mauve scrim, white 40% border), Rose Ash bar, lead text, two CTAs; the hero fills the screen under the sticky header. Subpages use the compact PageHero variant (title, bar, subtitle).
 
 ### Chat Launcher (signature)
 Deep Mauve pill fixed bottom-right with a round Rose Ash icon well; it opens a 16px-radius panel with a Deep Mauve header bar, white message bubbles (12px radius) and quick-reply chips. It stays fixed during page transitions.

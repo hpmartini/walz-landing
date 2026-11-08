@@ -1,48 +1,56 @@
 ---
 import { Picture } from 'astro:assets';
-import headerPhoto from '../assets/team/header_Unterseite.jpg';
-import team from '../data/team.json';
-import { kanzlei } from '../data/kanzlei';
+import heroBg from '../assets/brand/bg-web.jpg';
 
-// Mobile: hero is as tall as its content, CTAs sit directly under the text (audit V2 9.1);
-// type scales with min(height, width) via clamp(). Team size comes from the published team page.
+// Box text: nowrap groups keep the breaks before "Unternehmer" and "Privatpersonen". Its fill is a
+// Deep Mauve scrim, because a white fill lifts the photo and drops the text contrast to about 2:1.
 ---
 
-<section class="on-dark relative overflow-hidden bg-bg flex flex-col pt-6 pb-8 md:py-[clamp(4rem,9svh,7rem)]">
-  <!-- Background image (parallax targets the img only; the overlay stays put) -->
-  <div class="absolute inset-0" data-parallax="5">
+<!--
+  Hero (owner decision): the approved title, box and lead are back. The hero fills the screen
+  under the sticky header on every width; below md the CTAs are pinned to the bottom, from md the
+  content sits centred. The background is the legacy stamp photo, multiplied into Deep Mauve:
+  white paper becomes the brand colour, stamp and imprint stay visible as deeper tones and white
+  text can never drop below white-on-mauve.
+-->
+
+<section class="on-dark relative overflow-hidden bg-bg flex flex-col min-h-[calc(100svh-var(--header-h))]">
+  <!-- Background image (parallax targets the img only; the multiply layer and the gradient stay put) -->
+  <div class="absolute inset-0 isolate" data-parallax="5">
     <Picture
-      src={headerPhoto}
+      src={heroBg}
       formats={['avif', 'webp']}
       widths={[640, 960, 1280, 1920, 2560]}
       sizes="100vw"
       alt=""
-      class="h-full w-full object-cover object-center"
+      class="h-full w-full object-cover object-[62%_50%] lg:object-[50%_85%]"
       loading="eager"
       fetchpriority="high"
     />
-    <div class="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/92 to-primary/92 lg:to-primary/30 lg:[--tw-gradient-via-position:calc(max(0px,(100%_-_1200px)/2)_+_792px)]"></div>
+    <div class="absolute inset-0 bg-primary mix-blend-multiply"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/55 to-transparent lg:via-primary/40"></div>
   </div>
 
-  <!-- Decorative geometry (drifts against the scroll + breathes slowly) -->
-  <div class="absolute -top-24 -left-24 w-72 h-72 rounded-full border border-secondary/40" data-drift="7"></div>
+  <!-- Decorative geometry (drifts against the scroll + breathes slowly). The ring that crosses the
+       title stays faint: it must not lift the background under the white headline. -->
+  <div class="absolute -top-24 -left-24 w-72 h-72 rounded-full border border-secondary/15" data-drift="7"></div>
   <div class="absolute -bottom-28 -right-28 w-96 h-96 rounded-full border border-secondary/30" data-drift="-5"></div>
 
-  <div class="relative flex flex-col w-full max-w-[1200px] mx-auto px-6">
-    <div class="flex flex-col max-w-3xl lg:max-w-4xl">
-      <p class="text-[length:clamp(12px,min(1.9svh,3.6vw),14px)] sm:text-base font-semibold uppercase tracking-wider text-white/85 mb-2 md:mb-4" data-reveal>Steuerberatung in Schwalmstadt · Schwalm-Eder-Kreis</p>
-      <h1 class="text-[length:clamp(22px,min(4.2svh,7vw),34px)] sm:text-4xl lg:text-5xl font-bold text-white leading-tight" data-lines="load">
-        <span class="block overflow-hidden"><span class="block pb-[0.1em]" data-line>Steuerberater in Schwalmstadt für Betriebe, Selbstständige und Privatpersonen</span></span>
+  <div class="relative flex-1 flex flex-col justify-center w-full max-w-[1200px] mx-auto px-6 py-6 md:py-[clamp(1.5rem,6svh,7rem)] short:py-2">
+    <div class="flex flex-col max-w-3xl lg:max-w-4xl flex-1 md:flex-none">
+      <h1 class="uppercase text-[length:clamp(24px,min(4.2svh,8vw),34px)] sm:text-4xl md:text-[length:clamp(30px,6.7svh,48px)] lg:text-[length:clamp(30px,6.7svh,60px)] font-bold text-white leading-tight" data-lines="load">
+        <span class="block overflow-hidden"><span class="block pb-[0.1em]" data-line>Ihr Steuerberater in Schwalmstadt</span></span>
+        <span class="mt-3 md:mt-5 short:mt-1.5 inline-block rounded-lg border border-white/40 bg-primary/40 px-3 py-1.5 md:px-4 md:py-2 text-[length:clamp(12px,min(1.9svh,3.6vw),14px)] sm:text-base font-semibold normal-case tracking-normal leading-snug text-white">Generationenübergreifend <span class="whitespace-nowrap">vertrauen uns</span> <span class="whitespace-nowrap">Unternehmer, Selbstständige,</span> <span class="whitespace-nowrap">Privatpersonen und Vereine.</span></span>
       </h1>
-      <div class="w-28 h-1 bg-secondary mt-4 mb-4 md:mt-6 md:mb-8" data-bar></div>
-      <p class="text-[length:clamp(14px,min(2.35svh,4.4vw),18px)] leading-normal md:text-xl md:leading-relaxed text-white md:mb-8" data-reveal>
-        Buchhaltung, Lohn, Jahresabschluss und Steuererklärungen aus einer Hand. Ein {team.length}-köpfiges Team um Steuerberater Karsten Walz, selbstständig seit 2000.
+      <div class="w-28 h-1 bg-secondary mt-4 mb-4 md:mt-6 md:mb-8 short:my-2" data-bar></div>
+      <p class="text-[length:clamp(14px,min(2.35svh,4.4vw),18px)] leading-normal md:text-[length:clamp(16px,2.8svh,20px)] md:leading-relaxed text-white" data-reveal>
+        Ob Sie ein Unternehmen gründen, laufende steuerliche Aufgaben abgeben oder Ihre private Steuererklärung erstellen lassen möchten: Die Kanzlei Karsten Walz unterstützt Sie bei Ihren nächsten Schritten. Lernen Sie unsere Leistungen und die Menschen dahinter kennen.
       </p>
-      <div class="mt-6 md:mt-0" data-reveal-group>
+      <!-- mt-auto pins the CTA block to the bottom of the screen-high hero below md -->
+      <div class="mt-auto pt-6 md:mt-0 md:pt-8 short:pt-3" data-reveal-group>
         <div class="flex gap-3 md:gap-4">
           <a
             href="/kontakt?anliegen=erstgespraech"
-            aria-describedby="hero-cta-note"
             class="flex-1 md:flex-none flex items-center justify-center bg-white text-primary px-3 py-3 md:px-8 md:py-4 rounded-lg font-semibold text-[length:clamp(14px,min(2.1svh,3.9vw),16px)] md:text-base leading-snug transition-all duration-300 hover:brightness-105 motion-reduce:transition-none text-center"
             data-magnetic
           >
@@ -56,8 +64,6 @@ import { kanzlei } from '../data/kanzlei';
             Passende Leistung finden
           </a>
         </div>
-        <p id="hero-cta-note" class="mt-2 md:mt-3 max-w-md text-[length:clamp(12px,min(1.8svh,3.4vw),14px)] md:text-sm leading-snug text-white/90">Sie schildern uns kurz Ihr Anliegen. Anschließend klären wir gemeinsam, ob und wie wir Sie unterstützen können.</p>
-        <p class="mt-4 md:mt-6 text-[length:clamp(12px,min(1.8svh,3.4vw),14px)] md:text-sm text-white/90">{kanzlei.street}, {kanzlei.city} · <a href={kanzlei.phoneHref} class="underline underline-offset-2 hover:text-white">{kanzlei.phone}</a></p>
       </div>
     </div>
   </div>

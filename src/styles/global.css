@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Phones held sideways: the width says desktop, the height does not. */
+@custom-variant short (@media (max-height: 480px));
+
 /* Open Sans, self-hosted (no visitor IP goes to Google). Variable files from
    Google Fonts v44; one file per subset covers weights 400–700. */
 @font-face {
@@ -50,10 +53,22 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Height of the closed sticky header below md (Header.astro); the mobile hero fills 100svh minus this.
+/* Height of the closed sticky header (Header.astro); the hero fills 100svh minus this.
    scripts/review/hero.cjs fails if the header no longer matches. */
 :root {
-  --header-h: 53px;
+  --header-h: 57px; /* below md: 44px icon row + 12px padding + 1px border */
+}
+
+@media (min-width: 768px) {
+  :root {
+    --header-h: 69px; /* md: 44px logo + 24px padding + 1px border */
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --header-h: 72px; /* lg: 47px Kontakt button + 24px padding + 1px border */
+  }
 }
 
 body {

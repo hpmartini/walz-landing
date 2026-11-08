@@ -67,14 +67,30 @@ for (const path of paths) {
 }
 
 // AC-1: Trust stat text; no hard-coded contact data outside kanzlei.ts in the HTML sources.
-check('AC-1', /Die Kanzlei in Fakten.*Personen im Team\s*\d+/s.test(text(page('/'))) && !text(page('/')).includes('Seit Generationen'), 'home fact block derived from team.json (audit V2 9.5)');
+check('AC-1', /Die Kanzlei in Fakten.*Personen im Team\s*\d+/s.test(text(page('/'))) && text(page('/')).includes('Seit Generationen'), 'home fact block derived from team.json, "Seit Generationen" restored');
 
 // AC-4: home hero and anchor.
 const home = page('/');
-check('AC-4', /<h1[^>]*>(?:(?!<\/h1>)[\s\S])*Steuerberater in Schwalmstadt für Betriebe, Selbstständige und Privatpersonen(?:(?!<\/h1>)[\s\S])*<\/h1>/.test(home) && !/<h1[^>]*>(?:(?!<\/h1>)[\s\S])*Buchhaltung, Lohn/.test(home), 'hero H1 only heading (audit V2 9.1)');
+const heroHtml = home.slice(home.indexOf('<main'), home.indexOf('</section>'));
+const heroText = text(heroHtml);
+const heroH1 = heroHtml.match(/<h1[\s\S]*?<\/h1>/)?.[0] ?? '';
+check('AC-4', text(heroH1).trim() === 'Ihr Steuerberater in Schwalmstadt Generationenübergreifend vertrauen uns Unternehmer, Selbstständige, Privatpersonen und Vereine.', 'hero H1: approved title + box verbatim');
+check('AC-4', /<span[^>]*\bborder\b[^>]*>\s*Generationenübergreifend/.test(heroH1), 'hero box is a bordered span inside the H1');
+check('AC-4', heroText.includes('Ob Sie ein Unternehmen gründen, laufende steuerliche Aufgaben abgeben oder Ihre private Steuererklärung erstellen lassen möchten: Die Kanzlei Karsten Walz unterstützt Sie bei Ihren nächsten Schritten. Lernen Sie unsere Leistungen und die Menschen dahinter kennen.'), 'hero lead verbatim');
+check('AC-4', !heroHtml.includes('hero-cta-note') && !heroHtml.includes('aria-describedby'), 'hero without the CTA note');
+check('AC-4', !heroText.includes('Schwalm-Eder-Kreis') && !heroText.includes('Ziegenhainer'), 'hero without kicker and address line');
+check('AC-4', (heroHtml.match(/<a\s/g) || []).length === 2, 'hero carries exactly two CTAs');
 check('AC-4', home.includes('href="/kontakt?anliegen=erstgespraech"') && /Erstgespräch anfragen/.test(home), 'hero CTA');
 check('AC-4', home.includes('href="#leistungen"') && home.includes('id="leistungen"'), '#leistungen anchor');
 for (const href of ['/leistungen/finanzbuchhaltung', '/leistungen/existenzgruendung', '/leistungen/nachfolgeberatung', '/leistungen/steuererklaerungen', '/team']) check('AC-4', home.includes(`href="${href}"`), `home link ${href}`);
+
+// AC-4: the service list and the situation cards carry their icons again (1.5px line icons).
+const section = (id) => { const at = home.indexOf(`id="${id}"`); return at < 0 ? '' : home.slice(at, home.indexOf('</section>', at)); };
+const iconPaths = (html) => [...html.matchAll(/<svg[^>]*>[\s\S]*?<\/svg>/g)].map((m) => m[0]).filter((svg) => svg.includes('stroke-width="1.5"')).map((svg) => (svg.match(/ d="([^"]+)"/) || [])[1]);
+const serviceIcons = iconPaths(section('leistungen'));
+const anliegenIcons = iconPaths(section('anliegen'));
+check('AC-4', serviceIcons.length === 9, `#leistungen carries ${serviceIcons.length} service icons (expected 9)`);
+check('AC-4', anliegenIcons.length === 4 && new Set(anliegenIcons).size === 4, `#anliegen carries ${anliegenIcons.length} icons, ${new Set(anliegenIcons).size} distinct (expected 4)`);
 
 // AC-7: every service page has H1 and the anliegen CTA; internal links resolve.
 for (const s of SERVICES) {
@@ -117,6 +133,8 @@ const imgFile = aboutImg.match(/src="\/_astro\/([^".]+)\.[^"]+"/)?.[1];
 check('#12 AC-9', teamFiles.has(imgFile) && imgFile !== 'header_Unterseite', `about image ${imgFile} not a team photo`);
 check('#12 AC-9', /alt="[^"]{10,}"/.test(aboutImg), 'about image alt text missing or too short');
 check('#12 AC-9', /width="\d+"/.test(aboutImg) && /height="\d+"/.test(aboutImg), 'about image without width/height');
+// The owner asked for a light veil over the portrait so its colours sit calmer next to the mauve page.
+check('#12 AC-9', /<div class="absolute inset-0 bg-primary\/25 pointer-events-none" aria-hidden="true"><\/div>/.test(about), 'about photo without the mauve veil');
 
 for (const [ac, list] of Object.entries(results)) console.log(`${list.every(Boolean) ? 'PASS' : 'FAIL'} ${ac} (${list.filter(Boolean).length}/${list.length} checks)`);
 process.exit(failures ? 1 : 0);
