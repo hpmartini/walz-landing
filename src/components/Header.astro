@@ -21,7 +21,7 @@ const isActive = (href: string) => {
 ---
 
 <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-hairline" data-elevate>
-  <div class="max-w-[1200px] mx-auto px-3 py-1.5 md:px-6 md:py-3">
+  <div class="max-w-[1200px] mx-auto px-3 py-(--header-pad) md:px-6">
     <nav class="flex items-center justify-between">
       <!-- Logo -->
       <a href="/" class="block transition-transform duration-300 hover:scale-[1.01] motion-reduce:transition-none motion-reduce:hover:scale-100" aria-label="Kanzlei Karsten Walz – Startseite">
@@ -29,9 +29,9 @@ const isActive = (href: string) => {
           src={logo}
           formats={['avif', 'webp']}
           widths={[300, 500]}
-          sizes="(min-width: 768px) 315px, 257px"
+          sizes="(min-width: 1024px) 400px, (min-width: 768px) 372px, 257px"
           alt="Kanzlei Karsten Walz – Steuerberater"
-          class="h-9 md:h-11 w-auto"
+          class="h-(--header-logo) w-auto origin-left"
           loading="eager"
         />
       </a>

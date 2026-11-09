@@ -53,21 +53,57 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Height of the closed sticky header (Header.astro); the hero fills 100svh minus this.
-   scripts/review/hero.cjs fails if the header no longer matches. */
+/* Closed sticky header at scroll 0 (Header.astro); the hero fills 100svh minus --header-h.
+   scripts/review/hero.cjs fails if the header no longer matches.
+   --header-shrink is how much of it slides off-screen once scrolled; the visible rest is the compact bar.
+   Windows up to 480px high and phones under 700px high have no room for the tall state and stay compact. */
 :root {
   --header-h: 57px; /* below md: 44px icon row + 12px padding + 1px border */
+  --header-pad: 6px;
+  --header-logo: 36px;
+  --header-logo-compact: 1;
+  --header-shrink: 0px;
 }
 
 @media (min-width: 768px) {
   :root {
     --header-h: 69px; /* md: 44px logo + 24px padding + 1px border */
+    --header-pad: 12px;
+    --header-logo: 44px;
   }
 }
 
 @media (min-width: 1024px) {
   :root {
     --header-h: 72px; /* lg: 47px Kontakt button + 24px padding + 1px border */
+  }
+}
+
+@media (min-height: 700px) {
+  :root {
+    --header-h: 69px; /* 44px icon row + 24px padding + 1px border */
+    --header-pad: 12px;
+    --header-shrink: 12px;
+  }
+}
+
+@media (min-height: 481px) and (min-width: 768px) {
+  :root {
+    --header-h: 85px; /* 52px logo + 32px padding + 1px border */
+    --header-pad: 16px;
+    --header-logo: 52px;
+    --header-logo-compact: calc(44 / 52);
+    --header-shrink: 16px;
+  }
+}
+
+@media (min-height: 481px) and (min-width: 1024px) {
+  :root {
+    --header-h: 97px; /* 56px logo + 40px padding + 1px border */
+    --header-pad: 20px;
+    --header-logo: 56px;
+    --header-logo-compact: calc(44 / 56);
+    --header-shrink: 25px;
   }
 }
 
@@ -221,8 +257,26 @@ header[data-elevate] {
 [data-elevate] {
   transition: box-shadow 400ms ease;
 }
+/* Compact bar: the header keeps its height in the page flow and slides partly off-screen, so nothing
+   below it moves. The row moves back down by half to stay centred in the visible part. */
 [data-elevate].fx-elevated {
+  top: calc(-1 * var(--header-shrink));
   box-shadow: 0 12px 32px -20px rgb(129 95 93 / 0.4);
+}
+[data-elevate].fx-elevated nav {
+  translate: 0 calc(var(--header-shrink) / 2);
+}
+[data-elevate].fx-elevated nav img {
+  scale: var(--header-logo-compact);
+}
+@media (prefers-reduced-motion: no-preference) {
+  [data-elevate] {
+    transition: box-shadow 400ms ease, top 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  [data-elevate] nav,
+  [data-elevate] nav img {
+    transition: translate 300ms cubic-bezier(0.16, 1, 0.3, 1), scale 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
 }
 
 /* Mobile menu: grid-rows collapse so open/close animates height smoothly.
