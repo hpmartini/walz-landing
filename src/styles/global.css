@@ -56,13 +56,14 @@ html {
 /* Closed sticky header at scroll 0 (Header.astro); the hero fills 100svh minus --header-h.
    scripts/review/hero.cjs fails if the header no longer matches.
    --header-shrink is how much of it slides off-screen once scrolled; the visible rest is the compact bar.
-   Windows up to 480px high and phones under 700px high have no room for the tall state and stay compact. */
+   Logo size at the top is capped by its width next to the nav, so the contrast comes from the compact state.
+   Windows up to 480px high keep one size; phones under 700px high start from the short bar. */
 :root {
   --header-h: 57px; /* below md: 44px icon row + 12px padding + 1px border */
   --header-pad: 6px;
   --header-logo: 36px;
-  --header-logo-compact: 1;
-  --header-shrink: 0px;
+  --header-logo-compact: calc(26 / 36);
+  --header-shrink: 8px; /* compact bar: 49px */
 }
 
 @media (min-width: 768px) {
@@ -70,6 +71,8 @@ html {
     --header-h: 69px; /* md: 44px logo + 24px padding + 1px border */
     --header-pad: 12px;
     --header-logo: 44px;
+    --header-logo-compact: 1;
+    --header-shrink: 0px;
   }
 }
 
@@ -81,19 +84,19 @@ html {
 
 @media (min-height: 700px) {
   :root {
-    --header-h: 69px; /* 44px icon row + 24px padding + 1px border */
-    --header-pad: 12px;
-    --header-shrink: 12px;
+    --header-h: 81px; /* 44px icon row + 36px padding + 1px border */
+    --header-pad: 18px;
+    --header-shrink: 32px; /* compact bar: 49px */
   }
 }
 
 @media (min-height: 481px) and (min-width: 768px) {
   :root {
-    --header-h: 85px; /* 52px logo + 32px padding + 1px border */
-    --header-pad: 16px;
-    --header-logo: 52px;
-    --header-logo-compact: calc(44 / 52);
-    --header-shrink: 16px;
+    --header-h: 105px; /* 64px logo + 40px padding + 1px border */
+    --header-pad: 20px;
+    --header-logo: 64px;
+    --header-logo-compact: calc(40 / 64);
+    --header-shrink: 44px; /* compact bar: 61px */
   }
 }
 
@@ -102,8 +105,16 @@ html {
     --header-h: 97px; /* 56px logo + 40px padding + 1px border */
     --header-pad: 20px;
     --header-logo: 56px;
-    --header-logo-compact: calc(44 / 56);
-    --header-shrink: 25px;
+    --header-logo-compact: calc(36 / 56);
+    --header-shrink: 36px; /* compact bar: 61px */
+  }
+}
+
+@media (min-height: 700px) and (min-width: 1024px) {
+  :root {
+    --header-h: 113px; /* 56px logo + 56px padding + 1px border */
+    --header-pad: 28px;
+    --header-shrink: 52px; /* compact bar: 61px */
   }
 }
 

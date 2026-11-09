@@ -210,7 +210,7 @@ Freundlich & solide: soft corners, a gentle lift on hover, never flashy.
 - **Style:** small pill (full radius), white, Rose Ash 25% border, 0.75rem text; hover tints Rose Ash 10%. Used for chat quick replies.
 
 ### Navigation
-- **Header:** sticky, 95% white with backdrop blur, hairline bottom border, logo left. Tall at the top of the page (97px on `lg`, 85px on `md`, 69px below; logo up to 56px); after the first few pixels of scrolling it eases in 300ms to the compact bar (72 / 69 / 57px, logo 44px) without moving the content below. Windows up to 480px high and phones under 700px high stay compact. Links in Text Grey, medium weight, with an underline that grows from the left on hover; the active link is Deep Mauve with `aria-current`. Leistungen opens a 12px-radius dropdown card listing all services on hover/focus. Right side: phone (xl+) and the primary "Kontakt" button.
+- **Header:** sticky, 95% white with backdrop blur, hairline bottom border, logo left. Tall at the top of the page (113px on `lg`, 105px on `md`, 81px below; logo 56 / 64 / 36px); after the first few pixels of scrolling it eases in 300ms to the compact bar (61 / 61 / 49px, logo 36 / 40 / 26px) without moving the content below. Shorter windows start lower (`lg` under 700px high: 97px; phones under 700px high: 57px); windows up to 480px high keep one size. Links in Text Grey, medium weight, with an underline that grows from the left on hover; the active link is Deep Mauve with `aria-current`. Leistungen opens a 12px-radius dropdown card listing all services on hover/focus. Right side: phone (xl+) and the primary "Kontakt" button.
 - **Mobile:** burger in Deep Mauve; the panel expands by animating grid rows; Leistungen nests in a native disclosure.
 
 ### Photo Hero (signature)
