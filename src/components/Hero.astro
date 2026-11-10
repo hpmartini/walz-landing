@@ -3,6 +3,7 @@ import { Picture } from 'astro:assets';
 import heroBg from '../assets/brand/bg-web.jpg';
 import standUp from '../assets/photos/stand-up.jpg';
 
+// Title size at lg follows the text column (cqi), so "Ihr Steuerberater" always fits on one line.
 // Box text: nowrap groups keep the breaks before "Unternehmer" and "Privatpersonen". Its fill is a
 // Deep Mauve scrim, because a white fill lifts the photo and drops the text contrast to about 2:1.
 ---
@@ -38,8 +39,8 @@ import standUp from '../assets/photos/stand-up.jpg';
   <div class="absolute -bottom-28 -right-28 w-96 h-96 rounded-full border border-secondary/30" data-drift="-5"></div>
 
   <div class="relative flex-1 flex flex-col justify-center lg:flex-row lg:items-center lg:gap-12 w-full max-w-[1200px] mx-auto px-6 py-6 md:py-[clamp(1.5rem,6svh,7rem)] short:py-2">
-    <div class="flex flex-col max-w-3xl lg:max-w-none lg:min-w-0 flex-1 md:flex-none lg:flex-1">
-      <h1 class="uppercase text-[length:clamp(24px,min(4.2svh,8vw),34px)] sm:text-4xl md:text-[length:clamp(30px,6.7svh,48px)] lg:text-[length:clamp(30px,min(6.7svh,3.7vw),60px)] font-bold text-white leading-tight" data-lines="load">
+    <div class="@container flex flex-col max-w-3xl lg:max-w-none lg:min-w-0 flex-1 md:flex-none lg:flex-1">
+      <h1 class="uppercase text-[length:clamp(24px,min(4.2svh,8vw),34px)] sm:text-4xl md:text-[length:clamp(30px,6.7svh,48px)] lg:text-[length:clamp(30px,min(6.7svh,9.4cqi),60px)] font-bold text-white leading-tight" data-lines="load">
         <span class="block overflow-hidden"><span class="block pb-[0.1em]" data-line>Ihr Steuerberater <span class="whitespace-nowrap">in Schwalmstadt</span></span></span>
         <span class="mt-3 md:mt-5 short:mt-1.5 inline-block rounded-lg border border-white/40 bg-primary/40 px-3 py-1.5 md:px-4 md:py-2 text-[length:clamp(12px,min(1.9svh,3.6vw),14px)] sm:text-base font-semibold normal-case tracking-normal leading-snug text-white">Generationenübergreifend <span class="whitespace-nowrap">vertrauen uns</span> <span class="whitespace-nowrap">Unternehmer, Selbstständige,</span> <span class="whitespace-nowrap">Privatpersonen und Vereine.</span></span>
       </h1>
