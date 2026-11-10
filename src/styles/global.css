@@ -84,37 +84,29 @@ html {
 
 @media (min-height: 700px) {
   :root {
-    --header-h: 81px; /* 44px icon row + 36px padding + 1px border */
-    --header-pad: 18px;
-    --header-shrink: 32px; /* compact bar: 49px */
+    --header-h: 63px; /* 44px icon row + 18px padding + 1px border */
+    --header-pad: 9px;
+    --header-shrink: 14px; /* compact bar: 49px */
   }
 }
 
 @media (min-height: 481px) and (min-width: 768px) {
   :root {
-    --header-h: 105px; /* 64px logo + 40px padding + 1px border */
-    --header-pad: 20px;
-    --header-logo: 64px;
-    --header-logo-compact: calc(40 / 64);
-    --header-shrink: 44px; /* compact bar: 61px */
+    --header-h: 79px; /* 58px logo + 20px padding + 1px border */
+    --header-pad: 10px;
+    --header-logo: 58px;
+    --header-logo-compact: calc(40 / 58);
+    --header-shrink: 18px; /* compact bar: 61px */
   }
 }
 
 @media (min-height: 481px) and (min-width: 1024px) {
   :root {
-    --header-h: 97px; /* 56px logo + 40px padding + 1px border */
-    --header-pad: 20px;
-    --header-logo: 56px;
-    --header-logo-compact: calc(36 / 56);
-    --header-shrink: 36px; /* compact bar: 61px */
-  }
-}
-
-@media (min-height: 700px) and (min-width: 1024px) {
-  :root {
-    --header-h: 113px; /* 56px logo + 56px padding + 1px border */
-    --header-pad: 28px;
-    --header-shrink: 52px; /* compact bar: 61px */
+    --header-h: 79px; /* 50px logo + 28px padding + 1px border */
+    --header-pad: 14px;
+    --header-logo: 50px;
+    --header-logo-compact: calc(36 / 50);
+    --header-shrink: 18px; /* compact bar: 61px */
   }
 }
 

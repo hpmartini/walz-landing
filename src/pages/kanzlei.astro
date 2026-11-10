@@ -1,6 +1,6 @@
 ---
 import { Picture } from 'astro:assets';
-import headerPhoto from '../assets/team/header_Unterseite.jpg';
+import teamPhoto from '../assets/photos/team.png';
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -47,7 +47,7 @@ import { FEATURES } from '../data/features';
 
         <div class="mt-12" data-reveal>
           <div class="rounded-2xl overflow-hidden border border-secondary/20 shadow-sm" data-clip>
-            <Picture src={headerPhoto} formats={['avif', 'webp']} widths={[640, 960, 1280, 1920]} sizes="(min-width: 1200px) 1152px, 100vw" alt="Kanzlei" class="w-full h-[320px] object-cover" />
+            <Picture src={teamPhoto} formats={['avif', 'webp']} widths={[640, 960, 1280, 1754]} sizes="(min-width: 1000px) 952px, 100vw" alt="Das Team der Kanzlei Karsten Walz in den Kanzleiräumen" class="block w-full h-auto" />
           </div>
         </div>
 

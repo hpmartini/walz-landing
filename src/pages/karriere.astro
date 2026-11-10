@@ -1,4 +1,6 @@
 ---
+import { Picture } from 'astro:assets';
+import meetingPhoto from '../assets/photos/meeting-02.png';
 import { kanzlei } from '../data/kanzlei';
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
@@ -16,13 +18,18 @@ import { FEATURES } from '../data/features';
 
     <section class="py-16 md:py-20 bg-bg">
       <div class="max-w-[1000px] mx-auto px-6">
-        <div data-reveal>
-          <h2 class="text-2xl md:text-3xl text-primary">Arbeiten bei uns</h2>
-          <div class="w-16 h-1 bg-secondary mt-5 mb-8"></div>
-          <p class="text-text text-lg">
-            Wir suchen Menschen, die gewissenhaft arbeiten, gerne Verantwortung übernehmen und Mandanten wirklich helfen wollen.
-            Ob Berufseinsteiger oder alter Hase – sprechen Sie uns an.
-          </p>
+        <div class="grid md:grid-cols-[1fr_280px] gap-10 items-center">
+          <div data-reveal>
+            <h2 class="text-2xl md:text-3xl text-primary">Arbeiten bei uns</h2>
+            <div class="w-16 h-1 bg-secondary mt-5 mb-8"></div>
+            <p class="text-text text-lg">
+              Wir suchen Menschen, die gewissenhaft arbeiten, gerne Verantwortung übernehmen und Mandanten wirklich helfen wollen.
+              Ob Berufseinsteiger oder alter Hase – sprechen Sie uns an.
+            </p>
+          </div>
+          <div class="rounded-2xl overflow-hidden border border-secondary/20 shadow-sm aspect-[4/3] md:aspect-[4/5]" data-reveal data-clip>
+            <Picture src={meetingPhoto} formats={['avif', 'webp']} widths={[400, 640, 960]} sizes="(min-width: 768px) 280px, 100vw" alt="Mitarbeiterinnen der Kanzlei bei einer Besprechung am Tisch" class="block w-full h-full object-cover object-[50%_40%]" />
+          </div>
         </div>
 
         <div class="mt-10 grid md:grid-cols-2 gap-6" data-reveal-group>

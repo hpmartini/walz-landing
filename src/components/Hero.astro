@@ -1,6 +1,7 @@
 ---
 import { Picture } from 'astro:assets';
 import heroBg from '../assets/brand/bg-web.jpg';
+import standUp from '../assets/photos/stand-up.png';
 
 // Box text: nowrap groups keep the breaks before "Unternehmer" and "Privatpersonen". Its fill is a
 // Deep Mauve scrim, because a white fill lifts the photo and drops the text contrast to about 2:1.
@@ -36,8 +37,8 @@ import heroBg from '../assets/brand/bg-web.jpg';
   <div class="absolute -top-24 -left-24 w-72 h-72 rounded-full border border-secondary/15" data-drift="7"></div>
   <div class="absolute -bottom-28 -right-28 w-96 h-96 rounded-full border border-secondary/30" data-drift="-5"></div>
 
-  <div class="relative flex-1 flex flex-col justify-center w-full max-w-[1200px] mx-auto px-6 py-6 md:py-[clamp(1.5rem,6svh,7rem)] short:py-2">
-    <div class="flex flex-col max-w-3xl lg:max-w-4xl flex-1 md:flex-none">
+  <div class="relative flex-1 flex flex-col justify-center lg:flex-row lg:items-center lg:gap-14 w-full max-w-[1200px] mx-auto px-6 py-6 md:py-[clamp(1.5rem,6svh,7rem)] short:py-2">
+    <div class="flex flex-col max-w-3xl lg:max-w-none lg:min-w-0 flex-1 md:flex-none lg:flex-1">
       <h1 class="uppercase text-[length:clamp(24px,min(4.2svh,8vw),34px)] sm:text-4xl md:text-[length:clamp(30px,6.7svh,48px)] lg:text-[length:clamp(30px,6.7svh,60px)] font-bold text-white leading-tight" data-lines="load">
         <span class="block overflow-hidden"><span class="block pb-[0.1em]" data-line>Ihr Steuerberater in Schwalmstadt</span></span>
         <span class="mt-3 md:mt-5 short:mt-1.5 inline-block rounded-lg border border-white/40 bg-primary/40 px-3 py-1.5 md:px-4 md:py-2 text-[length:clamp(12px,min(1.9svh,3.6vw),14px)] sm:text-base font-semibold normal-case tracking-normal leading-snug text-white">Generationenübergreifend <span class="whitespace-nowrap">vertrauen uns</span> <span class="whitespace-nowrap">Unternehmer, Selbstständige,</span> <span class="whitespace-nowrap">Privatpersonen und Vereine.</span></span>
@@ -66,5 +67,22 @@ import heroBg from '../assets/brand/bg-web.jpg';
         </div>
       </div>
     </div>
+
+    <!-- Photo from lg up, framed like the title box (white hairline over a mauve scrim) with a Rose Ash
+         outline offset behind it. Lazy: hidden below lg, so phones never download it. -->
+    <figure class="hidden lg:block [@media(max-height:699px)]:hidden relative shrink-0 w-[40%] max-w-[480px]" data-reveal>
+      <div class="absolute inset-0 translate-x-4 translate-y-4 rounded-2xl border border-secondary/60" aria-hidden="true"></div>
+      <div class="relative rounded-2xl border border-white/40 bg-primary/40 p-2 shadow-2xl">
+        <Picture
+          src={standUp}
+          formats={['avif', 'webp']}
+          widths={[480, 720, 960]}
+          sizes="(min-width: 1200px) 464px, 38vw"
+          alt="Karsten Walz im Gespräch mit Mitarbeitenden in der Kanzlei"
+          class="block w-full h-auto rounded-xl"
+          loading="lazy"
+        />
+      </div>
+    </figure>
   </div>
 </section>
