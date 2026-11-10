@@ -357,11 +357,50 @@ function initMagnetic() {
   });
 }
 
+// Hero photo leans toward the cursor in 3D while its offset outline drifts the other way, so the
+// gap between them opens like a shadow. Tracked over the whole hero, eased by GSAP.
+function initTilt() {
+  if (!FINE_POINTER) return;
+  document.querySelectorAll<HTMLElement>('[data-tilt]').forEach((fig) => {
+    const photo = fig.querySelector<HTMLElement>('[data-tilt-photo]');
+    const shadow = fig.querySelector<HTMLElement>('[data-tilt-shadow]');
+    const area = fig.closest('section');
+    if (!photo || !shadow || !area) return;
+    gsap.set(photo, { transformPerspective: 900 });
+    // GSAP folds the outline's Tailwind translate (16px) into x/y; keep it as the rest offset.
+    const ox = gsap.getProperty(shadow, 'x') as number;
+    const oy = gsap.getProperty(shadow, 'y') as number;
+    const to = (t: HTMLElement, p: string) => gsap.quickTo(t, p, { duration: 0.8, ease: 'power3.out' });
+    const [px, py, rx, ry, sx, sy] = [
+      to(photo, 'x'), to(photo, 'y'), to(photo, 'rotationX'), to(photo, 'rotationY'),
+      to(shadow, 'x'), to(shadow, 'y'),
+    ];
+    const move = (nx: number, ny: number) => {
+      px(nx * 14); py(ny * 10); ry(nx * 6); rx(-ny * 5);
+      sx(ox - nx * 12); sy(oy - ny * 10);
+    };
+    const clamp = gsap.utils.clamp(-1, 1);
+    area.addEventListener('pointermove', (e) => {
+      const r = fig.getBoundingClientRect();
+      move(
+        clamp((e.clientX - (r.left + r.width / 2)) / (innerWidth / 2)),
+        clamp((e.clientY - (r.top + r.height / 2)) / (innerHeight / 2)),
+      );
+    });
+    area.addEventListener('pointerleave', () => move(0, 0));
+  });
+}
+
 // Sticky header earns its shadow only once content actually slides under it.
 function initElevate() {
   const el = document.querySelector<HTMLElement>('[data-elevate]');
   if (!el) return;
-  const update = (y: number) => el.classList.toggle('fx-elevated', y > 8);
+  // The bar compacts over the first 80px of scroll (≥ the largest --header-shrink, so the header never
+  // slides up faster than the page) and grows back the same way; no transition, so no lag or jump.
+  const update = (y: number) => {
+    el.style.setProperty('--fx-hp', String(Math.min(Math.max(y / 80, 0), 1)));
+    el.classList.toggle('fx-elevated', y > 8);
+  };
   // Native scroll fires for Lenis too (it scrolls the window), so one listener covers both.
   addEventListener('scroll', () => update(window.scrollY), { passive: true });
   update(window.scrollY);
@@ -417,5 +456,6 @@ if (prefersReducedMotion()) {
   initParticles();
   initSpotlight();
   initMagnetic();
+  initTilt();
   initElevate();
 }

@@ -261,25 +261,20 @@ header[data-elevate] {
   transition: box-shadow 400ms ease;
 }
 /* Compact bar: the header keeps its height in the page flow and slides partly off-screen, so nothing
-   below it moves. The row moves back down by half to stay centred in the visible part. */
+   below it moves. The row moves back down by half to stay centred in the visible part. --fx-hp is the
+   scroll progress 0..1 that fx.ts writes on every scroll event: the bar follows the scroll position
+   directly, without a timed transition that lags behind or jumps when the scroll turns around. */
+[data-elevate] {
+  top: calc(-1 * var(--header-shrink) * var(--fx-hp, 0));
+}
+[data-elevate] nav {
+  translate: 0 calc(var(--header-shrink) / 2 * var(--fx-hp, 0));
+}
+[data-elevate] nav img {
+  scale: calc(1 - (1 - var(--header-logo-compact)) * var(--fx-hp, 0));
+}
 [data-elevate].fx-elevated {
-  top: calc(-1 * var(--header-shrink));
   box-shadow: 0 12px 32px -20px rgb(129 95 93 / 0.4);
-}
-[data-elevate].fx-elevated nav {
-  translate: 0 calc(var(--header-shrink) / 2);
-}
-[data-elevate].fx-elevated nav img {
-  scale: var(--header-logo-compact);
-}
-@media (prefers-reduced-motion: no-preference) {
-  [data-elevate] {
-    transition: box-shadow 400ms ease, top 300ms cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  [data-elevate] nav,
-  [data-elevate] nav img {
-    transition: translate 300ms cubic-bezier(0.16, 1, 0.3, 1), scale 300ms cubic-bezier(0.16, 1, 0.3, 1);
-  }
 }
 
 /* Mobile menu: grid-rows collapse so open/close animates height smoothly.
