@@ -1,0 +1,18 @@
+# Ersetzt GitHub Actions (Account-weite Budget-Sperre, #357): nur Lint + Typecheck, nur beim PR.
+# Kein Lint-Skript und kein @astrojs/check im Repo; Typecheck per tsc gegen tsconfig.json.
+when:
+  - event: pull_request
+    branch: main
+
+steps:
+  - name: install
+    image: node:20-bookworm
+    environment:
+      NODE_ENV: development
+    commands:
+      - npm ci
+
+  - name: typecheck
+    image: node:20-bookworm
+    commands:
+      - npx -y -p typescript@5.9.3 tsc --noEmit
