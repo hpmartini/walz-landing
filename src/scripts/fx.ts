@@ -324,6 +324,23 @@ function initSpotlight() {
   });
 }
 
+// Fact numbers count up from zero each time their card is entered. The real
+// value sits in an sr-only twin, so screen readers never hear the ticking.
+function initCountUp() {
+  if (!FINE_POINTER) return;
+  document.querySelectorAll<HTMLElement>('[data-countup]').forEach((el) => {
+    const end = Number(el.dataset.countup);
+    if (!Number.isFinite(end)) return;
+    const n = { v: 0 };
+    el.closest('[data-trace]')?.addEventListener('pointerenter', () => {
+      gsap.fromTo(n, { v: 0 }, {
+        v: end, duration: 0.9, ease: 'power3.out', overwrite: true,
+        onUpdate: () => { el.textContent = String(Math.round(n.v)); },
+      });
+    });
+  });
+}
+
 // Primary CTAs lean a few pixels toward the cursor and spring back. GSAP owns
 // the whole transform (the markup deliberately has no hover:scale on these),
 // so transform is excluded from the CSS transition to avoid the two fighting.
@@ -455,6 +472,7 @@ if (prefersReducedMotion()) {
   entrance();
   initParticles();
   initSpotlight();
+  initCountUp();
   initMagnetic();
   initTilt();
   initElevate();

@@ -13,9 +13,9 @@ const steps = [
     <h2 id="ablauf-heading" class="text-3xl md:text-4xl font-bold text-primary mb-8 md:mb-10" data-reveal>So läuft die Zusammenarbeit</h2>
     <ol class="grid md:grid-cols-2 xl:grid-cols-4 gap-4 md:gap-6" data-reveal-group>
       {steps.map((step, i) => (
-        <li class="bg-white rounded-xl p-6 md:p-8 border border-secondary/15 shadow-sm">
+        <li class="group bg-white rounded-xl p-6 md:p-8 border border-secondary/15 shadow-sm" data-trace data-spotlight>
           <div class="flex items-center gap-3 mb-2 md:block">
-            <span class="flex shrink-0 items-center justify-center w-10 h-10 rounded-full bg-primary text-white font-bold md:mb-4" aria-hidden="true">{i + 1}</span>
+            <span class="flex shrink-0 items-center justify-center w-10 h-10 rounded-full bg-primary text-white font-bold md:mb-4 transition-[box-shadow,scale] duration-500 ease-out group-hover:scale-110 group-hover:shadow-[0_0_0_6px_rgb(176_151_150/0.3)] motion-reduce:transition-none motion-reduce:group-hover:scale-100" aria-hidden="true">{i + 1}</span>
             <h3 class="text-xl font-semibold text-primary md:mb-2"><span class="sr-only">Schritt {i + 1}: </span>{step.title}</h3>
           </div>
           <p class="text-text">{step.text}</p>

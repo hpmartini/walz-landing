@@ -26,21 +26,22 @@ const icons: Record<string, string> = {
 
     <ul class="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 border-t border-secondary/20" data-reveal-group>
       {services.map((service) => (
-        <li class="border-b border-secondary/20 min-w-0">
+        <li class="relative border-b border-secondary/20 min-w-0">
           <a
             href={`/leistungen/${service.slug}`}
-            class="group flex items-start gap-4 py-4 min-w-0"
+            class="group flex items-start gap-4 py-4 min-w-0 focus-visible:outline-offset-4"
           >
-            <span class="inline-flex shrink-0 items-center justify-center w-11 h-11 rounded-xl bg-secondary/10 text-secondary border border-secondary/20" aria-hidden="true" set:html={icons[service.icon] ?? icons.file} />
+            <span class="inline-flex shrink-0 items-center justify-center w-11 h-11 rounded-xl bg-secondary/10 text-secondary border border-secondary/20 transition-colors duration-500 group-hover:bg-secondary group-hover:text-white group-hover:border-secondary group-focus-visible:bg-secondary group-focus-visible:text-white motion-reduce:transition-none" aria-hidden="true" set:html={icons[service.icon] ?? icons.file} />
             <span class="min-w-0 flex-1">
               <span class="block text-lg font-semibold text-primary break-words group-hover:text-primary-light transition-colors duration-300">
                 {service.heading ?? service.title}
               </span>
               <span class="block text-text text-sm mt-1 break-words">{service.shortDesc}</span>
             </span>
-            <svg class="w-5 h-5 mt-1 shrink-0 text-secondary transition-transform duration-300 group-hover:translate-x-0.5 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <svg class="w-5 h-5 mt-1 shrink-0 text-secondary transition-transform duration-300 group-hover:translate-x-1.5 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
             </svg>
+            <span class="absolute inset-x-0 -bottom-px h-px bg-primary origin-left scale-x-0 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100 group-focus-visible:scale-x-100 motion-reduce:transition-none" aria-hidden="true"></span>
           </a>
         </li>
       ))}

@@ -44,8 +44,8 @@ const cards = [
     <h2 id="anliegen-heading" class="sr-only">Ihr Anliegen</h2>
     <ul class="grid md:grid-cols-2 xl:grid-cols-4 gap-4 md:gap-6" data-reveal-group>
       {cards.map((card) => (
-        <li class="flex flex-col bg-white p-6 md:p-8 rounded-xl shadow-sm border border-secondary/15">
-          <span class="inline-flex shrink-0 items-center justify-center w-11 h-11 rounded-xl bg-secondary/10 text-secondary border border-secondary/20 mb-4" aria-hidden="true" set:html={card.icon} />
+        <li class="group flex flex-col bg-white p-6 md:p-8 rounded-xl shadow-sm border border-secondary/15" data-trace data-spotlight>
+          <span class="inline-flex shrink-0 items-center justify-center w-11 h-11 rounded-xl bg-secondary/10 text-secondary border border-secondary/20 mb-4 transition-colors duration-500 group-hover:bg-secondary group-hover:text-white group-hover:border-secondary group-focus-within:bg-secondary group-focus-within:text-white" aria-hidden="true" set:html={card.icon} />
           <h3 class="text-xl font-semibold text-primary mb-3">{card.title}</h3>
           <p class="text-text mb-5">{card.text}</p>
           <ul class="mt-auto space-y-2">

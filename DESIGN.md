@@ -197,7 +197,7 @@ Freundlich & solide: soft corners, a gentle lift on hover, never flashy.
 - **Focus:** 2px Deep Mauve outline, 2px offset; white outline inside mauve sections and the footer.
 
 ### Cards / Containers
-- **Service card:** white, 12px radius, 32px padding, Rose Ash border at 15%, `shadow-sm`. Contents: 56px icon tile (Rose Ash 10% fill, 12px radius, 1.5px-stroke line icon), uppercase semibold title, description, "Mehr erfahren" link with an arrow that nudges right. Hover: lift 4px, `shadow-lg`, border to 40%, cursor spotlight.
+- **Service card:** white, 12px radius, 32px padding, Rose Ash border at 15%, `shadow-sm`. Contents: 56px icon tile (Rose Ash 10% fill, 12px radius, 1.5px-stroke line icon), uppercase semibold title, description, "Mehr erfahren" link with an arrow that nudges right. Hover: lift 4px, `shadow-lg`, border to 40%, cursor spotlight. Cards on the landing page and the Leistungen grid also trace a 1.5px Rose Ash line once around their edge on hover or keyboard focus (900ms, ease-out); icon tiles fill Rose Ash with a white icon, step numbers grow a soft ring, the team count counts up from zero. In the "Alle Leistungen" list a Deep Mauve line draws under the hovered row. Mouse only; reduced motion keeps the resting look.
 - **Stat card:** white, 16px radius, 40px padding, centred icon (Rose Ash), bold Deep Mauve value (counts up when numeric), Text Grey label.
 - **Panels:** form and Direktkontakt panels use the same 16px radius and Rose Ash 15% border; Direktkontakt sits on Off-White.
 
