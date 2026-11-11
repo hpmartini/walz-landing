@@ -1,0 +1,20 @@
+# Ersetzt GitHub Actions (Account-weite Budget-Sperre, #357): nur Lint + Typecheck, nur beim PR.
+# Kein Lint-Skript und kein @astrojs/check im Repo; Typecheck per tsc gegen tsconfig.json.
+when:
+  - event: pull_request
+    branch: main
+
+steps:
+  - name: install
+    image: node:20-bookworm
+    environment:
+      NODE_ENV: development
+    commands:
+      - npm ci
+
+  - name: typecheck
+    image: node:20-bookworm
+    commands:
+      # Generiert .astro/types.d.ts (ImportMeta.env/.glob), sonst fehlen die Astro-Typen.
+      - npx astro sync
+      - npx tsc --noEmit
