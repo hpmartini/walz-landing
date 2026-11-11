@@ -4,7 +4,8 @@ import heroBg from '../assets/brand/bg-web.jpg';
 import standUp from '../assets/photos/stand-up.jpg';
 
 // Title size at lg follows the text column (cqi), so "Ihr Steuerberater" always fits on one line.
-// Box text: nowrap groups keep the breaks before "Unternehmer" and "Privatpersonen". Its fill is a
+// Box text: on phones nowrap groups keep the breaks before "Unternehmer" and "Privatpersonen"; from sm it
+// is balanced and capped at 30.5em, so it breaks after "Unternehmer," and the box hugs the text. Its fill is a
 // Deep Mauve scrim, because a white fill lifts the photo and drops the text contrast to about 2:1.
 ---
 
@@ -42,7 +43,7 @@ import standUp from '../assets/photos/stand-up.jpg';
     <div class="@container flex flex-col max-w-3xl lg:max-w-none lg:min-w-0 flex-1 md:flex-none lg:flex-1">
       <h1 class="uppercase text-[length:clamp(24px,min(4.2svh,8vw),34px)] sm:text-4xl md:text-[length:clamp(30px,6.7svh,48px)] lg:text-[length:clamp(30px,min(6.7svh,9.4cqi),60px)] font-bold text-white leading-tight" data-lines="load">
         <span class="block overflow-hidden"><span class="block pb-[0.1em]" data-line>Ihr Steuerberater <span class="whitespace-nowrap">in Schwalmstadt</span></span></span>
-        <span class="mt-3 md:mt-5 short:mt-1.5 inline-block rounded-lg border border-white/40 bg-primary/40 px-3 py-1.5 md:px-4 md:py-2 text-[length:clamp(12px,min(1.9svh,3.6vw),14px)] sm:text-base font-semibold normal-case tracking-normal leading-snug text-white">Generationenübergreifend <span class="whitespace-nowrap">vertrauen uns</span> <span class="whitespace-nowrap">Unternehmer, Selbstständige,</span> <span class="whitespace-nowrap">Privatpersonen und Vereine.</span></span>
+        <span class="mt-3 md:mt-5 short:mt-1.5 inline-block rounded-lg border border-white/40 bg-primary/40 px-3 py-1.5 md:px-4 md:py-2 text-[length:clamp(12px,min(1.9svh,3.6vw),14px)] sm:text-base font-semibold normal-case tracking-normal leading-snug text-white sm:text-balance sm:max-w-[30.5em]">Generationenübergreifend <span class="whitespace-nowrap">vertrauen uns</span> <span class="whitespace-nowrap sm:whitespace-normal">Unternehmer, Selbstständige,</span> <span class="whitespace-nowrap">Privatpersonen und Vereine.</span></span>
       </h1>
       <div class="w-28 h-1 bg-secondary mt-4 mb-4 md:mt-6 md:mb-8 short:my-2" data-bar></div>
       <p class="text-[length:clamp(14px,min(2.35svh,4.4vw),18px)] leading-normal md:text-[length:clamp(16px,2.8svh,20px)] md:leading-relaxed text-white" data-reveal>
