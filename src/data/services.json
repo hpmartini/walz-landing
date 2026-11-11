@@ -12,7 +12,52 @@
       "Beratung zu Fördermitteln und Finanzierung",
       "Wahl der optimalen Rechtsform",
       "Unterstützung bei Behördengängen und Anmeldungen"
-    ]
+    ],
+    "h1": "Existenz\u00ADgründungs\u00ADberatung in Schwalmstadt",
+    "intro": "Sie möchten sich selbstständig machen und Ihre Gründung strukturiert vorbereiten? Wir unterstützen Sie dabei, Ihr Vorhaben wirtschaftlich und steuerlich einzuordnen. Gemeinsam klären wir, welche Entscheidungen vor dem Start anstehen und welche Unterlagen Sie dafür benötigen.",
+    "sections": [
+      {
+        "h2": "Für wen die Beratung gedacht ist",
+        "text": "Die Beratung richtet sich an Menschen, die eine Geschäftsidee konkretisieren oder den Schritt in die Selbstständigkeit vorbereiten. Auch wenn Sie bereits erste Planungen erstellt haben, können wir die offenen wirtschaftlichen und steuerlichen Fragen mit Ihnen besprechen."
+      },
+      {
+        "h2": "Wobei wir Sie unterstützen",
+        "text": "Wir begleiten Sie bei der Entwicklung Ihres Geschäftskonzepts sowie bei Businessplan und Finanzplanung. Dazu gehören Fragen zur Rechtsform, zur Finanzierung und zu möglichen Fördermitteln. Welche Aufgaben wir konkret übernehmen, legen wir passend zu Ihrem Vorhaben fest. Unterstützung bei Anmeldungen und Behördengängen besprechen wir im Rahmen der Gründungsvorbereitung."
+      },
+      {
+        "h2": "So bereiten Sie das Erstgespräch vor",
+        "text": "Beschreiben Sie Ihre Geschäftsidee, den geplanten Start und Ihre bisherigen Schritte. Wenn vorhanden, bringen Sie Ihren Businessplan, eine erste Finanzplanung und Ihre offenen Fragen mit. Auch ein früher Planungsstand eignet sich, um gemeinsam die nächsten Aufgaben festzulegen."
+      },
+      {
+        "h2": "Wie geht es anschließend weiter",
+        "text": "Im ersten Gespräch besprechen wir Ihr Vorhaben und den gewünschten Beratungsumfang. Darauf aufbauend stimmen wir die nächsten Schritte, Zuständigkeiten und die Vergütung mit Ihnen ab."
+      }
+    ],
+    "related": [
+      {
+        "label": "Laufende Buchhaltung",
+        "href": "/leistungen/finanzbuchhaltung"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Wann sollte ich einen Steuerberater einbeziehen?",
+        "a": "Ein Gespräch bietet sich bereits während der Planung an, insbesondere wenn Sie Fragen zu Rechtsform, Finanzierung oder den steuerlichen Aufgaben nach der Gründung haben."
+      },
+      {
+        "q": "Muss mein Businessplan bereits fertig sein?",
+        "a": "Sie können sich auch mit einem ersten Konzept an uns wenden. Teilen Sie uns bei Ihrer Anfrage mit, wie weit Ihre Planung ist und wobei Sie Unterstützung wünschen."
+      },
+      {
+        "q": "Was kostet die Beratung?",
+        "a": "Die Vergütung hängt vom vereinbarten Leistungsumfang ab. Fragen zur Abrechnung klären wir vor der Beauftragung der jeweiligen Beratungsleistung."
+      }
+    ],
+    "cta": {
+      "text": "Besprechen wir die nächsten Schritte für Ihre Gründung.",
+      "label": "Gründungsberatung anfragen"
+    },
+    "anliegen": "gruendung"
   },
   {
     "slug": "nachfolgeberatung",
@@ -27,7 +72,48 @@
       "Begleitung familieninterner und externer Nachfolgelösungen",
       "Erbschaft- und schenkungsteuerliche Beratung",
       "Betriebswirtschaftliche Begleitung und Koordination mit weiteren Beratern"
-    ]
+    ],
+    "h1": "Unternehmens\u00ADnachfolge in Schwalmstadt vorbereiten",
+    "intro": "Sie möchten die Übergabe Ihres Unternehmens vorbereiten und die steuerlichen und wirtschaftlichen Fragen frühzeitig klären? Wir unterstützen Sie dabei, Ihre Ausgangslage zu strukturieren und die nächsten Schritte für die Nachfolge zu planen.",
+    "sections": [
+      {
+        "h2": "Für wen die Beratung geeignet ist",
+        "text": "Die Beratung richtet sich an Unternehmerinnen und Unternehmer, die über eine Übergabe innerhalb der Familie oder an andere Nachfolger nachdenken. Teilen Sie uns mit, welche Ziele Sie verfolgen, welcher Zeitraum vorgesehen ist und welche Überlegungen bereits bestehen."
+      },
+      {
+        "h2": "Welche Fragen wir gemeinsam klären",
+        "text": "Im Mittelpunkt stehen die wirtschaftliche Situation Ihres Unternehmens, die steuerlichen Auswirkungen möglicher Schritte und Ihre persönlichen Ziele für die Übergabe. Wir besprechen, welche Informationen für die weitere Planung erforderlich sind und welche Beratungsleistungen zu Ihrem Vorhaben passen."
+      },
+      {
+        "h2": "So bereiten Sie das erste Gespräch vor",
+        "text": "Hilfreich sind eine kurze Beschreibung des Unternehmens, der gewünschten Nachfolgelösung und des geplanten Zeitrahmens. Bereits vorhandene [Jahresabschlüsse](/leistungen/jahresabschluesse), Auswertungen oder Planungen können wir nach Abstimmung einbeziehen. Welche Unterlagen wir tatsächlich benötigen, klären wir vorab mit Ihnen."
+      },
+      {
+        "h2": "Aus Überlegungen werden nächste Schritte",
+        "text": "Zunächst besprechen wir Ihre Ziele und den aktuellen Stand. Anschließend vereinbaren wir den Beratungsumfang und die nächsten Aufgaben. Soweit weitere fachliche Beteiligte erforderlich sind, stimmen wir die Schnittstellen im Rahmen des vereinbarten Auftrags ab."
+      }
+    ],
+    "related": [
+      {
+        "label": "Betriebswirtschaftliche Beratung",
+        "href": "/leistungen/betriebswirtschaftliche-beratung"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Ist eine Beratung auch ohne feststehenden Nachfolger sinnvoll?",
+        "a": "Ja, eine frühe Bestandsaufnahme kann helfen, offene Fragen zu ordnen. Welche konkreten Leistungen sinnvoll sind, hängt von Ihrer Ausgangslage und Ihren Zielen ab."
+      },
+      {
+        "q": "Welche Kosten entstehen?",
+        "a": "Wir besprechen die Vergütung auf Basis der vereinbarten Beratungsleistungen. Teilen Sie uns zunächst mit, welche Fragen und Planungsschritte bei Ihnen anstehen."
+      }
+    ],
+    "cta": {
+      "text": "Klären Sie die offenen Fragen Ihrer Unternehmensübergabe.",
+      "label": "Nachfolgeberatung anfragen"
+    },
+    "anliegen": "nachfolge"
   },
   {
     "slug": "coaching",
@@ -40,7 +126,42 @@
       "Strategische Unternehmensplanung",
       "Krisenmanagement und Problemlösung",
       "Persönliche Weiterentwicklung als Unternehmer"
-    ]
+    ],
+    "h1": "Unter\u00ADnehme\u00ADrisches Coaching in Schwalmstadt",
+    "intro": "Sie möchten eine unternehmerische Entscheidung vorbereiten oder Ihre nächsten Entwicklungsschritte ordnen? Im Coaching besprechen wir Ihre Ziele, die aktuelle Situation und die Fragen, die Sie weiterbringen möchten. Gemeinsam strukturieren wir Handlungsoptionen und vereinbaren die nächsten Schritte. Schildern Sie uns bei Ihrer Anfrage, welches Thema Sie bearbeiten möchten und was Sie sich von der Begleitung wünschen.",
+    "sections": [
+      {
+        "h2": "Für wen das Coaching gedacht ist",
+        "text": "Das Coaching richtet sich an Unternehmerinnen und Unternehmer, die eine Entscheidung vorbereiten, ihren Betrieb neu ausrichten oder eine schwierige Phase strukturiert angehen möchten. Ausgangspunkt sind immer Ihre eigenen Fragen, nicht ein vorgefertigtes Programm."
+      },
+      {
+        "h2": "Wie die Begleitung abläuft",
+        "text": "Im ersten Gespräch klären wir Ihr Anliegen, Ihre Ziele und die Rahmenbedingungen. Danach vereinbaren wir, in welchen Abständen wir uns austauschen und woran Sie den Fortschritt erkennen. Zwischen den Terminen arbeiten Sie an den vereinbarten Schritten."
+      },
+      {
+        "h2": "Zahlen als Grundlage",
+        "text": "Weil wir als Kanzlei Ihre wirtschaftliche Lage kennen können, lassen sich Überlegungen im Coaching mit Auswertungen und Planungsrechnungen verbinden. So bleiben Entscheidungen nicht nur eine Frage des Gefühls."
+      },
+      {
+        "h2": "Verbindung zu weiteren Leistungen",
+        "text": "Ergeben sich im Coaching konkrete Fragen zu Planung, Finanzierung oder Übergabe, können wir diese in der [betriebswirtschaftlichen Beratung](/leistungen/betriebswirtschaftliche-beratung) oder der [Nachfolgeberatung](/leistungen/nachfolgeberatung) vertiefen."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Welche Themen eignen sich für das Coaching?",
+        "a": "Zum Beispiel die Ausrichtung des Betriebs, Führungsfragen, die Vorbereitung größerer Entscheidungen oder die Ordnung der eigenen Prioritäten. Schildern Sie uns Ihr Thema bei der Anfrage."
+      },
+      {
+        "q": "Wie wird der Umfang vereinbart?",
+        "a": "Umfang, Abstände der Termine und die Vergütung stimmen wir nach dem ersten Gespräch mit Ihnen ab, bevor die Begleitung beginnt."
+      }
+    ],
+    "cta": {
+      "text": "Erzählen Sie uns, welches Thema Sie bewegt.",
+      "label": "Coaching anfragen"
+    },
+    "anliegen": "coaching"
   },
   {
     "slug": "betriebswirtschaftliche-beratung",
@@ -54,7 +175,42 @@
       "Liquiditätsplanung und Controlling",
       "Investitions- und Finanzierungsberatung",
       "Unternehmensbewertung"
-    ]
+    ],
+    "h1": "Betriebs\u00ADwirtschaft\u00ADliche Beratung in Schwalmstadt",
+    "intro": "Sie möchten wirtschaftliche Entscheidungen auf eine nachvollziehbare Grundlage stellen? Wir besprechen mit Ihnen die betriebswirtschaftlichen Fragen Ihres Unternehmens und die verfügbaren Zahlen. Je nach Auftrag unterstützen wir Sie bei der Einordnung Ihrer Situation und bei der Vorbereitung weiterer Planungsschritte. Bringen Sie Ihre konkrete Fragestellung und vorhandene Auswertungen mit. Den erforderlichen Umfang und die nächsten Aufgaben stimmen wir gemeinsam ab.",
+    "sections": [
+      {
+        "h2": "Wobei wir Sie unterstützen",
+        "text": "Typische Anlässe sind die Planung eines Geschäftsjahres, eine geplante Investition, Gespräche mit der Bank oder die Frage, wie sich Kosten und Erträge entwickeln. Wir ordnen Ihre Zahlen ein und besprechen mit Ihnen, welche Schlüsse sich daraus ziehen lassen."
+      },
+      {
+        "h2": "Auswertungen verständlich machen",
+        "text": "Betriebswirtschaftliche Auswertungen sind nur hilfreich, wenn sie gelesen werden. Wir erläutern Ihnen, welche Kennzahlen für Ihren Betrieb aussagekräftig sind und wie Sie Veränderungen frühzeitig erkennen."
+      },
+      {
+        "h2": "Planung und Entscheidungen vorbereiten",
+        "text": "Für Investitionen, Finanzierungen oder Veränderungen im Betrieb erstellen wir mit Ihnen Planungsrechnungen, die verschiedene Annahmen gegenüberstellen. So sehen Sie, welche Spielräume bestehen, bevor Sie entscheiden. Die Annahmen dafür legen wir gemeinsam fest und passen sie an, wenn sich Ihre Lage ändert."
+      },
+      {
+        "h2": "Grundlage aus der laufenden Buchhaltung",
+        "text": "Am aussagekräftigsten wird die Beratung, wenn sie auf einer aktuellen [Finanzbuchhaltung](/leistungen/finanzbuchhaltung) aufbaut. Steht eine Gründung oder Übergabe an, verbinden wir die Beratung mit der [Existenzgründungsberatung](/leistungen/existenzgruendung) oder der [Nachfolgeberatung](/leistungen/nachfolgeberatung)."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Welche Auswertungen sind für das Erstgespräch hilfreich?",
+        "a": "Hilfreich sind die letzten Jahresabschlüsse und aktuelle betriebswirtschaftliche Auswertungen, soweit vorhanden. Was darüber hinaus sinnvoll ist, klären wir im Gespräch."
+      },
+      {
+        "q": "Welche Planungsfragen begleiten Sie?",
+        "a": "Zum Beispiel Jahres- und Liquiditätsplanung, Investitions- und Finanzierungsvorhaben oder die Vorbereitung von Bankgesprächen. Schildern Sie uns Ihr Vorhaben bei der Anfrage."
+      }
+    ],
+    "cta": {
+      "text": "Besprechen wir, welche Zahlen Ihnen bei Ihrer Entscheidung helfen.",
+      "label": "Betriebswirtschaftliche Beratung anfragen"
+    },
+    "anliegen": "bwl"
   },
   {
     "slug": "finanzbuchhaltung",
@@ -69,7 +225,46 @@
       "Erstellung von BWA und Summen-Saldenlisten",
       "Offene-Posten-Verwaltung",
       "Kostenstellenrechnung im Rahmen des internen Rechnungswesens"
-    ]
+    ],
+    "h1": "Finanz\u00ADbuch\u00ADhaltung für Unternehmen in Schwalmstadt",
+    "intro": "Sie möchten Ihre laufende Buchhaltung verlässlich organisieren und wirtschaftliche Entwicklungen besser überblicken? Wir unterstützen Unternehmen und Selbstständige bei der Finanzbuchhaltung. Den Leistungsumfang und die Zusammenarbeit stimmen wir auf Ihren Betrieb ab.",
+    "sections": [
+      {
+        "h2": "Was wir gemeinsam organisieren",
+        "text": "Wir besprechen, welche Buchhaltungsaufgaben Sie abgeben möchten, wie Sie Ihre Belege bereitstellen und welche Auswertungen Sie benötigen. Auf dieser Grundlage vereinbaren wir Zuständigkeiten, Unterlagen und wiederkehrende Abläufe."
+      },
+      {
+        "h2": "Belege und Rückfragen klar abstimmen",
+        "text": "Damit die Zusammenarbeit im Alltag funktioniert, klären wir den Weg Ihrer Unterlagen und die Ansprechpartner für Rückfragen. Welche digitalen Übermittlungswege und Anwendungen wir dafür einsetzen, erfahren Sie im Gespräch."
+      },
+      {
+        "h2": "Einstieg in die Zusammenarbeit",
+        "text": "Nennen Sie uns bei Ihrer Anfrage die Art Ihres Unternehmens und die Aufgaben, bei denen Sie Unterstützung suchen. Wir besprechen Ihren bisherigen Ablauf, den gewünschten Start und die Unterlagen für eine mögliche Übernahme."
+      },
+      {
+        "h2": "Buchhaltung und weitere Aufgaben verbinden",
+        "text": "Wenn Sie zusätzlich Unterstützung beim [Jahresabschluss](/leistungen/jahresabschluesse) oder bei der [Lohnbuchhaltung](/leistungen/lohnbuchhaltung) benötigen, können wir die Aufgaben im Zusammenhang besprechen. So lassen sich Zuständigkeiten und Übergaben frühzeitig abstimmen."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Kann ich Belege digital bereitstellen?",
+        "a": "Die geeigneten Übermittlungswege stimmen wir mit Ihnen ab. Beschreiben Sie uns bei Ihrer Anfrage, welche Anwendungen und Abläufe Sie bereits nutzen."
+      },
+      {
+        "q": "Kann ich von einer anderen Kanzlei wechseln?",
+        "a": "Sprechen Sie uns auf Ihren gewünschten Wechselzeitpunkt an. Wir prüfen die mögliche Übernahme und stimmen mit Ihnen ab, welche Informationen und Unterlagen erforderlich sind."
+      },
+      {
+        "q": "Wovon hängt die Vergütung ab?",
+        "a": "Die Vergütung richtet sich nach den vereinbarten Leistungen und den maßgeblichen Abrechnungsgrundlagen. Den konkreten Umfang und die Abrechnung klären wir vor der Beauftragung."
+      }
+    ],
+    "cta": {
+      "text": "Besprechen wir, welche Buchhaltungsaufgaben Sie abgeben möchten.",
+      "label": "Buchhaltung anfragen"
+    },
+    "anliegen": "buchhaltung"
   },
   {
     "slug": "jahresabschluesse",
@@ -83,7 +278,42 @@
       "Einnahmenüberschussrechnungen",
       "E-Bilanz und elektronische Übermittlung",
       "Gesellschaftsrechtliche Abschlüsse"
-    ]
+    ],
+    "h1": "Jahres\u00ADabschlüsse für Unternehmen in Schwalmstadt",
+    "intro": "Der Jahresabschluss führt die wirtschaftlichen Ergebnisse Ihres Unternehmens zusammen und erfüllt die für Ihr Unternehmen geltenden Anforderungen. Wir unterstützen Sie bei der Erstellung und besprechen den vereinbarten Leistungsumfang. Für die Vorbereitung klären wir, welche Unterlagen vorliegen, welche Informationen ergänzt werden müssen und wie die Abstimmung mit Ihrer laufenden Buchhaltung erfolgt. Nennen Sie bei Ihrer Anfrage die Rechtsform und das betreffende Geschäftsjahr.",
+    "sections": [
+      {
+        "h2": "Welcher Abschluss für Ihr Unternehmen gilt",
+        "text": "Je nach Rechtsform und Größe Ihres Unternehmens kommen eine Einnahmen-Überschuss-Rechnung, eine Bilanz mit Gewinn- und Verlustrechnung oder weitere Bestandteile in Betracht. Welche Anforderungen für Sie gelten, klären wir zu Beginn der Zusammenarbeit."
+      },
+      {
+        "h2": "Ablauf der Erstellung",
+        "text": "Wir stimmen mit Ihnen ab, welche Unterlagen wir zum Jahresende benötigen, etwa zu Inventur, offenen Posten oder Verträgen. Nach der Erstellung besprechen wir den Abschluss mit Ihnen und erläutern die wesentlichen Positionen."
+      },
+      {
+        "h2": "Abschluss und Steuererklärungen",
+        "text": "Der Jahresabschluss ist die Grundlage für die betrieblichen [Steuererklärungen](/leistungen/steuererklaerungen). Beides bereiten wir aufeinander abgestimmt vor, damit Angaben nicht doppelt erhoben werden."
+      },
+      {
+        "h2": "Mehr als eine Pflichtaufgabe",
+        "text": "Der Abschluss zeigt, wie sich Ihr Unternehmen entwickelt hat. Auf Wunsch nutzen wir die Zahlen für ein Gespräch über die weitere Planung im Rahmen der [betriebswirtschaftlichen Beratung](/leistungen/betriebswirtschaftliche-beratung)."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Welche Unterlagen benötigen Sie?",
+        "a": "Das hängt von Ihrem Unternehmen ab. Üblich sind zum Beispiel Angaben zu Beständen, offenen Forderungen und Verbindlichkeiten sowie zu wichtigen Verträgen. Eine Liste stimmen wir mit Ihnen ab."
+      },
+      {
+        "q": "Wie läuft die Abstimmung mit der Buchhaltung ab?",
+        "a": "Führen wir Ihre Finanzbuchhaltung, liegen die meisten Zahlen bereits vor. Führen Sie die Buchhaltung selbst oder über Dritte, vereinbaren wir, in welcher Form die Daten übergeben werden."
+      }
+    ],
+    "cta": {
+      "text": "Besprechen wir, welcher Abschluss für Ihr Unternehmen ansteht.",
+      "label": "Jahresabschluss anfragen"
+    },
+    "anliegen": "jahresabschluss"
   },
   {
     "slug": "lohnbuchhaltung",
@@ -97,7 +327,46 @@
       "Meldungen an Sozialversicherungen und Finanzamt",
       "Bescheinigungswesen",
       "Beratung zu lohnsteuerlichen Fragen"
-    ]
+    ],
+    "h1": "Lohn\u00ADbuch\u00ADhaltung für Arbeitgeber in Schwalmstadt",
+    "intro": "Sie möchten die Lohn- und Gehaltsabrechnung Ihres Betriebs abgeben oder Ihre bisherigen Abläufe neu organisieren? Wir besprechen mit Ihnen den erforderlichen Leistungsumfang und die Zusammenarbeit. Dazu stimmen wir ab, welche Angaben und Änderungen Sie bereitstellen, wer Rückfragen klärt und welche Termine für Ihren Betrieb gelten. Teilen Sie uns bei Ihrer Anfrage die ungefähre Mitarbeiterzahl und den gewünschten Start mit.",
+    "sections": [
+      {
+        "h2": "Was zur Lohnabrechnung gehört",
+        "text": "Neben der monatlichen Abrechnung für Ihre Mitarbeitenden gehören die Meldungen an Sozialversicherungsträger und Finanzamt sowie die erforderlichen Bescheinigungen dazu. Welche Aufgaben wir übernehmen und welche bei Ihnen im Betrieb bleiben, legen wir vor dem Start gemeinsam fest."
+      },
+      {
+        "h2": "Übernahme ohne Bruch im Ablauf",
+        "text": "Wechseln Sie von einer anderen Kanzlei oder geben Sie die Abrechnung erstmals ab, klären wir zuerst die Ausgangslage: bisherige Abrechnungen, Stammdaten der Mitarbeitenden und vereinbarte Vergütungsbestandteile. Danach stimmen wir den Monat ab, ab dem wir die Abrechnung übernehmen."
+      },
+      {
+        "h2": "Änderungen im laufenden Monat",
+        "text": "Neueinstellungen, Austritte, geänderte Arbeitszeiten oder Sonderzahlungen teilen Sie uns auf einem vereinbarten Weg mit. Für Rückfragen haben Sie feste Ansprechpartner in der Kanzlei. So bleibt im Alltag klar, wer was bis wann liefert."
+      },
+      {
+        "h2": "Lohn und Buchhaltung zusammen denken",
+        "text": "Betreuen wir auch Ihre [Finanzbuchhaltung](/leistungen/finanzbuchhaltung), stimmen wir die Übergabe der Lohndaten in die Buchhaltung direkt mit ab. Fragen zur Lohnsteuer, etwa zu Zuschlägen oder Sachbezügen, besprechen wir im Rahmen der [Steuerberatung](/leistungen/steuerberatung)."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Welche Angaben brauchen Sie für die Übernahme?",
+        "a": "In der Regel die Stammdaten Ihrer Mitarbeitenden, die bisherigen Abrechnungen und die vereinbarten Vergütungsbestandteile. Welche Unterlagen in Ihrem Fall nötig sind, stimmen wir im Erstgespräch ab."
+      },
+      {
+        "q": "Wie teile ich Änderungen bei Mitarbeitern mit?",
+        "a": "Den Weg und den Zeitpunkt für Änderungsmeldungen vereinbaren wir mit Ihnen. So wissen beide Seiten, bis wann Angaben für die jeweilige Abrechnung vorliegen müssen."
+      },
+      {
+        "q": "Wovon hängt die Vergütung ab?",
+        "a": "Die Vergütung richtet sich nach den vereinbarten Leistungen und den maßgeblichen Abrechnungsgrundlagen. Den Umfang klären wir vor der Beauftragung."
+      }
+    ],
+    "cta": {
+      "text": "Besprechen wir, wie Ihre Lohnabrechnung künftig laufen soll.",
+      "label": "Lohnbuchhaltung anfragen"
+    },
+    "anliegen": "lohn"
   },
   {
     "slug": "steuerberatung",
@@ -111,7 +380,42 @@
       "Vertretung gegenüber Finanzbehörden",
       "Einspruchsverfahren und Rechtsbehelfe",
       "Steuerliche Optimierung"
-    ]
+    ],
+    "h1": "Steuerliche Fragen in Schwalmstadt klären",
+    "intro": "Eine unternehmerische oder private Entscheidung wirft steuerliche Fragen auf? Beschreiben Sie uns Ihre Ausgangslage und die Entscheidung, die Sie vorbereiten möchten. Wir klären, welche Informationen erforderlich sind und welcher Beratungsumfang zu Ihrem Anliegen passt. So erhalten Sie eine nachvollziehbare Grundlage für die weiteren Schritte. Die Beratung und Vergütung stimmen wir vor der Beauftragung mit Ihnen ab.",
+    "sections": [
+      {
+        "h2": "Für Unternehmen und Privatpersonen",
+        "text": "Wir beraten Selbstständige, Unternehmen und Privatpersonen in steuerlichen Fragen. Das kann eine einzelne Frage zu einem geplanten Vorhaben sein oder die laufende steuerliche Betreuung über das ganze Jahr."
+      },
+      {
+        "h2": "Vorhaben steuerlich vorbereiten",
+        "text": "Steuerliche Fragen lassen sich am besten klären, bevor eine Entscheidung fällt, etwa vor einer Investition, einer Änderung der Rechtsform oder einer Vermögensübertragung. Wir besprechen mit Ihnen die Möglichkeiten und ihre Folgen."
+      },
+      {
+        "h2": "Begleitung gegenüber dem Finanzamt",
+        "text": "Bei Rückfragen, Bescheiden oder Prüfungen des Finanzamts stimmen wir mit Ihnen das Vorgehen ab und übernehmen auf Wunsch die Kommunikation. Sie wissen jederzeit, wer Ihr Thema in der Kanzlei bearbeitet. Fristen und nächste Schritte besprechen wir mit Ihnen, sobald uns das Schreiben des Finanzamts vorliegt."
+      },
+      {
+        "h2": "Beratung und laufende Aufgaben verbinden",
+        "text": "Betreuen wir auch Ihre [Steuererklärungen](/leistungen/steuererklaerungen) oder Ihren [Jahresabschluss](/leistungen/jahresabschluesse), fließen die Ergebnisse der Beratung direkt in diese Arbeiten ein."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Welche Angaben sind für die erste Anfrage hilfreich?",
+        "a": "Beschreiben Sie kurz Ihre Situation und Ihre Frage, zum Beispiel ob es um ein Unternehmen oder um private Angelegenheiten geht. Welche Unterlagen wir danach benötigen, sagen wir Ihnen."
+      },
+      {
+        "q": "Wer bearbeitet mein Thema?",
+        "a": "Sie erhalten feste Ansprechpartner in der Kanzlei. Wer das ist, hängt von Ihrem Anliegen ab und wird zu Beginn mit Ihnen abgestimmt."
+      }
+    ],
+    "cta": {
+      "text": "Schildern Sie uns Ihre steuerliche Frage.",
+      "label": "Steuerberatung anfragen"
+    },
+    "anliegen": "steuerberatung"
   },
   {
     "slug": "steuererklaerungen",
@@ -126,6 +430,46 @@
       "Gewerbesteuererklärungen",
       "Körperschaftsteuererklärungen",
       "Erbschaft- und Schenkungsteuererklärungen"
-    ]
+    ],
+    "h1": "Steuer\u00ADerklä\u00ADrungen in Schwalmstadt erstellen lassen",
+    "intro": "Wir erstellen Steuererklärungen für Privatpersonen, Vereine und Unternehmen. Teilen Sie uns mit, um welche Erklärung und welches Jahr es geht. Anschließend klären wir den Leistungsumfang und die erforderlichen Unterlagen. Unser Angebot umfasst die auf dieser Seite aufgeführten Erklärungsarten; besondere Sachverhalte besprechen wir im Einzelfall mit Ihnen.",
+    "afterBenefits": "Welche Nachweise erforderlich sind, hängt von Ihrer persönlichen oder betrieblichen Situation ab. Für die erste Anfrage genügt eine kurze Beschreibung. Den sicheren Weg für die Übermittlung Ihrer Unterlagen stimmen wir anschließend ab.",
+    "sections": [
+      {
+        "h2": "Welche Erklärungen wir übernehmen",
+        "text": "Wir erstellen Einkommensteuererklärungen für Privatpersonen und Selbstständige sowie die betrieblichen Steuererklärungen für Unternehmen. Welche Erklärungen in Ihrem Fall anfallen, klären wir gemeinsam zu Beginn."
+      },
+      {
+        "h2": "So bereiten Sie Ihre Unterlagen vor",
+        "text": "Sie erhalten von uns eine Übersicht, welche Belege und Angaben wir benötigen. Unterlagen aus dem Vorjahr helfen uns beim Einstieg. Fehlt etwas, melden wir uns mit konkreten Rückfragen."
+      },
+      {
+        "h2": "Bescheid und Prüfung",
+        "text": "Nach Abgabe prüfen wir den Steuerbescheid des Finanzamts. Weicht er von der Erklärung ab, besprechen wir mit Ihnen, ob ein Einspruch sinnvoll ist, und übernehmen auf Wunsch das weitere Vorgehen."
+      },
+      {
+        "h2": "Erklärung und Beratung im Zusammenhang",
+        "text": "Bei Unternehmen baut die Erklärung auf dem [Jahresabschluss](/leistungen/jahresabschluesse) auf. Ergeben sich bei der Erstellung grundsätzliche Fragen, vertiefen wir diese in der [Steuerberatung](/leistungen/steuerberatung)."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Übernehmen Sie meine Erklärungsart?",
+        "a": "Schildern Sie uns bei der Anfrage, um welche Erklärung es geht. Wir sagen Ihnen dann, ob und in welchem Umfang wir sie übernehmen."
+      },
+      {
+        "q": "Welche Unterlagen soll ich vorbereiten?",
+        "a": "Das hängt von Ihrer Situation ab. Eine passende Liste erhalten Sie von uns nach dem ersten Kontakt."
+      },
+      {
+        "q": "Wie wird die Vergütung geklärt?",
+        "a": "Die Vergütung richtet sich nach den vereinbarten Leistungen und den maßgeblichen Abrechnungsgrundlagen. Den Umfang klären wir vor der Beauftragung."
+      }
+    ],
+    "cta": {
+      "text": "Sagen Sie uns, welche Erklärung bei Ihnen ansteht.",
+      "label": "Steuererklärung anfragen"
+    },
+    "anliegen": "steuererklaerung"
   }
 ]

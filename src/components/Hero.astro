@@ -26,28 +26,32 @@ import headerPhoto from '../assets/team/header_Unterseite.jpg';
 
   <div class="relative max-w-[1200px] mx-auto px-6">
     <div class="max-w-3xl">
-      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight" data-lines="load">
-        <span class="block overflow-hidden"><span class="block" data-line>Ihr Steuerberater</span></span>
-        <span class="block overflow-hidden"><span class="block" data-line>in Schwalmstadt</span></span>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight" data-lines="load">
+        <span class="block overflow-hidden"><span class="block" data-line>Ihr Steuerberater in Schwalmstadt</span></span>
+        <span class="mt-5 inline-block rounded-lg border border-white/40 bg-white/10 px-4 py-2 text-sm sm:text-base font-semibold normal-case tracking-normal leading-snug text-white"><!-- nowrap groups: breaks only before "Unternehmer" or "Privatpersonen" (on 320 px also after the first word) -->Generationenübergreifend <span class="whitespace-nowrap">vertrauen uns</span> <span class="whitespace-nowrap">Unternehmer, Selbstständige,</span> <span class="whitespace-nowrap">Privatpersonen und Vereine.</span></span>
       </h1>
       <div class="w-28 h-1 bg-secondary mt-6 mb-8" data-bar></div>
       <p class="text-xl text-white leading-relaxed mb-10" data-reveal>
-        Generationenübergreifend vertrauen uns Unternehmer, Selbstständige, Privatpersonen und Vereine. Persönlich, kompetent, regional verwurzelt.
+        Ob Sie ein Unternehmen gründen, laufende steuerliche Aufgaben abgeben oder Ihre private Steuererklärung erstellen lassen möchten: Die Kanzlei Karsten Walz unterstützt Sie bei Ihren nächsten Schritten. Lernen Sie unsere Leistungen und die Menschen dahinter kennen.
       </p>
-      <div class="flex flex-col sm:flex-row gap-4" data-reveal-group>
+      <div class="flex flex-col sm:flex-row sm:items-start gap-4" data-reveal-group>
+        <div class="flex flex-col gap-3 sm:max-w-xs">
         <a
-          href="/kontakt"
+          href="/kontakt?anliegen=erstgespraech"
+          aria-describedby="hero-cta-note"
           class="bg-white text-primary px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:brightness-105 motion-reduce:transition-none text-center"
           data-magnetic
         >
-          Termin vereinbaren
+          Erstgespräch anfragen
         </a>
+        <p id="hero-cta-note" class="text-sm text-white/90">Sie schildern uns kurz Ihr Anliegen. Anschließend klären wir gemeinsam, ob und wie wir Sie unterstützen können.</p>
+        </div>
         <a
-          href="/leistungen"
+          href="#leistungen"
           class="border-2 border-white/70 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:bg-white hover:text-primary motion-reduce:transition-none text-center"
           data-magnetic
         >
-          Leistungen entdecken
+          Passende Leistung finden
         </a>
       </div>
     </div>

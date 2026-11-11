@@ -10,9 +10,20 @@ export const kanzlei = {
   postalCode: '34613',
   city: 'Schwalmstadt',
   region: 'Hessen',
+  // OpenStreetMap building match for Ziegenhainer Str. 3 (checked 2026-11-05).
+  geo: { latitude: 50.91244, longitude: 9.25263 },
+  // Last content revision of the page texts; bump when texts change (schema dateModified).
+  updated: '2026-11-05',
   phone: '06691 4271',
   phoneIntl: '+49 6691 4271',
+  phoneHref: 'tel:+4966914271',
   email: 'info@kanzlei-karstenwalz.de',
+  // Official profiles (schema sameAs and footer icons); Karsten confirms they are current.
+  profiles: {
+    facebook: 'https://www.facebook.com/Kanzlei.Karsten.Walz.Steuerberater/',
+    linkedin: 'https://www.linkedin.com/in/karsten-walz-b74a02111/',
+    instagram: 'https://www.instagram.com/kanzlei_karsten_walz',
+  },
   hours: [
     { days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'], label: 'Mo – Do', slots: [['08:00', '12:30'], ['13:30', '17:00']] },
     { days: ['Friday'], label: 'Fr', slots: [['08:00', '13:30']] },

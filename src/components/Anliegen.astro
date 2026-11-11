@@ -1,0 +1,47 @@
+---
+// Three entry points right after the hero (plan ch. 2). Each card can carry several links.
+const cards = [
+  {
+    title: 'Unternehmen und Selbstständige',
+    text: 'Buchhaltung, Lohn und Jahresabschluss: Finden Sie die passende Unterstützung für Ihren Betrieb.',
+    links: [{ href: '/leistungen/finanzbuchhaltung', label: 'Finanzbuchhaltung' }],
+  },
+  {
+    title: 'Gründung und Nachfolge',
+    text: 'Eine Gründung vorbereiten oder die Unternehmensübergabe planen: Klären Sie die nächsten Schritte.',
+    links: [
+      { href: '/leistungen/existenzgruendung', label: 'Existenzgründung' },
+      { href: '/leistungen/nachfolgeberatung', label: 'Nachfolgeberatung' },
+    ],
+  },
+  {
+    title: 'Privatpersonen und Vereine',
+    text: 'Steuererklärungen und individuelle Fragen: Erfahren Sie, wobei wir Sie unterstützen.',
+    links: [{ href: '/leistungen/steuererklaerungen', label: 'Steuererklärungen' }],
+  },
+];
+---
+
+<section aria-labelledby="anliegen-heading" class="py-16 md:py-20 bg-bg">
+  <div class="max-w-[1200px] mx-auto px-6">
+    <h2 id="anliegen-heading" class="sr-only">Ihr Anliegen</h2>
+    <ul class="grid md:grid-cols-3 gap-6" data-reveal-group>
+      {cards.map((card) => (
+        <li class="flex flex-col bg-white p-8 rounded-xl shadow-sm border border-secondary/15">
+          <h3 class="text-xl font-semibold text-primary mb-3">{card.title}</h3>
+          <p class="text-text mb-5">{card.text}</p>
+          <ul class="mt-auto space-y-2">
+            {card.links.map((link) => (
+              <li>
+                <a href={link.href} class="inline-flex items-center gap-1 py-1 text-primary font-semibold a-underline hover:text-primary-light">
+                  {link.label}
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

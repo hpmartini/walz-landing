@@ -6,6 +6,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import PageHero from '../components/PageHero.astro';
 import ChatWidget from '../components/ChatWidget.astro';
+import { FEATURES } from '../data/features';
 ---
 
 <Layout title="Kanzlei" description="Kanzlei Karsten Walz – Steuerberater in Schwalmstadt. Persönlich, kompetent, zuverlässig.">
@@ -51,6 +52,9 @@ import ChatWidget from '../components/ChatWidget.astro';
         </div>
 
         <div class="mt-12" data-reveal>
+          <p class="text-text text-lg max-w-3xl mb-6">
+            Sie möchten wissen, ob wir der passende Ansprechpartner für Ihr Anliegen sind? Sehen Sie sich unsere <a class="text-primary font-semibold a-underline" href="/leistungen">Leistungen</a> an oder schildern Sie uns Ihre Frage. Vor einer Beauftragung klären wir mit Ihnen den gewünschten Umfang und die nächsten Schritte.
+          </p>
           <a href="/kontakt" class="inline-flex items-center gap-2 bg-primary text-white px-7 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-primary-light hover:scale-105 motion-reduce:transition-none motion-reduce:hover:scale-100">
             Kontakt aufnehmen
             <svg class="w-5 h-5 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -63,5 +67,5 @@ import ChatWidget from '../components/ChatWidget.astro';
   </main>
 
   <Footer />
-  <ChatWidget />
+  {FEATURES.chat && <ChatWidget />}
 </Layout>
