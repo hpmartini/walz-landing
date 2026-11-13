@@ -49,6 +49,21 @@ import standUp from '../assets/photos/stand-up.jpg';
       <p class="text-[length:clamp(14px,min(2.35svh,4.4vw),18px)] leading-normal md:text-[length:clamp(16px,2.8svh,20px)] md:leading-relaxed text-white" data-reveal>
         Ob Sie ein Unternehmen gründen, laufende steuerliche Aufgaben abgeben oder Ihre private Steuererklärung erstellen lassen möchten: Die Kanzlei Karsten Walz unterstützt Sie bei Ihren nächsten Schritten. Lernen Sie unsere Leistungen und die Menschen dahinter kennen.
       </p>
+      <!-- Below md the team photo fills the free space between lead and CTAs; absolute, so it takes only
+           what is left and never pushes the CTAs below the fold. Lazy: hidden from md, where the content is centred and has no free space. -->
+      <div class="md:hidden [@media(max-height:599px)]:hidden relative flex-1 min-h-0 mt-6" data-reveal="fade">
+        <div class="absolute inset-0 rounded-2xl border border-white/40 bg-primary/40 p-1.5">
+          <Picture
+            src={standUp}
+            formats={['avif', 'webp']}
+            widths={[480, 768, 1024]}
+            sizes="calc(100vw - 48px)"
+            alt="Karsten Walz im Gespräch mit Mitarbeitenden in der Kanzlei"
+            class="block w-full h-full object-cover rounded-xl"
+            loading="lazy"
+          />
+        </div>
+      </div>
       <!-- mt-auto pins the CTA block to the bottom of the screen-high hero below md -->
       <div class="mt-auto pt-6 md:mt-0 md:pt-8 short:pt-3" data-reveal-group>
         <div class="flex gap-3 md:gap-4">

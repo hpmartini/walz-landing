@@ -56,13 +56,12 @@ html {
 /* Closed sticky header at scroll 0 (Header.astro); the hero fills 100svh minus --header-h.
    scripts/review/hero.cjs fails if the header no longer matches.
    --header-shrink is how much of it slides off-screen once scrolled; the visible rest is the compact bar.
-   Logo size at the top is capped by its width next to the nav, so the contrast comes from the compact state.
+   From md the logo top size is capped by its width next to the nav, so the contrast comes from the compact state.
    Windows up to 480px high keep one size; phones under 700px high start from the short bar. */
 :root {
   --header-h: 57px; /* below md: 44px icon row + 12px padding + 1px border */
   --header-pad: 6px;
-  --header-logo: 36px;
-  --header-logo-compact: calc(26 / 36);
+  --header-logo: clamp(36px, (100vw - 122px) / 7.14, 44px); /* phones: see the scroll rule below */
   --header-shrink: 8px; /* compact bar: 49px */
 }
 
@@ -308,6 +307,15 @@ header[data-elevate] {
 }
 [data-elevate] nav img {
   scale: calc(1 - (1 - var(--header-logo-compact)) * var(--fx-hp, 0));
+}
+/* Phones: the logo starts as large as fits beside the call and menu icons (logo 500×70, icons and
+   padding take ~122px, 44px is the icon row) and shrinks to 36px while scrolling. Height instead of
+   scale, because the start size depends on the viewport width and scale needs a unitless ratio. */
+@media (max-width: 767px) {
+  [data-elevate] nav img {
+    scale: none;
+    height: calc(var(--header-logo) - (var(--header-logo) - 36px) * var(--fx-hp, 0));
+  }
 }
 [data-elevate].fx-elevated {
   box-shadow: 0 12px 32px -20px rgb(129 95 93 / 0.4);
