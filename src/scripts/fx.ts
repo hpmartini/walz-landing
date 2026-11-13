@@ -51,6 +51,11 @@ const ENTRANCE = document.documentElement.classList.contains('fx-entrance');
 // Spotlight/magnetic are pointer-chasing effects — hover-capable mice only.
 const FINE_POINTER = matchMedia('(hover: hover) and (pointer: fine)').matches;
 
+// Below the desktop nav breakpoint (lg) columns stack, so a [data-reveal]
+// block (heading, bar, copy, CTA, form…) is taller than one glance. There it
+// reveals its children one by one instead of fading in as a single slab.
+const STACKED = matchMedia('(max-width: 1023px)').matches;
+
 const delayOf = (el: Element) =>
   parseFloat(el.getAttribute('data-reveal-delay') ?? '0') || 0;
 
@@ -62,46 +67,42 @@ const inView = (el: Element) =>
 // screen — leave them alone.
 const skipEntrance = (el: Element) => (LATE_BOOT || !ENTRANCE) && inView(el);
 
+/** Reveal each element as it reaches the viewport. Elements that cross the
+    line together (a grid row, a fast flick) share one staggered tween, so a
+    stacked column enters card by card instead of all at once when its top
+    appears — and off-screen items never burn their animation unseen.
+    opacity, not autoAlpha: visibility:hidden drops links below the fold from
+    the Tab order; focusing one scrolls it into view, which fires its reveal. */
+function revealEach(items: Element[], { delay = 0, fadeOnly = false } = {}) {
+  const from = { opacity: 0, y: fadeOnly ? 0 : MOTION.revealY };
+  const to = { opacity: 1, y: 0, duration: MOTION.duration, delay, stagger: MOTION.stagger, ease: MOTION.ease };
+  // display:none children (honeypots, empty states) have no box to trigger on.
+  const shown = items.filter((el) => el.getClientRects().length > 0 && !skipEntrance(el));
+  const now = shown.filter(inView);
+  const later = shown.filter((el) => !inView(el));
+  if (now.length) gsap.fromTo(now, from, to);
+  if (!later.length) return;
+  gsap.set(later, from);
+  ScrollTrigger.batch(later, {
+    start: 'top 88%',
+    once: true,
+    onEnter: (batch) => gsap.to(batch, to),
+  });
+}
+
 const triggerFor = (el: Element) =>
   inView(el)
     ? {}
     : { scrollTrigger: { trigger: el, start: 'top 88%', once: true } };
 
 function initChoreography() {
-  // opacity, not autoAlpha: visibility:hidden drops links below the fold from the Tab order;
-  // focusing one scrolls it into view, which fires its reveal.
   document.querySelectorAll('[data-reveal]').forEach((el) => {
-    if (skipEntrance(el)) return;
-    const fadeOnly = el.getAttribute('data-reveal') === 'fade';
-    gsap.fromTo(
-      el,
-      { opacity: 0, y: fadeOnly ? 0 : MOTION.revealY },
-      {
-        opacity: 1,
-        y: 0,
-        duration: MOTION.duration,
-        delay: delayOf(el),
-        ease: MOTION.ease,
-        ...triggerFor(el),
-      }
-    );
+    const parts = STACKED && el.children.length > 1 ? [...el.children] : [el];
+    revealEach(parts, { delay: delayOf(el), fadeOnly: el.getAttribute('data-reveal') === 'fade' });
   });
 
   document.querySelectorAll('[data-reveal-group]').forEach((group) => {
-    if (skipEntrance(group)) return;
-    gsap.fromTo(
-      group.children,
-      { opacity: 0, y: MOTION.revealY },
-      {
-        opacity: 1,
-        y: 0,
-        duration: MOTION.duration,
-        delay: delayOf(group),
-        stagger: MOTION.stagger,
-        ease: MOTION.ease,
-        ...triggerFor(group),
-      }
-    );
+    revealEach([...group.children], { delay: delayOf(group) });
   });
 
   // Author-defined masked lines (markup provides the overflow-hidden wrappers).
