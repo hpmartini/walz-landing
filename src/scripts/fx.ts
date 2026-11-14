@@ -59,8 +59,10 @@ const STACKED = matchMedia('(max-width: 1023px)').matches;
 const delayOf = (el: Element) =>
   parseFloat(el.getAttribute('data-reveal-delay') ?? '0') || 0;
 
+// Whole viewport, not the 88% scroll line: a block already visible at load (the hero CTAs pinned to
+// the bottom of a phone screen) must enter with the page instead of waiting, invisible, for a scroll.
 const inView = (el: Element) =>
-  el.getBoundingClientRect().top < window.innerHeight * 0.88;
+  el.getBoundingClientRect().top < window.innerHeight;
 
 // In-view elements animate immediately (page entrance); others on scroll.
 // On a late boot or non-entrance navigation, in-view elements are already on
